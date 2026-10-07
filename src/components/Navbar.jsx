@@ -22,30 +22,38 @@ export default function Navbar({ onOpenInquiry, isDark, onToggleTheme }) {
       <nav
         className={`mx-auto transition-all duration-300 flex items-center justify-between ${
           isScrolled
-            ? 'max-w-5xl bg-white/90 dark:bg-canvas-darkCard/90 backdrop-blur-xl border border-canvas-border dark:border-canvas-darkBorder shadow-lg shadow-ink-950/5 rounded-full py-2.5 px-6'
-            : 'max-w-7xl bg-transparent border-b border-canvas-border/80 dark:border-canvas-darkBorder/60 py-4 px-2'
+            ? 'max-w-5xl bg-white/90 dark:bg-canvas-darkCard/90 backdrop-blur-xl border border-canvas-border dark:border-canvas-darkBorder shadow-lg shadow-ink-950/5 rounded-full py-2 px-6'
+            : 'max-w-7xl bg-transparent border-b border-canvas-border/80 dark:border-canvas-darkBorder/60 py-3.5 px-2'
         }`}
       >
         {/* Brand / Logo */}
-        <a href="#hero" className="flex items-center gap-3 group">
-          <div className="relative w-8 h-8 rounded-lg bg-ink-900 dark:bg-berry-600 flex items-center justify-center text-white shadow-sm transition-transform group-hover:scale-105 shrink-0 overflow-hidden">
-            <img
-              src="/logo.png"
-              alt="Logo"
-              onError={(e) => {
-                e.currentTarget.style.display = 'none';
-              }}
-              className="absolute inset-0 w-full h-full object-contain p-1"
-            />
-            <Flame className="w-4 h-4 text-berry-400 dark:text-white" />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-serif text-lg tracking-tight font-bold text-ink-900 dark:text-white group-hover:text-berry-600 transition-colors">
-              5 Spices or Less
-            </span>
-            <span className="text-[10px] tracking-widest uppercase text-ink-400 dark:text-ink-300 -mt-1 font-mono font-medium">
-              Life · Food · Strategy
-            </span>
+        <a href="#hero" className="flex items-center group">
+          {/* Dynamic Theme Logo (Swaps seamlessly between light and dark) */}
+          <img
+            src={isDark ? "/logo_dark.png" : "/logo.png"}
+            alt="5 Spices or Less"
+            className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-all duration-300 group-hover:scale-105"
+            onError={(e) => {
+              // Graceful fallback to text lockup if image isn't uploaded yet
+              e.currentTarget.style.display = 'none';
+              const fallback = document.getElementById('navbar-text-fallback');
+              if (fallback) fallback.style.display = 'flex';
+            }}
+          />
+
+          {/* Fallback Text Lockup (hidden if image loads successfully) */}
+          <div id="navbar-text-fallback" className="hidden items-center gap-2.5">
+            <div className="relative w-8 h-8 rounded-lg bg-ink-900 dark:bg-berry-600 flex items-center justify-center text-white shadow-sm shrink-0">
+              <Flame className="w-4 h-4 text-berry-400 dark:text-white" />
+            </div>
+            <div className="flex flex-col">
+              <span className="font-serif text-lg tracking-tight font-bold text-ink-900 dark:text-white">
+                5 Spices or Less
+              </span>
+              <span className="text-[10px] tracking-widest uppercase text-ink-400 dark:text-ink-300 -mt-1 font-mono font-medium">
+                Life · Food · Strategy
+              </span>
+            </div>
           </div>
         </a>
 
