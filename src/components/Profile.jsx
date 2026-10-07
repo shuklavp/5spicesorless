@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, Award, Car, Compass, Feather, Flame, Heart, Linkedin, MapPin, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowUpRight, Car, Compass, Feather, Flame, Linkedin, MapPin } from 'lucide-react';
 
 export default function Profile({ onOpenInquiry }) {
   return (
@@ -10,13 +10,13 @@ export default function Profile({ onOpenInquiry }) {
         <div className="flex items-center gap-3 mb-6">
           <Feather className="w-4 h-4 text-berry-600" />
           <span className="text-xs font-mono tracking-widestEditorial uppercase text-ink-700 dark:text-ink-200 font-bold">
-            THE UNVARNISHED BACKSTORY
+            ABOUT VIVEK SHUKLA
           </span>
           <div className="h-px bg-canvas-border dark:bg-canvas-darkBorder flex-1 ml-2" />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* Left Column: Portrait Frame & Life Milestones */}
+          {/* Left Column: Portrait Frame & Quick Markers */}
           <div className="lg:col-span-5 space-y-6">
             <div className="relative rounded-3xl overflow-hidden bg-canvas-subtle dark:bg-canvas-darkCard border-2 border-canvas-border dark:border-canvas-darkBorder shadow-xl p-4 group">
               {/* Image / Sketch Container */}
@@ -31,15 +31,15 @@ export default function Profile({ onOpenInquiry }) {
                       Vivek Shukla
                     </div>
                     <div className="text-xs font-mono text-berry-600 dark:text-berry-400 font-semibold">
-                      Founder · Operator · Life Essayist
+                      Founder, Operator, Life Essayist
                     </div>
                     <p className="text-xs text-ink-500 dark:text-ink-400 font-light max-w-xs mx-auto pt-2">
-                      Currently living and writing in Kuala Lumpur
+                      Originally from Lucknow, now living and writing in Kuala Lumpur
                     </p>
                   </div>
                 </div>
 
-                {/* Actual image when file is placed */}
+                {/* Actual image when file is present */}
                 <img
                   src="/profile-sketch.png"
                   alt="Vivek Shukla"
@@ -56,11 +56,11 @@ export default function Profile({ onOpenInquiry }) {
                   <MapPin className="w-3.5 h-3.5 text-cobalt-600" />
                   <span>Kuala Lumpur, Malaysia</span>
                 </span>
-                <span className="text-berry-600 dark:text-berry-400 font-medium">ENPC Paris MBA · Biology</span>
+                <span className="text-berry-600 dark:text-berry-400 font-medium">ENPC Paris MBA, Biology</span>
               </div>
             </div>
 
-            {/* LinkedIn Connection Pill */}
+            {/* LinkedIn Connection Card */}
             <a
               href="https://www.linkedin.com/in/vivekshukla/"
               target="_blank"
@@ -83,60 +83,63 @@ export default function Profile({ onOpenInquiry }) {
               <ArrowUpRight className="w-4 h-4 text-ink-400 group-hover:text-cobalt-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
 
-            {/* Automotive & Life Passions Box */}
+            {/* The 10 Cars Card */}
             <div className="p-6 rounded-3xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder space-y-3">
               <div className="flex items-center gap-2">
                 <Car className="w-4 h-4 text-cobalt-600" />
                 <span className="text-xs font-mono text-ink-900 dark:text-white font-bold uppercase tracking-wider">
-                  The 10-Car Highway Journey
+                  Ten Cars, Thirty Years
                 </span>
               </div>
               <p className="text-xs text-ink-600 dark:text-ink-300 font-light leading-relaxed">
-                "I love cars—having owned 10 across my lifetime, from humble first Marutis to responsive Skodas, reliable Kias, and precision BMWs. You learn a lot about an engineer's soul by how a vehicle takes a hard corner at 120 km/h."
+                I have owned ten cars over thirty years. They ranged from nervous first Marutis to dependable Kias, solid Skodas, and finely tuned BMWs. You learn a great deal about patience when a German engine decides to take a break on an Indian highway.
               </p>
             </div>
           </div>
 
-          {/* Right Column: The True Narrative */}
+          {/* Right Column: The Narrative in Short Sentences with Commas */}
           <div className="lg:col-span-7 space-y-8">
             <div>
               <h2 className="font-serif text-3xl sm:text-5xl font-black text-ink-900 dark:text-white leading-[1.08]">
-                "I was declared dead at 27. On May 13, 2004, my world was wiped clean."
+                "I was declared dead at twenty-seven. On May 13, 2004, the slate was wiped clean."
               </h2>
               <p className="mt-6 text-base sm:text-lg text-ink-700 dark:text-ink-200 font-normal leading-relaxed">
-                Over the last 30 years, I have studied biology, completed my MBA from École Nationale des Ponts et Chaussées (ENPC) in Paris, worked across executive roles, and built venture-backed startups.
+                Over thirty years, I studied biology, completed an MBA at ENPC in Paris, managed teams, and built venture-backed startups. 
               </p>
             </div>
 
             <div className="space-y-5 text-sm sm:text-base text-ink-600 dark:text-ink-200 font-light leading-relaxed">
               <p>
-                <strong>The Survival (May 13, 2004):</strong> At age 27, I was struck in the head by a heavy metal rod. Pronounced clinically dead on arrival, I survived only after a brutal 10-hour emergency surgery. I woke up with zero memory, no speech, no motor control, and unable to hold a spoon or write my own name. Doctors warned my family that if I rushed recovery, I risked permanent paralysis, intractable seizures, and early dementia.
+                <strong>The Survival:</strong> On May 13, 2004, a heavy metal rod hit my head. I was pronounced dead on arrival, but survived a ten-hour emergency surgery. I woke up with no memory, no speech, and no motor skills. I could not hold a pen or write my name. Doctors warned my family that rushing recovery would lead to permanent paralysis, seizures, or early dementia.
               </p>
               <p>
-                Against all odds, I rebuilt my mind and body through microscopic, daily persistence. That was <strong>22 years ago</strong>. Today, I am not just surviving—I am thriving.
+                I took my time, took small steps every day, and proved them wrong. That was twenty-two years ago. Today, I am surviving, and surviving rather well.
               </p>
               <p>
-                <strong>The Family:</strong> In my personal life, after being in love three times and facing heartbreak, I took the ultimate leap of faith: marrying someone without ever having known or met her. We have now been happily married for <strong>20 years</strong>, raising our remarkable 16-year-old daughter.
+                <strong>The Marriage:</strong> In personal life, after three heartbreaks that went nowhere, I took a leap of faith. I married someone without even meeting or knowing her beforehand. We have been happily married for twenty years now, and have a lovely sixteen-year-old daughter.
               </p>
               <p>
-                <strong>The Venture:</strong> As a startup founder, I created an entire industry category from scratch: sub-metering of water in India. We raised <strong>$4.5M from marquee venture investors</strong>, managed <strong>165+ employees across 4 regional offices</strong>, and scaled rapidly. When market headwinds demanded decisive resolution, I executed an exit for the benefit and protection of my shareholders—even though I personally didn't make money from it. I protected the people who trusted me.
+                <strong>The Startup:</strong> In business, I created the category of water sub-metering in India. We raised four and a half million dollars from marquee venture funds, grew to over a hundred and sixty employees, and ran four offices. Eventually, I led an exit for the benefit of our shareholders. I did not make money from it, but I protected the people who trusted me.
+              </p>
+              <p>
+                <strong>The Cooking:</strong> I love to cook. I use the simplest of spices and honest methods to get exceptional outcomes. My cooking is loved by everyone who sits at our table.
               </p>
             </div>
 
-            {/* The "Ben to Jules" Advisory Manifesto */}
+            {/* Why I Do This Today */}
             <div className="p-7 rounded-3xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder space-y-4">
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-berry-600" />
                 <span className="text-xs font-mono uppercase tracking-widest text-berry-600 dark:text-berry-400 font-bold">
-                  Why I Do This Today
+                  The Mission Today
                 </span>
               </div>
               <blockquote className="font-serif italic text-base sm:text-lg text-ink-900 dark:text-white font-medium leading-relaxed">
-                "I live in Kuala Lumpur now. My goal is to write down my life lessons across <strong>Life, Food, and Work</strong> before I forget them, share short stories of human connection, and act as a steady, ego-free sounding board—<strong>a Ben to your Jules (The Intern)</strong>—for founders building things that matter."
+                "I live in Kuala Lumpur now. I want to write down my life lessons across Life, Food, and Work before I forget them, along with some short fiction. I also want to help founders who need a calm, steady hand, acting as a Ben to your Jules (The Intern)."
               </blockquote>
             </div>
 
-            {/* Action CTA & Direct LinkedIn */}
+            {/* Action CTA */}
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <button
                 onClick={onOpenInquiry}

@@ -1,55 +1,55 @@
 import React, { useState } from 'react';
-import { Feather, Briefcase, Utensils, ArrowRight, CheckCircle2, HeartHandshake } from 'lucide-react';
+import { Feather, Briefcase, Utensils, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 const MODULES = [
   {
-    id: 'life-philosophy',
+    id: 'life',
     number: '01',
     category: 'LIFE',
-    title: 'Survival, Gratitude & The 20-Year Leap',
+    title: 'Survival, Perspective, and The Long Road',
     description:
-      'Waking up from a 10-hour skull surgery declared dead to relearn speech and writing. Marrying someone without ever meeting, building 20 years of devoted marriage, and realizing that 90% of modern stress is vanity.',
+      'Waking up from a ten-hour skull surgery declared dead to relearn speech, memory, and writing. Marrying someone without ever meeting, building twenty years of quiet devotion, and discovering that almost everything modern humans fret about is completely trivial.',
     icon: Feather,
     highlights: [
-      'Overcoming neurological paralysis & dementia prognoses through daily discipline',
-      'The power of radical commitment: 20 years married, raising a 16-year-old daughter',
-      'Living in Kuala Lumpur with deep presence, curiosity, and unconditional generosity',
+      'Overcoming grim prognoses of paralysis and dementia through daily, stubborn discipline',
+      'The quiet wisdom of arranged marriage: twenty years of devotion, raising a sixteen-year-old daughter',
+      'Writing down life lessons from Kuala Lumpur before memory slips away',
     ],
-    metric: '22 years thriving post-recovery.',
-    cta: 'Explore Life Essays',
+    metric: 'Twenty-two years surviving, and surviving rather well.',
+    cta: 'Explore Life Stories',
     ctaLink: '#writing',
   },
   {
-    id: 'culinary-mastery',
+    id: 'food',
     number: '02',
     category: 'FOOD',
     title: 'The Art of the 5-Spice Kitchen',
     description:
-      'Exceptional culinary outcomes are never achieved by cluttering a pot with forty powders. Restraint is supreme confidence: five spices, perfect heat control, and honest technique.',
+      'Exceptional food is never made by cluttering the pot with forty powders. Restraint is confidence. Five spices, deliberate heat control, and honest technique produce flavours that linger in memory for decades.',
     icon: Utensils,
     highlights: [
-      'The chemical harmony of Cumin, Turmeric, Coriander, Chili & Amchur',
-      'How physical cooking recalibrates high-stress executive minds',
-      'Dishes loved by all—prepared with everyday ingredients and extreme care',
+      'The chemistry of Cumin, Turmeric, Coriander, Red Chillies, and Aromatics',
+      'How slow simmering and physical cooking clears a cluttered executive mind',
+      'Dishes loved by family and friends, made with humble ingredients and patience',
     ],
-    metric: 'Simplest spices. Exceptional outcomes.',
-    cta: 'Explore Food & Kitchen Essays',
+    metric: 'Simple spices, exceptional outcomes.',
+    cta: 'Explore Food Essays',
     ctaLink: '#writing',
   },
   {
-    id: 'work-advisory',
+    id: 'work',
     number: '03',
     category: 'WORK',
-    title: 'From Category Creation to "A Ben to Your Jules"',
+    title: 'Category Creation to "A Ben to Your Jules"',
     description:
-      'Creating India’s water sub-metering category from scratch, raising $4.5M, managing 165+ people across 4 offices, and exiting for shareholders. Now serving as a seasoned sounding board for founders.',
+      'Pioneering water sub-metering in India, raising four and a half million dollars, managing over a hundred and sixty people across four offices, and exiting for the shareholders. Now advising founders as a fractional operator and calm confidant.',
     icon: Briefcase,
     highlights: [
-      'Fractional Operator: Stripping operational bloat and clarifying metrics',
-      'Entrepreneur in Residence (EIR): De-risking early go-to-market systems',
-      'The "Ben to Jules" Advisory: Unvarnished, ego-free counsel for ambitious CEOs',
+      'The Fractional Operator: cutting organizational bloat and replacing slides with clear memos',
+      'Entrepreneur in Residence: testing customer demand and establishing lean foundations',
+      'The "Ben to Jules" confidant: calm, battle-tested counsel for founders under pressure',
     ],
-    metric: '$4.5M VC Raised · 165+ Employees · 4 Offices',
+    metric: '$4.5M raised, 165+ team led, category created.',
     cta: 'View Advisory Engagements',
     ctaLink: '#consulting',
   },
@@ -75,7 +75,7 @@ export default function ValueProps({ onOpenInquiry }) {
             </h2>
           </div>
           <p className="text-ink-600 dark:text-ink-200 font-normal max-w-md text-sm sm:text-base leading-relaxed">
-            Distilled from thirty years of building companies, enduring life-altering trials, cooking with passion, and mentoring leaders.
+            Distilled from thirty years of building ventures, surviving near-fatal odds, cooking with care, and backing founders.
           </p>
         </div>
 
@@ -87,6 +87,7 @@ export default function ValueProps({ onOpenInquiry }) {
             return (
               <div
                 key={item.id}
+                id={item.id}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 className={`group relative rounded-3xl p-8 bg-white dark:bg-canvas-darkCard border transition-all duration-300 flex flex-col justify-between ${
@@ -135,7 +136,7 @@ export default function ValueProps({ onOpenInquiry }) {
                   <div className="text-[11px] font-mono text-ink-500 dark:text-ink-300 mb-4 italic">
                     "{item.metric}"
                   </div>
-                  {item.id === 'work-advisory' ? (
+                  {item.id === 'work' ? (
                     <button
                       onClick={onOpenInquiry}
                       className="w-full inline-flex items-center justify-between text-xs font-bold tracking-wide text-ink-900 dark:text-white group-hover:text-berry-600 dark:group-hover:text-berry-400 transition-colors"

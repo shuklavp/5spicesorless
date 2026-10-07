@@ -26,7 +26,7 @@ export default function Navbar({ onOpenInquiry, isDark, onToggleTheme }) {
             : 'max-w-7xl bg-transparent border-b border-canvas-border/80 dark:border-canvas-darkBorder/60 py-3 px-2'
         }`}
       >
-        {/* Brand / Logo (Scaled ~2x for high-visibility editorial impact) */}
+        {/* Brand Logo (Scaled ~2x) */}
         <a href="#hero" className="flex items-center group py-1">
           <img
             src={isDark ? "/logo_dark.png" : "/logo.png"}
@@ -39,7 +39,7 @@ export default function Navbar({ onOpenInquiry, isDark, onToggleTheme }) {
             }}
           />
 
-          {/* Fallback if logo image is not found */}
+          {/* Fallback if image is missing */}
           <div id="navbar-text-fallback" className="hidden items-center gap-2.5">
             <div className="relative w-10 h-10 rounded-lg bg-ink-900 dark:bg-berry-600 flex items-center justify-center text-white shadow-sm shrink-0">
               <Flame className="w-5 h-5 text-berry-400 dark:text-white" />
@@ -49,43 +49,49 @@ export default function Navbar({ onOpenInquiry, isDark, onToggleTheme }) {
                 5 Spices or Less
               </span>
               <span className="text-[11px] tracking-widest uppercase text-ink-400 dark:text-ink-300 -mt-1 font-mono font-medium">
-                Life · Food · Strategy
+                Life, Food, Work
               </span>
             </div>
           </div>
         </a>
 
-        {/* Desktop Navigation Links */}
-        <div className="hidden md:flex items-center gap-7 text-sm font-medium text-ink-600 dark:text-ink-200">
+        {/* Desktop Navigation Links: Life, Food, Work, Stories, Advisory, About */}
+        <div className="hidden md:flex items-center gap-6 text-sm font-medium text-ink-700 dark:text-ink-200">
           <a
-            href="#philosophy"
+            href="#life"
             className="hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
           >
-            Philosophy
+            Life
           </a>
           <a
-            href="#profile"
+            href="#food"
             className="hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
           >
-            About & Story
+            Food
+          </a>
+          <a
+            href="#work"
+            className="hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
+          >
+            Work
           </a>
           <a
             href="#writing"
             className="hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
           >
-            Essays
+            Stories
           </a>
           <a
             href="#consulting"
             className="hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
           >
-            Boutique Advisory
+            Advisory
           </a>
           <a
-            href="#manifesto"
+            href="#profile"
             className="hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
           >
-            Manifesto
+            About
           </a>
         </div>
 
@@ -129,44 +135,51 @@ export default function Navbar({ onOpenInquiry, isDark, onToggleTheme }) {
         </div>
       </nav>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden mt-2 mx-auto max-w-lg bg-white/98 dark:bg-canvas-darkCard/98 backdrop-blur-2xl border border-canvas-border dark:border-canvas-darkBorder rounded-2xl p-6 shadow-2xl space-y-4">
           <div className="flex flex-col space-y-3 text-base font-medium text-ink-800 dark:text-white">
             <a
-              href="#philosophy"
+              href="#life"
               onClick={() => setMobileMenuOpen(false)}
               className="py-1 hover:text-berry-600 transition-colors"
             >
-              Philosophy
+              Life
             </a>
             <a
-              href="#profile"
+              href="#food"
               onClick={() => setMobileMenuOpen(false)}
               className="py-1 hover:text-berry-600 transition-colors"
             >
-              About & Story
+              Food
+            </a>
+            <a
+              href="#work"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-1 hover:text-berry-600 transition-colors"
+            >
+              Work
             </a>
             <a
               href="#writing"
               onClick={() => setMobileMenuOpen(false)}
               className="py-1 hover:text-berry-600 transition-colors"
             >
-              Essays
+              Stories
             </a>
             <a
               href="#consulting"
               onClick={() => setMobileMenuOpen(false)}
               className="py-1 hover:text-berry-600 transition-colors"
             >
-              Boutique Advisory
+              Advisory
             </a>
             <a
-              href="#manifesto"
+              href="#profile"
               onClick={() => setMobileMenuOpen(false)}
               className="py-1 hover:text-berry-600 transition-colors"
             >
-              Manifesto
+              About
             </a>
           </div>
           <button

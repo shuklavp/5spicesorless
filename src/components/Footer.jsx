@@ -13,7 +13,7 @@ export default function Footer() {
   return (
     <footer id="manifesto" className="bg-canvas-subtle dark:bg-canvas-dark text-ink-800 dark:text-ink-100 border-t border-canvas-border dark:border-canvas-darkBorder pt-20 pb-16 px-6 md:px-12 relative overflow-hidden transition-colors duration-300">
       <div className="max-w-6xl mx-auto">
-        {/* The Manifesto Banner (Midnight Ink Block) */}
+        {/* The Manifesto Banner */}
         <div className="p-8 sm:p-14 rounded-3xl bg-ink-900 text-white border border-ink-800 mb-20 relative shadow-2xl overflow-hidden">
           <div className="absolute top-0 right-0 w-80 h-80 bg-berry-600/15 rounded-full blur-[100px] pointer-events-none" />
           
@@ -26,11 +26,11 @@ export default function Footer() {
             </div>
 
             <blockquote className="font-serif text-2xl sm:text-4xl text-white font-bold leading-snug">
-              "We believe that true mastery is subtractive. The amateur adds ingredients to compensate for poor technique; the master uses only what is essential and executes with uncompromising presence."
+              "True mastery is subtractive. The amateur adds ingredients to mask poor technique. The master uses only what is essential, and executes with quiet confidence."
             </blockquote>
             
             <p className="mt-6 text-sm text-ink-300 font-light max-w-xl leading-relaxed">
-              Whether you are seasoning a humble pot of yellow lentils, refining a multi-million-dollar product architecture, or structuring the hours of your life: fewer levers, deeper focus, enduring impact.
+              Whether seasoning a humble pot of lentils, refining a company strategy, or structuring your days: fewer levers, deeper focus, enduring outcomes.
             </p>
           </div>
         </div>
@@ -77,7 +77,7 @@ export default function Footer() {
             {subscribed ? (
               <div className="inline-flex items-center gap-2 text-xs font-mono text-berry-700 dark:text-berry-300 bg-berry-50 dark:bg-canvas-darkCard px-4 py-2.5 rounded-full border border-berry-200 dark:border-canvas-darkBorder font-semibold">
                 <Check className="w-4 h-4 text-berry-600" />
-                <span>You're subscribed to The Sunday Reduction. Welcome.</span>
+                <span>You are subscribed to The Sunday Reduction. Welcome.</span>
               </div>
             ) : (
               <form onSubmit={handleSubscribe} className="flex gap-2 max-w-md">
@@ -111,18 +111,23 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="#philosophy" className="hover:text-berry-600 transition-colors">
-                    Core Philosophy
+                  <a href="#life" className="hover:text-berry-600 transition-colors">
+                    Life
                   </a>
                 </li>
                 <li>
-                  <a href="#profile" className="hover:text-berry-600 transition-colors">
-                    About Vivek
+                  <a href="#food" className="hover:text-berry-600 transition-colors">
+                    Food
+                  </a>
+                </li>
+                <li>
+                  <a href="#work" className="hover:text-berry-600 transition-colors">
+                    Work
                   </a>
                 </li>
                 <li>
                   <a href="#writing" className="hover:text-berry-600 transition-colors">
-                    Dispatches & Stories
+                    Stories & Essays
                   </a>
                 </li>
                 <li>
@@ -130,12 +135,17 @@ export default function Footer() {
                     Advisory ("Ben to Jules")
                   </a>
                 </li>
+                <li>
+                  <a href="#profile" className="hover:text-berry-600 transition-colors">
+                    About Vivek
+                  </a>
+                </li>
               </ul>
             </div>
 
             <div>
               <span className="text-xs font-mono uppercase tracking-widest text-ink-900 dark:text-white font-bold block mb-4">
-                Connect & Network
+                Connect
               </span>
               <ul className="space-y-2.5 text-xs sm:text-sm text-ink-600 dark:text-ink-200 font-medium">
                 <li>
@@ -175,11 +185,11 @@ export default function Footer() {
 
         {/* Colophon & Meta */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-ink-500 dark:text-ink-400 gap-4 font-medium">
-          <p>© {new Date().getFullYear()} 5 Spices or Less · Vivek Shukla. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} 5 Spices or Less, Vivek Shukla. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <span>Kuala Lumpur, Malaysia</span>
             <span>·</span>
-            <span>Crafted with Vite, React & Tailwind</span>
+            <span>Crafted with Vite, React, and Tailwind</span>
           </div>
         </div>
       </div>

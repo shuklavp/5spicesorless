@@ -8,9 +8,8 @@ import ConsultingModule from './components/ConsultingModule';
 import Footer from './components/Footer';
 
 export default function App() {
-  const [isDark, setIsDark] = useState(false); // Default to clean modern white canvas
+  const [isDark, setIsDark] = useState(false);
 
-  // Initialize theme from localStorage or default to crisp light
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
@@ -48,7 +47,7 @@ export default function App() {
   return (
     <div className={`relative min-h-screen transition-colors duration-300 ${
       isDark ? 'bg-canvas-dark text-white' : 'bg-white text-ink-900'
-    } selection:bg-berry-500/20 selection:text-berry-700`}>
+    } bg-sandpaper-texture selection:bg-berry-500/20 selection:text-berry-700`}>
       {/* Sticky Morphing Masthead Navbar with Theme Toggle */}
       <Navbar
         onOpenInquiry={handleOpenInquiry}
@@ -58,19 +57,19 @@ export default function App() {
 
       {/* Main Page Content */}
       <main>
-        {/* High-Impact Two-Tone Editorial Hero (Midnight Ink + Electric Berry) */}
+        {/* High-Impact Two-Tone Editorial Hero */}
         <Hero onOpenInquiry={handleOpenInquiry} />
 
-        {/* 3 Core Value Proposition Modules */}
+        {/* 3 Core Value Proposition Modules (Life, Food, Work) */}
         <ValueProps onOpenInquiry={handleOpenInquiry} />
 
         {/* Profile & Personal Story (Vivek Shukla) with Sketch Frame */}
         <Profile onOpenInquiry={handleOpenInquiry} />
 
-        {/* Editorial Writing Board & Article Reader */}
+        {/* Editorial Writing Board & Article Reader (Life, Food, Work, Stories) */}
         <WritingBoard />
 
-        {/* Bespoke Advisory Practice & Strategic Intake */}
+        {/* Bespoke Advisory Practice & Strategic Intake ("Ben to Jules") */}
         <ConsultingModule />
       </main>
 
