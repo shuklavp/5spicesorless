@@ -7,16 +7,6 @@ const SPICE_PILLARS = [
     name: 'Cumin',
     role: 'THE FOUNDATION',
     metaphor: 'Cumin (The Foundation)',
-    accentColor: '#B87A28',
-    bgLight: 'bg-[#FCF9F2]',
-    borderColor: 'border-[#EADCC2]',
-    activeBorder: 'border-[#B87A28]',
-    badgeBg: 'bg-[#FAF0DC]',
-    badgeText: 'text-[#8C5511]',
-    badgeBorder: 'border-[#E5C99B]',
-    nameColor: 'text-[#B87A28]',
-    dotColor: 'bg-[#B87A28]',
-    activeBar: 'bg-[#B87A28]',
     primaryImage: '/cumin.png',
     secondaryImage: '/spices/cumin.png',
     principle: 'The tadka comes before everything else. Before you build features or hire large teams, master the single root problem that actually matters.',
@@ -26,16 +16,6 @@ const SPICE_PILLARS = [
     name: 'Turmeric',
     role: 'GROUND TRUTH',
     metaphor: 'Turmeric (The Purifier)',
-    accentColor: '#D98200',
-    bgLight: 'bg-[#FFFDF5]',
-    borderColor: 'border-[#FDE68A]',
-    activeBorder: 'border-[#D98200]',
-    badgeBg: 'bg-[#FEF3C7]',
-    badgeText: 'text-[#92400E]',
-    badgeBorder: 'border-[#FCD34D]',
-    nameColor: 'text-[#D98200]',
-    dotColor: 'bg-[#D98200]',
-    activeBar: 'bg-[#D98200]',
     primaryImage: '/turmeric.png',
     secondaryImage: '/spices/turmeric.png',
     principle: 'A pinch brings health, but too much turns the dish bitter. Single-page memos and honest unit economics beat sixty-slide executive presentations every time.',
@@ -45,16 +25,6 @@ const SPICE_PILLARS = [
     name: 'Coriander',
     role: 'COHESION',
     metaphor: 'Coriander (The Binder)',
-    accentColor: '#446E52',
-    bgLight: 'bg-[#F4F8F5]',
-    borderColor: 'border-[#C9DEC2]',
-    activeBorder: 'border-[#446E52]',
-    badgeBg: 'bg-[#E5F0E7]',
-    badgeText: 'text-[#264D33]',
-    badgeBorder: 'border-[#BBD4BF]',
-    nameColor: 'text-[#446E52]',
-    dotColor: 'bg-[#446E52]',
-    activeBar: 'bg-[#446E52]',
     primaryImage: '/coriander.png',
     secondaryImage: '/spices/coriander.png',
     principle: 'The quiet glue of the dish. Clear, precise reporting and communication that keep a hundred and sixty people aligned across four offices without chaos.',
@@ -64,16 +34,6 @@ const SPICE_PILLARS = [
     name: 'Red Chillies',
     role: 'CALCULATED RISK',
     metaphor: 'Red Chillies (The Kinetic Spark)',
-    accentColor: '#DC2626',
-    bgLight: 'bg-[#FEF5F5]',
-    borderColor: 'border-[#FECACA]',
-    activeBorder: 'border-[#DC2626]',
-    badgeBg: 'bg-[#FEE2E2]',
-    badgeText: 'text-[#991B1B]',
-    badgeBorder: 'border-[#FCA5A5]',
-    nameColor: 'text-[#DC2626]',
-    dotColor: 'bg-[#DC2626]',
-    activeBar: 'bg-[#DC2626]',
     primaryImage: '/red-chillies.png',
     secondaryImage: '/spices/red-chillies.png',
     principle: 'Without heat, the food is timid. Back your team to take ambitious bets. Absorb the blame when experiments fail, and give them the stage when they win.',
@@ -83,16 +43,6 @@ const SPICE_PILLARS = [
     name: 'Aromatics',
     role: 'EXECUTIVE RESTRAINT',
     metaphor: 'Aromatics (The Finish)',
-    accentColor: '#8A3358',
-    bgLight: 'bg-[#FAF2F6]',
-    borderColor: 'border-[#E8C5D8]',
-    activeBorder: 'border-[#8A3358]',
-    badgeBg: 'bg-[#F5E1EC]',
-    badgeText: 'text-[#6B1E40]',
-    badgeBorder: 'border-[#DBA9C4]',
-    nameColor: 'text-[#8A3358]',
-    dotColor: 'bg-[#8A3358]',
-    activeBar: 'bg-[#8A3358]',
     primaryImage: '/aromatics.png',
     secondaryImage: '/spices/aromatics.png',
     principle: 'Sprinkled only after turning off the flame. The rare wisdom to know when the work is finished, stepping back, and letting quality speak for itself.',
@@ -185,7 +135,7 @@ export default function Hero({ onOpenInquiry }) {
               </div>
             </div>
 
-            <div className="w-full h-px bg-canvas-border dark:border-canvas-darkBorder" />
+            <div className="w-full h-px bg-canvas-border dark:bg-canvas-darkBorder" />
 
             <div className="space-y-2 text-xs text-ink-600 dark:text-ink-200 font-medium">
               <div className="flex items-center gap-2.5">
@@ -210,17 +160,16 @@ export default function Hero({ onOpenInquiry }) {
             <span className="text-xs uppercase tracking-widest text-ink-500 dark:text-ink-300 font-mono font-bold">
               The Subtractive Mindset:
             </span>
-            <span className="text-xs font-mono font-bold" style={{ color: activePillar.accentColor }}>
+            <span className="text-xs font-mono font-bold text-berry-600 dark:text-berry-400">
               Selected: [{activePillar.metaphor}]
             </span>
           </div>
 
-          {/* 5 Spice Selector Boxes Matching User's Redone Placement:
-              - Top Left: Pill Badge (e.g. THE FOUNDATION)
-              - Top Right: 01 ●
-              - Middle: Large Bold Serif Spice Name (Cumin, Turmeric...)
-              - Bottom Right: Spice drawing nestled in the corner
-              - Clean, uncluttered, no redundant small labels
+          {/* 5 Spice Selector Boxes:
+              - Reverted to clean, cohesive card styling (white / ice-slate background, no weird spice tints)
+              - Removed the pill/box around THE FOUNDATION (unboxed plain text, retaining font size)
+              - Controlled font size for Spice names to eliminate overlapping
+              - Spice drawing cleanly anchored in bottom-right corner
           */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
             {SPICE_PILLARS.map((pillar) => {
@@ -229,46 +178,48 @@ export default function Hero({ onOpenInquiry }) {
                 <button
                   key={pillar.id}
                   onClick={() => setActivePillar(pillar)}
-                  className={`text-left p-5 rounded-3xl border-2 transition-all duration-300 relative overflow-hidden min-h-[175px] sm:min-h-[190px] flex flex-col justify-between group shadow-sm ${
+                  className={`text-left p-5 rounded-3xl border-2 transition-all duration-200 relative overflow-hidden min-h-[160px] sm:min-h-[175px] flex flex-col justify-between group shadow-sm ${
                     isSelected
-                      ? `${pillar.bgLight} dark:bg-canvas-darkCard ${pillar.activeBorder} shadow-xl -translate-y-1`
-                      : `${pillar.bgLight} dark:bg-canvas-darkCard/60 ${pillar.borderColor} dark:border-canvas-darkBorder hover:${pillar.activeBorder} hover:-translate-y-0.5`
+                      ? 'bg-white dark:bg-canvas-darkCard border-berry-600 shadow-xl shadow-berry-600/10 -translate-y-1'
+                      : 'bg-canvas-subtle dark:bg-canvas-darkCard/60 border-canvas-border dark:border-canvas-darkBorder hover:border-cobalt-400 hover:bg-white hover:-translate-y-0.5'
                   }`}
                 >
                   {/* Top Bar on Active */}
                   {isSelected && (
-                    <div className={`absolute top-0 left-0 right-0 h-1.5 ${pillar.activeBar}`} />
+                    <div className="absolute top-0 left-0 right-0 h-1.5 bg-berry-600" />
                   )}
                   
-                  {/* Top Row: Pill Badge on Left, Number & Dot on Right */}
-                  <div className="flex items-center justify-between w-full relative z-10">
-                    {/* Management Parallel Pill Badge (Top Left) */}
-                    <span className={`px-2.5 py-1 text-[10px] sm:text-[11px] font-mono font-bold tracking-wider uppercase rounded-full border ${pillar.badgeBg} ${pillar.badgeText} ${pillar.badgeBorder}`}>
+                  {/* Top Row: Unboxed Role Text on Left, Number & Dot on Right */}
+                  <div className="flex items-start justify-between w-full relative z-10">
+                    {/* Management Parallel: Plain text without the rounded pill box */}
+                    <div className={`text-xs font-mono font-bold tracking-wider uppercase leading-tight ${
+                      isSelected ? 'text-berry-600 dark:text-berry-400' : 'text-ink-600 dark:text-ink-300 group-hover:text-ink-900'
+                    }`}>
                       {pillar.role}
-                    </span>
+                    </div>
 
                     {/* Number & Dot (Top Right) */}
-                    <div className="flex items-center gap-1.5 shrink-0 ml-1">
-                      <span className="font-mono text-xs font-bold text-ink-700 dark:text-ink-300">
+                    <div className="flex items-center gap-1.5 shrink-0 ml-2 pt-0.5">
+                      <span className="font-mono text-xs font-bold text-cobalt-600 dark:text-cobalt-400">
                         0{pillar.id}
                       </span>
                       <span
                         className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                          isSelected ? pillar.dotColor : 'bg-canvas-border dark:bg-canvas-darkBorder'
+                          isSelected ? 'bg-berry-600' : 'bg-canvas-border dark:bg-canvas-darkBorder'
                         }`}
                       />
                     </div>
                   </div>
 
-                  {/* Middle / Name Area: Left-aligned Bold Serif in the Spice's Color */}
-                  <div className="my-auto pt-4 pb-2 text-left relative z-10">
-                    <div className={`font-serif font-black text-2xl sm:text-3xl ${pillar.nameColor} leading-tight tracking-tight`}>
+                  {/* Middle / Name Area: Controlled Font Size (No Overlapping) */}
+                  <div className="pt-3 pb-1 text-left relative z-10 max-w-[65%]">
+                    <div className="font-serif font-bold text-xl sm:text-2xl text-ink-950 dark:text-white leading-tight tracking-tight group-hover:text-berry-600 transition-colors">
                       {pillar.name}
                     </div>
                   </div>
 
                   {/* Bottom Right Corner: Spice Drawing nestled in the corner */}
-                  <div className="absolute -bottom-2 -right-2 w-20 h-20 sm:w-24 sm:h-24 pointer-events-none transition-transform duration-300 group-hover:scale-110">
+                  <div className="absolute -bottom-1 -right-1 w-20 h-20 sm:w-22 sm:h-22 pointer-events-none transition-transform duration-300 group-hover:scale-105">
                     <img
                       src={pillar.primaryImage}
                       alt={pillar.name}
@@ -288,7 +239,7 @@ export default function Hero({ onOpenInquiry }) {
             })}
           </div>
 
-          {/* Active Principle Card Themed to Selected Spice */}
+          {/* Active Principle Card */}
           <div className="mt-4 p-6 rounded-2xl bg-white dark:bg-canvas-darkCard border-2 border-canvas-border dark:border-canvas-darkBorder flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-sm">
             <div className="flex items-center gap-5">
               <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-canvas-subtle dark:bg-canvas-dark rounded-2xl border border-canvas-border dark:border-canvas-darkBorder p-1.5 flex items-center justify-center overflow-hidden">
@@ -308,11 +259,11 @@ export default function Hero({ onOpenInquiry }) {
               </div>
               <div className="space-y-1.5">
                 <div className="flex items-center gap-2">
-                  <span className={`px-2.5 py-0.5 text-xs font-mono font-bold tracking-wider uppercase rounded-full ${activePillar.badgeBg} ${activePillar.badgeText}`}>
+                  <span className="text-xs font-mono font-bold tracking-wider uppercase text-berry-600 dark:text-berry-400">
                     {activePillar.role}
                   </span>
                   <span className="text-xs text-ink-400 font-mono">·</span>
-                  <span className={`text-xs font-mono font-bold uppercase tracking-wider ${activePillar.nameColor}`}>
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-ink-900 dark:text-white">
                     {activePillar.name}
                   </span>
                 </div>
