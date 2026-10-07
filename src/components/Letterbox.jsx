@@ -50,7 +50,7 @@ export default function Letterbox() {
         <img
           src="/streetscape-sketch.png"
           alt="Vintage Streetscape with Letterbox"
-          className="w-full h-full object-cover object-top opacity-75 dark:opacity-35 mix-blend-multiply dark:mix-blend-screen transition-opacity"
+          className="w-full h-full object-cover object-top opacity-75 dark:opacity-35 mix-blend-multiply dark:invert dark:mix-blend-screen transition-opacity"
         />
         {/* Soft bottom edge transition into the next section */}
         <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white dark:from-canvas-dark to-transparent" />
