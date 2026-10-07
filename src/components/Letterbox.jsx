@@ -43,8 +43,18 @@ export default function Letterbox() {
   };
 
   return (
-    <section id="letterbox" className="py-24 px-6 md:px-12 bg-white dark:bg-canvas-dark relative border-t border-canvas-border dark:border-canvas-darkBorder transition-colors duration-300">
-      <div className="max-w-4xl mx-auto">
+    <section id="letterbox" className="py-24 px-6 md:px-12 bg-white dark:bg-canvas-dark relative border-t border-canvas-border dark:border-canvas-darkBorder transition-colors duration-300 overflow-hidden">
+      
+      {/* Background Decorative Watermark (Post Box) */}
+      <div className="absolute top-1/2 -right-16 -translate-y-1/2 w-72 sm:w-96 pointer-events-none opacity-[0.07] dark:opacity-[0.04] select-none mix-blend-multiply dark:mix-blend-screen hidden lg:block">
+        <img
+          src="/postbox-sketch.png"
+          alt="Colonial Post Box Sketch"
+          className="w-full h-auto object-contain"
+        />
+      </div>
+
+      <div className="max-w-4xl mx-auto relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
@@ -62,12 +72,22 @@ export default function Letterbox() {
           </p>
         </div>
 
-        {/* Form Container */}
-        <div className="rounded-3xl p-6 sm:p-10 bg-canvas-subtle dark:bg-canvas-darkCard border-2 border-canvas-border dark:border-canvas-darkBorder shadow-xl">
+        {/* Form Container with Watermark inside */}
+        <div className="relative rounded-3xl p-6 sm:p-10 bg-canvas-subtle dark:bg-canvas-darkCard border-2 border-canvas-border dark:border-canvas-darkBorder shadow-xl overflow-hidden">
+          
+          {/* Subtle inside corner watermark */}
+          <div className="absolute -bottom-10 -right-8 w-56 sm:w-72 pointer-events-none opacity-[0.08] dark:opacity-[0.05] select-none mix-blend-multiply dark:mix-blend-screen">
+            <img
+              src="/postbox-sketch.png"
+              alt=""
+              className="w-full h-auto object-contain"
+            />
+          </div>
+
           {submitted ? (
-            <div className="text-center py-12 px-4 space-y-5">
-              <div className="w-16 h-16 rounded-full bg-berry-50 dark:bg-canvas-dark border border-berry-200 dark:border-berry-800 flex items-center justify-center text-berry-600 dark:text-berry-400 mx-auto shadow-sm">
-                <Check className="w-8 h-8" />
+            <div className="relative z-10 text-center py-12 px-4 space-y-5">
+              <div className="w-20 h-20 rounded-full bg-berry-50 dark:bg-canvas-dark border border-berry-200 dark:border-berry-800 flex items-center justify-center text-berry-600 dark:text-berry-400 mx-auto shadow-sm">
+                <Check className="w-10 h-10" />
               </div>
               <h3 className="font-serif text-2xl sm:text-3xl font-bold text-ink-900 dark:text-white">
                 Your letter has reached Vivek's desk.
@@ -94,7 +114,7 @@ export default function Letterbox() {
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
               
               {/* Category Selection Tabs */}
               <div>
@@ -107,7 +127,7 @@ export default function Letterbox() {
                     const isSelected = selectedCategory === cat.id;
                     const cardClass = isSelected
                       ? 'bg-white dark:bg-canvas-dark border-berry-600 dark:border-berry-500 shadow-md ring-2 ring-berry-600/20'
-                      : 'bg-white/60 dark:bg-canvas-dark/60 border-canvas-border dark:border-canvas-darkBorder hover:border-cobalt-400';
+                      : 'bg-white/70 dark:bg-canvas-dark/70 border-canvas-border dark:border-canvas-darkBorder hover:border-cobalt-400';
                     const iconColor = isSelected ? 'text-berry-600 dark:text-berry-400' : 'text-ink-500';
 
                     return (
