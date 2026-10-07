@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, BookOpen, Compass, Flame, Sparkles } from 'lucide-react';
+import { ArrowRight, BookOpen, Compass, Flame, Heart, Sparkles, ShieldCheck } from 'lucide-react';
 
 const SPICE_PILLARS = [
   {
@@ -13,29 +13,29 @@ const SPICE_PILLARS = [
     id: 2,
     name: 'Ground Truth',
     metaphor: 'Turmeric (The Purifier)',
-    principle: 'Confront operational reality early. Ground truth beats comfortable executive narratives every single time.',
-    domain: 'Founder Diagnostics',
+    principle: 'Confront operational reality early. Honest, single-page memos beat comfortable 60-slide decks every single time.',
+    domain: 'Founder Diagnostics & Reporting',
   },
   {
     id: 3,
     name: 'Catalyst',
-    metaphor: 'Red Chili (Kinetic Energy)',
-    principle: 'Controlled friction spurs innovation. Without bold urgency, clean concepts remain theoretical artifacts.',
-    domain: 'Go-to-Market Velocity',
+    metaphor: 'Red Chili (Kinetic Drive)',
+    principle: 'Take ambitious risks and back your people unconditionally when they dare to innovate.',
+    domain: 'Team Leadership & Velocity',
   },
   {
     id: 4,
     name: 'Structure',
     metaphor: 'Coriander (The Binder)',
-    principle: 'Rigorous systems do not constrain imagination; they grant the cognitive clearance for it to thrive.',
+    principle: 'Simple systems scale across 165+ people and 4 offices without bureaucratizing creative intuition.',
     domain: 'Operational Simplicity',
   },
   {
     id: 5,
     name: 'Nuance',
-    metaphor: 'Garam Masala / Saffron (The Finish)',
-    principle: 'Timing and elevation. Lasting value emerges from the final 5% of care, taste, and executive judgment.',
-    domain: 'Brand & Strategic Moats',
+    metaphor: 'Garam Masala / Amchur (The Finish)',
+    principle: 'Patience is kinetic. Exceptional outcomes emerge from the final 5% of care, taste, and executive judgment.',
+    domain: 'Brand & Advisory Moats',
   },
 ];
 
@@ -46,23 +46,23 @@ export default function Hero({ onOpenInquiry }) {
     <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-36 pb-20 px-6 md:px-12 bg-white dark:bg-canvas-dark bg-modern-grid transition-colors duration-300">
       <div className="max-w-6xl mx-auto w-full relative z-10">
         
-        {/* Editorial Top Kicker & Accent Rule (Directly styled after reference masthead) */}
+        {/* Editorial Top Kicker & Accent Rule */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-4 border-b border-canvas-border dark:border-canvas-darkBorder">
           <div className="flex items-center gap-3">
             <span className="w-2.5 h-2.5 rounded-full bg-berry-600 animate-pulse" />
             <span className="text-xs font-mono tracking-widestEditorial uppercase text-ink-700 dark:text-ink-200 font-bold">
-              SIMPLICITY IN LIFE · FOOD · STRATEGY
+              30 YEARS OF VENTURES, SURVIVAL & RADICAL SIMPLICITY
             </span>
           </div>
           <div className="flex flex-col sm:items-end">
             <span className="text-xs font-bold text-cobalt-600 dark:text-cobalt-400 font-mono tracking-wider">
-              The Subtractive Advantage
+              Kuala Lumpur · Global Practice
             </span>
             <div className="w-10 h-0.5 bg-berry-600 rounded-full mt-1.5" />
           </div>
         </div>
 
-        {/* High-Impact Two-Tone Headline (Midnight Ink + Electric Berry Magenta) */}
+        {/* High-Impact Two-Tone Headline */}
         <div className="space-y-0 tracking-tightest">
           <h1 className="font-serif text-5xl sm:text-7xl lg:text-8xl font-black text-ink-900 dark:text-white leading-[0.95]">
             Five Spices
@@ -72,11 +72,11 @@ export default function Hero({ onOpenInquiry }) {
           </h1>
         </div>
 
-        {/* Subhead & Clean Data Card Grid */}
+        {/* Subhead & Track Record Metric Grid */}
         <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-8 space-y-6">
             <p className="text-lg sm:text-2xl text-ink-700 dark:text-ink-200 font-normal leading-relaxed max-w-2xl font-sans">
-              The most enduring things in life, cooking, and company building are achieved through subtraction. We strip away the non-essential to unlock clarity, speed, and flavor.
+              From pioneering a venture-backed industry category to surviving being declared dead and relearning how to speak—I write down my life lessons before I forget them, and advise founders as a fractional operator and steady confidant.
             </p>
 
             {/* Action Buttons */}
@@ -86,7 +86,7 @@ export default function Hero({ onOpenInquiry }) {
                 className="group px-7 py-3.5 rounded-full bg-berry-600 hover:bg-berry-700 text-white font-bold text-sm flex items-center gap-2.5 transition-all shadow-lg shadow-berry-600/25 active:scale-95"
               >
                 <BookOpen className="w-4 h-4 text-white" />
-                <span>Explore Essays & Lessons</span>
+                <span>Read Stories & Lessons</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </a>
 
@@ -95,23 +95,23 @@ export default function Hero({ onOpenInquiry }) {
                 className="group px-7 py-3.5 rounded-full border-2 border-ink-900 dark:border-white text-ink-900 dark:text-white hover:bg-ink-900 hover:text-white dark:hover:bg-white dark:hover:text-ink-950 font-bold text-sm flex items-center gap-2.5 transition-all active:scale-95"
               >
                 <Compass className="w-4 h-4 text-cobalt-600 dark:text-cobalt-400" />
-                <span>Bespoke Founder Advisory</span>
+                <span>Advisory Partner ("A Ben to Your Jules")</span>
               </button>
             </div>
           </div>
 
-          {/* Bold Metric Badge (Cobalt Blue + Electric Berry Legend Styling) */}
+          {/* Genuine 30-Year Track Record Card */}
           <div className="lg:col-span-4 p-6 rounded-3xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder shadow-lg space-y-4">
             <div className="flex items-baseline gap-3">
               <span className="font-serif text-5xl font-black text-cobalt-600 dark:text-cobalt-400 leading-none">
-                05
+                30
               </span>
               <div className="flex flex-col">
                 <span className="font-serif text-xl font-bold text-ink-900 dark:text-white leading-tight">
-                  Core Levers
+                  Years of Journey
                 </span>
                 <span className="text-xs font-mono text-berry-600 dark:text-berry-400 font-bold">
-                  Zero Operational Bloat
+                  Biology · ENPC Paris · Founder
                 </span>
               </div>
             </div>
@@ -121,15 +121,19 @@ export default function Hero({ onOpenInquiry }) {
             <div className="space-y-2 text-xs text-ink-600 dark:text-ink-200 font-medium">
               <div className="flex items-center gap-2.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-cobalt-500 shrink-0" />
-                <span>Weekly Long-Form Strategy Memos</span>
+                <span><strong>$4.5M Raised</strong> & Water Sub-Metering Category Created</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-berry-600 shrink-0" />
-                <span>Direct 1:1 Founder Sparring Partner</span>
+                <span><strong>165+ Team Led</strong> Across 4 Regional Offices</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-ink-900 dark:bg-white shrink-0" />
-                <span>Strictly Capped Client Capacity</span>
+                <span><strong>22 Years Thriving</strong> Post Near-Fatal Skull Surgery</span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0" />
+                <span><strong>20-Year Marriage</strong> & 16-Year-Old Daughter</span>
               </div>
             </div>
           </div>
@@ -139,10 +143,10 @@ export default function Hero({ onOpenInquiry }) {
         <div className="mt-16 pt-10 border-t border-canvas-border dark:border-canvas-darkBorder">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
             <span className="text-xs uppercase tracking-widest text-ink-500 dark:text-ink-300 font-mono font-bold">
-              The Five Disciplines of Restraint:
+              The Subtractive Creed:
             </span>
             <span className="text-xs font-mono text-berry-600 dark:text-berry-400 font-bold">
-              Selected: [{activePillar.metaphor}]
+              Principle: [{activePillar.metaphor}]
             </span>
           </div>
 

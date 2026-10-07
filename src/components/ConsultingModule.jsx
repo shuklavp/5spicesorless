@@ -1,44 +1,44 @@
 import React, { useState } from 'react';
-import { ArrowRight, Check, Compass, ShieldCheck, Sparkles, Send } from 'lucide-react';
+import { ArrowRight, Check, Compass, HeartHandshake, ShieldCheck, Sparkles, Send, Users, Rocket } from 'lucide-react';
 
 const ADVISORY_MODES = [
   {
-    title: 'Diagnostic Scope Audit',
-    focus: 'Ruthless Subtraction & Focus',
-    cadence: '1 to 2-Week Intensive Sprint',
+    title: 'The Fractional Operator',
+    focus: 'Operational De-cluttering & GTM Discipline',
+    cadence: 'Embedded Executive Engagement',
     description:
-      'We audit your active product roadmap, team bandwidth, and strategic initiatives to identify the 80% that can be safely eliminated so your venture can regain its lethal execution speed.',
+      'Drawing from managing 165+ people across 4 offices, I step into growing ventures to strip out organizational bloat, install clear and precise reporting memos, and align customer acquisition levers with ruthless simplicity.',
     deliverables: [
-      'Operational and technical subtraction diagnostic',
-      'The 5-Lever Executive Blueprint',
-      'Roadmap pruning recommendations & stakeholder alignment',
-      'Live leadership debrief and implementation strategy',
+      'Diagnostic review of team bandwidth, roadmaps, and recurring syncs',
+      'Installation of single-page decision memos over 50-slide decks',
+      'Go-to-market and marketing alignment with measurable unit economics',
+      'Hands-on guidance through high-friction scaling inflection points',
     ],
   },
   {
-    title: 'Fractional Strategy Partner',
-    focus: 'High-Touch Founder Sparring',
-    cadence: 'Ongoing Embedded Advisory',
+    title: 'Entrepreneur in Residence (EIR)',
+    focus: 'Category Creation & Early Validation',
+    cadence: 'Venture Studio or Fund Partnership',
     description:
-      'Acting as an unvarnished sounding board for CEOs and leadership teams. Direct asynchronous access, bi-weekly strategic reviews, and external pressure-testing on make-or-break decisions.',
+      'Having pioneered an entire industry category in India ($4.5M raised, category creation in water sub-metering), I partner with venture studios, incubators, or family offices to evaluate market opportunities and pressure-test product viability.',
     deliverables: [
-      'Dedicated bi-weekly strategic sparring sessions',
-      'Private asynchronous communication line for acute decisions',
-      'Pre-board and investor narrative stress-testing',
-      'Strictly capped at 3 concurrent client partnerships',
+      'Category creation stress-testing and customer problem validation',
+      'Early operational design and capital-efficient execution roadmaps',
+      'Mentoring founding teams to take bold, calculated bets',
+      'Governance and fiduciary oversight from day zero',
     ],
   },
   {
-    title: 'The Clarity Intensive',
-    focus: 'High-Stakes Inflection Points',
-    cadence: 'Multi-Day Dedicated Immersion',
+    title: 'A Ben to Your Jules',
+    focus: 'Trusted Confidant for High-Agency CEOs',
+    cadence: 'Dedicated 1:1 Founder Sparring',
     description:
-      'Facilitated leadership alignment designed for major pivots, positioning overhauls, or enterprise transitions. Replaces 50-slide decks with narrative writing and fundamental ground truth.',
+      'Like Robert De Niro in "The Intern"—an ego-free, calm, deeply experienced veteran in your corner. Someone who has raised millions, survived being declared dead, weathered boardroom storms, and exited with honor, providing psychological safety and unvarnished judgment.',
     deliverables: [
-      'Pre-session executive stakeholder interviews',
-      'Zero-slide narrative alignment methodology',
-      'Identification of core defensible distribution vectors',
-      'Concrete 90-day post-immersion execution playbook',
+      'Bi-weekly private strategy reviews (async & voice line)',
+      'Unbiased sounding board on co-founder tensions, hiring, and board dynamics',
+      'Crisis perspective: helping you distinguish fatal risks from temporary noise',
+      'Strictly capped at 2 to 3 concurrent founder relationships',
     ],
   },
 ];
@@ -50,7 +50,7 @@ export default function ConsultingModule() {
     email: '',
     venture: '',
     stage: 'Seed / Series A',
-    advisoryMode: 'Diagnostic Scope Audit',
+    advisoryMode: 'A Ben to Your Jules (Founder Confidant)',
     timeline: 'Immediate (Next 2-4 weeks)',
     bottleneck: '',
   });
@@ -68,18 +68,18 @@ export default function ConsultingModule() {
           <div className="flex items-center gap-2 mb-2">
             <Compass className="w-4 h-4 text-berry-600" />
             <span className="text-xs font-mono tracking-widest uppercase text-berry-600 dark:text-berry-400 font-bold">
-              BOUTIQUE ADVISORY PRACTICE
+              ADVISORY & OPERATIONAL PARTNERSHIPS
             </span>
           </div>
           <h2 className="font-serif text-3xl sm:text-5xl font-bold text-ink-900 dark:text-white leading-tight">
-            Bespoke strategic counsel for founders refusing unnecessary bloat.
+            Seasoned counsel from someone who has lived the full founder cycle.
           </h2>
           <p className="mt-6 text-ink-600 dark:text-ink-200 font-normal text-base sm:text-lg leading-relaxed">
-            We do not sell commoditized templates or hourly time-sheets. Every advisory engagement is custom-scoped around your venture’s specific operational bottlenecks and strategic ambitions.
+            I don't deliver generic consulting decks. I partner with founders and leaders as a fractional operator, EIR, or steady confidant—helping you take bold risks while backing you completely.
           </p>
         </div>
 
-        {/* Advisory Modes Grid */}
+        {/* 3 Advisory Modes Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
           {ADVISORY_MODES.map((mode, idx) => (
             <div
@@ -108,7 +108,7 @@ export default function ConsultingModule() {
 
                 <div className="space-y-3 pt-4 border-t border-canvas-border dark:border-canvas-darkBorder mb-8">
                   <span className="text-xs font-mono uppercase tracking-wider text-ink-900 dark:text-white font-bold block mb-2">
-                    Scope of Deliverables:
+                    Scope of Collaboration:
                   </span>
                   {mode.deliverables.map((item, i) => (
                     <div key={i} className="flex items-start gap-2.5 text-xs text-ink-700 dark:text-ink-100 font-medium">
@@ -124,29 +124,29 @@ export default function ConsultingModule() {
                 onClick={() => setFormData({ ...formData, advisoryMode: mode.title })}
                 className="w-full py-3 rounded-full bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-ink-900 dark:text-white group-hover:border-berry-600 group-hover:text-berry-600 text-xs font-bold text-center transition-all flex items-center justify-center gap-2 shadow-sm"
               >
-                <span>Inquire About This Format</span>
+                <span>Discuss This Collaboration</span>
                 <ArrowRight className="w-3.5 h-3.5 text-berry-600" />
               </a>
             </div>
           ))}
         </div>
 
-        {/* Partnership Philosophy Banner */}
+        {/* Philosophy Banner: Less is More & Unconditional Backing */}
         <div className="p-8 sm:p-10 rounded-3xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder mb-20 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-sm">
           <div className="space-y-2 max-w-2xl">
             <span className="text-xs font-mono uppercase tracking-widest text-berry-600 dark:text-berry-400 font-bold">
-              Transparent Partnership Philosophy
+              My Guiding Operating Principle
             </span>
             <h4 className="font-serif text-xl sm:text-2xl text-ink-900 dark:text-white font-bold">
-              Why we operate without a rigid rate card.
+              "Less is more. Simplicity over clutter. I back you while you take bold risks."
             </h4>
             <p className="text-sm text-ink-600 dark:text-ink-200 font-light leading-relaxed">
-              No two ventures face identical constraints. Whether your organization requires a focused two-week subtraction audit or ongoing monthly executive sparring, scopes and terms are tailored directly to the business leverage created.
+              No rigid rate cards or bureaucratic retainer tiers. I engage with people I believe in, helping founders and operators cut through the noise to build something that endures.
             </p>
           </div>
           <div className="shrink-0 flex items-center gap-3 text-xs font-mono text-berry-700 dark:text-berry-300 bg-berry-50 dark:bg-canvas-dark px-5 py-3 rounded-2xl border border-berry-200 dark:border-canvas-darkBorder font-bold">
             <Sparkles className="w-4 h-4 text-berry-600" />
-            <span>Strictly Capped Client Capacity</span>
+            <span>Direct 1:1 Engagement</span>
           </div>
         </div>
 
@@ -154,13 +154,13 @@ export default function ConsultingModule() {
         <div id="intake-form" className="max-w-3xl mx-auto p-8 sm:p-12 rounded-3xl bg-canvas-subtle dark:bg-canvas-darkCard border-2 border-canvas-border dark:border-canvas-darkBorder relative shadow-2xl">
           <div className="text-center mb-10">
             <span className="text-xs font-mono uppercase tracking-widest text-berry-600 dark:text-berry-400 font-bold">
-              Direct Advisory Intake
+              Direct Contact & Intake
             </span>
             <h3 className="font-serif text-3xl sm:text-4xl text-ink-900 dark:text-white font-black mt-1">
-              Initiate a Strategic Dialogue
+              Start an Honest Conversation
             </h3>
             <p className="text-sm text-ink-500 dark:text-ink-300 mt-2 font-light max-w-lg mx-auto leading-relaxed">
-              Tell us about your venture and current operational friction. We review all submissions confidentially and respond within 24 business hours.
+              Tell me about your venture, challenge, or what you need help with. I review every submission personally and respond within 24 business hours.
             </p>
           </div>
 
@@ -170,16 +170,16 @@ export default function ConsultingModule() {
                 <Check className="w-6 h-6" />
               </div>
               <h4 className="font-serif text-2xl text-ink-900 dark:text-white font-bold">
-                Inquiry Received
+                Message Received
               </h4>
               <p className="text-sm text-ink-600 dark:text-ink-200 font-light max-w-md mx-auto leading-relaxed">
-                Thank you for reaching out. We have logged your submission and will review your strategic context to coordinate an initial conversation.
+                Thank you for reaching out. I look forward to reading your note and connecting over an exploratory call.
               </p>
               <button
                 onClick={() => setSubmitted(false)}
                 className="mt-4 px-6 py-2 rounded-full bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder text-xs font-mono text-ink-800 dark:text-white font-semibold"
               >
-                Submit another inquiry
+                Send another message
               </button>
             </div>
           ) : (
@@ -194,20 +194,20 @@ export default function ConsultingModule() {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="e.g. Vivek Shukla"
+                    placeholder="e.g. Sarah / Rahul"
                     className="w-full px-4 py-3 rounded-xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600 transition-colors shadow-inner"
                   />
                 </div>
                 <div>
                   <label className="block text-xs font-mono text-ink-800 dark:text-ink-200 font-semibold mb-2">
-                    Work Email *
+                    Email Address *
                   </label>
                   <input
                     type="email"
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="shuklavp@gmail.com"
+                    placeholder="name@venture.com"
                     className="w-full px-4 py-3 rounded-xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600 transition-colors shadow-inner"
                   />
                 </div>
@@ -216,83 +216,51 @@ export default function ConsultingModule() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-xs font-mono text-ink-800 dark:text-ink-200 font-semibold mb-2">
-                    Venture Name & Nature of Business *
+                    Venture / Organization & Stage *
                   </label>
                   <input
                     type="text"
                     required
                     value={formData.venture}
                     onChange={(e) => setFormData({ ...formData, venture: e.target.value })}
-                    placeholder="e.g. Stealth AI, SaaS, Marketplace, Media"
+                    placeholder="e.g. Seed SaaS, ClimateTech, Growth, Solo"
                     className="w-full px-4 py-3 rounded-xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600 transition-colors shadow-inner"
                   />
                 </div>
                 <div>
                   <label className="block text-xs font-mono text-ink-800 dark:text-ink-200 font-semibold mb-2">
-                    Current Stage
-                  </label>
-                  <select
-                    value={formData.stage}
-                    onChange={(e) => setFormData({ ...formData, stage: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600 transition-colors"
-                  >
-                    <option value="Pre-seed / Bootstrapped">Pre-seed / Bootstrapped</option>
-                    <option value="Seed / Series A">Seed / Series A</option>
-                    <option value="Series B+ Growth">Series B+ Growth</option>
-                    <option value="Independent / Boutique">Independent / Boutique Operator</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div>
-                  <label className="block text-xs font-mono text-ink-800 dark:text-ink-200 font-semibold mb-2">
-                    Preferred Collaboration Mode
+                    Preferred Collaboration Style
                   </label>
                   <select
                     value={formData.advisoryMode}
                     onChange={(e) => setFormData({ ...formData, advisoryMode: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600 transition-colors"
                   >
-                    <option value="Diagnostic Scope Audit">Diagnostic Scope Audit (Sprint)</option>
-                    <option value="Fractional Strategy Partner">Fractional Strategy Partner (Ongoing)</option>
-                    <option value="The Clarity Intensive">The Clarity Intensive (Offsite/Immersion)</option>
-                    <option value="Exploratory / Custom">Exploratory / Not Sure Yet</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-xs font-mono text-ink-800 dark:text-ink-200 font-semibold mb-2">
-                    Target Start Window
-                  </label>
-                  <select
-                    value={formData.timeline}
-                    onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
-                    className="w-full px-4 py-3 rounded-xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600 transition-colors"
-                  >
-                    <option value="Immediate (Next 2-4 weeks)">Immediate (Next 2-4 weeks)</option>
-                    <option value="Next Quarter">Next Quarter</option>
-                    <option value="Flexible / Planning Ahead">Flexible / Planning Ahead</option>
+                    <option value="A Ben to Your Jules (Founder Confidant)">A Ben to Your Jules (Founder Confidant)</option>
+                    <option value="The Fractional Operator">The Fractional Operator (Operational Cleanup)</option>
+                    <option value="Entrepreneur in Residence (EIR)">Entrepreneur in Residence (EIR / Venture Studio)</option>
+                    <option value="Informal / Just want some advice">Informal / Just need guidance or advice</option>
                   </select>
                 </div>
               </div>
 
               <div>
                 <label className="block text-xs font-mono text-ink-800 dark:text-ink-200 font-semibold mb-2">
-                  What is the primary complexity or bottleneck you want to eliminate? *
+                  What is the core problem, bottleneck, or decision you want help with? *
                 </label>
                 <textarea
                   rows="4"
                   required
                   value={formData.bottleneck}
                   onChange={(e) => setFormData({ ...formData, bottleneck: e.target.value })}
-                  placeholder="Share details on where momentum is stalled, which initiatives feel bloated, or where strategic clarity is missing..."
+                  placeholder="Tell me where you feel overwhelmed, where systems are cluttered, or what strategic crossroad you are facing..."
                   className="w-full px-4 py-3 rounded-xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600 transition-colors resize-none leading-relaxed shadow-inner"
                 />
               </div>
 
               <div className="flex items-center gap-3 text-xs text-ink-500 dark:text-ink-300 pt-2 font-medium">
                 <ShieldCheck className="w-4 h-4 text-cobalt-600 dark:text-cobalt-400 shrink-0" />
-                <span>All shared information is treated under strict bilateral confidentiality.</span>
+                <span>Confidential, direct, and unvarnished communication.</span>
               </div>
 
               <button
@@ -300,7 +268,7 @@ export default function ConsultingModule() {
                 className="w-full py-4 rounded-full bg-berry-600 hover:bg-berry-700 text-white font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-lg shadow-berry-600/25 active:scale-[0.99]"
               >
                 <Send className="w-4 h-4" />
-                <span>Submit Confidential Advisory Inquiry</span>
+                <span>Send Message to Vivek</span>
               </button>
             </form>
           )}

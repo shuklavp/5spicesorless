@@ -1,55 +1,55 @@
 import React, { useState } from 'react';
-import { Feather, Briefcase, Sparkles, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Feather, Briefcase, Utensils, ArrowRight, CheckCircle2, HeartHandshake } from 'lucide-react';
 
 const MODULES = [
   {
     id: 'life-philosophy',
     number: '01',
-    category: 'LIFE & MINDFULNESS',
-    title: 'The Art of the 5-Spice Kitchen Applied to Life',
+    category: 'LIFE',
+    title: 'Survival, Gratitude & The 20-Year Leap',
     description:
-      'We live in an age of feature creep—not just in software, but in our calendars, diets, and daily commitments. Master the discipline of doing few things with profound depth.',
+      'Waking up from a 10-hour skull surgery declared dead to relearn speech and writing. Marrying someone without ever meeting, building 20 years of devoted marriage, and realizing that 90% of modern stress is vanity.',
     icon: Feather,
     highlights: [
-      'De-escalate cognitive overload through systemic elimination',
-      'The "Simmer & Reduce" method for career inflection points',
-      'Culinary parallels: how physical cooking recalibrates mental focus',
+      'Overcoming neurological paralysis & dementia prognoses through daily discipline',
+      'The power of radical commitment: 20 years married, raising a 16-year-old daughter',
+      'Living in Kuala Lumpur with deep presence, curiosity, and unconditional generosity',
     ],
-    metric: '90% of complexity is fear disguised as thoroughness.',
+    metric: '22 years thriving post-recovery.',
     cta: 'Explore Life Essays',
     ctaLink: '#writing',
   },
   {
-    id: 'business-writing',
+    id: 'culinary-mastery',
     number: '02',
-    category: 'WRITING & ESSAY BOARD',
-    title: 'The Modern Business Writer’s Board',
+    category: 'FOOD',
+    title: 'The Art of the 5-Spice Kitchen',
     description:
-      'Clear writing is the ultimate competitive moat. We publish weekly analytical essays examining executive decision-making, startup teardowns, and the unspoken psychology of leadership.',
-    icon: Sparkles,
+      'Exceptional culinary outcomes are never achieved by cluttering a pot with forty powders. Restraint is supreme confidence: five spices, perfect heat control, and honest technique.',
+    icon: Utensils,
     highlights: [
-      'Weekly long-form essays read by founders and operators',
-      'Deconstructive frameworks for high-stakes decisions',
-      'Direct, jargon-free prose cutting straight to the core thesis',
+      'The chemical harmony of Cumin, Turmeric, Coriander, Chili & Amchur',
+      'How physical cooking recalibrates high-stress executive minds',
+      'Dishes loved by all—prepared with everyday ingredients and extreme care',
     ],
-    metric: 'Over 50+ published deep-dives & framework memos.',
-    cta: 'Browse Publication Archive',
+    metric: 'Simplest spices. Exceptional outcomes.',
+    cta: 'Explore Food & Kitchen Essays',
     ctaLink: '#writing',
   },
   {
-    id: 'boutique-advisory',
+    id: 'work-advisory',
     number: '03',
-    category: 'STARTUP CONSULTING',
-    title: 'Boutique Advisory & Fractional Strategy',
+    category: 'WORK',
+    title: 'From Category Creation to "A Ben to Your Jules"',
     description:
-      'Helping early-stage and growth startups audit their operational fat, crystallize product-market focus, and architect sustainable distribution engines without agency bloat.',
+      'Creating India’s water sub-metering category from scratch, raising $4.5M, managing 165+ people across 4 offices, and exiting for shareholders. Now serving as a seasoned sounding board for founders.',
     icon: Briefcase,
     highlights: [
-      'Strategic Scope Audits: Pruning low-yield initiatives',
-      'Founder Clarity Sprints (2-week intensive diagnostic)',
-      'Fractional Executive Advisory for Seed & Series A founders',
+      'Fractional Operator: Stripping operational bloat and clarifying metrics',
+      'Entrepreneur in Residence (EIR): De-risking early go-to-market systems',
+      'The "Ben to Jules" Advisory: Unvarnished, ego-free counsel for ambitious CEOs',
     ],
-    metric: 'Direct 1:1 founder partnerships with strict capacity limits.',
+    metric: '$4.5M VC Raised · 165+ Employees · 4 Offices',
     cta: 'View Advisory Engagements',
     ctaLink: '#consulting',
   },
@@ -67,15 +67,15 @@ export default function ValueProps({ onOpenInquiry }) {
             <div className="flex items-center gap-2 mb-2">
               <span className="w-2.5 h-2.5 rounded-full bg-berry-600" />
               <span className="text-xs font-mono tracking-widest uppercase text-berry-600 dark:text-berry-400 font-bold">
-                Three Vectors of Focus
+                The Three Pillars
               </span>
             </div>
             <h2 className="font-serif text-3xl sm:text-5xl font-bold text-ink-900 dark:text-white max-w-xl">
-              Radical clarity in thinking, craft, and counsel.
+              Life, Food, and Work.
             </h2>
           </div>
           <p className="text-ink-600 dark:text-ink-200 font-normal max-w-md text-sm sm:text-base leading-relaxed">
-            Whether cultivating personal stillness, crafting rigorous business memos, or advising founders through make-or-break scaling pivots.
+            Distilled from thirty years of building companies, enduring life-altering trials, cooking with passion, and mentoring leaders.
           </p>
         </div>
 
@@ -135,7 +135,7 @@ export default function ValueProps({ onOpenInquiry }) {
                   <div className="text-[11px] font-mono text-ink-500 dark:text-ink-300 mb-4 italic">
                     "{item.metric}"
                   </div>
-                  {item.id === 'boutique-advisory' ? (
+                  {item.id === 'work-advisory' ? (
                     <button
                       onClick={onOpenInquiry}
                       className="w-full inline-flex items-center justify-between text-xs font-bold tracking-wide text-ink-900 dark:text-white group-hover:text-berry-600 dark:group-hover:text-berry-400 transition-colors"

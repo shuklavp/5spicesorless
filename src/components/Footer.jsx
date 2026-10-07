@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, Check, Flame, Mail } from 'lucide-react';
+import { ArrowUpRight, Check, Flame, Linkedin, Mail } from 'lucide-react';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -122,12 +122,12 @@ export default function Footer() {
                 </li>
                 <li>
                   <a href="#writing" className="hover:text-berry-600 transition-colors">
-                    Essay Board
+                    Dispatches & Stories
                   </a>
                 </li>
                 <li>
                   <a href="#consulting" className="hover:text-berry-600 transition-colors">
-                    Consulting Engagements
+                    Advisory ("Ben to Jules")
                   </a>
                 </li>
               </ul>
@@ -135,9 +135,21 @@ export default function Footer() {
 
             <div>
               <span className="text-xs font-mono uppercase tracking-widest text-ink-900 dark:text-white font-bold block mb-4">
-                Dispatches
+                Connect & Network
               </span>
               <ul className="space-y-2.5 text-xs sm:text-sm text-ink-600 dark:text-ink-200 font-medium">
+                <li>
+                  <a
+                    href="https://www.linkedin.com/in/vivekshukla/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-1.5 hover:text-cobalt-600 transition-colors font-semibold text-ink-900 dark:text-white"
+                  >
+                    <Linkedin className="w-3.5 h-3.5 text-cobalt-600" />
+                    <span>LinkedIn / Vivek Shukla</span>
+                    <ArrowUpRight className="w-3 h-3 text-ink-400" />
+                  </a>
+                </li>
                 <li>
                   <a href="https://5spicesorless.com" target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:text-berry-600 transition-colors">
                     <span>5spicesorless.com</span>
@@ -163,11 +175,11 @@ export default function Footer() {
 
         {/* Colophon & Meta */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-ink-500 dark:text-ink-400 gap-4 font-medium">
-          <p>© {new Date().getFullYear()} 5 Spices or Less. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} 5 Spices or Less · Vivek Shukla. All rights reserved.</p>
           <div className="flex items-center gap-4">
-            <span>Crafted with Vite, React & Tailwind</span>
+            <span>Kuala Lumpur, Malaysia</span>
             <span>·</span>
-            <span>Zero Server Overhead</span>
+            <span>Crafted with Vite, React & Tailwind</span>
           </div>
         </div>
       </div>
