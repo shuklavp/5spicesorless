@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ValueProps from './components/ValueProps';
-import Profile from './components/Profile';
 import WritingBoard from './components/WritingBoard';
 import ConsultingModule from './components/ConsultingModule';
+import Profile from './components/Profile';
 import Footer from './components/Footer';
 
 export default function App() {
@@ -60,17 +60,17 @@ export default function App() {
         {/* High-Impact Two-Tone Editorial Hero */}
         <Hero onOpenInquiry={handleOpenInquiry} />
 
-        {/* 3 Core Value Proposition Modules (Life, Food, Work) */}
-        <ValueProps onOpenInquiry={handleOpenInquiry} />
-
-        {/* Profile & Personal Story (Vivek Shukla) with Sketch Frame */}
-        <Profile onOpenInquiry={handleOpenInquiry} />
+        {/* The Three Desks: Reader's Contract for Life, Food, and Work */}
+        <ValueProps />
 
         {/* Editorial Writing Board & Article Reader (Life, Food, Work, Stories) */}
         <WritingBoard />
 
         {/* Bespoke Advisory Practice & Strategic Intake ("Ben to Jules") */}
         <ConsultingModule />
+
+        {/* Profile & Personal Story (Vivek Shukla) - The Human Anchor & Memoir */}
+        <Profile onOpenInquiry={handleOpenInquiry} />
       </main>
 
       {/* Editorial Manifesto Footer */}
