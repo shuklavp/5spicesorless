@@ -26,22 +26,20 @@ export default function Navbar({ onOpenInquiry, isDark, onToggleTheme }) {
             : 'max-w-7xl bg-transparent border-b border-canvas-border/80 dark:border-canvas-darkBorder/60 py-3.5 px-2'
         }`}
       >
-        {/* Brand / Logo */}
+        {/* Brand Logo: Displays your transparent logo dynamically */}
         <a href="#hero" className="flex items-center group">
-          {/* Dynamic Theme Logo (Swaps seamlessly between light and dark) */}
           <img
             src={isDark ? "/logo_dark.png" : "/logo.png"}
             alt="5 Spices or Less"
             className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-all duration-300 group-hover:scale-105"
             onError={(e) => {
-              // Graceful fallback to text lockup if image isn't uploaded yet
               e.currentTarget.style.display = 'none';
               const fallback = document.getElementById('navbar-text-fallback');
               if (fallback) fallback.style.display = 'flex';
             }}
           />
 
-          {/* Fallback Text Lockup (hidden if image loads successfully) */}
+          {/* Fallback if images ever fail to load */}
           <div id="navbar-text-fallback" className="hidden items-center gap-2.5">
             <div className="relative w-8 h-8 rounded-lg bg-ink-900 dark:bg-berry-600 flex items-center justify-center text-white shadow-sm shrink-0">
               <Flame className="w-4 h-4 text-berry-400 dark:text-white" />
