@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, Car, Compass, Feather, Flame, Linkedin, MapPin } from 'lucide-react';
+import { ArrowUpRight, Feather, Flame, Linkedin } from 'lucide-react';
 
 export default function Profile({ onOpenInquiry }) {
   return (
@@ -34,7 +34,7 @@ export default function Profile({ onOpenInquiry }) {
                       Founder, Operator, Life Essayist
                     </div>
                     <p className="text-xs text-ink-500 dark:text-ink-400 font-light max-w-xs mx-auto pt-2">
-                      Originally from Lucknow, now living and writing in Kuala Lumpur
+                      Lucknow roots. Independent thinker, founder, and writer.
                     </p>
                   </div>
                 </div>
@@ -52,11 +52,12 @@ export default function Profile({ onOpenInquiry }) {
 
               {/* Caption details */}
               <div className="mt-3.5 flex items-center justify-between text-xs font-mono text-ink-500 dark:text-ink-300 px-2">
-                <span className="flex items-center gap-1.5 font-bold text-ink-900 dark:text-white">
-                  <MapPin className="w-3.5 h-3.5 text-cobalt-600" />
-                  <span>Kuala Lumpur, Malaysia</span>
+                <span className="font-bold text-ink-900 dark:text-white">
+                  Lucknow Roots
                 </span>
-                <span className="text-berry-600 dark:text-berry-400 font-medium">ENPC Paris MBA, Biology</span>
+                <span className="text-berry-600 dark:text-berry-400 font-medium">
+                  Founder &amp; Essayist
+                </span>
               </div>
             </div>
 
@@ -82,47 +83,34 @@ export default function Profile({ onOpenInquiry }) {
               </div>
               <ArrowUpRight className="w-4 h-4 text-ink-400 group-hover:text-cobalt-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
-
-            {/* The 10 Cars Card */}
-            <div className="p-6 rounded-3xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder space-y-3">
-              <div className="flex items-center gap-2">
-                <Car className="w-4 h-4 text-cobalt-600" />
-                <span className="text-xs font-mono text-ink-900 dark:text-white font-bold uppercase tracking-wider">
-                  Ten Cars, Thirty Years
-                </span>
-              </div>
-              <p className="text-xs text-ink-600 dark:text-ink-300 font-light leading-relaxed">
-                I have owned ten cars over thirty years. They ranged from nervous first Marutis to dependable Kias, solid Skodas, and finely tuned BMWs. You learn a great deal about patience when a German engine decides to take a break on an Indian highway.
-              </p>
-            </div>
           </div>
 
           {/* Right Column: The Narrative in Short Sentences with Commas */}
           <div className="lg:col-span-7 space-y-8">
             <div>
-              <h2 className="font-serif text-3xl sm:text-5xl font-black text-ink-900 dark:text-white leading-[1.08]">
-                "I was declared dead at twenty-seven. On May 13, 2004, the slate was wiped clean."
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-black text-ink-900 dark:text-white leading-[1.12]">
+                "If falling in love three times was not quite dramatic enough, I decided to almost die once, just to keep things interesting."
               </h2>
-              <p className="mt-6 text-base sm:text-lg text-ink-700 dark:text-ink-200 font-normal leading-relaxed">
-                Over thirty years, I studied biology, completed an MBA at ENPC in Paris, managed teams, and built venture-backed startups. 
-              </p>
             </div>
 
-            <div className="space-y-5 text-sm sm:text-base text-ink-600 dark:text-ink-200 font-light leading-relaxed">
+            <div className="space-y-5 text-sm sm:text-base text-ink-700 dark:text-ink-200 font-light leading-relaxed">
               <p>
-                <strong>The Survival:</strong> On May 13, 2004, a heavy metal rod hit my head. I was pronounced dead on arrival, but survived a ten-hour emergency surgery. I woke up with no memory, no speech, and no motor skills. I could not hold a pen or write my name. Doctors warned my family that rushing recovery would lead to permanent paralysis, seizures, or early dementia.
+                My parents got the shock of their lives when they discovered I was running an active computer business from my bedroom during college. To them, I was the quiet, introverted boy who went to class and came straight home. In reality, my days were packed with friends, roadside chai and samosa (forever a priority), movies, all of them, and fiercely independent ideas. I have never fit neatly into a box, and I hold opinions that rarely agree with the herd. That is simply who I am.
               </p>
               <p>
-                I took my time, took small steps every day, and proved them wrong. That was twenty-two years ago. Today, I am surviving, and surviving rather well.
+                My heart was just as adventurous. I fell in love three times with three extraordinary girls. After the second heartbreak shattered my peace, I opted for a radical cure: trading an aching chest for brain-breaking study, enrolling in B-school so marketing strategy could dull the pain.
               </p>
               <p>
-                <strong>The Marriage:</strong> In personal life, after three heartbreaks that went nowhere, I took a leap of faith. I married someone without even meeting or knowing her beforehand. We have been happily married for twenty years now, and have a lovely sixteen-year-old daughter.
+                In May 2004, with the degree almost in hand, I stepped between two fighting groups, and a heavy iron rod struck my skull. Pronounced beyond hope at the first clinic, a few stubborn souls rushed me to another surgical theatre where a marathon operation pulled me back from the edge. The doctors prescribed years of dark rooms, caution, and permanent limits. I ignored them completely. Driven by pure defiance, I mounted a ferocious, fast-paced recovery, forcing my mind and hands back into the game months ahead of schedule.
               </p>
               <p>
-                <strong>The Startup:</strong> In business, I created the category of water sub-metering in India. We raised four and a half million dollars from marquee venture funds, grew to over a hundred and sixty employees, and ran four offices. Eventually, I led an exit for the benefit of our shareholders. I did not make money from it, but I protected the people who trusted me.
+                I returned to work with a vengeance. I joined an early startup led by a wonderfully eccentric, flamboyant founder whose chaotic energy was infectious. Later, I moved to an online job portal under a boss of rare strategic brilliance, a man who could structure any problem on earth but rarely liked choosing a side of the fence. Our chemistry was undeniable: he hired me again when he transitioned, and when I set off to launch my own business, he retained me as a senior consultant at his new venture.
               </p>
               <p>
-                <strong>The Cooking:</strong> I love to cook. I use the simplest of spices and honest methods to get exceptional outcomes. My cooking is loved by everyone who sits at our table.
+                For the next two years, I led a double life. While architecting a medical insurance pre-authorisation system for his firm, I was grinding through the brutal reality of an IoT hardware startup. We created the category of water sub-metering in India, raised venture funds, introduced Metering-as-a-Service, scaled across four cities, and delivered an orderly exit for our investors.
+              </p>
+              <p>
+                That journey brought me full circle to two abiding convictions: first, how little any of us truly knows, and second, how much hard-won perspective I need to write down and pass along before my time is up.
               </p>
             </div>
 
@@ -135,7 +123,7 @@ export default function Profile({ onOpenInquiry }) {
                 </span>
               </div>
               <blockquote className="font-serif italic text-base sm:text-lg text-ink-900 dark:text-white font-medium leading-relaxed">
-                "I live in Kuala Lumpur now. I want to write down my life lessons across Life, Food, and Work before I forget them, along with some short fiction. I also want to help founders who need a calm, steady hand, acting as a Ben to your Jules (The Intern)."
+                "I write because survival taught me to pay attention, and I advise because I know how lonely the founder's chair can get. No buzzwords, no posturing, and no desire to be bucketed. Just warm Lakhnawi tea, hard-won operational judgment, and steady counsel when things get noisy."
               </blockquote>
             </div>
 
