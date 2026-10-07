@@ -8,45 +8,57 @@ export default {
   theme: {
     extend: {
       colors: {
-        forest: {
-          950: '#061610',
-          900: '#0D2E24',
-          850: '#12392D',
-          800: '#17493A',
-          700: '#1E5E4B',
-          600: '#277960',
-          500: '#35987A',
-          100: '#E2EFEA',
-          50: '#F0F7F4',
-        },
-        terracotta: {
-          950: '#541A04',
-          900: '#7C2908',
-          800: '#A0380E',
-          700: '#B84313',
-          600: '#C84B15',
-          500: '#D95C24',
-          400: '#E87B47',
-          300: '#F2A077',
-          100: '#FCEBE3',
-          50: '#FDF5F0',
-        },
-        paper: {
-          50: '#FAF7F2',
-          100: '#F4EFE6',
-          200: '#EAE2D3',
-          300: '#DDD2C0',
-          400: '#C2B49E',
-          500: '#9E8F76',
-        },
+        // Deep Midnight Ink (Headline / Dominant Text)
         ink: {
-          950: '#080E1A',
-          900: '#0F172A',
-          800: '#1E293B',
-          700: '#334155',
-          600: '#475569',
-          500: '#64748B',
-          400: '#94A3B8',
+          950: '#060B14',
+          900: '#0C1427',
+          850: '#111C35',
+          800: '#162342',
+          700: '#1E293B',
+          600: '#334155',
+          500: '#475569',
+          400: '#64748B',
+          300: '#94A3B8',
+          200: '#CBD5E1',
+          100: '#E2E8F0',
+          50: '#F1F5F9',
+        },
+        // Electric Berry Magenta (Lead Accent / Highlight)
+        berry: {
+          950: '#4A0520',
+          900: '#750B35',
+          800: '#A3124C',
+          700: '#C2185B',
+          600: '#DE2573', // Exact reference title color
+          500: '#E93B86',
+          400: '#F06292',
+          300: '#F48FB1',
+          200: '#F8BBD0',
+          100: '#FCE4EC',
+          50: '#FFF0F5',
+        },
+        // Cobalt / Steel Blue (Secondary Accent)
+        cobalt: {
+          950: '#0A1E4A',
+          900: '#133575',
+          800: '#1A499E',
+          700: '#1D5EC9',
+          600: '#2563EB',
+          500: '#3B82F6',
+          400: '#419BE9', // Exact map legend blue
+          300: '#93C5FD',
+          100: '#DBEAFE',
+          50: '#EFF6FF',
+        },
+        // Crisp Modern Canvas (Zero Beige, Zero Dull Brown)
+        canvas: {
+          pure: '#FFFFFF',
+          subtle: '#F8FAFC',
+          card: '#FFFFFF',
+          border: '#E2E8F0',
+          dark: '#080D18',
+          darkCard: '#0F1829',
+          darkBorder: '#1E293B',
         }
       },
       fontFamily: {

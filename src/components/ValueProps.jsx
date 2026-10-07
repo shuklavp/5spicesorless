@@ -59,22 +59,22 @@ export default function ValueProps({ onOpenInquiry }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <section id="philosophy" className="py-28 px-6 md:px-12 bg-paper-100/70 dark:bg-forest-950/80 relative border-t border-paper-200 dark:border-forest-850 transition-colors duration-300">
+    <section id="philosophy" className="py-28 px-6 md:px-12 bg-canvas-subtle dark:bg-canvas-dark relative border-t border-canvas-border dark:border-canvas-darkBorder transition-colors duration-300">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="w-2 h-2 rounded-full bg-forest-800 dark:bg-terracotta-400" />
-              <span className="text-xs font-mono tracking-widest uppercase text-terracotta-600 dark:text-terracotta-400 font-bold">
+              <span className="w-2.5 h-2.5 rounded-full bg-berry-600" />
+              <span className="text-xs font-mono tracking-widest uppercase text-berry-600 dark:text-berry-400 font-bold">
                 Three Vectors of Focus
               </span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-5xl font-bold text-forest-950 dark:text-paper-50 max-w-xl">
+            <h2 className="font-serif text-3xl sm:text-5xl font-bold text-ink-900 dark:text-white max-w-xl">
               Radical clarity in thinking, craft, and counsel.
             </h2>
           </div>
-          <p className="text-ink-700 dark:text-paper-300 font-normal max-w-md text-sm sm:text-base leading-relaxed">
+          <p className="text-ink-600 dark:text-ink-200 font-normal max-w-md text-sm sm:text-base leading-relaxed">
             Whether cultivating personal stillness, crafting rigorous business memos, or advising founders through make-or-break scaling pivots.
           </p>
         </div>
@@ -89,41 +89,41 @@ export default function ValueProps({ onOpenInquiry }) {
                 key={item.id}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className={`group relative rounded-3xl p-8 bg-paper-50 dark:bg-forest-900/60 border transition-all duration-300 flex flex-col justify-between ${
+                className={`group relative rounded-3xl p-8 bg-white dark:bg-canvas-darkCard border transition-all duration-300 flex flex-col justify-between ${
                   isHovered
-                    ? 'border-terracotta-600 dark:border-terracotta-500 shadow-xl shadow-terracotta-600/10 -translate-y-1'
-                    : 'border-paper-200 dark:border-forest-800 hover:border-paper-300'
+                    ? 'border-berry-600 dark:border-berry-500 shadow-xl shadow-berry-600/10 -translate-y-1'
+                    : 'border-canvas-border dark:border-canvas-darkBorder hover:border-cobalt-400'
                 }`}
               >
                 <div>
                   {/* Card Header */}
                   <div className="flex items-center justify-between mb-6">
-                    <span className="font-mono text-[11px] font-bold text-forest-800 dark:text-terracotta-400 bg-forest-100 dark:bg-forest-800/80 px-3 py-1 rounded-full border border-forest-200 dark:border-forest-700 uppercase tracking-wider">
+                    <span className="font-mono text-[11px] font-bold text-cobalt-700 dark:text-cobalt-300 bg-cobalt-50 dark:bg-cobalt-950/60 px-3 py-1 rounded-full border border-cobalt-100 dark:border-cobalt-900 uppercase tracking-wider">
                       {item.category}
                     </span>
-                    <span className="font-serif text-2xl font-black text-paper-400 dark:text-forest-700">
+                    <span className="font-serif text-2xl font-black text-berry-600 dark:text-berry-400">
                       {item.number}
                     </span>
                   </div>
 
                   {/* Icon & Title */}
-                  <div className="w-12 h-12 rounded-2xl bg-paper-100 dark:bg-forest-950 border border-paper-200 dark:border-forest-800 flex items-center justify-center text-terracotta-600 dark:text-terracotta-400 mb-6 group-hover:scale-105 transition-transform">
+                  <div className="w-12 h-12 rounded-2xl bg-canvas-subtle dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder flex items-center justify-center text-berry-600 dark:text-berry-400 mb-6 group-hover:scale-105 transition-transform">
                     <Icon className="w-5 h-5" />
                   </div>
 
-                  <h3 className="font-serif text-2xl font-bold text-forest-950 dark:text-paper-50 mb-3.5 leading-snug group-hover:text-terracotta-600 dark:group-hover:text-terracotta-400 transition-colors">
+                  <h3 className="font-serif text-2xl font-bold text-ink-900 dark:text-white mb-3.5 leading-snug group-hover:text-berry-600 dark:group-hover:text-berry-400 transition-colors">
                     {item.title}
                   </h3>
 
-                  <p className="text-sm text-ink-700 dark:text-paper-300 font-light leading-relaxed mb-6">
+                  <p className="text-sm text-ink-600 dark:text-ink-200 font-light leading-relaxed mb-6">
                     {item.description}
                   </p>
 
                   {/* Bullets */}
-                  <div className="space-y-3 mb-8 pt-5 border-t border-paper-200 dark:border-forest-800">
+                  <div className="space-y-3 mb-8 pt-5 border-t border-canvas-border dark:border-canvas-darkBorder">
                     {item.highlights.map((h, i) => (
-                      <div key={i} className="flex items-start gap-2.5 text-xs text-ink-800 dark:text-paper-200 font-medium">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-forest-700 dark:text-terracotta-400 shrink-0 mt-0.5" />
+                      <div key={i} className="flex items-start gap-2.5 text-xs text-ink-700 dark:text-ink-100 font-medium">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-cobalt-600 dark:text-cobalt-400 shrink-0 mt-0.5" />
                         <span className="leading-snug">{h}</span>
                       </div>
                     ))}
@@ -131,14 +131,14 @@ export default function ValueProps({ onOpenInquiry }) {
                 </div>
 
                 {/* Card Footer */}
-                <div className="pt-6 border-t border-paper-200 dark:border-forest-800 mt-auto">
-                  <div className="text-[11px] font-mono text-ink-600 dark:text-paper-400 mb-4 italic">
+                <div className="pt-6 border-t border-canvas-border dark:border-canvas-darkBorder mt-auto">
+                  <div className="text-[11px] font-mono text-ink-500 dark:text-ink-300 mb-4 italic">
                     "{item.metric}"
                   </div>
                   {item.id === 'boutique-advisory' ? (
                     <button
                       onClick={onOpenInquiry}
-                      className="w-full inline-flex items-center justify-between text-xs font-bold tracking-wide text-forest-900 dark:text-paper-100 group-hover:text-terracotta-600 dark:group-hover:text-terracotta-400 transition-colors"
+                      className="w-full inline-flex items-center justify-between text-xs font-bold tracking-wide text-ink-900 dark:text-white group-hover:text-berry-600 dark:group-hover:text-berry-400 transition-colors"
                     >
                       <span>{item.cta}</span>
                       <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
@@ -146,7 +146,7 @@ export default function ValueProps({ onOpenInquiry }) {
                   ) : (
                     <a
                       href={item.ctaLink}
-                      className="w-full inline-flex items-center justify-between text-xs font-bold tracking-wide text-forest-900 dark:text-paper-100 group-hover:text-terracotta-600 dark:group-hover:text-terracotta-400 transition-colors"
+                      className="w-full inline-flex items-center justify-between text-xs font-bold tracking-wide text-ink-900 dark:text-white group-hover:text-berry-600 dark:group-hover:text-berry-400 transition-colors"
                     >
                       <span>{item.cta}</span>
                       <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />

@@ -5,36 +5,27 @@
 @layer base {
   body {
     font-family: '"Plus Jakarta Sans"', Inter, -apple-system, sans-serif;
+    background-color: #FFFFFF;
+    color: #0C1427;
   }
 }
 
-/* Subtle Editorial Paper Grid */
-.bg-editorial-grid {
+/* Crisp Technical Editorial Grid (Cool Slate / Ice Tint) */
+.bg-modern-grid {
   background-image: 
-    linear-gradient(to right, rgba(13, 46, 36, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(13, 46, 36, 0.04) 1px, transparent 1px);
-  background-size: 40px 40px;
+    linear-gradient(to right, rgba(12, 20, 39, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(12, 20, 39, 0.04) 1px, transparent 1px);
+  background-size: 36px 36px;
 }
 
-.dark .bg-editorial-grid {
+.dark .bg-modern-grid {
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 36px 36px;
 }
 
-/* Editorial Underline Rule (Inspired by "Book Lovers" accent bar) */
-.editorial-kicker-bar::after {
-  content: '';
-  display: block;
-  width: 42px;
-  height: 2.5px;
-  background-color: #C84B15;
-  margin-top: 6px;
-  border-radius: 9999px;
-}
-
-/* Editorial Drop Cap in Rich Terracotta */
+/* Editorial Drop Cap in Electric Berry Magenta */
 .editorial-drop-cap::first-letter {
   font-family: 'Fraunces', 'Playfair Display', Georgia, serif;
   font-size: 3.8rem;
@@ -42,27 +33,27 @@
   float: left;
   margin-right: 0.85rem;
   margin-top: 0.2rem;
-  color: #C84B15;
+  color: #DE2573;
   font-weight: 800;
 }
 
-/* Custom Scrollbar */
+/* Custom Clean Scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #FAF7F2;
+  background: #F8FAFC;
 }
 .dark ::-webkit-scrollbar-track {
-  background: #061610;
+  background: #080D18;
 }
 ::-webkit-scrollbar-thumb {
-  background: #DDD2C0;
+  background: #CBD5E1;
   border-radius: 9999px;
 }
 .dark ::-webkit-scrollbar-thumb {
-  background: #17493A;
+  background: #1E293B;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C84B15;
+  background: #DE2573;
 }

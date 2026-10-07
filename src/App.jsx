@@ -8,9 +8,9 @@ import ConsultingModule from './components/ConsultingModule';
 import Footer from './components/Footer';
 
 export default function App() {
-  const [isDark, setIsDark] = useState(false); // Default to the warm editorial poster light mode
+  const [isDark, setIsDark] = useState(false); // Default to clean modern white canvas
 
-  // Initialize theme from localStorage or default to editorial light
+  // Initialize theme from localStorage or default to crisp light
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
@@ -47,8 +47,8 @@ export default function App() {
 
   return (
     <div className={`relative min-h-screen transition-colors duration-300 ${
-      isDark ? 'bg-forest-950 text-paper-50' : 'bg-paper-50 text-ink-900'
-    } selection:bg-terracotta-500/25 selection:text-terracotta-700`}>
+      isDark ? 'bg-canvas-dark text-white' : 'bg-white text-ink-900'
+    } selection:bg-berry-500/20 selection:text-berry-700`}>
       {/* Sticky Morphing Masthead Navbar with Theme Toggle */}
       <Navbar
         onOpenInquiry={handleOpenInquiry}
@@ -58,7 +58,7 @@ export default function App() {
 
       {/* Main Page Content */}
       <main>
-        {/* High-Impact Two-Tone Editorial Hero */}
+        {/* High-Impact Two-Tone Editorial Hero (Midnight Ink + Electric Berry) */}
         <Hero onOpenInquiry={handleOpenInquiry} />
 
         {/* 3 Core Value Proposition Modules */}
