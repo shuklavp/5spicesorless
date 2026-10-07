@@ -31,10 +31,10 @@ export default function Profile({ onOpenInquiry }) {
                       Vivek Shukla
                     </div>
                     <div className="text-xs font-mono text-berry-600 dark:text-berry-400 font-semibold">
-                      Founder, Operator, Life Essayist
+                      Advisor, Operator, Storyteller
                     </div>
                     <p className="text-xs text-ink-500 dark:text-ink-400 font-light max-w-xs mx-auto pt-2">
-                      Lucknow roots. Independent thinker, founder, and writer.
+                      Lucknow roots. Independent thinker, advisor, and storyteller.
                     </p>
                   </div>
                 </div>
@@ -56,7 +56,7 @@ export default function Profile({ onOpenInquiry }) {
                   Lucknow Roots
                 </span>
                 <span className="text-berry-600 dark:text-berry-400 font-medium">
-                  Founder &amp; Essayist
+                  Advisor &amp; Storyteller
                 </span>
               </div>
             </div>
