@@ -45,37 +45,37 @@ export default function Letterbox() {
   return (
     <section id="letterbox" className="py-24 px-6 md:px-12 bg-white dark:bg-canvas-dark relative border-t border-canvas-border dark:border-canvas-darkBorder transition-colors duration-300 overflow-hidden">
       
-      {/* Panoramic Streetscape Architectural Background starting right from the top divider */}
+      {/* Panoramic Streetscape Architectural Background (Vivid & Visible) */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
         <img
           src="/streetscape-sketch.png"
           alt="Vintage Streetscape with Letterbox"
-          className="w-full h-full object-cover object-top opacity-15 dark:opacity-[0.06] mix-blend-multiply dark:mix-blend-screen"
+          className="w-full h-full object-cover object-top opacity-75 dark:opacity-35 mix-blend-multiply dark:mix-blend-screen transition-opacity"
         />
-        {/* Soft atmospheric gradient wash to ensure complete reading clarity */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/80 to-white/95 dark:from-canvas-dark/65 dark:via-canvas-dark/85 dark:to-canvas-dark/98" />
+        {/* Soft bottom edge transition into the next section */}
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white dark:from-canvas-dark to-transparent" />
       </div>
 
       <div className="max-w-4xl mx-auto relative z-10">
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-berry-50 dark:bg-berry-950/60 border border-berry-200 dark:border-berry-900 text-berry-600 dark:text-berry-400 text-xs font-mono font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 dark:bg-canvas-darkCard/95 border border-berry-200 dark:border-berry-900 text-berry-600 dark:text-berry-400 text-xs font-mono font-bold uppercase tracking-wider shadow-sm backdrop-blur-sm">
             <Mail className="w-3.5 h-3.5" />
             <span>The Letterbox</span>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-5xl font-black text-ink-900 dark:text-white leading-tight">
+          <h2 className="font-serif text-3xl sm:text-5xl font-black text-ink-900 dark:text-white leading-tight drop-shadow-sm">
             Letters to the Cook.
           </h2>
 
-          <p className="text-sm sm:text-base text-ink-700 dark:text-ink-200 font-normal leading-relaxed">
+          <p className="text-sm sm:text-base text-ink-800 dark:text-ink-200 font-medium leading-relaxed bg-white/75 dark:bg-canvas-dark/75 backdrop-blur-sm rounded-2xl py-2 px-4 inline-block shadow-sm">
             Ask an honest question on love, culinary dilemmas, or career crossroads. Vivek answers selected letters every Sunday morning, with Lakhnawi warmth and zero corporate nonsense.
           </p>
         </div>
 
-        {/* Form Container with Frosted Glass Backdrop */}
-        <div className="relative rounded-3xl p-6 sm:p-10 bg-white/90 dark:bg-canvas-darkCard/90 backdrop-blur-md border-2 border-canvas-border dark:border-canvas-darkBorder shadow-2xl">
+        {/* Form Container with High-Contrast Card */}
+        <div className="relative rounded-3xl p-6 sm:p-10 bg-white/95 dark:bg-canvas-darkCard/95 backdrop-blur-lg border-2 border-canvas-border dark:border-canvas-darkBorder shadow-2xl">
           
           {submitted ? (
             <div className="text-center py-12 px-4 space-y-5">
