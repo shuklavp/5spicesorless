@@ -38,12 +38,12 @@ export default function Footer() {
         {/* Newsletter & Navigation */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pb-16 border-b border-canvas-border dark:border-canvas-darkBorder">
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              {/* Logo in Footer */}
+            <div className="flex items-center gap-3 mb-5">
+              {/* Scaled Logo in Footer */}
               <img
                 src="/logo.png"
                 alt="5 Spices or Less"
-                className="h-9 w-auto object-contain dark:hidden"
+                className="h-12 md:h-14 w-auto object-contain dark:hidden"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                   const fallback = document.getElementById('footer-fallback');
@@ -53,7 +53,7 @@ export default function Footer() {
               <img
                 src="/logo_dark.png"
                 alt="5 Spices or Less"
-                className="h-9 w-auto object-contain hidden dark:block"
+                className="h-12 md:h-14 w-auto object-contain hidden dark:block"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                   const fallback = document.getElementById('footer-fallback');
@@ -61,8 +61,8 @@ export default function Footer() {
                 }}
               />
               <div id="footer-fallback" className="hidden items-center gap-2.5">
-                <div className="w-7 h-7 rounded-lg bg-ink-900 dark:bg-berry-600 flex items-center justify-center text-white">
-                  <Flame className="w-4 h-4 text-berry-400 dark:text-white" />
+                <div className="w-8 h-8 rounded-lg bg-ink-900 dark:bg-berry-600 flex items-center justify-center text-white">
+                  <Flame className="w-5 h-5 text-berry-400 dark:text-white" />
                 </div>
                 <h4 className="font-serif text-2xl font-bold text-ink-900 dark:text-white">
                   5 Spices or Less
