@@ -6,55 +6,55 @@ const SPICE_PILLARS = [
     id: 1,
     name: 'Cumin',
     role: 'The Foundation',
+    concept: 'First Principles & Intent',
     metaphor: 'Cumin (The Foundation)',
     domain: 'First Principles & Intent',
     primaryImage: '/cumin.png',
     secondaryImage: '/spices/cumin.png',
-    fallbackEmoji: '🌾',
     principle: 'The tadka comes before everything else. Before you build features or hire large teams, master the single root problem that actually matters.',
   },
   {
     id: 2,
     name: 'Turmeric',
     role: 'Ground Truth',
+    concept: 'Honest Reality',
     metaphor: 'Turmeric (The Purifier)',
     domain: 'Health & Transparency',
     primaryImage: '/turmeric.png',
     secondaryImage: '/spices/turmeric.png',
-    fallbackEmoji: '✨',
     principle: 'A pinch brings health, but too much turns the dish bitter. Single-page memos and honest unit economics beat sixty-slide executive presentations every time.',
   },
   {
     id: 3,
     name: 'Coriander',
     role: 'Cohesion',
+    concept: 'Team Alignment',
     metaphor: 'Coriander (The Binder)',
     domain: 'Structure & Alignment',
     primaryImage: '/coriander.png',
     secondaryImage: '/spices/coriander.png',
-    fallbackEmoji: '🌱',
     principle: 'The quiet glue of the dish. Clear, precise reporting and communication that keep a hundred and sixty people aligned across four offices without chaos.',
   },
   {
     id: 4,
     name: 'Red Chillies',
     role: 'Calculated Risk',
+    concept: 'Kinetic Courage',
     metaphor: 'Red Chillies (The Kinetic Spark)',
     domain: 'Courage & Momentum',
     primaryImage: '/red-chillies.png',
     secondaryImage: '/spices/red-chillies.png',
-    fallbackEmoji: '🌶️',
     principle: 'Without heat, the food is timid. Back your team to take ambitious bets. Absorb the blame when experiments fail, and give them the stage when they win.',
   },
   {
     id: 5,
     name: 'Aromatics',
     role: 'Executive Restraint',
+    concept: 'Quiet Mastery',
     metaphor: 'Aromatics (The Finish)',
     domain: 'Judgment & Timing',
     primaryImage: '/aromatics.png',
     secondaryImage: '/spices/aromatics.png',
-    fallbackEmoji: '⭐',
     principle: 'Sprinkled only after turning off the flame. The rare wisdom to know when the work is finished, stepping back, and letting quality speak for itself.',
   },
 ];
@@ -164,7 +164,7 @@ export default function Hero({ onOpenInquiry }) {
           </div>
         </div>
 
-        {/* The Subtractive Mindset: 5 Spice Selector Boxes */}
+        {/* The Subtractive Mindset Section */}
         <div className="mt-16 pt-10 border-t border-canvas-border dark:border-canvas-darkBorder">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
             <span className="text-xs uppercase tracking-widest text-ink-500 dark:text-ink-300 font-mono font-bold">
@@ -175,79 +175,93 @@ export default function Hero({ onOpenInquiry }) {
             </span>
           </div>
 
-          {/* 5 Spice Selector Boxes */}
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+          {/* 5 Spice Selector Boxes:
+              - Right top corner: 01, 02... labels and indicator dot
+              - Left bottom corner: Spice illustration with mix-blend-multiply (instant background transparency)
+              - Center aligned: Bold Spice name + High-contrast authoritative management badge
+          */}
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-3.5">
             {SPICE_PILLARS.map((pillar) => {
               const isSelected = activePillar.id === pillar.id;
               return (
                 <button
                   key={pillar.id}
                   onClick={() => setActivePillar(pillar)}
-                  className={`text-left p-4 rounded-2xl border transition-all duration-200 relative overflow-hidden flex flex-col justify-between group ${
+                  className={`text-center p-4 rounded-3xl border transition-all duration-200 relative overflow-hidden min-h-[175px] flex flex-col justify-between group ${
                     isSelected
-                      ? 'bg-white dark:bg-canvas-darkCard border-berry-600 shadow-md shadow-berry-600/10 -translate-y-0.5'
-                      : 'bg-canvas-subtle dark:bg-canvas-darkCard/50 border-canvas-border dark:border-canvas-darkBorder hover:border-cobalt-400'
+                      ? 'bg-white dark:bg-canvas-darkCard border-berry-600 shadow-xl shadow-berry-600/15 -translate-y-1'
+                      : 'bg-canvas-subtle dark:bg-canvas-darkCard/60 border-canvas-border dark:border-canvas-darkBorder hover:border-berry-400 hover:bg-white'
                   }`}
                 >
+                  {/* Top Active Bar */}
                   {isSelected && (
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-berry-600" />
+                    <div className="absolute top-0 left-0 right-0 h-1.5 bg-berry-600" />
                   )}
                   
-                  {/* Top Row: Number & Active Dot */}
-                  <div className="flex items-center justify-between w-full">
+                  {/* Top Right Corner: Number Label & Indicator */}
+                  <div className="flex items-center justify-end gap-1.5 w-full">
                     <span className="font-mono text-xs font-bold text-cobalt-600 dark:text-cobalt-400">
                       0{pillar.id}
                     </span>
-                    <span className={`w-2 h-2 rounded-full ${isSelected ? 'bg-berry-600' : 'bg-transparent'}`} />
+                    <span
+                      className={`w-2 h-2 rounded-full transition-colors ${
+                        isSelected ? 'bg-berry-600' : 'bg-canvas-border dark:bg-canvas-darkBorder'
+                      }`}
+                    />
                   </div>
 
-                  {/* Individual Spice Illustration Slot (supports both /cumin.png and /spices/cumin.png) */}
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto my-2 flex items-center justify-center">
+                  {/* Center Aligned Text: Bold Spice Name + Authoritative Management Badge */}
+                  <div className="my-auto text-center px-1 z-10">
+                    <div className="font-serif font-black text-lg sm:text-xl text-ink-950 dark:text-white leading-tight mb-2 group-hover:text-berry-600 transition-colors">
+                      {pillar.name}
+                    </div>
+
+                    {/* Strengthened Management Parallel (Pill Badge with strong weight) */}
+                    <div className="inline-block">
+                      <span className={`px-2.5 py-1 text-[11px] font-mono font-bold tracking-wide uppercase rounded-lg border transition-all ${
+                        isSelected
+                          ? 'bg-berry-50 text-berry-700 border-berry-200 dark:bg-berry-950/60 dark:text-berry-300 dark:border-berry-800'
+                          : 'bg-white text-ink-800 border-canvas-border dark:bg-canvas-dark dark:text-ink-200 dark:border-canvas-darkBorder group-hover:border-berry-300'
+                      }`}>
+                        {pillar.role}
+                      </span>
+                    </div>
+
+                    {/* Subtle Concept Line */}
+                    <div className="text-[10px] font-sans font-medium text-ink-500 dark:text-ink-300 mt-1.5 tracking-tight">
+                      {pillar.concept}
+                    </div>
+                  </div>
+
+                  {/* Left Bottom Corner: Spice Drawing with Automatic Transparency (mix-blend-multiply) */}
+                  <div className="absolute -bottom-1 -left-1 w-16 h-16 sm:w-20 sm:h-20 pointer-events-none transition-transform duration-300 group-hover:scale-110">
                     <img
                       src={pillar.primaryImage}
                       alt={pillar.name}
-                      className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
+                      className="w-full h-full object-contain mix-blend-multiply dark:mix-blend-screen opacity-90 group-hover:opacity-100"
                       onError={(e) => {
-                        // If /cumin.png fails, try /spices/cumin.png
                         if (!e.currentTarget.dataset.triedSecondary) {
                           e.currentTarget.dataset.triedSecondary = 'true';
                           e.currentTarget.src = pillar.secondaryImage;
                         } else {
-                          // Both failed, show fallback icon
                           e.currentTarget.style.display = 'none';
-                          if (e.currentTarget.nextElementSibling) {
-                            e.currentTarget.nextElementSibling.style.display = 'flex';
-                          }
                         }
                       }}
                     />
-                    <div className="hidden w-12 h-12 rounded-full bg-berry-50 dark:bg-canvas-dark items-center justify-center text-xl">
-                      {pillar.fallbackEmoji}
-                    </div>
-                  </div>
-
-                  {/* Bottom Text */}
-                  <div className="mt-1">
-                    <div className="font-serif font-bold text-sm text-ink-900 dark:text-white">
-                      {pillar.name}
-                    </div>
-                    <div className="text-[11px] text-ink-500 dark:text-ink-300 truncate mt-0.5 font-light">
-                      {pillar.role}
-                    </div>
                   </div>
                 </button>
               );
             })}
           </div>
 
-          {/* Active Principle Card with Selected Spice Image */}
+          {/* Active Principle Card */}
           <div className="mt-4 p-6 rounded-2xl bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-sm">
             <div className="flex items-center gap-5">
               <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-canvas-subtle dark:bg-canvas-dark rounded-2xl border border-canvas-border dark:border-canvas-darkBorder p-1.5 flex items-center justify-center overflow-hidden">
                 <img
                   src={activePillar.primaryImage}
                   alt={activePillar.name}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain mix-blend-multiply dark:mix-blend-screen"
                   onError={(e) => {
                     if (!e.currentTarget.dataset.triedSecondary) {
                       e.currentTarget.dataset.triedSecondary = 'true';
@@ -259,9 +273,15 @@ export default function Hero({ onOpenInquiry }) {
                 />
               </div>
               <div className="space-y-1.5">
-                <span className="text-xs font-mono text-berry-600 dark:text-berry-400 uppercase tracking-wider font-bold block">
-                  {activePillar.domain}
-                </span>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-mono text-berry-600 dark:text-berry-400 uppercase tracking-wider font-bold block">
+                    {activePillar.domain}
+                  </span>
+                  <span className="text-xs text-ink-400 font-mono">·</span>
+                  <span className="text-xs font-mono text-cobalt-600 dark:text-cobalt-400 font-bold uppercase tracking-wider">
+                    {activePillar.role}
+                  </span>
+                </div>
                 <p className="font-serif italic text-base sm:text-lg text-ink-900 dark:text-white font-medium">
                   "{activePillar.principle}"
                 </p>
