@@ -176,7 +176,7 @@ export default function WritingBoard() {
                     By {activeEssay.author}
                   </div>
                   <div className="text-xs font-mono text-ink-500 dark:text-ink-400 mt-0.5">
-                    5 Spices or Less · Dispatches from Kuala Lumpur
+                    5 Spices or Less · Essays & Dispatches
                   </div>
                 </div>
 

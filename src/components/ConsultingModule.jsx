@@ -7,7 +7,7 @@ const ADVISORY_MODES = [
     focus: 'Operational De-cluttering & GTM Discipline',
     cadence: 'Embedded Executive Engagement',
     description:
-      'Drawing from managing 165+ people across 4 offices, I step into growing ventures to strip out organizational bloat, install clear and precise reporting memos, and align customer acquisition levers with ruthless simplicity.',
+      'Drawing from managing 165+ people across 4 offices, I step into growing ventures to strip out organisational bloat, install clear and precise reporting memos, and align customer acquisition levers with ruthless simplicity.',
     deliverables: [
       'Diagnostic review of team bandwidth, roadmaps, and recurring syncs',
       'Installation of single-page decision memos over 50-slide decks',
@@ -33,7 +33,7 @@ const ADVISORY_MODES = [
     focus: 'Trusted Confidant for High-Agency CEOs',
     cadence: 'Dedicated 1:1 Founder Sparring',
     description:
-      'Like Robert De Niro in "The Intern"—an ego-free, calm, deeply experienced veteran in your corner. Someone who has raised millions, survived being declared dead, weathered boardroom storms, and exited with honor, providing psychological safety and unvarnished judgment.',
+      'Like Robert De Niro in "The Intern", an ego-free, calm, deeply experienced veteran in your corner. Someone who has raised millions, survived being declared dead, weathered boardroom storms, and exited with honour, providing psychological safety and unvarnished judgment.',
     deliverables: [
       'Bi-weekly private strategy reviews (async & voice line)',
       'Unbiased sounding board on co-founder tensions, hiring, and board dynamics',
@@ -75,7 +75,7 @@ export default function ConsultingModule() {
             Seasoned counsel from someone who has lived the full founder cycle.
           </h2>
           <p className="mt-6 text-ink-600 dark:text-ink-200 font-normal text-base sm:text-lg leading-relaxed">
-            I don't deliver generic consulting decks. I partner with founders and leaders as a fractional operator, EIR, or steady confidant—helping you take bold risks while backing you completely.
+            I don't deliver generic consulting decks. I partner with founders and leaders as a fractional operator, EIR, or steady confidant, helping you take bold risks while backing you completely.
           </p>
         </div>
 
@@ -216,7 +216,7 @@ export default function ConsultingModule() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-xs font-mono text-ink-800 dark:text-ink-200 font-semibold mb-2">
-                    Venture / Organization & Stage *
+                    Venture / Organisation & Stage *
                   </label>
                   <input
                     type="text"

@@ -8,7 +8,7 @@ const DESKS = [
     kicker: 'THE HUMAN CONDITION',
     title: 'Love, Heartbreak, and Perspective',
     summary:
-      'Personal reflections on why everyone ought to fall in love at least once, how romantic devotion reshapes character, and how to navigate heartbreak without cynicism. Quiet lessons on relationships, marriage, and the realization that almost everything modern humans fret about is completely trivial.',
+      'Personal reflections on why everyone ought to fall in love at least once, how romantic devotion reshapes character, and how to navigate heartbreak without cynicism. Quiet lessons on relationships, marriage, and the realisation that almost everything modern humans fret about is completely trivial.',
     expectations: [
       'Why everyone should fall in love at least once in their lifetime',
       'The quiet wisdom of long devotion and arranged partnerships',
@@ -44,9 +44,9 @@ const DESKS = [
     kicker: 'OPERATOR FIELD NOTES',
     title: 'Career Mastery, Startups, and Boardrooms',
     summary:
-      'Thirty years of hard-won field notes from the arena: how to progress in a career, navigate complex organizations, hire without ego, and win customers. Real-world playbooks on fundraising without delusion, building punishing hardware, managing investors and boards, and knowing when to exit.',
+      'Thirty years of hard-won field notes from the arena: how to progress in a career, navigate complex organisations, hire without ego, and win customers. Real-world playbooks on fundraising without delusion, building punishing hardware, managing investors and boards, and knowing when to exit.',
     expectations: [
-      'How to navigate organizational politics and accelerate career growth',
+      'How to navigate organisational politics and accelerate career growth',
       'Building from zero: customer acquisition, hiring, and unit economics',
       'Investor relations, board dynamics, and the discipline of clean exits',
     ],
