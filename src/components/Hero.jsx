@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { ArrowRight, BookOpen, Compass } from 'lucide-react';
 
+// Future essay notes retained in memory:
+// - Essay Note 1: "A plan with twenty priorities has none. Limiting yourself to five forces you to back only what genuinely moves the needle."
+// - Essay Note 2: "Five levers keep execution sharp and minds calm. When your priorities fit on one hand, teams stop debating and start building."
+// - Essay Note 3: "Just like a great pot of dal, five elements are all it takes to build real depth. Anything more is usually just noise."
+
 const SPICE_PILLARS = [
   {
     id: 1,
@@ -9,7 +14,7 @@ const SPICE_PILLARS = [
     metaphor: 'Cumin (The Foundation)',
     primaryImage: '/cumin.png',
     secondaryImage: '/spices/cumin.png',
-    principle: 'The tadka comes before everything else. Before you build features or hire large teams, master the single root problem that actually matters.',
+    principle: 'A good dish begins with cumin tempered at just the right heat. Cold oil extracts nothing, while smoking oil burns it black. The same patience governs life, love, and work. Get the foundation right, and the rest follows rather nicely.',
   },
   {
     id: 2,
@@ -18,7 +23,7 @@ const SPICE_PILLARS = [
     metaphor: 'Turmeric (The Purifier)',
     primaryImage: '/turmeric.png',
     secondaryImage: '/spices/turmeric.png',
-    principle: 'A pinch brings health, but too much turns the dish bitter. Single-page memos and honest unit economics beat sixty-slide executive presentations every time.',
+    principle: 'A pinch brings warmth and health, but an extra pinch turns the entire dish bitter. That is an awkward truth to learn. In work and in relationships, knowing when to stop is often the difference between a lasting bond and a quiet disaster.',
   },
   {
     id: 3,
@@ -27,7 +32,7 @@ const SPICE_PILLARS = [
     metaphor: 'Coriander (The Binder)',
     primaryImage: '/coriander.png',
     secondaryImage: '/spices/coriander.png',
-    principle: 'The quiet glue of the dish. Clear, precise reporting and communication that keep a hundred and sixty people aligned across four offices without chaos.',
+    principle: 'Coriander is the quiet, forgiving glue of the pan. It softens harsh edges and covers minor slips. In business, honest monthly updates play the exact same role, keeping founders and shareholders bound together when things get choppy.',
   },
   {
     id: 4,
@@ -36,7 +41,7 @@ const SPICE_PILLARS = [
     metaphor: 'Red Chillies (The Kinetic Spark)',
     primaryImage: '/red-chillies.png',
     secondaryImage: '/spices/red-chillies.png',
-    principle: 'Without heat, the food is timid. Back your team to take ambitious bets. Absorb the blame when experiments fail, and give them the stage when they win.',
+    principle: 'A measured hand with chilli gets you nowhere interesting. The best dishes demand courage with the spice, and life demands the same with your choices. Playing not to lose is the quietest way to fail. Take the bold gamble, embrace the heat, and let the rewards take care of themselves.',
   },
   {
     id: 5,
@@ -45,12 +50,16 @@ const SPICE_PILLARS = [
     metaphor: 'Aromatics (The Finish)',
     primaryImage: '/aromatics.png',
     secondaryImage: '/spices/aromatics.png',
-    principle: 'Sprinkled only after turning off the flame. The rare wisdom to know when the work is finished, stepping back, and letting quality speak for itself.',
+    principle: 'Aromatics do not add bulk to the pot, they leave the memory. They go in at the very end, off the heat. In life and business, the final chapter defines your character. It is the rare wisdom of knowing when your part is finished, protecting your people, and exiting with your reputation and honour intact.',
   },
 ];
 
 export default function Hero({ onOpenInquiry }) {
   const [activePillar, setActivePillar] = useState(SPICE_PILLARS[0]);
+  const [hoveredPillar, setHoveredPillar] = useState(null);
+
+  // Dynamic pillar displayed: shows hovered pillar on mouseover, or active pillar
+  const displayedPillar = hoveredPillar || activePillar;
 
   return (
     <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-36 pb-20 px-6 md:px-12 bg-sandpaper-texture transition-colors duration-300">
@@ -90,12 +99,9 @@ export default function Hero({ onOpenInquiry }) {
         {/* Subhead & 05 Core Levers Metric Grid */}
         <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-8 space-y-6">
+            {/* 1 - Hero Subtext Option C */}
             <p className="text-lg sm:text-2xl text-ink-700 dark:text-ink-200 font-normal leading-relaxed max-w-2xl font-sans">
-              The most enduring things in life, work and cooking are achieved through subtraction. We strip away the non-essential to unlock clarity, speed, and flavor.
-              <br />
-              <span className="italic font-serif text-ink-900 dark:text-white pt-2 inline-block">
-                After all, less is more.
-              </span>
+              The best things in life, work, and cooking are born from subtraction. When you remove what is unnecessary, clarity, speed, and flavour take care of themselves. In the end, less almost always works better than more.
             </p>
 
             {/* Action Buttons */}
@@ -119,17 +125,17 @@ export default function Hero({ onOpenInquiry }) {
             </div>
           </div>
 
-          {/* 05 Core Levers Badge */}
+          {/* 2 - Aligned 05 Core Levers Box (Option A Sentence) */}
           <div className="lg:col-span-4 p-6 rounded-3xl bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder shadow-lg space-y-4">
-            <div className="flex items-baseline gap-3">
-              <span className="font-serif text-5xl font-black text-cobalt-600 dark:text-cobalt-400 leading-none">
+            <div className="flex items-center gap-3.5">
+              <span className="font-serif text-5xl font-black text-cobalt-600 dark:text-cobalt-400 leading-none shrink-0">
                 05
               </span>
-              <div className="flex flex-col">
-                <span className="font-serif text-xl font-bold text-ink-900 dark:text-white leading-tight">
+              <div className="flex flex-col justify-center">
+                <span className="font-serif text-xl sm:text-2xl font-bold text-ink-900 dark:text-white leading-tight">
                   Core Levers
                 </span>
-                <span className="text-xs font-mono text-berry-600 dark:text-berry-400 font-bold">
+                <span className="text-xs font-mono text-berry-600 dark:text-berry-400 font-bold uppercase tracking-wider mt-0.5">
                   Zero Operational Bloat
                 </span>
               </div>
@@ -137,63 +143,53 @@ export default function Hero({ onOpenInquiry }) {
 
             <div className="w-full h-px bg-canvas-border dark:bg-canvas-darkBorder" />
 
-            <div className="space-y-2 text-xs text-ink-600 dark:text-ink-200 font-medium">
-              <div className="flex items-center gap-2.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-cobalt-500 shrink-0" />
-                <span>Weekly Long-Form Strategy Memos</span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-berry-600 shrink-0" />
-                <span>Direct 1:1 Founder Sparring Partner</span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-ink-900 dark:bg-white shrink-0" />
-                <span>Strictly Capped Client Capacity</span>
-              </div>
-            </div>
+            {/* Explanatory sentence on why these 5 levers work */}
+            <p className="text-xs sm:text-sm text-ink-700 dark:text-ink-200 font-normal leading-relaxed">
+              Five levers are enough to move a mountain, and few enough that none can hide. When you refuse complexity, focus does the heavy lifting.
+            </p>
           </div>
         </div>
 
-        {/* The Subtractive Mindset Section */}
+        {/* 3 - The Subtractive Mindset Section with Mouseover Interaction */}
         <div className="mt-16 pt-10 border-t border-canvas-border dark:border-canvas-darkBorder">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
             <span className="text-xs uppercase tracking-widest text-ink-500 dark:text-ink-300 font-mono font-bold">
               The Subtractive Mindset:
             </span>
             <span className="text-xs font-mono font-bold text-berry-600 dark:text-berry-400">
-              Selected: [{activePillar.metaphor}]
+              Active: [{displayedPillar.metaphor}]
             </span>
           </div>
 
-          {/* 5 Spice Selector Boxes:
-              - Reverted to clean, cohesive card styling (white / ice-slate background, no weird spice tints)
-              - Removed the pill/box around THE FOUNDATION (unboxed plain text, retaining font size)
-              - Controlled font size for Spice names to eliminate overlapping
-              - Spice drawing cleanly anchored in bottom-right corner
-          */}
+          {/* 5 Spice Selector Boxes with Mouseover & Click triggers */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
             {SPICE_PILLARS.map((pillar) => {
               const isSelected = activePillar.id === pillar.id;
+              const isHovered = hoveredPillar?.id === pillar.id;
+              const isCurrent = isHovered || (isSelected && !hoveredPillar);
+
               return (
                 <button
                   key={pillar.id}
                   onClick={() => setActivePillar(pillar)}
+                  onMouseEnter={() => setHoveredPillar(pillar)}
+                  onMouseLeave={() => setHoveredPillar(null)}
                   className={`text-left p-5 rounded-3xl border-2 transition-all duration-200 relative overflow-hidden min-h-[160px] sm:min-h-[175px] flex flex-col justify-between group shadow-sm ${
-                    isSelected
+                    isCurrent
                       ? 'bg-white dark:bg-canvas-darkCard border-berry-600 shadow-xl shadow-berry-600/10 -translate-y-1'
                       : 'bg-canvas-subtle dark:bg-canvas-darkCard/60 border-canvas-border dark:border-canvas-darkBorder hover:border-cobalt-400 hover:bg-white hover:-translate-y-0.5'
                   }`}
                 >
-                  {/* Top Bar on Active */}
-                  {isSelected && (
+                  {/* Top Bar on Active / Hover */}
+                  {isCurrent && (
                     <div className="absolute top-0 left-0 right-0 h-1.5 bg-berry-600" />
                   )}
                   
                   {/* Top Row: Unboxed Role Text on Left, Number & Dot on Right */}
                   <div className="flex items-start justify-between w-full relative z-10">
-                    {/* Management Parallel: Plain text without the rounded pill box */}
+                    {/* Management Parallel (Plain Text without the rounded box) */}
                     <div className={`text-xs font-mono font-bold tracking-wider uppercase leading-tight ${
-                      isSelected ? 'text-berry-600 dark:text-berry-400' : 'text-ink-600 dark:text-ink-300 group-hover:text-ink-900'
+                      isCurrent ? 'text-berry-600 dark:text-berry-400' : 'text-ink-600 dark:text-ink-300 group-hover:text-ink-900'
                     }`}>
                       {pillar.role}
                     </div>
@@ -205,13 +201,13 @@ export default function Hero({ onOpenInquiry }) {
                       </span>
                       <span
                         className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                          isSelected ? 'bg-berry-600' : 'bg-canvas-border dark:bg-canvas-darkBorder'
+                          isCurrent ? 'bg-berry-600' : 'bg-canvas-border dark:bg-canvas-darkBorder'
                         }`}
                       />
                     </div>
                   </div>
 
-                  {/* Middle / Name Area: Controlled Font Size (No Overlapping) */}
+                  {/* Middle / Name Area: Controlled Font Size (No Overlap) */}
                   <div className="pt-3 pb-1 text-left relative z-10 max-w-[65%]">
                     <div className="font-serif font-bold text-xl sm:text-2xl text-ink-950 dark:text-white leading-tight tracking-tight group-hover:text-berry-600 transition-colors">
                       {pillar.name}
@@ -239,18 +235,18 @@ export default function Hero({ onOpenInquiry }) {
             })}
           </div>
 
-          {/* Active Principle Card */}
-          <div className="mt-4 p-6 rounded-2xl bg-white dark:bg-canvas-darkCard border-2 border-canvas-border dark:border-canvas-darkBorder flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-sm">
+          {/* Dynamic Display Card: Updates instantly on Mouseover & Selection */}
+          <div className="mt-4 p-6 rounded-2xl bg-white dark:bg-canvas-darkCard border-2 border-canvas-border dark:border-canvas-darkBorder flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-sm transition-all duration-300">
             <div className="flex items-center gap-5">
               <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-canvas-subtle dark:bg-canvas-dark rounded-2xl border border-canvas-border dark:border-canvas-darkBorder p-1.5 flex items-center justify-center overflow-hidden">
                 <img
-                  src={activePillar.primaryImage}
-                  alt={activePillar.name}
+                  src={displayedPillar.primaryImage}
+                  alt={displayedPillar.name}
                   className="w-full h-full object-contain mix-blend-multiply dark:mix-blend-screen"
                   onError={(e) => {
                     if (!e.currentTarget.dataset.triedSecondary) {
                       e.currentTarget.dataset.triedSecondary = 'true';
-                      e.currentTarget.src = activePillar.secondaryImage;
+                      e.currentTarget.src = displayedPillar.secondaryImage;
                     } else {
                       e.currentTarget.style.display = 'none';
                     }
@@ -260,20 +256,20 @@ export default function Hero({ onOpenInquiry }) {
               <div className="space-y-1.5">
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-mono font-bold tracking-wider uppercase text-berry-600 dark:text-berry-400">
-                    {activePillar.role}
+                    {displayedPillar.role}
                   </span>
                   <span className="text-xs text-ink-400 font-mono">·</span>
                   <span className="text-xs font-mono font-bold uppercase tracking-wider text-ink-900 dark:text-white">
-                    {activePillar.name}
+                    {displayedPillar.name}
                   </span>
                 </div>
-                <p className="font-serif italic text-base sm:text-lg text-ink-900 dark:text-white font-medium">
-                  "{activePillar.principle}"
+                <p className="font-serif italic text-base sm:text-lg text-ink-900 dark:text-white font-medium leading-relaxed">
+                  "{displayedPillar.principle}"
                 </p>
               </div>
             </div>
             <div className="shrink-0 text-xs font-mono text-ink-700 dark:text-ink-200 bg-canvas-subtle dark:bg-canvas-dark px-4 py-2 rounded-xl border border-canvas-border dark:border-canvas-darkBorder font-semibold self-start md:self-auto">
-              Rule #{activePillar.id} in Practice
+              Rule #{displayedPillar.id} in Practice
             </div>
           </div>
         </div>
