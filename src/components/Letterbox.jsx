@@ -45,13 +45,15 @@ export default function Letterbox() {
   return (
     <section id="letterbox" className="py-24 px-6 md:px-12 bg-white dark:bg-canvas-dark relative border-t border-canvas-border dark:border-canvas-darkBorder transition-colors duration-300 overflow-hidden">
       
-      {/* Background Decorative Watermark (Post Box) */}
-      <div className="absolute top-1/2 -right-16 -translate-y-1/2 w-72 sm:w-96 pointer-events-none opacity-[0.07] dark:opacity-[0.04] select-none mix-blend-multiply dark:mix-blend-screen hidden lg:block">
+      {/* Panoramic Streetscape Architectural Background starting right from the top divider */}
+      <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
         <img
-          src="/postbox-sketch.png"
-          alt="Colonial Post Box Sketch"
-          className="w-full h-auto object-contain"
+          src="/streetscape-sketch.png"
+          alt="Vintage Streetscape with Letterbox"
+          className="w-full h-full object-cover object-top opacity-15 dark:opacity-[0.06] mix-blend-multiply dark:mix-blend-screen"
         />
+        {/* Soft atmospheric gradient wash to ensure complete reading clarity */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/80 to-white/95 dark:from-canvas-dark/65 dark:via-canvas-dark/85 dark:to-canvas-dark/98" />
       </div>
 
       <div className="max-w-4xl mx-auto relative z-10">
@@ -72,20 +74,11 @@ export default function Letterbox() {
           </p>
         </div>
 
-        {/* Form Container with Watermark inside */}
-        <div className="relative rounded-3xl p-6 sm:p-10 bg-canvas-subtle dark:bg-canvas-darkCard border-2 border-canvas-border dark:border-canvas-darkBorder shadow-xl overflow-hidden">
+        {/* Form Container with Frosted Glass Backdrop */}
+        <div className="relative rounded-3xl p-6 sm:p-10 bg-white/90 dark:bg-canvas-darkCard/90 backdrop-blur-md border-2 border-canvas-border dark:border-canvas-darkBorder shadow-2xl">
           
-          {/* Subtle inside corner watermark */}
-          <div className="absolute -bottom-10 -right-8 w-56 sm:w-72 pointer-events-none opacity-[0.08] dark:opacity-[0.05] select-none mix-blend-multiply dark:mix-blend-screen">
-            <img
-              src="/postbox-sketch.png"
-              alt=""
-              className="w-full h-auto object-contain"
-            />
-          </div>
-
           {submitted ? (
-            <div className="relative z-10 text-center py-12 px-4 space-y-5">
+            <div className="text-center py-12 px-4 space-y-5">
               <div className="w-20 h-20 rounded-full bg-berry-50 dark:bg-canvas-dark border border-berry-200 dark:border-berry-800 flex items-center justify-center text-berry-600 dark:text-berry-400 mx-auto shadow-sm">
                 <Check className="w-10 h-10" />
               </div>
@@ -114,7 +107,7 @@ export default function Letterbox() {
               </div>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-8 relative z-10">
+            <form onSubmit={handleSubmit} className="space-y-8">
               
               {/* Category Selection Tabs */}
               <div>
@@ -127,7 +120,7 @@ export default function Letterbox() {
                     const isSelected = selectedCategory === cat.id;
                     const cardClass = isSelected
                       ? 'bg-white dark:bg-canvas-dark border-berry-600 dark:border-berry-500 shadow-md ring-2 ring-berry-600/20'
-                      : 'bg-white/70 dark:bg-canvas-dark/70 border-canvas-border dark:border-canvas-darkBorder hover:border-cobalt-400';
+                      : 'bg-canvas-subtle/80 dark:bg-canvas-dark/80 border-canvas-border dark:border-canvas-darkBorder hover:border-cobalt-400';
                     const iconColor = isSelected ? 'text-berry-600 dark:text-berry-400' : 'text-ink-500';
 
                     return (
@@ -213,7 +206,7 @@ export default function Letterbox() {
               </div>
 
               {/* Direct X Note */}
-              <div className="p-4 rounded-2xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+              <div className="p-4 rounded-2xl bg-canvas-subtle/80 dark:bg-canvas-dark/80 border border-canvas-border dark:border-canvas-darkBorder flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
                 <div className="flex items-center gap-2 text-ink-700 dark:text-ink-200">
                   <span className="font-bold text-berry-600">Prefer X?</span>
                   <span>You can also send questions or tag Vivek directly on X:</span>
