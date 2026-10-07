@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ValueProps from './components/ValueProps';
 import WritingBoard from './components/WritingBoard';
+import Letterbox from './components/Letterbox';
 import ConsultingModule from './components/ConsultingModule';
 import Profile from './components/Profile';
 import Footer from './components/Footer';
@@ -65,6 +66,9 @@ export default function App() {
 
         {/* Editorial Writing Board & Article Reader (Life, Food, Work, Stories) */}
         <WritingBoard />
+
+        {/* The Letterbox: Q&A on Love, Food, and Career */}
+        <Letterbox />
 
         {/* Bespoke Advisory Practice & Strategic Intake ("Ben to Jules") */}
         <ConsultingModule />

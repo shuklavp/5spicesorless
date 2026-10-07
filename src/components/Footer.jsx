@@ -127,7 +127,12 @@ export default function Footer() {
                 </li>
                 <li>
                   <a href="#writing" className="hover:text-berry-600 transition-colors">
-                    Stories & Essays
+                    Stories &amp; Essays
+                  </a>
+                </li>
+                <li>
+                  <a href="#letterbox" className="hover:text-berry-600 transition-colors">
+                    The Letterbox
                   </a>
                 </li>
                 <li>
@@ -161,20 +166,36 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
+                  <a
+                    href="https://x.com/5spicesorless"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-1.5 hover:text-berry-600 transition-colors font-semibold text-ink-900 dark:text-white"
+                  >
+                    <svg className="w-3.5 h-3.5 fill-current text-berry-600" viewBox="0 0 24 24">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                    <span>@5spicesorless on X</span>
+                    <ArrowUpRight className="w-3 h-3 text-ink-400" />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://x.com/vivekshukla"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center gap-1.5 hover:text-ink-900 dark:hover:text-white transition-colors font-semibold text-ink-900 dark:text-white"
+                  >
+                    <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                    <span>@vivekshukla on X</span>
+                    <ArrowUpRight className="w-3 h-3 text-ink-400" />
+                  </a>
+                </li>
+                <li>
                   <a href="https://5spicesorless.com" target="_blank" rel="noreferrer" className="flex items-center gap-1 hover:text-berry-600 transition-colors">
                     <span>5spicesorless.com</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-ink-400" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#writing" className="flex items-center gap-1 hover:text-berry-600 transition-colors">
-                    <span>The Writing Board</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-ink-400" />
-                  </a>
-                </li>
-                <li>
-                  <a href="#consulting" className="flex items-center gap-1 hover:text-berry-600 transition-colors">
-                    <span>Founder Office Hours</span>
                     <ArrowUpRight className="w-3.5 h-3.5 text-ink-400" />
                   </a>
                 </li>
@@ -187,7 +208,7 @@ export default function Footer() {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-ink-500 dark:text-ink-400 gap-4 font-medium">
           <p>© {new Date().getFullYear()} 5 Spices or Less, Vivek Shukla. All rights reserved.</p>
           <div className="flex items-center gap-4">
-            <span>Kuala Lumpur, Malaysia</span>
+            <span>Lucknow roots</span>
             <span>·</span>
             <span>Crafted with Vite, React, and Tailwind</span>
           </div>

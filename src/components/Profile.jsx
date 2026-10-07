@@ -17,7 +17,7 @@ export default function Profile({ onOpenInquiry }) {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Column: Portrait Frame & Quick Markers */}
-          <div className="lg:col-span-5 space-y-6">
+          <div className="lg:col-span-5 space-y-4">
             <div className="relative rounded-3xl overflow-hidden bg-canvas-subtle dark:bg-canvas-darkCard border-2 border-canvas-border dark:border-canvas-darkBorder shadow-xl p-4 group">
               {/* Image / Sketch Container */}
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-white dark:bg-canvas-dark flex items-center justify-center border border-canvas-border dark:border-canvas-darkBorder">
@@ -83,6 +83,31 @@ export default function Profile({ onOpenInquiry }) {
               </div>
               <ArrowUpRight className="w-4 h-4 text-ink-400 group-hover:text-cobalt-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
+
+            {/* X (Twitter) Personal Card */}
+            <a
+              href="https://x.com/vivekshukla"
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center justify-between p-4 rounded-2xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder hover:border-ink-900 dark:hover:border-white group transition-all"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-xl bg-ink-100 dark:bg-ink-800 border border-ink-200 dark:border-ink-700 flex items-center justify-center text-ink-900 dark:text-white">
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                  </svg>
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-ink-900 dark:text-white group-hover:text-berry-600 transition-colors">
+                    Follow on X (Twitter)
+                  </div>
+                  <div className="text-[11px] font-mono text-ink-500 dark:text-ink-300">
+                    @vivekshukla
+                  </div>
+                </div>
+              </div>
+              <ArrowUpRight className="w-4 h-4 text-ink-400 group-hover:text-ink-900 dark:group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </a>
           </div>
 
           {/* Right Column: The Narrative in Short Sentences with Commas */}
@@ -128,7 +153,7 @@ export default function Profile({ onOpenInquiry }) {
             </div>
 
             {/* Action CTA */}
-            <div className="pt-2 flex flex-wrap items-center gap-4">
+            <div className="pt-2 flex flex-wrap items-center gap-3">
               <button
                 onClick={onOpenInquiry}
                 className="px-7 py-3.5 rounded-full bg-berry-600 hover:bg-berry-700 text-white font-bold text-xs tracking-wider uppercase transition-all shadow-md shadow-berry-600/20 flex items-center gap-2"
@@ -141,10 +166,22 @@ export default function Profile({ onOpenInquiry }) {
                 href="https://www.linkedin.com/in/vivekshukla/"
                 target="_blank"
                 rel="noreferrer"
-                className="px-6 py-3.5 rounded-full border-2 border-canvas-border dark:border-canvas-darkBorder text-ink-900 dark:text-white hover:border-cobalt-600 hover:text-cobalt-600 dark:hover:border-cobalt-400 dark:hover:text-cobalt-400 text-xs font-bold transition-all flex items-center gap-2"
+                className="px-5 py-3.5 rounded-full border-2 border-canvas-border dark:border-canvas-darkBorder text-ink-900 dark:text-white hover:border-cobalt-600 hover:text-cobalt-600 dark:hover:border-cobalt-400 dark:hover:text-cobalt-400 text-xs font-bold transition-all flex items-center gap-2"
               >
                 <Linkedin className="w-4 h-4 text-cobalt-600 dark:text-cobalt-400" />
-                <span>View LinkedIn Profile</span>
+                <span>LinkedIn</span>
+              </a>
+
+              <a
+                href="https://x.com/vivekshukla"
+                target="_blank"
+                rel="noreferrer"
+                className="px-5 py-3.5 rounded-full border-2 border-canvas-border dark:border-canvas-darkBorder text-ink-900 dark:text-white hover:border-ink-900 dark:hover:border-white text-xs font-bold transition-all flex items-center gap-2"
+              >
+                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+                <span>@vivekshukla</span>
               </a>
             </div>
           </div>

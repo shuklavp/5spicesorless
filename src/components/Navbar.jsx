@@ -55,8 +55,8 @@ export default function Navbar({ onOpenInquiry, isDark, onToggleTheme }) {
           </div>
         </a>
 
-        {/* Desktop Navigation Links: Life, Food, Work, Stories, Advisory, About */}
-        <div className="hidden md:flex items-center gap-6 text-sm font-medium text-ink-700 dark:text-ink-200">
+        {/* Desktop Navigation Links: Life, Food, Work, Stories, Letterbox, Advisory, About */}
+        <div className="hidden md:flex items-center gap-5 text-sm font-medium text-ink-700 dark:text-ink-200">
           <a
             href="#life"
             className="hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
@@ -82,6 +82,12 @@ export default function Navbar({ onOpenInquiry, isDark, onToggleTheme }) {
             Stories
           </a>
           <a
+            href="#letterbox"
+            className="hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
+          >
+            Letterbox
+          </a>
+          <a
             href="#consulting"
             className="hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
           >
@@ -95,8 +101,21 @@ export default function Navbar({ onOpenInquiry, isDark, onToggleTheme }) {
           </a>
         </div>
 
-        {/* Actions & Theme Toggle */}
-        <div className="hidden md:flex items-center gap-3">
+        {/* Actions, X (Twitter) Link & Theme Toggle */}
+        <div className="hidden md:flex items-center gap-2.5">
+          <a
+            href="https://x.com/5spicesorless"
+            target="_blank"
+            rel="noreferrer"
+            className="p-2.5 rounded-full bg-canvas-subtle dark:bg-canvas-darkBorder border border-canvas-border dark:border-canvas-darkBorder text-ink-700 dark:text-ink-200 hover:text-berry-600 dark:hover:text-white transition-all shadow-sm flex items-center justify-center"
+            title="Follow @5spicesorless on X"
+            aria-label="X Account @5spicesorless"
+          >
+            <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+          </a>
+
           <button
             onClick={onToggleTheme}
             className="p-2.5 rounded-full bg-canvas-subtle dark:bg-canvas-darkBorder border border-canvas-border dark:border-canvas-darkBorder text-ink-600 dark:text-ink-200 hover:text-berry-600 transition-all shadow-sm"
@@ -117,6 +136,18 @@ export default function Navbar({ onOpenInquiry, isDark, onToggleTheme }) {
 
         {/* Mobile Toggle */}
         <div className="flex items-center gap-2 md:hidden">
+          <a
+            href="https://x.com/5spicesorless"
+            target="_blank"
+            rel="noreferrer"
+            className="p-2 rounded-full border border-canvas-border dark:border-canvas-darkBorder text-ink-700 dark:text-ink-200"
+            aria-label="Follow on X"
+          >
+            <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+          </a>
+
           <button
             onClick={onToggleTheme}
             className="p-2 rounded-full border border-canvas-border dark:border-canvas-darkBorder text-ink-600 dark:text-ink-200"
@@ -128,14 +159,14 @@ export default function Navbar({ onOpenInquiry, isDark, onToggleTheme }) {
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="text-ink-900 dark:text-white p-1.5 hover:text-berry-600 transition-colors"
-            aria-label="Toggle Navigation"
+            aria-label="Open mobile menu"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
         <div className="md:hidden mt-2 mx-auto max-w-lg bg-white/98 dark:bg-canvas-darkCard/98 backdrop-blur-2xl border border-canvas-border dark:border-canvas-darkBorder rounded-2xl p-6 shadow-2xl space-y-4">
           <div className="flex flex-col space-y-3 text-base font-medium text-ink-800 dark:text-white">
@@ -166,6 +197,13 @@ export default function Navbar({ onOpenInquiry, isDark, onToggleTheme }) {
               className="py-1 hover:text-berry-600 transition-colors"
             >
               Stories
+            </a>
+            <a
+              href="#letterbox"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-1 hover:text-berry-600 transition-colors"
+            >
+              Letterbox
             </a>
             <a
               href="#consulting"
