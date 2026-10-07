@@ -99,7 +99,6 @@ export default function Hero({ onOpenInquiry }) {
         {/* Subhead & 05 Core Levers Metric Grid */}
         <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-8 space-y-6">
-            {/* 1 - Hero Subtext Option C */}
             <p className="text-lg sm:text-2xl text-ink-700 dark:text-ink-200 font-normal leading-relaxed max-w-2xl font-sans">
               The best things in life, work, and cooking are born from subtraction. When you remove what is unnecessary, clarity, speed, and flavour take care of themselves. In the end, less almost always works better than more.
             </p>
@@ -125,7 +124,7 @@ export default function Hero({ onOpenInquiry }) {
             </div>
           </div>
 
-          {/* 2 - Aligned 05 Core Levers Box (Option A Sentence) */}
+          {/* Aligned 05 Core Levers Box */}
           <div className="lg:col-span-4 p-6 rounded-3xl bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder shadow-lg space-y-4">
             <div className="flex items-center gap-3.5">
               <span className="font-serif text-5xl font-black text-cobalt-600 dark:text-cobalt-400 leading-none shrink-0">
@@ -143,14 +142,13 @@ export default function Hero({ onOpenInquiry }) {
 
             <div className="w-full h-px bg-canvas-border dark:bg-canvas-darkBorder" />
 
-            {/* Explanatory sentence on why these 5 levers work */}
             <p className="text-xs sm:text-sm text-ink-700 dark:text-ink-200 font-normal leading-relaxed">
               Five levers are enough to move a mountain, and few enough that none can hide. When you refuse complexity, focus does the heavy lifting.
             </p>
           </div>
         </div>
 
-        {/* 3 - The Subtractive Mindset Section with Mouseover Interaction */}
+        {/* The Subtractive Mindset Section with Mouseover Interaction */}
         <div className="mt-16 pt-10 border-t border-canvas-border dark:border-canvas-darkBorder">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
             <span className="text-xs uppercase tracking-widest text-ink-500 dark:text-ink-300 font-mono font-bold">
@@ -174,7 +172,7 @@ export default function Hero({ onOpenInquiry }) {
                   onClick={() => setActivePillar(pillar)}
                   onMouseEnter={() => setHoveredPillar(pillar)}
                   onMouseLeave={() => setHoveredPillar(null)}
-                  className={`text-left p-5 rounded-3xl border-2 transition-all duration-200 relative overflow-hidden min-h-[160px] sm:min-h-[175px] flex flex-col justify-between group shadow-sm ${
+                  className={`text-left p-5 rounded-3xl border-2 transition-all duration-200 relative overflow-hidden min-h-[155px] sm:min-h-[170px] flex flex-col justify-between group shadow-sm ${
                     isCurrent
                       ? 'bg-white dark:bg-canvas-darkCard border-berry-600 shadow-xl shadow-berry-600/10 -translate-y-1'
                       : 'bg-canvas-subtle dark:bg-canvas-darkCard/60 border-canvas-border dark:border-canvas-darkBorder hover:border-cobalt-400 hover:bg-white hover:-translate-y-0.5'
@@ -188,7 +186,7 @@ export default function Hero({ onOpenInquiry }) {
                   {/* Top Row: Unboxed Role Text on Left, Number & Dot on Right */}
                   <div className="flex items-start justify-between w-full relative z-10">
                     {/* Management Parallel (Plain Text without the rounded box) */}
-                    <div className={`text-xs font-mono font-bold tracking-wider uppercase leading-tight ${
+                    <div className={`text-[11px] sm:text-xs font-mono font-bold tracking-wider uppercase leading-tight ${
                       isCurrent ? 'text-berry-600 dark:text-berry-400' : 'text-ink-600 dark:text-ink-300 group-hover:text-ink-900'
                     }`}>
                       {pillar.role}
@@ -207,15 +205,15 @@ export default function Hero({ onOpenInquiry }) {
                     </div>
                   </div>
 
-                  {/* Middle / Name Area: Controlled Font Size (No Overlap) */}
-                  <div className="pt-3 pb-1 text-left relative z-10 max-w-[65%]">
-                    <div className="font-serif font-bold text-xl sm:text-2xl text-ink-950 dark:text-white leading-tight tracking-tight group-hover:text-berry-600 transition-colors">
+                  {/* Middle / Name Area: Reduced by 20-25% (text-base sm:text-lg) for elegant proportions */}
+                  <div className="pt-2.5 pb-1 text-left relative z-10 max-w-[60%]">
+                    <div className="font-serif font-bold text-base sm:text-lg text-ink-950 dark:text-white leading-tight tracking-tight group-hover:text-berry-600 transition-colors">
                       {pillar.name}
                     </div>
                   </div>
 
                   {/* Bottom Right Corner: Spice Drawing nestled in the corner */}
-                  <div className="absolute -bottom-1 -right-1 w-20 h-20 sm:w-22 sm:h-22 pointer-events-none transition-transform duration-300 group-hover:scale-105">
+                  <div className="absolute -bottom-1 -right-1 w-16 h-16 sm:w-20 sm:h-20 pointer-events-none transition-transform duration-300 group-hover:scale-105">
                     <img
                       src={pillar.primaryImage}
                       alt={pillar.name}
