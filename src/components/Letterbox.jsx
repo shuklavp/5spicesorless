@@ -4,21 +4,21 @@ import { ArrowUpRight, Check, Heart, Mail, Send, Utensils, Briefcase } from 'luc
 const CATEGORIES = [
   {
     id: 'heart',
-    label: 'Heart & Life',
+    label: 'LIFE',
     icon: Heart,
-    description: 'Love, heartbreak, relationships, and finding perspective when things hurt.',
+    description: 'Lessons from living, love, fatherhood, and becoming a slightly better person each day.',
   },
   {
     id: 'food',
-    label: 'Food & The Pan',
+    label: 'FOOD',
     icon: Utensils,
-    description: 'Rescuing a dish, five-spice ratios, heat control, or hosting dilemmas.',
+    description: 'Five-spice ratios, aroma over clutter, heat control, or rescuing a Sunday dish.',
   },
   {
     id: 'work',
-    label: 'Work & Career',
+    label: 'WORK',
     icon: Briefcase,
-    description: 'Founder solitude, corporate politics, fundraising, hiring, or knowing when to exit.',
+    description: 'Career navigation, founder solitude, organisational politics, or knowing when to exit.',
   },
 ];
 
@@ -71,11 +71,11 @@ export default function Letterbox() {
           </div>
 
           <h2 className="font-serif text-3xl sm:text-5xl font-black text-ink-900 dark:text-white leading-tight drop-shadow-sm">
-            Letters to the Cook.
+            The Sunday Letterbox.
           </h2>
 
           <p className="text-sm sm:text-base text-ink-800 dark:text-ink-200 font-medium leading-relaxed bg-white/75 dark:bg-canvas-dark/75 backdrop-blur-sm rounded-2xl py-2 px-4 inline-block shadow-sm">
-            Ask an honest question on love, culinary dilemmas, or career crossroads. Vivek answers selected letters every Sunday morning, with Lakhnawi warmth and zero corporate nonsense.
+            Ask an honest question on navigating life, the kitchen, or your career. Vivek answers selected letters every Sunday morning, with Lakhnawi warmth and zero corporate nonsense.
           </p>
         </div>
 
@@ -205,7 +205,7 @@ export default function Letterbox() {
                   required
                   value={formData.question}
                   onChange={(e) => setFormData({ ...formData, question: e.target.value })}
-                  placeholder="Ask me anything: how to navigate a delicate career crossroad, why romantic love breaks us and rebuilds us, or how to fix a bitter dal with simple kitchen physics. Be as unvarnished as you like..."
+                  placeholder="Ask me anything: how to navigate a delicate career crossroad, what a personal setback taught you, or how to rescue a split dal. Be as unvarnished as you like..."
                   className="w-full px-4 py-3 rounded-xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600 transition-colors resize-none leading-relaxed shadow-inner"
                 />
               </div>
