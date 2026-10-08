@@ -79,7 +79,7 @@ export default function ValueProps() {
             </h2>
           </div>
           <p className="text-ink-700 dark:text-ink-200 font-normal max-w-lg text-sm sm:text-base leading-relaxed">
-            I write about Life, Food, and Work drawn directly from thirty years of living, making mistakes, and surviving rather unusual odds. Writing helps me make sense of it all, and sharing it might help you navigate your own journey with a little more calm and a lot less clutter.
+            Everything here comes from personal experience: thirty years of loving, cooking, building companies, and surviving. I write to separate what truly matters from everyday noise, in the hope that these notes make your life, your table, and your work a little simpler.
           </p>
         </div>
 

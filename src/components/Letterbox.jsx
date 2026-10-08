@@ -3,27 +3,27 @@ import { ArrowUpRight, Check, Heart, Mail, Send, Utensils, Briefcase } from 'luc
 
 const CATEGORIES = [
   {
-    id: 'heart',
+    id: 'life',
     label: 'LIFE',
     icon: Heart,
-    description: 'Untangling messy emotional knots, personal setbacks, and rebuilding quiet confidence.',
+    description: 'Personal growth, human relationships, fatherhood, and finding quiet perspective.',
   },
   {
     id: 'food',
     label: 'FOOD',
     icon: Utensils,
-    description: 'Lakhnawi aroma, pantry staples, simplifying dinner, and cooking without stress.',
+    description: 'Simple recipes, the five-spice kitchen, heat control, and unhurried cooking.',
   },
   {
     id: 'work',
     label: 'WORK',
     icon: Briefcase,
-    description: 'Career crossroads, startup hurdles, organisational politics, and founder solitude.',
+    description: 'Career progression, startup reality, boardroom dynamics, and leadership without ego.',
   },
 ];
 
 export default function Letterbox() {
-  const [selectedCategory, setSelectedCategory] = useState('heart');
+  const [selectedCategory, setSelectedCategory] = useState('life');
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
@@ -71,11 +71,11 @@ export default function Letterbox() {
           </div>
 
           <h2 className="font-serif text-3xl sm:text-5xl font-black text-ink-900 dark:text-white leading-tight drop-shadow-sm">
-            A Question for the Table.
+            Letters to Vivek.
           </h2>
 
           <p className="text-sm sm:text-base text-ink-800 dark:text-ink-200 font-medium leading-relaxed bg-white/75 dark:bg-canvas-dark/75 backdrop-blur-sm rounded-2xl py-3 px-5 inline-block shadow-sm">
-            An open letterbox across Life, Food, and Work. Whether you are untangling a difficult relationship, trying to discover an easy recipe, or navigating a brutal career crossroad, write to me directly. Selected letters are answered every Sunday, giving priority to questions carrying the greatest urgency, emotional weight, or genuine need.
+            An open desk for your questions across life, cooking, and work. Vivek answers selected letters every Sunday morning, with Lakhnawi warmth, practical perspective, and zero corporate nonsense.
           </p>
         </div>
 

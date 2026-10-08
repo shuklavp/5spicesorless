@@ -3,7 +3,7 @@ import { ArrowRight, Check, Compass, ShieldCheck, Sparkles, Send } from 'lucide-
 
 const ADVISORY_MODES = [
   {
-    title: 'The Fractional Operator',
+    title: 'Hands on Operator',
     focus: 'Operational De-cluttering & GTM Discipline',
     cadence: 'Embedded Executive Engagement',
     description:
@@ -237,7 +237,7 @@ export default function ConsultingModule() {
                     className="w-full px-4 py-3 rounded-xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600 transition-colors"
                   >
                     <option value="A Ben to Your Jules (Founder Confidant)">A Ben to Your Jules (Founder Confidant)</option>
-                    <option value="The Fractional Operator">The Fractional Operator (Operational Cleanup)</option>
+                    <option value="Hands on Operator">Hands on Operator (Operational Cleanup)</option>
                     <option value="Entrepreneur in Residence (EIR)">Entrepreneur in Residence (EIR / Venture Studio)</option>
                     <option value="Informal / Just want some advice">Informal / Just need guidance or advice</option>
                   </select>
