@@ -12,13 +12,13 @@ const CATEGORIES = [
     id: 'food',
     label: 'FOOD',
     icon: Utensils,
-    description: 'Simple recipes, the five-spice kitchen, heat control, and unhurried cooking.',
+    description: 'Five-spice recipes, aroma and heat control, rescuing dishes, and the joy of honest cooking.',
   },
   {
     id: 'work',
     label: 'WORK',
     icon: Briefcase,
-    description: 'Career progression, startup reality, boardroom dynamics, and leadership without ego.',
+    description: 'Career crossroads, navigating politics, early startups, fundraising, and boardroom reality.',
   },
 ];
 
@@ -47,11 +47,13 @@ export default function Letterbox() {
       
       {/* Panoramic Streetscape Architectural Background */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
+        {/* Light Mode: Cobalt Blue Ink on Transparent Background */}
         <img
           src="/streetscape-sketch.png"
           alt="Vintage Streetscape with Letterbox"
           className="w-full h-full object-cover object-top opacity-75 mix-blend-multiply dark:hidden transition-opacity"
         />
+        {/* Dark Mode: Crisp Silver-Blue Line Art on Transparent Background */}
         <img
           src="/streetscape-sketch-dark.png"
           alt="Vintage Streetscape with Letterbox"
@@ -205,7 +207,7 @@ export default function Letterbox() {
                   required
                   value={formData.question}
                   onChange={(e) => setFormData({ ...formData, question: e.target.value })}
-                  placeholder="Ask me anything: how to navigate a delicate career crossroad, what a personal setback taught you, or how to rescue a split dal. Be as unvarnished as you like..."
+                  placeholder="Ask me anything: how to navigate a delicate career crossroad, why romantic love breaks us and rebuilds us, or how to fix a bitter dal with simple kitchen physics. Be as unvarnished as you like..."
                   className="w-full px-4 py-3 rounded-xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600 transition-colors resize-none leading-relaxed shadow-inner"
                 />
               </div>

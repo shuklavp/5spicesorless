@@ -3,7 +3,7 @@ import { ArrowRight, Check, Compass, ShieldCheck, Sparkles, Send } from 'lucide-
 
 const ADVISORY_MODES = [
   {
-    title: 'Hands on Operator',
+    title: 'Fractional Leadership',
     focus: 'Operational De-cluttering & GTM Discipline',
     cadence: 'Embedded Executive Engagement',
     description:
