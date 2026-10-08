@@ -26,7 +26,7 @@ export default function Footer() {
             </div>
 
             <blockquote className="font-serif text-2xl sm:text-4xl text-white font-bold leading-snug">
-              "True mastery is subtractive. The amateur adds ingredients to mask poor technique. The master uses only what is essential, and executes with quiet confidence."
+              "True mastery is the ability to simplify complexity. Amateurs, and even the most seasoned practitioners, add ingredients to mask poor technique. The master uses only what is essential, and executes with quiet confidence."
             </blockquote>
             
             <p className="mt-6 text-sm text-ink-300 font-light max-w-xl leading-relaxed">
@@ -80,7 +80,7 @@ export default function Footer() {
             </div>
             
             <p className="text-sm text-ink-600 dark:text-ink-200 font-light leading-relaxed max-w-md mb-6">
-              A brief, high-signal weekly memo sent every Sunday morning. One tactical business framework, one life lesson on subtraction, and one minimalist recipe or culinary observation.
+              A brief, rich weekly email sent every Sunday morning. One tactical business framework, one life lesson, one minimalist recipe, or simply a timely common-sense reminder.
             </p>
 
             {subscribed ? (
@@ -218,8 +218,6 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} 5 Spices or Less, Vivek Shukla. All rights reserved.</p>
           <div className="flex items-center gap-4">
             <span>Lucknow Roots, Global Connections</span>
-            <span>·</span>
-            <span>Crafted with Vite, React, and Tailwind</span>
           </div>
         </div>
       </div>
