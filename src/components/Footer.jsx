@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, Check, Flame, Linkedin, Mail } from 'lucide-react';
+import { ArrowUpRight, Check, Flame, Linkedin } from 'lucide-react';
 
 export default function Footer() {
   const [email, setEmail] = useState('');

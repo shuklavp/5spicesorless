@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Feather, Utensils, Briefcase, ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const DESKS = [
   {
@@ -93,7 +93,7 @@ export default function ValueProps() {
                 id={item.id}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className={`relative rounded-3xl p-8 bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder border-t-4 ${item.accentColor} transition-all duration-300 flex flex-col justify-between shadow-sm ${
+                className={`relative rounded-3xl p-8 bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder border-t-4 scroll-mt-28 ${item.accentColor} transition-all duration-300 flex flex-col justify-between shadow-sm ${
                   isHovered
                     ? 'shadow-xl -translate-y-1 border-canvas-border dark:border-canvas-darkBorder'
                     : ''

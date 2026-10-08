@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, BookOpen, Check, Clock, Copy, Feather, Sparkles, X } from 'lucide-react';
+import { ArrowUpRight, Check, Clock, Copy, X } from 'lucide-react';
 import { ESSAYS_DATA } from '../data/essays';
 
 export default function WritingBoard() {

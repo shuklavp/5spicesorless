@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, Check, Compass, HeartHandshake, ShieldCheck, Sparkles, Send, Users, Rocket } from 'lucide-react';
+import { ArrowRight, Check, Compass, ShieldCheck, Sparkles, Send } from 'lucide-react';
 
 const ADVISORY_MODES = [
   {
