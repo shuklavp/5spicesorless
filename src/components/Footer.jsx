@@ -14,10 +14,10 @@ export default function Footer() {
     <footer id="manifesto" className="bg-canvas-subtle dark:bg-canvas-dark text-ink-800 dark:text-ink-100 border-t border-canvas-border dark:border-canvas-darkBorder pt-20 pb-16 px-6 md:px-12 relative overflow-hidden transition-colors duration-300">
       <div className="max-w-6xl mx-auto">
         {/* The Manifesto Banner */}
-        <div className="p-8 sm:p-14 rounded-3xl bg-ink-900 text-white border border-ink-800 mb-20 relative shadow-2xl overflow-hidden">
+        <div className="p-8 sm:p-14 rounded-3xl bg-ink-900 text-white border border-ink-800 mb-20 relative shadow-2xl overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="absolute top-0 right-0 w-80 h-80 bg-berry-600/15 rounded-full blur-[100px] pointer-events-none" />
           
-          <div className="max-w-3xl relative z-10">
+          <div className="max-w-2xl relative z-10">
             <div className="flex items-center gap-2 mb-3">
               <span className="w-2 h-2 rounded-full bg-berry-400" />
               <span className="text-xs font-mono uppercase tracking-widest text-berry-400 font-bold">
@@ -32,6 +32,15 @@ export default function Footer() {
             <p className="mt-6 text-sm text-ink-300 font-light max-w-xl leading-relaxed">
               Whether seasoning a humble pot of lentils, refining a company strategy, or structuring your days: fewer levers, deeper focus, enduring outcomes.
             </p>
+          </div>
+
+          {/* Heavy Stone Mortar and Pestle Sketch */}
+          <div className="w-44 sm:w-56 shrink-0 relative z-10 select-none pointer-events-none">
+            <img
+              src="/mortar-pestle-dark.png"
+              alt="Traditional Stone Mortar and Pestle Sketch"
+              className="w-full h-auto object-contain opacity-95 drop-shadow-lg"
+            />
           </div>
         </div>
 
@@ -208,7 +217,7 @@ export default function Footer() {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-ink-500 dark:text-ink-400 gap-4 font-medium">
           <p>© {new Date().getFullYear()} 5 Spices or Less, Vivek Shukla. All rights reserved.</p>
           <div className="flex items-center gap-4">
-            <span>Lucknow roots</span>
+            <span>Lucknow Roots, Global Connections</span>
             <span>·</span>
             <span>Crafted with Vite, React, and Tailwind</span>
           </div>
