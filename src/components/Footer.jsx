@@ -1,13 +1,20 @@
 import React, { useState } from 'react';
 import { ArrowUpRight, Check, Flame, Linkedin } from 'lucide-react';
 
-export default function Footer() {
+export default function Footer({ onNavigate }) {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
   const handleSubscribe = (e) => {
     e.preventDefault();
     if (email) setSubscribed(true);
+  };
+
+  const handleLinkClick = (e, path) => {
+    if (onNavigate) {
+      e.preventDefault();
+      onNavigate(path);
+    }
   };
 
   return (
@@ -26,7 +33,7 @@ export default function Footer() {
             </div>
 
             <blockquote className="font-serif text-2xl sm:text-4xl text-white font-bold leading-snug">
-              "True mastery is the ability to simplify complexity. Amateurs, and even the most seasoned practitioners, add ingredients to mask poor technique. The master uses only what is essential, and executes with quiet confidence."
+              "True mastery is subtractive. The amateur adds ingredients to mask poor technique. The master uses only what is essential, and executes with quiet confidence."
             </blockquote>
             
             <p className="mt-6 text-sm text-ink-300 font-light max-w-xl leading-relaxed">
@@ -40,6 +47,9 @@ export default function Footer() {
               src="/mortar-pestle-dark.png"
               alt="Stone Mortar and Pestle on Wooden Kitchen Counter with Spices"
               className="w-full h-auto object-contain rounded-2xl"
+              onError={(e) => {
+                e.currentTarget.parentElement.style.display = 'none';
+              }}
             />
           </div>
         </div>
@@ -115,42 +125,74 @@ export default function Footer() {
               </span>
               <ul className="space-y-2.5 text-xs sm:text-sm text-ink-600 dark:text-ink-200 font-medium">
                 <li>
-                  <a href="#hero" className="hover:text-berry-600 transition-colors">
+                  <a
+                    href="/#hero"
+                    onClick={(e) => handleLinkClick(e, '/#hero')}
+                    className="hover:text-berry-600 transition-colors"
+                  >
                     Back to Top
                   </a>
                 </li>
                 <li>
-                  <a href="#life" className="hover:text-berry-600 transition-colors">
+                  <a
+                    href="/life"
+                    onClick={(e) => handleLinkClick(e, '/life')}
+                    className="hover:text-berry-600 transition-colors"
+                  >
                     Life
                   </a>
                 </li>
                 <li>
-                  <a href="#food" className="hover:text-berry-600 transition-colors">
+                  <a
+                    href="/food"
+                    onClick={(e) => handleLinkClick(e, '/food')}
+                    className="hover:text-berry-600 transition-colors"
+                  >
                     Food
                   </a>
                 </li>
                 <li>
-                  <a href="#work" className="hover:text-berry-600 transition-colors">
+                  <a
+                    href="/work"
+                    onClick={(e) => handleLinkClick(e, '/work')}
+                    className="hover:text-berry-600 transition-colors"
+                  >
                     Work
                   </a>
                 </li>
                 <li>
-                  <a href="#writing" className="hover:text-berry-600 transition-colors">
+                  <a
+                    href="/stories"
+                    onClick={(e) => handleLinkClick(e, '/stories')}
+                    className="hover:text-berry-600 transition-colors"
+                  >
                     Stories &amp; Essays
                   </a>
                 </li>
                 <li>
-                  <a href="#letterbox" className="hover:text-berry-600 transition-colors">
+                  <a
+                    href="/#letterbox"
+                    onClick={(e) => handleLinkClick(e, '/#letterbox')}
+                    className="hover:text-berry-600 transition-colors"
+                  >
                     The Letterbox
                   </a>
                 </li>
                 <li>
-                  <a href="#consulting" className="hover:text-berry-600 transition-colors">
+                  <a
+                    href="/#consulting"
+                    onClick={(e) => handleLinkClick(e, '/#consulting')}
+                    className="hover:text-berry-600 transition-colors"
+                  >
                     Advisory ("Ben to Jules")
                   </a>
                 </li>
                 <li>
-                  <a href="#profile" className="hover:text-berry-600 transition-colors">
+                  <a
+                    href="/#profile"
+                    onClick={(e) => handleLinkClick(e, '/#profile')}
+                    className="hover:text-berry-600 transition-colors"
+                  >
                     About Vivek
                   </a>
                 </li>
@@ -217,7 +259,7 @@ export default function Footer() {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-ink-500 dark:text-ink-400 gap-4 font-medium">
           <p>© {new Date().getFullYear()} 5 Spices or Less, Vivek Shukla. All rights reserved.</p>
           <div className="flex items-center gap-4">
-            <span>Lucknow Roots, Global Connections</span>
+            <span>Lucknow roots · Crafted with Vite, React, and Tailwind</span>
           </div>
         </div>
       </div>

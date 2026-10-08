@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowUpRight, Flame, Menu, Moon, Sun, X } from 'lucide-react';
 
-export default function Navbar({ onOpenInquiry, isDark, onToggleTheme }) {
+export default function Navbar({ onOpenInquiry, isDark, onToggleTheme, onNavigate, currentPath }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -17,6 +17,12 @@ export default function Navbar({ onOpenInquiry, isDark, onToggleTheme }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleLinkClick = (e, path) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    onNavigate(path);
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 py-3 md:px-8">
       <nav
@@ -26,12 +32,16 @@ export default function Navbar({ onOpenInquiry, isDark, onToggleTheme }) {
             : 'max-w-7xl bg-transparent border-b border-canvas-border/80 dark:border-canvas-darkBorder/60 py-3 px-2'
         }`}
       >
-        {/* Brand Logo (Scaled ~2x) */}
-        <a href="#hero" className="flex items-center group py-1">
+        {/* Brand Logo */}
+        <a
+          href="/"
+          onClick={(e) => handleLinkClick(e, '/')}
+          className="flex items-center group py-1"
+        >
           <img
             src={isDark ? "/logo_dark.png" : "/logo.png"}
             alt="5 Spices or Less"
-            className="h-12 sm:h-14 md:h-16 w-auto object-contain transition-all duration-300 group-hover:scale-105"
+            className="h-11 sm:h-12 w-auto object-contain transition-all duration-300 group-hover:scale-105"
             onError={(e) => {
               e.currentTarget.style.display = 'none';
               const fallback = document.getElementById('navbar-text-fallback');
@@ -39,7 +49,6 @@ export default function Navbar({ onOpenInquiry, isDark, onToggleTheme }) {
             }}
           />
 
-          {/* Fallback if image is missing */}
           <div id="navbar-text-fallback" className="hidden items-center gap-2.5">
             <div className="relative w-10 h-10 rounded-lg bg-ink-900 dark:bg-berry-600 flex items-center justify-center text-white shadow-sm shrink-0">
               <Flame className="w-5 h-5 text-berry-400 dark:text-white" />
@@ -55,53 +64,68 @@ export default function Navbar({ onOpenInquiry, isDark, onToggleTheme }) {
           </div>
         </a>
 
-        {/* Desktop Navigation Links: Life, Food, Work, Stories, Letterbox, Advisory, About */}
+        {/* Desktop Navigation Links */}
         <div className="hidden md:flex items-center gap-5 text-sm font-medium text-ink-700 dark:text-ink-200">
           <a
-            href="#life"
-            className="hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
+            href="/life"
+            onClick={(e) => handleLinkClick(e, '/life')}
+            className={`hover:text-berry-600 dark:hover:text-berry-400 transition-colors ${
+              currentPath === '/life' ? 'text-berry-600 dark:text-berry-400 font-bold' : ''
+            }`}
           >
             Life
           </a>
           <a
-            href="#food"
-            className="hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
+            href="/food"
+            onClick={(e) => handleLinkClick(e, '/food')}
+            className={`hover:text-berry-600 dark:hover:text-berry-400 transition-colors ${
+              currentPath === '/food' ? 'text-berry-600 dark:text-berry-400 font-bold' : ''
+            }`}
           >
             Food
           </a>
           <a
-            href="#work"
-            className="hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
+            href="/work"
+            onClick={(e) => handleLinkClick(e, '/work')}
+            className={`hover:text-berry-600 dark:hover:text-berry-400 transition-colors ${
+              currentPath === '/work' ? 'text-berry-600 dark:text-berry-400 font-bold' : ''
+            }`}
           >
             Work
           </a>
           <a
-            href="#writing"
-            className="hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
+            href="/stories"
+            onClick={(e) => handleLinkClick(e, '/stories')}
+            className={`hover:text-berry-600 dark:hover:text-berry-400 transition-colors ${
+              currentPath === '/stories' ? 'text-berry-600 dark:text-berry-400 font-bold' : ''
+            }`}
           >
             Stories
           </a>
           <a
-            href="#letterbox"
+            href="/#letterbox"
+            onClick={(e) => handleLinkClick(e, '/#letterbox')}
             className="hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
           >
             Letterbox
           </a>
           <a
-            href="#consulting"
+            href="/#consulting"
+            onClick={(e) => handleLinkClick(e, '/#consulting')}
             className="hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
           >
             Advisory
           </a>
           <a
-            href="#profile"
+            href="/#profile"
+            onClick={(e) => handleLinkClick(e, '/#profile')}
             className="hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
           >
             About
           </a>
         </div>
 
-        {/* Actions, X (Twitter) Link & Theme Toggle */}
+        {/* Actions & Theme Toggle */}
         <div className="hidden md:flex items-center gap-2.5">
           <a
             href="https://x.com/5spicesorless"
@@ -126,7 +150,10 @@ export default function Navbar({ onOpenInquiry, isDark, onToggleTheme }) {
           </button>
 
           <button
-            onClick={onOpenInquiry}
+            onClick={() => {
+              onNavigate('/#intake-form');
+              onOpenInquiry();
+            }}
             className="group rounded-full bg-berry-600 hover:bg-berry-700 text-white px-5 py-2.5 text-xs font-semibold tracking-wide transition-all shadow-md shadow-berry-600/20 hover:scale-[1.02] active:scale-[0.98] flex items-center gap-1.5"
           >
             <span>Consulting Inquiry</span>
@@ -171,50 +198,50 @@ export default function Navbar({ onOpenInquiry, isDark, onToggleTheme }) {
         <div className="md:hidden mt-2 mx-auto max-w-lg bg-white/98 dark:bg-canvas-darkCard/98 backdrop-blur-2xl border border-canvas-border dark:border-canvas-darkBorder rounded-2xl p-6 shadow-2xl space-y-4">
           <div className="flex flex-col space-y-3 text-base font-medium text-ink-800 dark:text-white">
             <a
-              href="#life"
-              onClick={() => setMobileMenuOpen(false)}
+              href="/life"
+              onClick={(e) => handleLinkClick(e, '/life')}
               className="py-1 hover:text-berry-600 transition-colors"
             >
               Life
             </a>
             <a
-              href="#food"
-              onClick={() => setMobileMenuOpen(false)}
+              href="/food"
+              onClick={(e) => handleLinkClick(e, '/food')}
               className="py-1 hover:text-berry-600 transition-colors"
             >
               Food
             </a>
             <a
-              href="#work"
-              onClick={() => setMobileMenuOpen(false)}
+              href="/work"
+              onClick={(e) => handleLinkClick(e, '/work')}
               className="py-1 hover:text-berry-600 transition-colors"
             >
               Work
             </a>
             <a
-              href="#writing"
-              onClick={() => setMobileMenuOpen(false)}
+              href="/stories"
+              onClick={(e) => handleLinkClick(e, '/stories')}
               className="py-1 hover:text-berry-600 transition-colors"
             >
               Stories
             </a>
             <a
-              href="#letterbox"
-              onClick={() => setMobileMenuOpen(false)}
+              href="/#letterbox"
+              onClick={(e) => handleLinkClick(e, '/#letterbox')}
               className="py-1 hover:text-berry-600 transition-colors"
             >
               Letterbox
             </a>
             <a
-              href="#consulting"
-              onClick={() => setMobileMenuOpen(false)}
+              href="/#consulting"
+              onClick={(e) => handleLinkClick(e, '/#consulting')}
               className="py-1 hover:text-berry-600 transition-colors"
             >
               Advisory
             </a>
             <a
-              href="#profile"
-              onClick={() => setMobileMenuOpen(false)}
+              href="/#profile"
+              onClick={(e) => handleLinkClick(e, '/#profile')}
               className="py-1 hover:text-berry-600 transition-colors"
             >
               About
@@ -223,6 +250,7 @@ export default function Navbar({ onOpenInquiry, isDark, onToggleTheme }) {
           <button
             onClick={() => {
               setMobileMenuOpen(false);
+              onNavigate('/#intake-form');
               onOpenInquiry();
             }}
             className="w-full text-center rounded-xl bg-berry-600 hover:bg-berry-700 text-white py-3 text-sm font-semibold tracking-wide shadow-md"

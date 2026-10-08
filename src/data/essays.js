@@ -1,9 +1,11 @@
 export const ESSAYS_DATA = [
   {
     id: 'waking-up-declared-dead',
+    slug: 'waking-up-declared-dead',
     title: 'Declared Dead at 27: What a 10-Hour Surgery and Relearning to Speak Taught Me',
     subtitle: 'On losing memory, motor skills, and vanity, and discovering that survival is an act of daily subtraction.',
     category: 'Life',
+    tags: ['Recovery', 'Perspective', 'Patience', 'Health', 'Resilience'],
     readTime: '7 min read',
     date: 'Autumn 2026',
     author: 'Vivek Shukla',
@@ -32,21 +34,23 @@ Against medical expectations, I regained speech, motor precision, and mental acu
   },
   {
     id: 'category-creation-water-exit',
+    slug: 'category-creation-water-exit',
     title: 'The $4.5M Category Creation: Building, Scaling, and Exiting with Honour',
-    subtitle: 'How we built water sub-metering in India across 4 offices and 165+ people, and chose shareholder duty over founder vanity.',
+    subtitle: 'How we built water sub-metering in India across 4 offices and 160+ people, and chose shareholder duty over founder vanity.',
     category: 'Work',
+    tags: ['Category Creation', 'Startups', 'Clean Exit', 'Governance', 'Operations'],
     readTime: '6 min read',
     date: 'October 2026',
     author: 'Vivek Shukla',
     leadQuote: 'True success in entrepreneurship is not a paper valuation; it is taking bold risks, backing your people, and keeping faith with those who trusted you with their capital.',
     takeaways: [
       'Creating an entirely new category requires educating the market, not just selling a product.',
-      'Managing 165+ employees across 4 cities taught me that simplicity in reporting beats 50-page dashboards.',
+      'Managing 160+ employees across 4 cities taught me that simplicity in reporting beats 50-page dashboards.',
       'Exiting for the benefit of shareholders, even without personal financial windfalls, is the ultimate test of fiduciary integrity.',
     ],
     markdownBody: `When we began, nobody in India believed that individual apartment water sub-metering was an investable or viable business. Water was considered an unmetered public entitlement.
 
-Over the next several years, we didn't just build a startup, we created an entire industry category from scratch. We raised $4.5M from marquee venture capital investors, set up operations across 4 regional offices, and grew our team to more than 165 passionate employees.
+Over the next several years, we didn't just build a startup, we created an entire industry category from scratch. We raised institutional venture capital (including Macquarie), set up operations across 4 regional offices, and grew our team to more than 160 passionate employees.
 
 ### The Operational Code: Less is More
 
@@ -64,9 +68,11 @@ In an ecosystem that often celebrates paper billionaires and vanity headlines, I
   },
   {
     id: 'the-deal-that-failed-max-kelly',
+    slug: 'the-deal-that-failed-max-kelly',
     title: 'The Deal That Failed, The Mentor Who Stayed: On Max Kelly, Macquarie, and the Art of Quiet Encouragement',
     subtitle: 'How an aborted partnership turned into an institutional fundraise, and what genuine mentorship looks like when the cameras are off.',
     category: 'Work',
+    tags: ['Mentorship', 'Fundraising', 'Macquarie', 'Venture Capital', 'Relationships'],
     readTime: '6 min read',
     date: 'October 2026',
     author: 'Vivek Shukla',
@@ -114,10 +120,51 @@ He did not let it drop. Week after week, he checked in, nudged, and challenged m
 This website, and every dispatch published under *5 Spices or Less*, exists because of that quiet insistence. Mentorship, at its finest, is not about teaching someone how to make more money. It is about believing in their voice before they have found the courage to speak.`,
   },
   {
+    id: 'hiring-without-hype',
+    slug: 'hiring-without-hype',
+    title: 'Hiring Without Hype: What 160 Interviews and Four Regional Offices Taught Me',
+    subtitle: 'Why the most dependable operators rarely have polished CVs, and how to spot quiet competence under fire.',
+    category: 'Work',
+    tags: ['Recruitment', 'Hiring', 'Startups', 'Culture', 'Leadership'],
+    readTime: '6 min read',
+    date: 'October 2026',
+    author: 'Vivek Shukla',
+    leadQuote: 'Never confuse articulacy with ability. The loudest candidate in the room is often the most fragile when the pan heats up.',
+    takeaways: [
+      'Polished CVs show good interview preparation, not operational grit.',
+      'Give candidates a real, broken scenario rather than asking standard interview trivia.',
+      'A hasty hire costs nine months of team momentum; leave the chair empty until genuine conviction strikes.',
+      'True culture is not ping-pong tables or performative values, it is how people treat each other during a crisis.',
+    ],
+    markdownBody: `When you build an enterprise that scales to 160+ people across four regional offices, you conduct hundreds of interviews. Early on, like most eager founders, I was seduced by pedigree, impeccable articulation, and corporate credentials.
+
+It took several painful hiring mistakes to cure me of that vanity.
+
+### The Mirage of Articulacy
+
+In a structured interview room, articulacy is cheap. Candidates rehearse answers to classic behavioural questions like actors memorising stage lines. But startups and high-friction operations are not staged plays; they are muddy construction sites where things break without warning.
+
+I began discarding standard questions entirely. Instead of asking: "Where do you see yourself in five years?", I started asking:
+
+*"Tell me about a time you gave your absolute best effort to a project, and it collapsed anyway. Whose fault was it, and what did you eat for dinner that night?"*
+
+The candidates who deflected, blamed colleagues, or delivered a sanitised non-answer were instantly filtered out. The candidates who paused, smiled ruefully, and walked me through their genuine frustration with quiet ownership were the ones who built our foundation.
+
+### Three Rules for Honest Hiring
+
+1. **Test with Broken Realities, Not Clean Puzzles**: Give the candidate a real customer complaint from last Tuesday or an unresolved supplier bottleneck. Watch how they think aloud, not whether they reach a textbook conclusion.
+2. **Beware the Trophy Hire**: A senior executive from a blue-chip company who is accustomed to armies of support staff will suffocate in an early-stage venture. Hire people whose natural reflex is to grab a broom when the floor gets dirty.
+3. **The Subtractive Filter**: If you have a nagging 10% doubt about cultural fit or integrity during the interview, that doubt will become a 90% disaster under real pressure. When in doubt, do not hire. The pain of an empty desk is far cheaper than the poison of the wrong occupant.
+
+At the end of the day, team building is like tempering cumin: rushing the heat burns the seed, and settling for cold oil gives you no flavour at all. Wait for the pan to be ready.`,
+  },
+  {
     id: 'food-and-the-five-spices',
+    slug: 'food-and-the-five-spices',
     title: 'The Five-Spice Chemistry: Why a Paris MBA and a Lucknow Kitchen Share the Same Physics',
     subtitle: 'Exceptional outcomes do not require forty ingredients. They require mastery over five.',
     category: 'Food',
+    tags: ['Culinary Alchemy', 'Kitchen Physics', 'Technique', 'Simplicity', 'Lucknow'],
     readTime: '5 min read',
     date: 'September 2026',
     author: 'Vivek Shukla',
@@ -145,9 +192,11 @@ This is the exact same discipline that governs a healthy marriage, an enduring p
   },
   {
     id: 'the-blue-skoda-story',
+    slug: 'the-blue-skoda-story',
     title: 'The Blue Skoda: A Short Story on Strangers, Mechanics, and Long Roads',
     subtitle: 'From Marutis to BMWs and Skodas, cars are never just machines; they are mirrors of the men who drive them.',
     category: 'Fiction',
+    tags: ['Fiction', 'Human Connections', 'The Open Road', 'Fatherhood', 'Patience'],
     readTime: '6 min read',
     date: 'August 2026',
     author: 'Vivek Shukla',

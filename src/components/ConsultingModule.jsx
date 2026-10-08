@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { ArrowRight, Check, Compass, ShieldCheck, Sparkles, Send } from 'lucide-react';
 
 const ADVISORY_MODES = [
@@ -7,11 +7,11 @@ const ADVISORY_MODES = [
     focus: 'Operational De-cluttering & GTM Discipline',
     cadence: 'Embedded Operator',
     description:
-      'Drawing on long corporate experience and running operations with 165+ people across 4 regional offices, I work alongside founders to cut through operational friction. We strip away bureaucratic clutter, install simple weekly reporting, and focus your team entirely on what moves the business forward.',
+      'Drawing on thirty years of corporate experience and managing operations with 160+ people across 4 regional offices, I work alongside founders to cut through operational friction. We remove bureaucratic clutter, install single-page decision memos over slides, and focus your team entirely on what moves the business forward.',
     deliverables: [
       'Diagnostic review of team bandwidth, roadmaps, and recurring syncs',
       'Installation of single-page decision memos over 50-slide decks',
-      'Go-to-market and marketing alignment with measurable unit economics',
+      'Go-to-market alignment with disciplined, sustainable unit economics',
       'Hands-on guidance through high-friction scaling inflection points',
     ],
   },
@@ -21,7 +21,7 @@ const ADVISORY_MODES = [
     focus: 'Category Creation & Early Validation',
     cadence: 'Venture Studio or Fund Partnership',
     description:
-      'Having pioneered an entire industry category in India ($4.5M raised, category creation in water sub-metering), I partner with venture studios, incubators, or family offices to evaluate market opportunities and pressure-test product viability.',
+      'Having pioneered an entire industry category in India (institutional backing from Macquarie, residential water sub-metering), I partner with venture studios, incubators, or family offices to evaluate market opportunities and pressure-test product viability.',
     deliverables: [
       'Category creation stress-testing and customer problem validation',
       'Early operational design and capital-efficient execution roadmaps',
@@ -31,21 +31,23 @@ const ADVISORY_MODES = [
   },
   {
     title: 'A Ben to Your Jules',
-    focus: 'Trusted Confidant for High-Agency CEOs',
+    focus: 'Trusted Confidant for High-Agency Founders',
     cadence: '1:1 Founder Mentoring',
     description:
-      'Like Robert De Niro in "The Intern", an ego-free, calm, deeply experienced veteran in your corner. Someone who has raised millions, survived being declared dead, weathered boardroom storms, and exited with honour, providing psychological safety and unvarnished judgment.',
+      'Like Robert De Niro in "The Intern", an ego-free, calm, deeply experienced veteran in your corner. Someone who has raised institutional venture capital, survived being declared dead, weathered boardroom storms, and exited with honour, providing psychological safety and unvarnished judgment.',
     deliverables: [
-      'Bi-weekly private strategy reviews (async & voice line)',
+      'Fortnightly private strategy reviews (async and voice line)',
       'Unbiased sounding board on co-founder tensions, hiring, and board dynamics',
       'Crisis perspective: helping you distinguish fatal risks from temporary noise',
-      'Strictly capped at 2 to 3 concurrent founder relationships',
+      'Strictly capped at two to three concurrent founder relationships',
     ],
   },
 ];
 
 export default function ConsultingModule() {
   const [submitted, setSubmitted] = useState(false);
+  const formLoadedAt = useRef(Date.now());
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -54,18 +56,47 @@ export default function ConsultingModule() {
     advisoryMode: 'A Ben to Your Jules (Founder Confidant)',
     timeline: 'Immediate (Next 2-4 weeks)',
     bottleneck: '',
+    hp_company_url: '', // Anti-spam honeypot
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Anti-spam 1: Honeypot check
+    if (formData.hp_company_url && formData.hp_company_url.trim() !== '') {
+      setSubmitted(true);
+      return;
+    }
+
+    // Anti-spam 2: Submission velocity check (minimum 2.5 seconds dwell time)
+    if (Date.now() - formLoadedAt.current < 2500) {
+      setSubmitted(true);
+      return;
+    }
+
     setSubmitted(true);
   };
 
+  const handleReset = () => {
+    setSubmitted(false);
+    formLoadedAt.current = Date.now();
+    setFormData({
+      name: '',
+      email: '',
+      venture: '',
+      stage: 'Seed / Series A',
+      advisoryMode: 'A Ben to Your Jules (Founder Confidant)',
+      timeline: 'Immediate (Next 2-4 weeks)',
+      bottleneck: '',
+      hp_company_url: '',
+    });
+  };
+
   return (
-    <section id="consulting" className="py-28 px-6 md:px-12 bg-[#BC5259] dark:bg-[#2A1417] relative border-t border-canvas-border dark:border-canvas-darkBorder transition-colors duration-300">
+    <section id="consulting" className="py-28 px-6 md:px-12 bg-[#BC5259] dark:bg-[#2A1417] relative border-t border-canvas-border dark:border-canvas-darkBorder transition-colors duration-300 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         
-        {/* Section Header: High-Contrast Editorial Style matching reference */}
+        {/* Section Header: Terracotta Editorial Style matching live site */}
         <div className="max-w-3xl mb-16 space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 dark:bg-white/10 border border-white/25 text-white text-xs font-mono font-bold uppercase tracking-wider backdrop-blur-sm">
             <Compass className="w-3.5 h-3.5 text-white" />
@@ -77,7 +108,7 @@ export default function ConsultingModule() {
           </h2>
 
           <p className="text-[#FDF2F4] dark:text-ink-200 font-normal text-base sm:text-lg leading-relaxed pt-2">
-            I don't deliver generic consulting decks. I partner with founders and leaders as an embedded operator, EIR, or steady confidant, helping you take bold risks while backing you completely.
+            I do not deliver generic consulting slide decks. I partner with founders and leaders as an embedded operator, EIR, or steady confidant, helping you take bold risks while backing you completely.
           </p>
         </div>
 
@@ -104,7 +135,7 @@ export default function ConsultingModule() {
                   {mode.title}
                 </h3>
                 
-                {/* Subtitle text without Focus prefix */}
+                {/* Subtitle text */}
                 <div className="text-xs font-mono text-ink-600 dark:text-ink-300 mb-6 pb-4 border-b border-canvas-border dark:border-canvas-darkBorder font-medium">
                   {mode.focus}
                 </div>
@@ -186,7 +217,7 @@ export default function ConsultingModule() {
                 Thank you for reaching out. I look forward to reading your note and connecting over an exploratory call.
               </p>
               <button
-                onClick={() => setSubmitted(false)}
+                onClick={handleReset}
                 className="mt-4 px-6 py-2 rounded-full bg-[#FAF8F5] dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder text-xs font-mono text-ink-800 dark:text-white font-semibold"
               >
                 Send another message
@@ -194,6 +225,21 @@ export default function ConsultingModule() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
+              
+              {/* Anti-Spam Honeypot Field */}
+              <div className="hidden" aria-hidden="true" style={{ display: 'none' }}>
+                <label htmlFor="hp_company_url">Do not fill this field</label>
+                <input
+                  type="text"
+                  id="hp_company_url"
+                  name="hp_company_url"
+                  tabIndex="-1"
+                  autoComplete="off"
+                  value={formData.hp_company_url}
+                  onChange={(e) => setFormData({ ...formData, hp_company_url: e.target.value })}
+                />
+              </div>
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-xs font-mono text-ink-800 dark:text-ink-200 font-semibold mb-2">
@@ -204,7 +250,7 @@ export default function ConsultingModule() {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="e.g. Sarah / Rahul"
+                    placeholder="e.g. Sarah or Rahul"
                     className="w-full px-4 py-3 rounded-xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-[#BC5259] transition-colors shadow-inner"
                   />
                 </div>

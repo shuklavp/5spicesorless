@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { ArrowUpRight, Check, Heart, Mail, Send, Utensils, Briefcase } from 'lucide-react';
 
 const CATEGORIES = [
@@ -26,20 +26,37 @@ export default function Letterbox() {
   const [selectedCategory, setSelectedCategory] = useState('life');
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const formLoadedAt = useRef(Date.now());
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     question: '',
+    hp_comment: '', // Invisible honeypot field
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Anti-spam 1: Honeypot trap check (bots blindly populate hidden inputs)
+    if (formData.hp_comment && formData.hp_comment.trim() !== '') {
+      setSubmitted(true);
+      return;
+    }
+
+    // Anti-spam 2: Submission velocity check (minimum 2.5 seconds dwell time)
+    if (Date.now() - formLoadedAt.current < 2500) {
+      setSubmitted(true);
+      return;
+    }
+
     setSubmitted(true);
   };
 
   const handleReset = () => {
     setSubmitted(false);
-    setFormData({ name: '', email: '', question: '' });
+    formLoadedAt.current = Date.now();
+    setFormData({ name: '', email: '', question: '', hp_comment: '' });
   };
 
   return (
@@ -69,14 +86,14 @@ export default function Letterbox() {
         <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 dark:bg-canvas-darkCard/95 border border-berry-200 dark:border-berry-900 text-berry-600 dark:text-berry-400 text-xs font-mono font-bold uppercase tracking-wider shadow-sm backdrop-blur-sm">
             <Mail className="w-3.5 h-3.5" />
-            <span>The Letterbox</span>
+            <span>THE LETTERBOX</span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-5xl font-black text-ink-900 dark:text-white leading-tight drop-shadow-sm">
             Letters to the Table.
           </h2>
 
-          <p className="text-sm sm:text-base text-ink-800 dark:text-ink-200 font-medium leading-relaxed bg-white/75 dark:bg-canvas-dark/75 backdrop-blur-sm rounded-2xl py-3 px-5 inline-block shadow-sm">
+          <p className="text-sm sm:text-base text-ink-800 dark:text-ink-200 font-medium leading-relaxed bg-white/80 dark:bg-canvas-dark/80 backdrop-blur-sm rounded-2xl py-3 px-5 inline-block shadow-sm">
             Whether you are grappling with personal perspective, trying to rescue a dish with five spices, or untangling a messy founder bottleneck: write in. One letter answered with care every Sunday.
           </p>
         </div>
@@ -116,6 +133,20 @@ export default function Letterbox() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-8">
               
+              {/* Anti-Spam Honeypot Field (Invisible to real humans, caught by automated scrapers) */}
+              <div className="hidden" aria-hidden="true" style={{ display: 'none' }}>
+                <label htmlFor="hp_comment">Do not fill this field</label>
+                <input
+                  type="text"
+                  id="hp_comment"
+                  name="hp_comment"
+                  tabIndex="-1"
+                  autoComplete="off"
+                  value={formData.hp_comment}
+                  onChange={(e) => setFormData({ ...formData, hp_comment: e.target.value })}
+                />
+              </div>
+
               {/* Category Selection Tabs */}
               <div>
                 <label className="block text-xs font-mono uppercase tracking-wider text-ink-700 dark:text-ink-300 font-bold mb-3">
