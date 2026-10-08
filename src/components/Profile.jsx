@@ -120,22 +120,22 @@ export default function Profile({ onOpenInquiry }) {
 
             <div className="space-y-5 text-sm sm:text-base text-ink-700 dark:text-ink-200 font-light leading-relaxed">
               <p>
-                My parents got the shock of their lives when they discovered I was running an active computer business from my bedroom during college. To them, I was the quiet, introverted boy who went to class and came straight home. In reality, my days were packed with friends, roadside chai and samosa (forever a priority), movies, all of them, and fiercely independent ideas. I have never fit neatly into a box, and I hold opinions that rarely agree with the herd. That is simply who I am.
+                My parents almost lost it when they realised I was running an active computer business right out of my bedroom during college. To them, I was just the quiet, introverted kid who went to class and came straight back home. But in reality, my days were packed with friends, roadside chai and samosas (an absolute non-negotiable), endless films, and plenty of independent ideas. I think those were the days of dreams and a relentless aspiration to make them happen.
               </p>
               <p>
-                My heart was just as adventurous. I fell in love three times with three extraordinary girls. After the second heartbreak shattered my peace, I opted for a radical cure: trading an aching chest for brain-breaking study, enrolling in B-school so marketing strategy could dull the pain.
+                While life itself was unfolding each day, I kept falling in love one after another. I fell in love three times with three amazing girls. After the second heartbreak completely threw me off balance, instead of going the 'Devdas way', I went for a pretty radical fix: trading an aching heart for intense study, enrolling in B-school so marketing strategy and economics could distract me from the pain.
               </p>
               <p>
-                In May 2004, with the degree almost in hand, I stepped between two fighting groups, and a heavy iron rod struck my skull. Pronounced beyond hope at the first clinic, a few stubborn souls rushed me to another surgical theatre where a marathon operation pulled me back from the edge. The doctors prescribed years of dark rooms, caution, and permanent limits. I ignored them completely. Driven by pure defiance, I mounted a ferocious, fast-paced recovery, forcing my mind and hands back into the game months ahead of schedule.
+                Then came May 2004. Right as I was wrapping up my degree, I tried to step in and break up a fight, only to take a heavy iron rod to the skull. I was practically pronounced dead on arrival at the first clinic, but a few persistent people rushed me to another hospital, where marathon surgery managed to bring me back from the edge. The doctors told me I'd need years of recovery, extreme caution, and would face permanent disability if I rushed into life. I had lost memory, speech, writing, and motor skills. I relearnt everything from scratch. Driven by pure defiance, I threw myself into a fast-tracked recovery, pushing my mind and body back into action months earlier than anyone expected.
               </p>
               <p>
-                I returned to work with a vengeance. I joined an early startup led by a wonderfully eccentric, flamboyant founder whose chaotic energy was infectious. Later, I moved to an online job portal under a boss of rare strategic brilliance, a man who could structure any problem on earth but rarely liked choosing a side of the fence. Our chemistry was undeniable: he hired me again when he transitioned, and when I set off to launch my own business, he retained me as a senior consultant at his new venture.
+                I jumped right back into work. First, I joined an early-stage startup run by a wonderfully eccentric, larger-than-life founder whose chaotic energy was totally infectious. Later, I moved to an online job portal owned by a media house, and under a boss who was a strategic genius, someone who could break down any complex problem on earth, even if he rarely liked taking a definitive stance. We hit it off immediately: he brought me along when he transitioned to his next role, and when I stepped out to launch my own venture, he kept me on as a senior consultant.
               </p>
               <p>
-                For the next two years, I led a double life. While architecting a medical insurance pre-authorisation system for his firm, I was grinding through the brutal reality of an IoT hardware startup. We created the category of water sub-metering in India, raised venture funds, introduced Metering-as-a-Service, scaled across four cities, and delivered an orderly exit for our investors.
+                For the next two years, I essentially lived a double life. On one hand, I was building a medical insurance pre-authorisation platform for his firm; on the other, I was in the trenches running an IoT hardware startup. We pioneered the water sub-metering category in India, raised venture funding, introduced Metering-as-a-Service, expanded across four major cities, and eventually engineered a successful exit for our investors.
               </p>
               <p>
-                That journey brought me full circle to two abiding convictions: first, how little any of us truly knows, and second, how much hard-won perspective I need to write down and pass along before my time is up.
+                Looking back, that entire journey left me with two big takeaways: first, just how little any of us really know, and second, how important it is to document and share these hard-won lessons while I still can.
               </p>
             </div>
 
