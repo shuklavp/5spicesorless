@@ -222,7 +222,7 @@ export default function Hero({ onOpenInquiry }) {
                     <img
                       src={pillar.primaryImage}
                       alt={pillar.name}
-                      className="w-full h-full object-contain opacity-95 group-hover:opacity-100 dark:hidden"
+                      className="w-full h-full object-contain mix-blend-multiply opacity-95 group-hover:opacity-100 dark:hidden"
                       onError={(e) => {
                         if (!e.currentTarget.dataset.triedSecondary) {
                           e.currentTarget.dataset.triedSecondary = 'true';
@@ -258,7 +258,7 @@ export default function Hero({ onOpenInquiry }) {
                 <img
                   src={displayedPillar.primaryImage}
                   alt={displayedPillar.name}
-                  className="w-full h-full object-contain dark:hidden"
+                  className="w-full h-full object-contain mix-blend-multiply dark:hidden"
                   onError={(e) => {
                     if (!e.currentTarget.dataset.triedSecondary) {
                       e.currentTarget.dataset.triedSecondary = 'true';

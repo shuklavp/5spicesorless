@@ -50,7 +50,7 @@ export default function Letterbox() {
         <img
           src="/streetscape-sketch.png"
           alt="Vintage Streetscape with Letterbox"
-          className="w-full h-full object-cover object-top opacity-75 dark:hidden transition-opacity"
+          className="w-full h-full object-cover object-top opacity-75 mix-blend-multiply dark:hidden transition-opacity"
         />
         <img
           src="/streetscape-sketch-dark.png"
