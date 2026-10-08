@@ -34,12 +34,12 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Heavy Stone Mortar and Pestle Sketch */}
-          <div className="w-44 sm:w-56 shrink-0 relative z-10 select-none pointer-events-none">
+          {/* Stone Mortar and Pestle on Kitchen Counter */}
+          <div className="w-56 sm:w-72 md:w-80 shrink-0 relative z-10 select-none pointer-events-none">
             <img
               src="/mortar-pestle-dark.png"
-              alt="Traditional Stone Mortar and Pestle Sketch"
-              className="w-full h-auto object-contain opacity-95 drop-shadow-lg"
+              alt="Stone Mortar and Pestle on Wooden Kitchen Counter with Spices"
+              className="w-full h-auto object-contain rounded-2xl"
             />
           </div>
         </div>
