@@ -46,7 +46,7 @@ export default function Profile({ onOpenInquiry }) {
                   onError={(e) => {
                     e.currentTarget.style.display = 'none';
                   }}
-                  className="absolute inset-0 w-full h-full object-cover grayscale contrast-125 transition-transform duration-500 group-hover:scale-105"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
 
