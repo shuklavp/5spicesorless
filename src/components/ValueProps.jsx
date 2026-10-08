@@ -5,10 +5,10 @@ const DESKS = [
   {
     id: 'life',
     number: '01',
-    kicker: 'THE HUMAN CONDITION',
-    title: 'Love, Heartbreak, and Perspective',
+    kicker: 'LIFE',
+    title: 'Life, Relationships, & Perspective',
     summary:
-      'Personal reflections on why everyone ought to fall in love at least once, how romantic devotion reshapes character, and how to navigate heartbreak without cynicism. Quiet lessons on relationships, marriage, and the realisation that almost everything modern humans fret about is completely trivial.',
+      'Life has a quiet way of teaching us through joy, mistakes, and bruised ribs. I do not write to give romantic advice or pretend to be wise. I write about what thirty years of living, being a husband, raising a daughter, and surviving near-fatal odds have taught me about becoming a better, kinder human being. Simple reflections on patience, fatherhood, and keeping your dignity intact.',
     expectations: [
       'Why everyone should fall in love at least once in their lifetime',
       'The quiet wisdom of long devotion and arranged partnerships',
@@ -23,16 +23,16 @@ const DESKS = [
   {
     id: 'food',
     number: '02',
-    kicker: 'THE 5-SPICE KITCHEN',
-    title: 'One Recipe a Week, Built on Restraint',
+    kicker: 'FOOD',
+    title: 'One Simple Recipe a Week',
     summary:
-      'Exceptional food is never made by cluttering the pot with forty powders. Restraint is confidence. One honest, comforting recipe published every week using five spices or fewer and humble pantry staples. Real dishes for real tables, focusing on heat control, oil temperature, and the patience to let flavour bloom.',
+      'In Lucknow, where I come from, the nose makes the final judgment before the tongue ever gets a turn. Great food does not need thirty jars of spices. It needs good aroma, deliberate heat, and simple steps. I cook purely for the joy of it, using five spices or fewer. Every fortnight, I share one simple, comforting recipe that anyone can master.',
     expectations: [
       'One foolproof, tested recipe published every week',
       'Mastering the 5-spice alchemy from Cumin to Aromatics',
       'How deliberate cooking clears and calms a cluttered executive mind',
     ],
-    cadence: 'Weekly on Sunday',
+    cadence: 'Fortnightly Recipe & Technique',
     cta: 'Explore Food Recipes',
     href: '#writing',
     accentColor: 'border-t-cobalt-600',
@@ -41,16 +41,16 @@ const DESKS = [
   {
     id: 'work',
     number: '03',
-    kicker: 'OPERATOR FIELD NOTES',
-    title: 'Career Mastery, Startups, and Boardrooms',
+    kicker: 'WORK',
+    title: 'Career, Startups & Boardrooms',
     summary:
-      'Thirty years of hard-won field notes from the arena: how to progress in a career, navigate complex organisations, hire without ego, and win customers. Real-world playbooks on fundraising without delusion, building punishing hardware, managing investors and boards, and knowing when to exit.',
+      'Thirty years of enterprise leaves behind an awful lot of hard-won scars and practical lessons. From assembling computers in my bedroom to navigating boardroom politics, scaling hardware startups, and managing exits, I have seen what works and what is pure theatre. I share a weekly note on career navigation, practical leadership, and cutting through operational noise.',
     expectations: [
       'How to navigate organisational politics and accelerate career growth',
       'Building from zero: customer acquisition, hiring, and unit economics',
       'Investor relations, board dynamics, and the discipline of clean exits',
     ],
-    cadence: 'Monthly Deep Dives',
+    cadence: 'Weekly Field Note on Sunday',
     cta: 'Explore Work Dispatches',
     href: '#writing',
     accentColor: 'border-t-ink-900 dark:border-t-white',
@@ -62,7 +62,7 @@ export default function ValueProps() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <section id="philosophy" className="py-24 px-6 md:px-12 bg-canvas-subtle dark:bg-canvas-dark relative border-t border-canvas-border dark:border-canvas-darkBorder transition-colors duration-300">
+    <section id="philosophy" className="py-24 px-6 md:px-12 bg-[#E6E9EF] dark:bg-canvas-dark relative border-t border-canvas-border dark:border-canvas-darkBorder transition-colors duration-300">
       <div className="max-w-6xl mx-auto">
         
         {/* Section Header: The Reader's Contract */}
@@ -78,8 +78,8 @@ export default function ValueProps() {
               What You Will Find Here.
             </h2>
           </div>
-          <p className="text-ink-700 dark:text-ink-200 font-normal max-w-md text-sm sm:text-base leading-relaxed">
-            A quiet sanctuary for thoughtful living, honest cooking, and clear-headed enterprise. Here is the contract with my readers and what you can expect from each shelf.
+          <p className="text-ink-700 dark:text-ink-200 font-normal max-w-lg text-sm sm:text-base leading-relaxed">
+            I write about Life, Food, and Work drawn directly from thirty years of living, making mistakes, and surviving rather unusual odds. Writing helps me make sense of it all, and sharing it might help you navigate your own journey with a little more calm and a lot less clutter.
           </p>
         </div>
 
