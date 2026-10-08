@@ -14,6 +14,7 @@ const SPICE_PILLARS = [
     metaphor: 'Cumin (The Foundation)',
     primaryImage: '/cumin.png',
     secondaryImage: '/spices/cumin.png',
+    darkImage: '/cumin-dark.png',
     principle: 'A good dish begins with cumin tempered at just the right heat. Cold oil extracts nothing, while smoking oil burns it black. The same patience governs life, love, and work. Get the foundation right, and the rest follows rather nicely.',
   },
   {
@@ -23,6 +24,7 @@ const SPICE_PILLARS = [
     metaphor: 'Turmeric (The Purifier)',
     primaryImage: '/turmeric.png',
     secondaryImage: '/spices/turmeric.png',
+    darkImage: '/turmeric-dark.png',
     principle: 'A pinch brings warmth and health, but an extra pinch turns the entire dish bitter. That is an awkward truth to learn. In work and in relationships, knowing when to stop is often the difference between a lasting bond and a quiet disaster.',
   },
   {
@@ -32,6 +34,7 @@ const SPICE_PILLARS = [
     metaphor: 'Coriander (The Binder)',
     primaryImage: '/coriander.png',
     secondaryImage: '/spices/coriander.png',
+    darkImage: '/coriander-dark.png',
     principle: 'Coriander is the quiet, forgiving glue of the pan. It softens harsh edges and covers minor slips. In business, honest monthly updates play the exact same role, keeping founders and shareholders bound together when things get choppy.',
   },
   {
@@ -41,6 +44,7 @@ const SPICE_PILLARS = [
     metaphor: 'Red Chillies (The Kinetic Spark)',
     primaryImage: '/red-chillies.png',
     secondaryImage: '/spices/red-chillies.png',
+    darkImage: '/red-chillies-dark.png',
     principle: 'A measured hand with chilli gets you nowhere interesting. The best dishes demand courage with the spice, and life demands the same with your choices. Playing not to lose is the quietest way to fail. Take the bold gamble, embrace the heat, and let the rewards take care of themselves.',
   },
   {
@@ -50,6 +54,7 @@ const SPICE_PILLARS = [
     metaphor: 'Aromatics (The Finish)',
     primaryImage: '/aromatics.png',
     secondaryImage: '/spices/aromatics.png',
+    darkImage: '/aromatics-dark.png',
     principle: 'Aromatics do not add bulk to the pot, they leave the memory. They go in at the very end, off the heat. In life and business, the final chapter defines your character. It is the rare wisdom of knowing when your part is finished, protecting your people, and exiting with your reputation and honour intact.',
   },
 ];
@@ -217,11 +222,24 @@ export default function Hero({ onOpenInquiry }) {
                     <img
                       src={pillar.primaryImage}
                       alt={pillar.name}
-                      className="w-full h-full object-contain mix-blend-multiply dark:invert dark:mix-blend-screen opacity-95 group-hover:opacity-100"
+                      className="w-full h-full object-contain opacity-95 group-hover:opacity-100 dark:hidden"
                       onError={(e) => {
                         if (!e.currentTarget.dataset.triedSecondary) {
                           e.currentTarget.dataset.triedSecondary = 'true';
                           e.currentTarget.src = pillar.secondaryImage;
+                        } else {
+                          e.currentTarget.style.display = 'none';
+                        }
+                      }}
+                    />
+                    <img
+                      src={pillar.darkImage}
+                      alt={pillar.name}
+                      className="w-full h-full object-contain opacity-95 group-hover:opacity-100 hidden dark:block"
+                      onError={(e) => {
+                        if (!e.currentTarget.dataset.triedSecondary) {
+                          e.currentTarget.dataset.triedSecondary = 'true';
+                          e.currentTarget.src = pillar.secondaryImage.replace('.png', '-dark.png');
                         } else {
                           e.currentTarget.style.display = 'none';
                         }
@@ -240,11 +258,24 @@ export default function Hero({ onOpenInquiry }) {
                 <img
                   src={displayedPillar.primaryImage}
                   alt={displayedPillar.name}
-                  className="w-full h-full object-contain mix-blend-multiply dark:invert dark:mix-blend-screen"
+                  className="w-full h-full object-contain dark:hidden"
                   onError={(e) => {
                     if (!e.currentTarget.dataset.triedSecondary) {
                       e.currentTarget.dataset.triedSecondary = 'true';
                       e.currentTarget.src = displayedPillar.secondaryImage;
+                    } else {
+                      e.currentTarget.style.display = 'none';
+                    }
+                  }}
+                />
+                <img
+                  src={displayedPillar.darkImage}
+                  alt={displayedPillar.name}
+                  className="w-full h-full object-contain hidden dark:block"
+                  onError={(e) => {
+                    if (!e.currentTarget.dataset.triedSecondary) {
+                      e.currentTarget.dataset.triedSecondary = 'true';
+                      e.currentTarget.src = displayedPillar.secondaryImage.replace('.png', '-dark.png');
                     } else {
                       e.currentTarget.style.display = 'none';
                     }

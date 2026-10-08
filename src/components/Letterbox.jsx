@@ -45,12 +45,17 @@ export default function Letterbox() {
   return (
     <section id="letterbox" className="py-24 px-6 md:px-12 bg-white dark:bg-canvas-dark relative border-t border-canvas-border dark:border-canvas-darkBorder transition-colors duration-300 overflow-hidden">
       
-      {/* Panoramic Streetscape Architectural Background (Vivid & Visible) */}
+      {/* Panoramic Streetscape Architectural Background */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
         <img
           src="/streetscape-sketch.png"
           alt="Vintage Streetscape with Letterbox"
-          className="w-full h-full object-cover object-top opacity-75 dark:opacity-35 mix-blend-multiply dark:invert dark:mix-blend-screen transition-opacity"
+          className="w-full h-full object-cover object-top opacity-75 dark:hidden transition-opacity"
+        />
+        <img
+          src="/streetscape-sketch-dark.png"
+          alt="Vintage Streetscape with Letterbox"
+          className="w-full h-full object-cover object-top opacity-35 hidden dark:block transition-opacity"
         />
         {/* Soft bottom edge transition into the next section */}
         <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white dark:from-canvas-dark to-transparent" />
