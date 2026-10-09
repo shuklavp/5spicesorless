@@ -10,7 +10,7 @@ const DESKS = [
     kicker: 'LIFE',
     title: 'Life, Relationships, & Perspective',
     summary:
-      'Life has a quiet way of teaching us through joy, mistakes, and bruised ribs. I do not write to give romantic advice or pretend to be wise. I write about what thirty years of living, being a husband, raising a daughter, and surviving near-fatal odds have taught me about becoming a better, kinder human being. Simple reflections on patience, fatherhood, and keeping your dignity intact.',
+      'Life has a quiet way of teaching us through observation, patience, and warmth. I do not write to give romantic advice or pretend to be wise. I write about what growing up in a not-so-big city of Lucknow, learning the nuances of communication and tehzeeb, raising a daughter, and building things from scratch have taught me about becoming a kinder human being. Simple reflections on patience, fatherhood, and keeping your dignity intact.',
     expectations: [
       'Why everyone should fall in love at least once in their lifetime',
       'The quiet wisdom of long devotion and arranged partnerships',
@@ -46,7 +46,7 @@ const DESKS = [
     kicker: 'WORK',
     title: 'Career, Startups & Boardrooms',
     summary:
-      'Thirty years of enterprise leaves behind an awful lot of hard-won scars and practical lessons. From assembling computers in my bedroom to navigating boardroom politics, scaling hardware startups, and managing exits, I have seen what works and what is pure theatre. I share a weekly note on career navigation, practical leadership, and cutting through operational noise.',
+      'Thirty years of enterprise building ventures, nurturing teams, and learning what truly endures. From assembling computers in my Lucknow bedroom to navigating boardroom conversations, scaling hardware startups, and managing clean exits, I have seen what works and what is pure theatre. I share a weekly note on career navigation, practical leadership, and cutting through operational noise.',
     expectations: [
       'How to navigate organisational politics and accelerate career growth',
       'Building from zero: customer acquisition, hiring, and unit economics',

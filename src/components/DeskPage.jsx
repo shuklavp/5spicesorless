@@ -1,13 +1,13 @@
 // src/components/DeskPage.jsx
 import React, { useState } from 'react';
-import { ArrowLeft, ArrowUpRight, Clock, Search } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, Clock, Feather, Search } from 'lucide-react';
 import { ESSAYS_DATA } from '../data/essays';
 
 const DESK_CONFIGS = {
   life: {
     title: 'The Life Desk',
     kicker: 'LIFE, PERSPECTIVE, & HUMAN BONDS',
-    subtitle: 'Everyday lessons from joy, mistakes, fatherhood, and surviving near-fatal odds. Becoming a kinder human being rather than playing an unearned guru.',
+    subtitle: 'Everyday lessons from growing up in a not-so-big city of Lucknow, learning the nuances of communication and tehzeeb, and making honest mistakes. Becoming a hopeless dreamer and builder, and learning to be a kinder human being rather than playing an unearned guru.',
     cadence: 'Published Fortnightly',
   },
   food: {
@@ -19,7 +19,7 @@ const DESK_CONFIGS = {
   work: {
     title: 'The Work Desk',
     kicker: 'STARTUPS, BOARDROOMS, & OPERATIONAL DISCIPLINE',
-    subtitle: 'Thirty years of enterprise leaving behind hard-won scars and practical lessons. Cutting through operational noise, boardroom theatre, and vanity.',
+    subtitle: 'Thirty years of enterprise building enduring ventures, trusted partnerships, and practical operator judgment. Cutting through operational noise, boardroom theatre, and vanity to focus on what truly works.',
     cadence: 'Weekly Field Note on Sunday',
   },
   stories: {
@@ -50,6 +50,7 @@ export default function DeskPage({ deskId, onNavigate }) {
     const matchesSearch =
       essay.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       essay.subtitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (essay.subCategory && essay.subCategory.toLowerCase().includes(searchTerm.toLowerCase())) ||
       (essay.tags && essay.tags.some((t) => t.toLowerCase().includes(searchTerm.toLowerCase())));
 
     const matchesTag = selectedTag === 'All' || (essay.tags && essay.tags.includes(selectedTag));
@@ -89,10 +90,17 @@ export default function DeskPage({ deskId, onNavigate }) {
             {config.subtitle}
           </p>
 
-          <div className="pt-1">
+          <div className="pt-2 flex flex-wrap items-center justify-between gap-4">
             <span className="text-xs font-mono text-ink-400 dark:text-ink-500 font-medium">
               Cadence: {config.cadence}
             </span>
+            <button
+              onClick={() => onNavigate('/studio')}
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-canvas-border dark:border-canvas-darkBorder bg-white dark:bg-canvas-darkCard hover:border-berry-600 text-ink-700 dark:text-ink-200 text-xs font-mono font-medium hover:text-berry-600 transition-colors shadow-sm"
+            >
+              <Feather className="w-3.5 h-3.5 text-berry-600" />
+              <span>Open Dispatch Studio</span>
+            </button>
           </div>
         </div>
 
@@ -145,10 +153,17 @@ export default function DeskPage({ deskId, onNavigate }) {
               >
                 <div>
                   <div className="flex items-center justify-between text-xs font-mono mb-4">
-                    <span className="text-berry-700 dark:text-berry-300 bg-white dark:bg-canvas-dark px-3 py-1 rounded-full border border-berry-200 dark:border-canvas-darkBorder font-bold uppercase text-[10px]">
-                      {essay.category}
-                    </span>
-                    <div className="flex items-center gap-1 text-ink-500 dark:text-ink-300">
+                    <div className="flex flex-wrap items-center gap-1.5">
+                      <span className="text-berry-700 dark:text-berry-300 bg-white dark:bg-canvas-dark px-3 py-1 rounded-full border border-berry-200 dark:border-canvas-darkBorder font-bold uppercase text-[10px]">
+                        {essay.category}
+                      </span>
+                      {essay.subCategory && (
+                        <span className="text-cobalt-700 dark:text-cobalt-300 bg-cobalt-50 dark:bg-cobalt-950/60 px-2.5 py-0.5 rounded-full border border-cobalt-200 dark:border-cobalt-800 font-bold uppercase text-[10px]">
+                          {essay.subCategory}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-1 text-ink-500 dark:text-ink-300 shrink-0">
                       <Clock className="w-3 h-3 text-cobalt-600" />
                       <span>{essay.readTime}</span>
                     </div>

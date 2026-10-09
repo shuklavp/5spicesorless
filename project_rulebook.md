@@ -6,7 +6,7 @@ This document serves as the single source of truth, architectural blueprint, and
 
 ### 1.1 Core Purpose
 
-*5 Spices or Less* is an editorial and advisory publication built on the philosophy of **The Subtractive Advantage**. The platform celebrates radical simplicity across Life, Food, and Work:
+*5 Spices or Less* is an editorial and advisory publication built on the philosophy of **The Simplification Advantage**. The platform celebrates radical simplicity across Life, Food, and Work:
 
 * **The Core Thesis:** The things that last longest in life, work, and cooking come from taking away rather than adding. When unnecessary elements are removed, clarity, speed, and flavour emerge naturally. Less often works better than more.
 
@@ -60,7 +60,7 @@ All website copy, component metadata, article drafts, form labels, and code comm
 
 * **Editorial Tone:** A blend of understated, dry British wit and warm Lakhnawi storytelling dignity (*tehzeeb*). Self-effacing, grounded, and observant.
 
-* **Zero Corporate Jargon:** Never use empty marketing buzzwords ("synergy", "paradigm shift", "global connections"). Speak in honest, grounded human language.
+* **Zero Corporate Jargon:** Never use empty marketing buzzwords ("synergy", "paradigm shift"). Speak in honest, grounded human language.
 
 * **No Superlatives:** Avoid bragging or exaggerated claims ("flawlessly", "perfection", "world-class"). Maintain quiet confidence.
 
@@ -112,8 +112,10 @@ Any biographical mention, essay, or profile element must respect these verified 
 | **Berry Magenta** | `#DE2573` | Electric brand accent, highlights, active indicator dots, primary CTA buttons | 
 | **Cobalt Blue** | `#2563EB` | Architectural sketch linework, secondary accents, LinkedIn icons | 
 | **Canvas Border** | `#E2E8F0` | Subtle clean card borders (dark mode: `#1E293B`) | 
+| **Advisory Terracotta** | `#BC5259` | Dedicated warm terracotta background for the Advisory Practice (`#consulting`, `/advisory`) in light mode (dark mode: `#2A1417`) | 
+| **Advisory Surface** | `#FAF8F5` | Warm cream card and intake form surface within the Advisory Practice section | 
 
-*Rule:* Strictly avoid muddy beige, warm parchment, or dull brown tones.
+*Rule:* The Advisory Practice section intentionally utilises a warm terracotta rust-red block (`#BC5259` / `#2A1417`) paired with `#FAF8F5` cards to create visual gravity, warmth, and psychological safety for founder sparring. Other sections maintain crisp canvas pure surfaces and clean slate accents.
 
 ### 4.2 Background Textures
 
@@ -141,183 +143,86 @@ All illustrations are rendered in **Cobalt Blue Architectural Fine Line Art** wi
 
 2. **Dark Mode Asset (`/public/<name>-dark.png`):** Transparent background with crisp, luminous silver-white or ice-blue lines (`#D2E6FF`). Rendered natively on dark navy surfaces (`hidden dark:block`).
 
-## 5. Page Layout and Section Architecture
+## 5. Page Layout and Section Architecture (Concept 1: The Lean Broadside)
 
-The single-page application follows a deliberate, six-part narrative progression:
+To eliminate scroll fatigue and give long-form content the breathing room it deserves, the platform uses a hybrid architecture:
 
 ```
-1. HERO SECTION (The Subtractive Philosophy & 5 Core Levers)
-   ↓
-2. THE THREE DESKS (The Reader's Contract: Life, Food, Work)
-   ↓
-3. THE DISPATCHES (The Writing Board: Live Essays & Stories)
-   ↓
-4. THE LETTERBOX (Community Q&A: Letters to the Cook)
-   ↓
-5. ADVISORY PRACTICE (Bespoke Executive Sparring: Ben to Jules)
-   ↓
-6. ABOUT VIVEK SHUKLA (The Personal Memoir & Scars)
-   ↓
-7. MANIFESTO FOOTER (Colophon, Newsletter, Social Links)
+1. LEAN HOME BROADSIDE (/)
+   ├── 1. Hero Section (The Simplification Philosophy & 5 Core Levers)
+   ├── 2. The Human Anchor (About Vivek Shukla Teaser & Link to /about)
+   ├── 3. The Three Desks (The Reader's Contract: Life, Food, Work)
+   ├── 4. Curated Dispatches (Writing Board with Search & Tags)
+   ├── 5. Advisory Invitation Card (Bespoke Sparring & Link to /advisory)
+   ├── 6. The Letterbox (Community Q&A: Letters to the Table)
+   └── 7. Manifesto Footer (Colophon, Newsletter, Social Links)
 
+2. DEDICATED ABOUT PAGE (/about)
+   └── Full-width personal memoir, historical milestones, Lucknow roots, portrait sketch, and Mission Today callout
+
+3. DEDICATED ADVISORY PAGE (/advisory)
+   └── Full breakdown of 3 modes, collaboration scope, terracotta aesthetic, and strategic intake form
+
+4. DEDICATED STORY PAGES (/stories/:slug)
+   └── Full-width distraction-free reading canvas with takeaways, quotes, and author bio
+
+5. DEDICATED DESK ARCHIVES (/life, /food, /work, /stories)
+   └── Real-time keyword search and sub-tag filtering
 ```
 
 ### Detailed Component Specifications
 
 #### 1. Hero Section (`src/components/Hero.jsx`)
 
-* **Top Header:** `SIMPLICITY IN LIFE, FOOD, AND WORK` with pulsing berry dot, accompanied by `The Subtractive Advantage` (with "Subtractive" underlined in magenta).
-
+* **Top Header:** `SIMPLICITY IN LIFE, FOOD, AND WORK` with pulsing berry dot, accompanied by `The Simplification Advantage` (with "Subtractive" underlined in magenta).
 * **Display Title:** Two-tone headline: **Five Spices** (Midnight Ink) / **Or Less.** (Berry Magenta).
-
 * **Subtext:** *"The best things in life, work, and cooking are born from subtraction. When you remove what is unnecessary, clarity, speed, and flavour take care of themselves. In the end, less almost always works better than more."*
+* **Metric Card:** `05 Core Levers` aligned horizontally with `Zero Operational Bloat`.
+* **The 5 Spice Drawers:** Cumin (`THE FOUNDATION`), Turmeric (`GROUND TRUTH`), Coriander (`COHESION`), Red Chillies (`CALCULATED RISK`), Aromatics (`EXECUTIVE RESTRAINT`).
 
-* **Metric Card:** `05 Core Levers` aligned horizontally with `Zero Operational Bloat`, followed by: *"Five levers are enough to move a mountain, and few enough that none can hide. When you refuse complexity, focus does the heavy lifting."*
+#### 2. The Human Anchor Teaser (`src/components/HomeAboutTeaser.jsx`)
 
-* **The 5 Spice Drawers:**
+* **Placement:** Positioned directly after the Hero section on the Home broadside.
+* **Layout:** Compact 2-column card featuring the portrait line-art sketch on the left and a 2-paragraph narrative overview on the right.
+* **Headline:** *"If falling in love three times was not quite dramatic enough, I decided to almost die once, just to keep things interesting."*
+* **Core Action:** `Read the Full Memoir (/about) →` accompanied by direct verified LinkedIn and X links.
 
-  1. `01 / Cumin` (`THE FOUNDATION`): Patient heat extraction; establishing solid foundations in life, love, and work.
-
-  2. `02 / Turmeric` (`GROUND TRUTH`): A pinch heals, excess ruins; the fine line in professional and personal bonds.
-
-  3. `03 / Coriander` (`COHESION`): The forgiving binder; akin to honest monthly board updates that keep partners aligned.
-
-  4. `04 / Red Chillies` (`CALCULATED RISK`): Courage with spice; bold bets, because playing not to lose is quiet failure.
-
-  5. `05 / Aromatics` (`EXECUTIVE RESTRAINT`): Added off the flame; knowing when the work is finished and exiting with honour.
-
-* **Interactivity:** Hovering updates the active drawer and lower display card; clicking locks the selection.
-
-#### 2. The Three Desks (`src/components/ValueProps.jsx`)
+#### 3. The Three Desks (`src/components/ValueProps.jsx`)
 
 * **Background:** Soft slate grey `#E6E9EF` in light mode (`dark:bg-canvas-dark`).
-
 * **Header:** `THE THREE DESKS` / `What You Will Find Here.`
+* **Desks:** Desk 01 (`LIFE` → `/life`), Desk 02 (`FOOD` → `/food`), Desk 03 (`WORK` → `/work`).
 
-* **Subhead:** *"I write about Life, Food, and Work drawn directly from thirty years of living, making mistakes, and surviving rather unusual odds. Writing helps me make sense of it all, and sharing it might help you navigate your own journey with a little more calm and a lot less clutter."*
+#### 4. The Dispatches (`src/components/WritingBoard.jsx`)
 
-* **Desk 01 (LIFE):**
+* **Purpose:** Curated editorial grid with real-time keyword search and sub-tag filtering.
+* **Cards Action:** Clicking an essay navigates directly to its dedicated reading canvas (`/stories/:slug`).
+* **Catalog:** 6 essays including *Hiring Without Hype*, *Declared Dead at 27*, *The $4.5M Category Creation*, *The Deal That Failed*, *The Five-Spice Chemistry*, and *The Blue Skoda*.
 
-  * Kicker: `LIFE`
+#### 5. Advisory Invitation Card (`src/components/HomeAdvisoryTeaser.jsx`)
 
-  * Title: `Life, Relationships, & Perspective`
+* **Placement:** Positioned directly after Dispatches on the Home broadside.
+* **Layout:** Bold terracotta callout card (`#BC5259`) introducing *"A Ben to Your Jules"*, the three modes, and a direct button to `/advisory`.
 
-  * Body: Everyday lessons from joy, mistakes, fatherhood, and surviving near-fatal odds. Becoming a kinder human being rather than playing a love guru.
-
-  * Cadence: `Fortnightly Essays`
-
-* **Desk 02 (FOOD):**
-
-  * Kicker: `FOOD`
-
-  * Title: `One Simple Recipe a Week`
-
-  * Body: Lucknow roots where aroma precedes taste. Five spices or fewer, simple steps, cooking for pure joy.
-
-  * Cadence: `Fortnightly Recipe & Technique`
-
-* **Desk 03 (WORK):**
-
-  * Kicker: `WORK`
-
-  * Title: `Career, Startups & Boardrooms`
-
-  * Body: Thirty years of enterprise leaving behind hard-won scars and practical lessons. Cutting through operational noise and boardroom theatre.
-
-  * Cadence: `Weekly Field Note on Sunday`
-
-#### 3. The Dispatches (`src/components/WritingBoard.jsx`)
-
-* **Purpose:** The editorial reader containing full essays, stories, and takeaways.
-
-* **Categories:** `All`, `Life`, `Food`, `Work`, `Fiction`.
-
-* **Current Catalog (`src/data/essays.js`):**
-
-  1. *Declared Dead at 27: What a 10-Hour Surgery and Relearning to Speak Taught Me* (Life)
-
-  2. *The \$4.5M Category Creation: Building, Scaling, and Exiting with Honour* (Work)
-
-  3. *The Deal That Failed, The Mentor Who Stayed: On Max Kelly, Macquarie, and the Art of Quiet Encouragement* (Work)
-
-  4. *The Five-Spice Chemistry: Why a Paris MBA and a Lucknow Kitchen Share the Same Physics* (Food)
-
-  5. *The Blue Skoda: A Short Story on Strangers, Mechanics, and Long Roads* (Fiction)
-
-* **Modal Reader:** Clean reader modal with core thesis takeaways, pull quotes, and author attribution (*5 Spices or Less · Essays & Dispatches*).
-
-#### 4. The Letterbox (`src/components/Letterbox.jsx`)
+#### 6. The Letterbox (`src/components/Letterbox.jsx`)
 
 * **Section ID:** `#letterbox`
+* **Title:** `Letters to the Table.`
+* **Features:** Panoramic streetscape line-art background, anonymous toggle, anti-spam honeypot shield, dwell-time verification, and X handles.
 
-* **Kicker:** `THE LETTERBOX`
+#### 7. Dedicated About Page (`src/components/AboutPage.jsx` · Route `/about`)
 
-* **Title:** `Letters to the Cook.`
+* **Canvas:** Full-width unhurried memoir detailing the college PC business, heartbreak, the May 13 2004 craniotomy, the two bosses, water sub-metering category creation, and exit.
+* **Markers:** Historical milestones box, verified social links, and the Mission Today callout.
 
-* **Background:** High-visibility panoramic streetscape sketch (`/streetscape-sketch.png` and `/streetscape-sketch-dark.png`) rendered from the top divider line downward with a frosted glass card overlay.
+#### 8. Dedicated Advisory Page (`src/components/AdvisoryPage.jsx` · Route `/advisory`)
 
-* **Desk Categories:**
+* **Canvas:** Full breakdown of the three advisory modes (*The Fractional Operator*, *EIR*, *A Ben to Your Jules*), collaboration scope checklists, operating principle banner, and confidential intake form.
 
-  * `Heart & Life`: Love, heartbreak, relationships, and perspective.
-
-  * `Food & The Pan`: Rescuing a dish, five-spice ratios, heat control.
-
-  * `Work & Career`: Founder solitude, corporate politics, fundraising, exits.
-
-* **Key Features:** Anonymous toggle (`Post anonymously` with pen name/city), optional alert email, direct textarea, and social links to `@5spicesorless` and `@vivekshukla` on X.
-
-#### 5. Advisory Practice (`src/components/ConsultingModule.jsx`)
-
-* **Section ID:** `#consulting`
-
-* **Three Advisory Modes:**
-
-  1. *The Fractional Operator:* Organisational decluttering, reporting memos over slides, unit economics.
-
-  2. *Entrepreneur in Residence (EIR):* Category validation, early operational design, capital efficiency.
-
-  3. *A Ben to Your Jules:* Dedicated 1:1 confidential sparring for high-agency founders under pressure.
-
-* **Built-in Intake Form:** Interactive submission capturing name, email, organisation, collaboration style, and bottleneck.
-
-#### 6. About Vivek Shukla (`src/components/Profile.jsx`)
-
-* **Placement:** Positioned immediately after Advisory to provide the human ground truth.
-
-* **Left Column:**
-
-  * Portrait sketch container with `/profile-sketch.png` and sub-caption: `Lucknow Roots` (left) / `Advisor & Storyteller` (right).
-
-  * Direct verified LinkedIn card (`linkedin.com/in/vivekshukla`).
-
-  * Direct verified X card (`@vivekshukla`).
-
-* **Right Column:**
-
-  * Headline: *"If falling in love three times was not quite dramatic enough, I decided to almost die once, just to keep things interesting."*
-
-  * Narrative paragraphs covering the college bedroom PC business, heartbreak, the May 2004 peacemaker injury, the defiant recovery, the two bosses, the two-year double life, the water IoT venture, and the two core truths.
-
-  * The Mission Today Callout: *"I write because survival taught me to pay attention, and I advise because I know how lonely the founder's chair can get. No buzzwords, no posturing, and no desire to be bucketed. Just warm Lakhnawi tea, hard-won operational judgment, and steady counsel when things get noisy."*
-
-#### 7. Footer (`src/components/Footer.jsx`)
+#### 9. Footer (`src/components/Footer.jsx`)
 
 * **The Five Spices Manifesto:** *"True mastery is subtractive. The amateur adds ingredients to mask poor technique. The master uses only what is essential, and executes with quiet confidence."*
-
-* **The Sunday Reduction:** Weekly newsletter subscription form.
-
-* **Navigation Links:** Back to Top, Life, Food, Work, Stories & Essays, The Letterbox, Advisory ("Ben to Jules"), About Vivek.
-
-* **Social and Channels:**
-
-  * LinkedIn: `https://www.linkedin.com/in/vivekshukla/`
-
-  * Publication on X: `@5spicesorless` (`https://x.com/5spicesorless`)
-
-  * Personal on X: `@vivekshukla` (`https://x.com/vivekshukla`)
-
-  * Domain: `https://5spicesorless.com`
-
+* **Visual Asset:** Stone mortar and pestle asset (`/mortar-pestle-dark.png`).
 * **Colophon:** `Lucknow roots · Crafted with Vite, React, and Tailwind`.
 
 ## 6. Maintenance and Development Protocol
@@ -325,21 +230,26 @@ The single-page application follows a deliberate, six-part narrative progression
 ### 6.1 Git and Cloudflare Deployment Hygiene
 
 * **Atomic Component Verification:** Never commit an `App.jsx` referencing a component that has not yet been written or committed into `src/components/`. A missing import will trigger a Rollup error and break the Cloudflare Pages build.
-
 * **Build Verification:** When running locally or before pushing, run `npm run build` to confirm zero missing modules or JSX syntax defects.
-
 * **Verification in Cloudflare:** If changes do not reflect on `https://5spicesorless.com/`, check Cloudflare Dashboard > **Workers & Pages** > **5spicesorless** > **Deployments** for red build logs.
-
 * **No Raw Zip Commits:** Always commit raw source files into `src/` and static images into `public/`. Do not commit `.zip` archives into the repository.
 
 ### 6.2 Adding Future Essays to `src/data/essays.js`
 
-When writing and registering new essays:
+Follow the schema: `id`, `slug`, `title`, `subtitle`, `category` (Life, Food, Work, Fiction), `tags` (array of strings), `readTime`, `date`, `author` ("Vivek Shukla"), `leadQuote`, `takeaways` (3-4 points), and `markdownBody`.
+Use strict British English and commas/colons; avoid em-dashes.
 
-1. Ensure British English spelling throughout the title, subtitle, takeaways, and markdown body.
+## 7. URL Routing, Desk Archives, and Tagging Architecture
 
-2. Use commas and colons; strictly avoid em-dashes.
+* **`/`**: Lean Home Broadside
+* **`/about`**: Dedicated Memoir Canvas
+* **`/advisory`**: Dedicated Founder Advisory Canvas & Intake
+* **`/stories/:slug`**: Dedicated Essay Reading Canvas
+* **`/life`, `/food`, `/work`, `/stories`**: Dedicated Desk Archives
+* **`public/_redirects`**: `/* /index.html 200` ensures seamless Cloudflare Pages SPA client-side routing.
 
-3. Follow the schema: `id`, `title`, `subtitle`, `category` (Life, Food, Work, Fiction), `readTime`, `date`, `author` ("Vivek Shukla"), `leadQuote`, `takeaways` (3-4 points), and `markdownBody`.
+## 8. Anti-Spam Security Protocol
 
-4. Include at least one practical, humble Lakhnawi or operational takeaway.
+* **Honeypot Shield:** Hidden `hp_comment` (Letterbox) and `hp_company_url` (Advisory) fields silently catch and drop automated scrapers.
+* **Dwell Time Verification:** Submissions occurring under 2.5 seconds are flagged as automated scripts and rejected.
+* **Cloudflare Turnstile:** Ready for drop-in background cryptographic verification without visual puzzle captchas.

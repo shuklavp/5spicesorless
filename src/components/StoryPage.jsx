@@ -46,6 +46,11 @@ export default function StoryPage({ slug, onNavigate }) {
             <span className="text-berry-700 dark:text-berry-300 bg-berry-50 dark:bg-canvas-darkCard px-3 py-1 rounded-full border border-berry-200 dark:border-canvas-darkBorder font-bold uppercase text-[11px]">
               {essay.category}
             </span>
+            {essay.subCategory && (
+              <span className="text-cobalt-700 dark:text-cobalt-300 bg-cobalt-50 dark:bg-cobalt-950/50 px-3 py-1 rounded-full border border-cobalt-200 dark:border-cobalt-800 font-bold uppercase text-[11px]">
+                {essay.subCategory}
+              </span>
+            )}
             <div className="flex items-center gap-1 text-ink-500 dark:text-ink-400">
               <Clock className="w-3.5 h-3.5 text-cobalt-600" />
               <span>{essay.readTime}</span>
@@ -62,6 +67,31 @@ export default function StoryPage({ slug, onNavigate }) {
             {essay.subtitle}
           </p>
         </div>
+
+        {/* Primary Artwork / Story Illustration */}
+        {(essay.illustration || essay.image) && (
+          <div className="my-8 rounded-3xl overflow-hidden border border-canvas-border dark:border-canvas-darkBorder bg-canvas-subtle dark:bg-canvas-darkCard p-4 sm:p-6 text-center shadow-sm">
+            <div className="relative max-w-md mx-auto flex items-center justify-center min-h-[160px]">
+              <img
+                src={essay.illustration || essay.image}
+                alt={essay.illustrationCaption || essay.imageCaption || essay.title}
+                className={`max-h-72 w-auto object-contain mx-auto transition-transform duration-300 hover:scale-[1.02] ${essay.illustrationDark ? "dark:hidden" : ""} ${essay.isSketch !== false ? "mix-blend-multiply dark:mix-blend-normal" : "rounded-2xl"}`}
+              />
+              {essay.illustrationDark && (
+                <img
+                  src={essay.illustrationDark}
+                  alt={essay.illustrationCaption || essay.imageCaption || essay.title}
+                  className="max-h-72 w-auto object-contain mx-auto hidden dark:block transition-transform duration-300 hover:scale-[1.02]"
+                />
+              )}
+            </div>
+            {(essay.illustrationCaption || essay.imageCaption) && (
+              <p className="mt-3 text-xs font-mono text-ink-500 dark:text-ink-400 italic">
+                {essay.illustrationCaption || essay.imageCaption}
+              </p>
+            )}
+          </div>
+        )}
 
         {/* Lead Pull Quote Box */}
         <div className="p-6 rounded-3xl bg-canvas-subtle dark:bg-canvas-darkCard border-l-4 border-berry-600 my-8 shadow-sm">
@@ -93,6 +123,24 @@ export default function StoryPage({ slug, onNavigate }) {
         {/* Full Essay Body Typography */}
         <div className="prose prose-ink dark:prose-invert max-w-none text-base sm:text-lg font-light leading-relaxed space-y-6 text-ink-800 dark:text-ink-100 mb-16">
           {essay.markdownBody.split('\n\n').map((para, i) => {
+            if (para.startsWith('![')) {
+              const match = para.match(/!\[(.*?)\]\((.*?)\)/);
+              if (match) {
+                const [, alt, url] = match;
+                return (
+                  <figure key={i} className="my-8 text-center">
+                    <div className="rounded-3xl overflow-hidden border border-canvas-border dark:border-canvas-darkBorder bg-canvas-subtle dark:bg-canvas-darkCard p-3 sm:p-5 inline-block max-w-full shadow-sm">
+                      <img src={url} alt={alt} className="max-h-96 w-auto rounded-2xl object-contain mx-auto" />
+                    </div>
+                    {alt && (
+                      <figcaption className="mt-2.5 text-xs font-mono text-ink-500 dark:text-ink-400 italic">
+                        {alt}
+                      </figcaption>
+                    )}
+                  </figure>
+                );
+              }
+            }
             if (para.startsWith('### ')) {
               return (
                 <h3 key={i} className="font-serif text-2xl font-bold text-ink-900 dark:text-white pt-6 pb-2 border-b border-canvas-border dark:border-canvas-darkBorder">
@@ -119,6 +167,24 @@ export default function StoryPage({ slug, onNavigate }) {
             );
           })}
         </div>
+
+        {/* Secondary Artwork / Accompanying Plate */}
+        {essay.secondaryImage && (
+          <div className="my-10 rounded-3xl overflow-hidden border border-canvas-border dark:border-canvas-darkBorder bg-canvas-subtle dark:bg-canvas-darkCard p-4 sm:p-6 text-center shadow-sm">
+            <div className="relative max-w-lg mx-auto flex items-center justify-center">
+              <img
+                src={essay.secondaryImage}
+                alt={essay.secondaryCaption || essay.title}
+                className="max-h-80 w-auto rounded-2xl object-contain mx-auto shadow-sm"
+              />
+            </div>
+            {essay.secondaryCaption && (
+              <p className="mt-3 text-xs font-mono text-ink-500 dark:text-ink-400 italic">
+                {essay.secondaryCaption}
+              </p>
+            )}
+          </div>
+        )}
 
         {/* Tag Pills */}
         {essay.tags && (
@@ -150,7 +216,7 @@ export default function StoryPage({ slug, onNavigate }) {
               Written by Vivek Shukla
             </div>
             <p className="text-xs sm:text-sm text-ink-600 dark:text-ink-300 font-light leading-relaxed">
-              Advisor, operator, and storyteller with Lucknow roots. Surviving near-fatal odds and building category-creating enterprises taught him the discipline of simplification clarity.
+              Advisor, operator, and storyteller with Lucknow roots. Decades of building category-creating enterprises and navigating life with patience taught him the quiet power of simplification.
             </p>
             <div className="pt-2 flex items-center justify-center sm:justify-start gap-4">
               <button

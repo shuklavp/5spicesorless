@@ -14,6 +14,7 @@ import AboutPage from './components/AboutPage';
 import AdvisoryPage from './components/AdvisoryPage';
 import StoryPage from './components/StoryPage';
 import DeskPage from './components/DeskPage';
+import DispatchStudio from './components/DispatchStudio';
 
 export default function App() {
   const [isDark, setIsDark] = useState(false);
@@ -85,6 +86,11 @@ export default function App() {
 
   // Dynamic Route Resolver
   const renderCurrentRoute = () => {
+        // 0. The Dispatch Studio Authoring Suite: /studio
+    if (currentPath === '/studio') {
+      return <DispatchStudio onNavigate={handleNavigate} />;
+    }
+
     // 1. Standalone About Page: /about
     if (currentPath === '/about') {
       return <AboutPage onNavigate={handleNavigate} />;

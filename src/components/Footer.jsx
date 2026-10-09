@@ -72,7 +72,7 @@ const MANIFESTO_THEMES = {
   '/work': {
     kicker: 'On Enterprise & Character',
     quote: 'A business plan with twenty priorities has none. True governance is not a 50-page presentation, it is keeping faith with those who trusted you with their people and capital.',
-    subtext: 'Thirty years of enterprise scars: category creation, clean exits, hiring for character, and stripping away bureaucratic clutter.',
+    subtext: 'Thirty years of enterprise craft: category creation, clean exits, hiring for character, and stripping away bureaucratic clutter.',
     cardClass: 'bg-gradient-to-br from-[#080C14] via-[#0D1524] to-[#121E33] border-[#1E293B]',
     glowClass: 'bg-blue-600/15',
     accentText: 'text-sky-400',
@@ -333,6 +333,12 @@ export default function Footer({ onNavigate, currentPath = '/' }) {
                 <li>
                   <a href="/about" onClick={(e) => handleLinkClick(e, '/about')} className="hover:text-berry-600 transition-colors">
                     About Vivek
+                  </a>
+                </li>
+                <li>
+                  <a href="/studio" onClick={(e) => handleLinkClick(e, '/studio')} className="text-berry-600 dark:text-berry-400 font-mono text-xs hover:underline inline-flex items-center gap-1.5">
+                    <span>Dispatch Studio</span>
+                    <span className="text-[10px] bg-berry-50 dark:bg-canvas-dark px-1.5 py-0.2 rounded border border-berry-200 dark:border-canvas-darkBorder font-bold">Author</span>
                   </a>
                 </li>
               </ul>
