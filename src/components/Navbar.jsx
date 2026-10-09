@@ -1,7 +1,8 @@
+// src/components/Navbar.jsx
 import React, { useState, useEffect } from 'react';
 import { ArrowUpRight, Flame, Menu, Moon, Sun, X } from 'lucide-react';
 
-export default function Navbar({ onOpenInquiry, isDark, onToggleTheme, onNavigate, currentPath }) {
+export default function Navbar({ onNavigate, currentPath = '/', isDark, onToggleTheme }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -20,7 +21,9 @@ export default function Navbar({ onOpenInquiry, isDark, onToggleTheme, onNavigat
   const handleLinkClick = (e, path) => {
     e.preventDefault();
     setMobileMenuOpen(false);
-    onNavigate(path);
+    if (onNavigate) {
+      onNavigate(path);
+    }
   };
 
   return (
@@ -32,7 +35,7 @@ export default function Navbar({ onOpenInquiry, isDark, onToggleTheme, onNavigat
             : 'max-w-7xl bg-transparent border-b border-canvas-border/80 dark:border-canvas-darkBorder/60 py-3 px-2'
         }`}
       >
-        {/* Brand Logo */}
+        {/* Brand Logo (Scaled ~2x) */}
         <a
           href="/"
           onClick={(e) => handleLinkClick(e, '/')}
@@ -41,7 +44,7 @@ export default function Navbar({ onOpenInquiry, isDark, onToggleTheme, onNavigat
           <img
             src={isDark ? "/logo_dark.png" : "/logo.png"}
             alt="5 Spices or Less"
-            className="h-11 sm:h-12 w-auto object-contain transition-all duration-300 group-hover:scale-105"
+            className="h-12 sm:h-14 md:h-16 w-auto object-contain transition-all duration-300 group-hover:scale-105"
             onError={(e) => {
               e.currentTarget.style.display = 'none';
               const fallback = document.getElementById('navbar-text-fallback');
@@ -49,6 +52,7 @@ export default function Navbar({ onOpenInquiry, isDark, onToggleTheme, onNavigat
             }}
           />
 
+          {/* Fallback if image is missing */}
           <div id="navbar-text-fallback" className="hidden items-center gap-2.5">
             <div className="relative w-10 h-10 rounded-lg bg-ink-900 dark:bg-berry-600 flex items-center justify-center text-white shadow-sm shrink-0">
               <Flame className="w-5 h-5 text-berry-400 dark:text-white" />
@@ -103,160 +107,117 @@ export default function Navbar({ onOpenInquiry, isDark, onToggleTheme, onNavigat
             Stories
           </a>
           <a
-            href="/#letterbox"
-            onClick={(e) => handleLinkClick(e, '/#letterbox')}
-            className="hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
+            href="/about"
+            onClick={(e) => handleLinkClick(e, '/about')}
+            className={`hover:text-berry-600 dark:hover:text-berry-400 transition-colors ${
+              currentPath === '/about' ? 'text-berry-600 dark:text-berry-400 font-bold' : ''
+            }`}
           >
-            Letterbox
+            About Vivek
           </a>
           <a
-            href="/#consulting"
-            onClick={(e) => handleLinkClick(e, '/#consulting')}
-            className="hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
+            href="/advisory"
+            onClick={(e) => handleLinkClick(e, '/advisory')}
+            className={`hover:text-berry-600 dark:hover:text-berry-400 transition-colors ${
+              currentPath === '/advisory' ? 'text-berry-600 dark:text-berry-400 font-bold' : ''
+            }`}
           >
             Advisory
           </a>
-          <a
-            href="/#profile"
-            onClick={(e) => handleLinkClick(e, '/#profile')}
-            className="hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
-          >
-            About
-          </a>
         </div>
 
-        {/* Actions & Theme Toggle */}
-        <div className="hidden md:flex items-center gap-2.5">
-          <a
-            href="https://x.com/5spicesorless"
-            target="_blank"
-            rel="noreferrer"
-            className="p-2.5 rounded-full bg-canvas-subtle dark:bg-canvas-darkBorder border border-canvas-border dark:border-canvas-darkBorder text-ink-700 dark:text-ink-200 hover:text-berry-600 dark:hover:text-white transition-all shadow-sm flex items-center justify-center"
-            title="Follow @5spicesorless on X"
-            aria-label="X Account @5spicesorless"
-          >
-            <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-            </svg>
-          </a>
-
+        {/* Right CTA & Theme Toggle */}
+        <div className="flex items-center gap-3">
+          {/* Light / Dark Mode Toggle */}
           <button
             onClick={onToggleTheme}
-            className="p-2.5 rounded-full bg-canvas-subtle dark:bg-canvas-darkBorder border border-canvas-border dark:border-canvas-darkBorder text-ink-600 dark:text-ink-200 hover:text-berry-600 transition-all shadow-sm"
-            title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-            aria-label="Toggle Theme"
+            aria-label="Toggle Dark Mode"
+            className="w-10 h-10 rounded-full border border-canvas-border dark:border-canvas-darkBorder flex items-center justify-center text-ink-700 dark:text-ink-200 hover:text-berry-600 dark:hover:text-berry-400 bg-white/80 dark:bg-canvas-darkCard/80 transition-colors shadow-sm"
           >
             {isDark ? <Sun className="w-4 h-4 text-berry-400" /> : <Moon className="w-4 h-4 text-ink-800" />}
           </button>
 
+          {/* Primary CTA Button */}
           <button
-            onClick={() => {
-              onNavigate('/#intake-form');
-              onOpenInquiry();
-            }}
-            className="group rounded-full bg-berry-600 hover:bg-berry-700 text-white px-5 py-2.5 text-xs font-semibold tracking-wide transition-all shadow-md shadow-berry-600/20 hover:scale-[1.02] active:scale-[0.98] flex items-center gap-1.5"
+            onClick={(e) => handleLinkClick(e, '/advisory')}
+            className="hidden sm:inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-berry-600 hover:bg-berry-700 text-white text-xs font-bold tracking-wider uppercase transition-all shadow-md shadow-berry-600/20"
           >
-            <span>Consulting Inquiry</span>
-            <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </button>
-        </div>
-
-        {/* Mobile Toggle */}
-        <div className="flex items-center gap-2 md:hidden">
-          <a
-            href="https://x.com/5spicesorless"
-            target="_blank"
-            rel="noreferrer"
-            className="p-2 rounded-full border border-canvas-border dark:border-canvas-darkBorder text-ink-700 dark:text-ink-200"
-            aria-label="Follow on X"
-          >
-            <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-            </svg>
-          </a>
-
-          <button
-            onClick={onToggleTheme}
-            className="p-2 rounded-full border border-canvas-border dark:border-canvas-darkBorder text-ink-600 dark:text-ink-200"
-            aria-label="Toggle Theme"
-          >
-            {isDark ? <Sun className="w-4 h-4 text-berry-400" /> : <Moon className="w-4 h-4 text-ink-800" />}
+            <span>Spar With Vivek</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
           </button>
 
+          {/* Mobile Menu Hamburger Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="text-ink-900 dark:text-white p-1.5 hover:text-berry-600 transition-colors"
-            aria-label="Open mobile menu"
+            className="md:hidden p-2 rounded-xl text-ink-700 dark:text-ink-200 hover:text-berry-600"
+            aria-label="Toggle Navigation Menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
-        <div className="md:hidden mt-2 mx-auto max-w-lg bg-white/98 dark:bg-canvas-darkCard/98 backdrop-blur-2xl border border-canvas-border dark:border-canvas-darkBorder rounded-2xl p-6 shadow-2xl space-y-4">
-          <div className="flex flex-col space-y-3 text-base font-medium text-ink-800 dark:text-white">
-            <a
-              href="/life"
-              onClick={(e) => handleLinkClick(e, '/life')}
-              className="py-1 hover:text-berry-600 transition-colors"
-            >
-              Life
-            </a>
-            <a
-              href="/food"
-              onClick={(e) => handleLinkClick(e, '/food')}
-              className="py-1 hover:text-berry-600 transition-colors"
-            >
-              Food
-            </a>
-            <a
-              href="/work"
-              onClick={(e) => handleLinkClick(e, '/work')}
-              className="py-1 hover:text-berry-600 transition-colors"
-            >
-              Work
-            </a>
-            <a
-              href="/stories"
-              onClick={(e) => handleLinkClick(e, '/stories')}
-              className="py-1 hover:text-berry-600 transition-colors"
-            >
-              Stories
-            </a>
-            <a
-              href="/#letterbox"
-              onClick={(e) => handleLinkClick(e, '/#letterbox')}
-              className="py-1 hover:text-berry-600 transition-colors"
-            >
-              Letterbox
-            </a>
-            <a
-              href="/#consulting"
-              onClick={(e) => handleLinkClick(e, '/#consulting')}
-              className="py-1 hover:text-berry-600 transition-colors"
-            >
-              Advisory
-            </a>
-            <a
-              href="/#profile"
-              onClick={(e) => handleLinkClick(e, '/#profile')}
-              className="py-1 hover:text-berry-600 transition-colors"
-            >
-              About
-            </a>
-          </div>
-          <button
-            onClick={() => {
-              setMobileMenuOpen(false);
-              onNavigate('/#intake-form');
-              onOpenInquiry();
-            }}
-            className="w-full text-center rounded-xl bg-berry-600 hover:bg-berry-700 text-white py-3 text-sm font-semibold tracking-wide shadow-md"
+        <div className="md:hidden mt-2 p-6 rounded-3xl bg-white/95 dark:bg-canvas-darkCard/95 backdrop-blur-2xl border border-canvas-border dark:border-canvas-darkBorder shadow-2xl flex flex-col gap-4 animate-fadeIn">
+          <a
+            href="/"
+            onClick={(e) => handleLinkClick(e, '/')}
+            className="text-base font-medium text-ink-900 dark:text-white hover:text-berry-600"
           >
-            Start an Advisory Inquiry
-          </button>
+            Home Broadside
+          </a>
+          <a
+            href="/life"
+            onClick={(e) => handleLinkClick(e, '/life')}
+            className="text-base font-medium text-ink-900 dark:text-white hover:text-berry-600"
+          >
+            Life Desk
+          </a>
+          <a
+            href="/food"
+            onClick={(e) => handleLinkClick(e, '/food')}
+            className="text-base font-medium text-ink-900 dark:text-white hover:text-berry-600"
+          >
+            Food Desk
+          </a>
+          <a
+            href="/work"
+            onClick={(e) => handleLinkClick(e, '/work')}
+            className="text-base font-medium text-ink-900 dark:text-white hover:text-berry-600"
+          >
+            Work Desk
+          </a>
+          <a
+            href="/stories"
+            onClick={(e) => handleLinkClick(e, '/stories')}
+            className="text-base font-medium text-ink-900 dark:text-white hover:text-berry-600"
+          >
+            Stories &amp; Archive
+          </a>
+          <a
+            href="/about"
+            onClick={(e) => handleLinkClick(e, '/about')}
+            className="text-base font-medium text-ink-900 dark:text-white hover:text-berry-600"
+          >
+            About Vivek Shukla
+          </a>
+          <a
+            href="/advisory"
+            onClick={(e) => handleLinkClick(e, '/advisory')}
+            className="text-base font-medium text-ink-900 dark:text-white hover:text-berry-600"
+          >
+            Advisory ("Ben to Jules")
+          </a>
+
+          <div className="pt-4 border-t border-canvas-border dark:border-canvas-darkBorder flex items-center justify-between">
+            <button
+              onClick={(e) => handleLinkClick(e, '/advisory')}
+              className="w-full text-center py-3 rounded-full bg-berry-600 text-white font-bold text-xs uppercase tracking-wider"
+            >
+              Spar With Vivek
+            </button>
+          </div>
         </div>
       )}
     </header>

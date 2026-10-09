@@ -1,9 +1,11 @@
+// src/components/ValueProps.jsx
 import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 
 const DESKS = [
   {
     id: 'life',
+    path: '/life',
     number: '01',
     kicker: 'LIFE',
     title: 'Life, Relationships, & Perspective',
@@ -15,13 +17,13 @@ const DESKS = [
       'Perspective over panic: un-complicating everyday human life',
     ],
     cadence: 'Fortnightly Essays',
-    cta: 'Explore Life Essays',
-    href: '/life',
+    cta: 'Browse Life Desk Archive',
     accentColor: 'border-t-berry-600',
     tagColor: 'text-berry-600 dark:text-berry-400 bg-berry-50 dark:bg-berry-950/60 border-berry-200 dark:border-berry-900',
   },
   {
     id: 'food',
+    path: '/food',
     number: '02',
     kicker: 'FOOD',
     title: 'One Simple Recipe a Week',
@@ -33,13 +35,13 @@ const DESKS = [
       'How deliberate cooking clears and calms a cluttered executive mind',
     ],
     cadence: 'Fortnightly Recipe & Technique',
-    cta: 'Explore Food Recipes',
-    href: '/food',
+    cta: 'Browse Food Desk Archive',
     accentColor: 'border-t-cobalt-600',
     tagColor: 'text-cobalt-600 dark:text-cobalt-400 bg-cobalt-50 dark:bg-cobalt-950/60 border-cobalt-200 dark:border-cobalt-900',
   },
   {
     id: 'work',
+    path: '/work',
     number: '03',
     kicker: 'WORK',
     title: 'Career, Startups & Boardrooms',
@@ -51,8 +53,7 @@ const DESKS = [
       'Investor relations, board dynamics, and the discipline of clean exits',
     ],
     cadence: 'Weekly Field Note on Sunday',
-    cta: 'Explore Work Dispatches',
-    href: '/work',
+    cta: 'Browse Work Desk Archive',
     accentColor: 'border-t-ink-900 dark:border-t-white',
     tagColor: 'text-ink-700 dark:text-ink-300 bg-canvas-subtle dark:bg-canvas-dark border-canvas-border dark:border-canvas-darkBorder',
   },
@@ -60,13 +61,6 @@ const DESKS = [
 
 export default function ValueProps({ onNavigate }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
-
-  const handleDeskClick = (e, href) => {
-    if (onNavigate) {
-      e.preventDefault();
-      onNavigate(href);
-    }
-  };
 
   return (
     <section id="philosophy" className="py-24 px-6 md:px-12 bg-[#E6E9EF] dark:bg-canvas-dark relative border-t border-canvas-border dark:border-canvas-darkBorder transition-colors duration-300">
@@ -86,7 +80,7 @@ export default function ValueProps({ onNavigate }) {
             </h2>
           </div>
           <p className="text-ink-700 dark:text-ink-200 font-normal max-w-lg text-sm sm:text-base leading-relaxed">
-            I write about Life, Food, and Work drawn directly from thirty years of living, making mistakes, and surviving rather unusual odds. Writing helps me make sense of it all, and sharing it might help you navigate your own journey with a little more calm and a lot less clutter.
+            Everything here comes from personal experience: thirty years of loving, cooking, building companies, and surviving. I write to separate what truly matters from everyday noise, in the hope that these notes make your life, your table, and your work a little simpler.
           </p>
         </div>
 
@@ -149,14 +143,13 @@ export default function ValueProps({ onNavigate }) {
                     </span>
                   </div>
 
-                  <a
-                    href={item.href}
-                    onClick={(e) => handleDeskClick(e, item.href)}
+                  <button
+                    onClick={() => onNavigate && onNavigate(item.path)}
                     className="w-full inline-flex items-center justify-between text-xs font-bold tracking-wide text-ink-900 dark:text-white hover:text-berry-600 dark:hover:text-berry-400 transition-colors pt-2 group"
                   >
                     <span>{item.cta}</span>
                     <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1 text-berry-600 dark:text-berry-400" />
-                  </a>
+                  </button>
                 </div>
               </div>
             );

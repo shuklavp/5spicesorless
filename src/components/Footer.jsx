@@ -1,3 +1,4 @@
+// src/components/Footer.jsx
 import React, { useState } from 'react';
 import { ArrowUpRight, Check, Flame, Linkedin } from 'lucide-react';
 
@@ -11,8 +12,8 @@ export default function Footer({ onNavigate }) {
   };
 
   const handleLinkClick = (e, path) => {
+    e.preventDefault();
     if (onNavigate) {
-      e.preventDefault();
       onNavigate(path);
     }
   };
@@ -20,7 +21,8 @@ export default function Footer({ onNavigate }) {
   return (
     <footer id="manifesto" className="bg-canvas-subtle dark:bg-canvas-dark text-ink-800 dark:text-ink-100 border-t border-canvas-border dark:border-canvas-darkBorder pt-20 pb-16 px-6 md:px-12 relative overflow-hidden transition-colors duration-300">
       <div className="max-w-6xl mx-auto">
-        {/* The Manifesto Banner */}
+        
+        {/* The Manifesto Banner (Screenshot 10) */}
         <div className="p-8 sm:p-14 rounded-3xl bg-ink-900 text-white border border-ink-800 mb-20 relative shadow-2xl overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="absolute top-0 right-0 w-80 h-80 bg-berry-600/15 rounded-full blur-[100px] pointer-events-none" />
           
@@ -33,7 +35,7 @@ export default function Footer({ onNavigate }) {
             </div>
 
             <blockquote className="font-serif text-2xl sm:text-4xl text-white font-bold leading-snug">
-              "True mastery is subtractive. The amateur adds ingredients to mask poor technique. The master uses only what is essential, and executes with quiet confidence."
+              "True mastery is simplification. The amateur adds ingredients to mask poor technique. The master uses only what is essential, and executes with quiet confidence."
             </blockquote>
             
             <p className="mt-6 text-sm text-ink-300 font-light max-w-xl leading-relaxed">
@@ -41,24 +43,23 @@ export default function Footer({ onNavigate }) {
             </p>
           </div>
 
-          {/* Stone Mortar and Pestle on Kitchen Counter */}
+          {/* Stone Mortar and Pestle on Kitchen Counter (Screenshot 10) */}
           <div className="w-56 sm:w-72 md:w-80 shrink-0 relative z-10 select-none pointer-events-none">
             <img
               src="/mortar-pestle-dark.png"
               alt="Stone Mortar and Pestle on Wooden Kitchen Counter with Spices"
-              className="w-full h-auto object-contain rounded-2xl"
               onError={(e) => {
-                e.currentTarget.parentElement.style.display = 'none';
+                e.currentTarget.style.display = 'none';
               }}
+              className="w-full h-auto object-contain rounded-2xl"
             />
           </div>
         </div>
 
-        {/* Newsletter & Navigation */}
+        {/* Newsletter & Navigation (Screenshot 10) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pb-16 border-b border-canvas-border dark:border-canvas-darkBorder">
           <div>
             <div className="flex items-center gap-3 mb-5">
-              {/* Scaled Logo in Footer */}
               <img
                 src="/logo.png"
                 alt="5 Spices or Less"
@@ -125,74 +126,42 @@ export default function Footer({ onNavigate }) {
               </span>
               <ul className="space-y-2.5 text-xs sm:text-sm text-ink-600 dark:text-ink-200 font-medium">
                 <li>
-                  <a
-                    href="/#hero"
-                    onClick={(e) => handleLinkClick(e, '/#hero')}
-                    className="hover:text-berry-600 transition-colors"
-                  >
+                  <a href="#hero" className="hover:text-berry-600 transition-colors">
                     Back to Top
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/life"
-                    onClick={(e) => handleLinkClick(e, '/life')}
-                    className="hover:text-berry-600 transition-colors"
-                  >
+                  <a href="/life" onClick={(e) => handleLinkClick(e, '/life')} className="hover:text-berry-600 transition-colors">
                     Life
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/food"
-                    onClick={(e) => handleLinkClick(e, '/food')}
-                    className="hover:text-berry-600 transition-colors"
-                  >
+                  <a href="/food" onClick={(e) => handleLinkClick(e, '/food')} className="hover:text-berry-600 transition-colors">
                     Food
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/work"
-                    onClick={(e) => handleLinkClick(e, '/work')}
-                    className="hover:text-berry-600 transition-colors"
-                  >
+                  <a href="/work" onClick={(e) => handleLinkClick(e, '/work')} className="hover:text-berry-600 transition-colors">
                     Work
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/stories"
-                    onClick={(e) => handleLinkClick(e, '/stories')}
-                    className="hover:text-berry-600 transition-colors"
-                  >
+                  <a href="/stories" onClick={(e) => handleLinkClick(e, '/stories')} className="hover:text-berry-600 transition-colors">
                     Stories &amp; Essays
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/#letterbox"
-                    onClick={(e) => handleLinkClick(e, '/#letterbox')}
-                    className="hover:text-berry-600 transition-colors"
-                  >
+                  <a href="/#letterbox" onClick={(e) => handleLinkClick(e, '/#letterbox')} className="hover:text-berry-600 transition-colors">
                     The Letterbox
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/#consulting"
-                    onClick={(e) => handleLinkClick(e, '/#consulting')}
-                    className="hover:text-berry-600 transition-colors"
-                  >
+                  <a href="/advisory" onClick={(e) => handleLinkClick(e, '/advisory')} className="hover:text-berry-600 transition-colors">
                     Advisory ("Ben to Jules")
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/#profile"
-                    onClick={(e) => handleLinkClick(e, '/#profile')}
-                    className="hover:text-berry-600 transition-colors"
-                  >
+                  <a href="/about" onClick={(e) => handleLinkClick(e, '/about')} className="hover:text-berry-600 transition-colors">
                     About Vivek
                   </a>
                 </li>

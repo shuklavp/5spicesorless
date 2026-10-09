@@ -1,5 +1,6 @@
-import React, { useState, useRef } from 'react';
-import { ArrowUpRight, Check, Heart, Mail, Send, Utensils, Briefcase } from 'lucide-react';
+// src/components/Letterbox.jsx
+import React, { useState, useEffect } from 'react';
+import { ArrowUpRight, Check, Heart, Mail, Send, ShieldCheck, Utensils, Briefcase } from 'lucide-react';
 
 const CATEGORIES = [
   {
@@ -23,30 +24,37 @@ const CATEGORIES = [
 ];
 
 export default function Letterbox() {
+  const [loadTime, setLoadTime] = useState(Date.now());
   const [selectedCategory, setSelectedCategory] = useState('life');
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const formLoadedAt = useRef(Date.now());
-
+  const [spamRejected, setSpamRejected] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     question: '',
-    hp_comment: '', // Invisible honeypot field
+    website_url: '', // Honeypot trap
   });
+
+  useEffect(() => {
+    setLoadTime(Date.now());
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // Anti-spam 1: Honeypot trap check (bots blindly populate hidden inputs)
-    if (formData.hp_comment && formData.hp_comment.trim() !== '') {
-      setSubmitted(true);
+
+    // Anti-Spam Check 1: Honeypot field must be empty
+    if (formData.website_url) {
+      console.warn('Bot submission blocked via honeypot.');
+      setSpamRejected(true);
       return;
     }
 
-    // Anti-spam 2: Submission velocity check (minimum 2.5 seconds dwell time)
-    if (Date.now() - formLoadedAt.current < 2500) {
-      setSubmitted(true);
+    // Anti-Spam Check 2: Dwell time must be at least 2.5 seconds
+    const elapsed = Date.now() - loadTime;
+    if (elapsed < 2500) {
+      console.warn('Bot submission blocked via dwell time.');
+      setSpamRejected(true);
       return;
     }
 
@@ -55,8 +63,8 @@ export default function Letterbox() {
 
   const handleReset = () => {
     setSubmitted(false);
-    formLoadedAt.current = Date.now();
-    setFormData({ name: '', email: '', question: '', hp_comment: '' });
+    setSpamRejected(false);
+    setFormData({ name: '', email: '', question: '', website_url: '' });
   };
 
   return (
@@ -86,14 +94,14 @@ export default function Letterbox() {
         <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 dark:bg-canvas-darkCard/95 border border-berry-200 dark:border-berry-900 text-berry-600 dark:text-berry-400 text-xs font-mono font-bold uppercase tracking-wider shadow-sm backdrop-blur-sm">
             <Mail className="w-3.5 h-3.5" />
-            <span>THE LETTERBOX</span>
+            <span>The Letterbox</span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-5xl font-black text-ink-900 dark:text-white leading-tight drop-shadow-sm">
             Letters to the Table.
           </h2>
 
-          <p className="text-sm sm:text-base text-ink-800 dark:text-ink-200 font-medium leading-relaxed bg-white/80 dark:bg-canvas-dark/80 backdrop-blur-sm rounded-2xl py-3 px-5 inline-block shadow-sm">
+          <p className="text-sm sm:text-base text-ink-800 dark:text-ink-200 font-medium leading-relaxed bg-white/75 dark:bg-canvas-dark/75 backdrop-blur-sm rounded-2xl py-3 px-5 inline-block shadow-sm">
             Whether you are grappling with personal perspective, trying to rescue a dish with five spices, or untangling a messy founder bottleneck: write in. One letter answered with care every Sunday.
           </p>
         </div>
@@ -115,66 +123,74 @@ export default function Letterbox() {
               <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
                 <button
                   onClick={handleReset}
-                  className="px-6 py-2.5 rounded-full bg-berry-600 hover:bg-berry-700 text-white font-bold text-xs tracking-wider uppercase transition-all shadow-md"
+                  className="px-6 py-2.5 rounded-full border border-canvas-border dark:border-canvas-darkBorder text-xs font-mono font-bold text-ink-700 dark:text-ink-200 hover:border-berry-600 transition-colors"
                 >
-                  Write Another Letter
+                  Write Another Note
                 </button>
-                <a
-                  href="https://x.com/5spicesorless"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="px-6 py-2.5 rounded-full border border-canvas-border dark:border-canvas-darkBorder text-ink-900 dark:text-white hover:border-berry-600 text-xs font-bold transition-all flex items-center gap-1.5"
-                >
-                  <span>Follow on X (@5spicesorless)</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </a>
               </div>
+            </div>
+          ) : spamRejected ? (
+            <div className="text-center py-12 px-4 space-y-4 max-w-md mx-auto">
+              <div className="w-16 h-16 rounded-full bg-red-100 dark:bg-red-950 flex items-center justify-center text-red-600 dark:text-red-400 mx-auto">
+                <ShieldCheck className="w-8 h-8" />
+              </div>
+              <h3 className="font-serif text-xl font-bold text-ink-900 dark:text-white">Spam Verification</h3>
+              <p className="text-xs text-ink-600 dark:text-ink-300 leading-relaxed">
+                Automated submission pattern detected. Please wait a few seconds and try submitting again.
+              </p>
+              <button
+                onClick={handleReset}
+                className="px-6 py-2 rounded-full bg-berry-600 text-white text-xs font-bold font-mono"
+              >
+                Reset Form
+              </button>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-8">
               
-              {/* Anti-Spam Honeypot Field (Invisible to real humans, caught by automated scrapers) */}
-              <div className="hidden" aria-hidden="true" style={{ display: 'none' }}>
-                <label htmlFor="hp_comment">Do not fill this field</label>
+              {/* Anti-Spam Honeypot Field */}
+              <div className="hidden" aria-hidden="true">
+                <label htmlFor="letterbox_website_url">Leave empty</label>
                 <input
                   type="text"
-                  id="hp_comment"
-                  name="hp_comment"
-                  tabIndex="-1"
+                  id="letterbox_website_url"
+                  name="website_url"
+                  value={formData.website_url}
+                  onChange={(e) => setFormData({ ...formData, website_url: e.target.value })}
+                  tabIndex={-1}
                   autoComplete="off"
-                  value={formData.hp_comment}
-                  onChange={(e) => setFormData({ ...formData, hp_comment: e.target.value })}
                 />
               </div>
 
-              {/* Category Selection Tabs */}
+              {/* Step 1: Category Selector */}
               <div>
-                <label className="block text-xs font-mono uppercase tracking-wider text-ink-700 dark:text-ink-300 font-bold mb-3">
-                  Choose the Desk:
+                <label className="block text-xs font-mono uppercase tracking-wider text-ink-700 dark:text-ink-200 font-bold mb-3">
+                  01 / Select Desk Topic
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   {CATEGORIES.map((cat) => {
                     const Icon = cat.icon;
                     const isSelected = selectedCategory === cat.id;
-                    const cardClass = isSelected
-                      ? 'bg-white dark:bg-canvas-dark border-berry-600 dark:border-berry-500 shadow-md ring-2 ring-berry-600/20'
-                      : 'bg-canvas-subtle/80 dark:bg-canvas-dark/80 border-canvas-border dark:border-canvas-darkBorder hover:border-cobalt-400';
-                    const iconColor = isSelected ? 'text-berry-600 dark:text-berry-400' : 'text-ink-500';
-
                     return (
                       <button
                         type="button"
                         key={cat.id}
                         onClick={() => setSelectedCategory(cat.id)}
-                        className={'text-left p-4 rounded-2xl border transition-all flex flex-col justify-between ' + cardClass}
+                        className={`p-4 rounded-2xl border text-left transition-all flex flex-col justify-between ${
+                          isSelected
+                            ? 'bg-berry-50 dark:bg-berry-950/40 border-berry-600 dark:border-berry-500 shadow-sm ring-1 ring-berry-600'
+                            : 'bg-white dark:bg-canvas-dark border-canvas-border dark:border-canvas-darkBorder hover:border-berry-300'
+                        }`}
                       >
-                        <div className="flex items-center gap-2 mb-2">
-                          <Icon className={'w-4 h-4 ' + iconColor} />
-                          <span className="font-serif font-bold text-sm text-ink-900 dark:text-white">
+                        <div className="flex items-center justify-between mb-2">
+                          <Icon className={`w-4 h-4 ${isSelected ? 'text-berry-600 dark:text-berry-400' : 'text-ink-400'}`} />
+                          <span className={`text-[10px] font-mono font-bold tracking-wider uppercase ${
+                            isSelected ? 'text-berry-600 dark:text-berry-400' : 'text-ink-400'
+                          }`}>
                             {cat.label}
                           </span>
                         </div>
-                        <p className="text-[11px] text-ink-500 dark:text-ink-400 leading-relaxed font-light">
+                        <p className="text-[11px] text-ink-600 dark:text-ink-300 font-light leading-snug">
                           {cat.description}
                         </p>
                       </button>
@@ -183,106 +199,85 @@ export default function Letterbox() {
                 </div>
               </div>
 
-              {/* Name & Anonymous Checkbox */}
-              <div className="space-y-3">
+              {/* Step 2: The Question */}
+              <div>
+                <label className="block text-xs font-mono uppercase tracking-wider text-ink-700 dark:text-ink-200 font-bold mb-2">
+                  02 / Your Letter or Bottleneck *
+                </label>
+                <textarea
+                  required
+                  rows={4}
+                  value={formData.question}
+                  onChange={(e) => setFormData({ ...formData, question: e.target.value })}
+                  placeholder="Ask about personal perspective, a culinary rescue with five spices, or a founder dilemma..."
+                  className="w-full px-4 py-3.5 rounded-2xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600 resize-none leading-relaxed shadow-inner"
+                />
+              </div>
+
+              {/* Step 3: Attribution & Email */}
+              <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <label className="block text-xs font-mono uppercase tracking-wider text-ink-700 dark:text-ink-300 font-bold">
-                    {isAnonymous ? 'Pen Name or Pseudonym' : 'Your Name *'}
+                  <label className="text-xs font-mono uppercase tracking-wider text-ink-700 dark:text-ink-200 font-bold">
+                    03 / Sign Off
                   </label>
-                  <label className="flex items-center gap-2 text-xs font-mono text-ink-600 dark:text-ink-300 cursor-pointer select-none">
+                  <label className="flex items-center gap-2 cursor-pointer select-none">
                     <input
                       type="checkbox"
                       checked={isAnonymous}
                       onChange={(e) => setIsAnonymous(e.target.checked)}
-                      className="rounded border-canvas-border text-berry-600 focus:ring-berry-600 w-4 h-4"
+                      className="rounded border-canvas-border text-berry-600 focus:ring-berry-500 w-4 h-4"
                     />
-                    <span>Post anonymously</span>
+                    <span className="text-xs font-mono text-ink-600 dark:text-ink-300">
+                      Post anonymously
+                    </span>
                   </label>
                 </div>
 
-                <input
-                  type="text"
-                  required={!isAnonymous}
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder={
-                    isAnonymous
-                      ? 'e.g. "A Restless Founder in Bengaluru" or "A Pensive Cook in London"'
-                      : 'e.g. Rahul Verma or Sarah Jenkins'
-                  }
-                  className="w-full px-4 py-3 rounded-xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600 transition-colors shadow-inner"
-                />
-              </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <input
+                      type="text"
+                      required={!isAnonymous}
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      placeholder={isAnonymous ? "Anonymous Pen Name (e.g. 'Founder in Delhi')" : "Your Name"}
+                      className="w-full px-4 py-3 rounded-2xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600"
+                    />
+                  </div>
 
-              {/* Email Address */}
-              <div>
-                <label className="block text-xs font-mono uppercase tracking-wider text-ink-700 dark:text-ink-300 font-bold mb-2">
-                  Email Address <span className="text-ink-400 font-normal">(Optional: only if you want an alert when answered)</span>
-                </label>
-                <input
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="name@domain.com (kept strictly private)"
-                  className="w-full px-4 py-3 rounded-xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600 transition-colors shadow-inner"
-                />
-              </div>
-
-              {/* The Letter / Question Textarea */}
-              <div>
-                <label className="block text-xs font-mono uppercase tracking-wider text-ink-700 dark:text-ink-300 font-bold mb-2">
-                  Your Letter or Question *
-                </label>
-                <textarea
-                  rows="5"
-                  required
-                  value={formData.question}
-                  onChange={(e) => setFormData({ ...formData, question: e.target.value })}
-                  placeholder="Ask me anything: how to navigate a delicate career crossroad, why romantic love breaks us and rebuilds us, or how to fix a bitter dal with simple kitchen physics. Be as unvarnished as you like..."
-                  className="w-full px-4 py-3 rounded-xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600 transition-colors resize-none leading-relaxed shadow-inner"
-                />
-              </div>
-
-              {/* Direct X Note */}
-              <div className="p-4 rounded-2xl bg-canvas-subtle/80 dark:bg-canvas-dark/80 border border-canvas-border dark:border-canvas-darkBorder flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-                <div className="flex items-center gap-2 text-ink-700 dark:text-ink-200">
-                  <span className="font-bold text-berry-600">Prefer X?</span>
-                  <span>You can also send questions or tag Vivek directly on X:</span>
-                </div>
-                <div className="flex items-center gap-3 font-mono font-bold">
-                  <a
-                    href="https://x.com/5spicesorless"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-cobalt-600 dark:text-cobalt-400 hover:underline flex items-center gap-1"
-                  >
-                    <span>@5spicesorless</span>
-                    <ArrowUpRight className="w-3 h-3" />
-                  </a>
-                  <span className="text-ink-400">·</span>
-                  <a
-                    href="https://x.com/vivekshukla"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="text-berry-600 dark:text-berry-400 hover:underline flex items-center gap-1"
-                  >
-                    <span>@vivekshukla</span>
-                    <ArrowUpRight className="w-3 h-3" />
-                  </a>
+                  <div>
+                    <input
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="Optional: Email (to receive alert if answered)"
+                      className="w-full px-4 py-3 rounded-2xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600"
+                    />
+                  </div>
                 </div>
               </div>
 
               {/* Submit CTA */}
-              <button
-                type="submit"
-                className="w-full py-4 rounded-full bg-berry-600 hover:bg-berry-700 text-white font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-lg shadow-berry-600/25 active:scale-[0.99]"
-              >
-                <Send className="w-4 h-4" />
-                <span>Post Letter to Vivek</span>
-              </button>
+              <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-canvas-border dark:border-canvas-darkBorder">
+                <div className="flex items-center gap-2 text-xs font-mono text-ink-500 dark:text-ink-400">
+                  <ShieldCheck className="w-4 h-4 text-berry-600 dark:text-berry-400" />
+                  <span>No spam · Answered with quiet care</span>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-berry-600 hover:bg-berry-700 text-white font-bold text-xs font-mono tracking-wider uppercase transition-all shadow-md shadow-berry-600/20 flex items-center justify-center gap-2"
+                >
+                  <Send className="w-4 h-4" />
+                  <span>Drop Into Letterbox</span>
+                </button>
+              </div>
+
             </form>
           )}
+
         </div>
+
       </div>
     </section>
   );

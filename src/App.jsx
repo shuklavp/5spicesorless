@@ -1,19 +1,38 @@
+// src/App.jsx
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import HomeAboutTeaser from './components/HomeAboutTeaser';
 import ValueProps from './components/ValueProps';
 import WritingBoard from './components/WritingBoard';
+import HomeAdvisoryTeaser from './components/HomeAdvisoryTeaser';
 import Letterbox from './components/Letterbox';
-import ConsultingModule from './components/ConsultingModule';
-import Profile from './components/Profile';
 import Footer from './components/Footer';
+
+// Dedicated Standalone Pages
+import AboutPage from './components/AboutPage';
+import AdvisoryPage from './components/AdvisoryPage';
 import StoryPage from './components/StoryPage';
 import DeskPage from './components/DeskPage';
 
 export default function App() {
   const [isDark, setIsDark] = useState(false);
-  const [currentPath, setCurrentPath] = useState(window.location.pathname || '/');
+  const [currentPath, setCurrentPath] = useState(
+    typeof window !== 'undefined' ? window.location.pathname : '/'
+  );
 
+  // Synchronise browser history navigation (back / forward)
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentPath(window.location.pathname);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  // Theme Initialisation
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
@@ -25,13 +44,6 @@ export default function App() {
       document.documentElement.classList.remove('dark');
       document.documentElement.classList.add('light');
     }
-
-    const handlePopState = () => {
-      setCurrentPath(window.location.pathname || '/');
-    };
-
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
   const handleToggleTheme = () => {
@@ -48,108 +60,103 @@ export default function App() {
     }
   };
 
+  // Client-Side Route Transition with URL bar sync and scroll to top
   const handleNavigate = (path) => {
-    if (path.startsWith('/#')) {
-      const targetId = path.replace('/#', '');
+    if (path.startsWith('/#') || path.startsWith('#')) {
+      const hash = path.includes('#') ? path.split('#')[1] : '';
       if (currentPath !== '/') {
-        window.history.pushState(null, '', path);
+        window.history.pushState({}, '', '/');
         setCurrentPath('/');
         setTimeout(() => {
-          const el = document.getElementById(targetId);
+          const el = document.getElementById(hash);
           if (el) el.scrollIntoView({ behavior: 'smooth' });
         }, 100);
       } else {
-        const el = document.getElementById(targetId);
+        const el = document.getElementById(hash);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
       }
       return;
     }
 
-    window.history.pushState(null, '', path);
+    window.history.pushState({}, '', path);
     setCurrentPath(path);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleOpenInquiry = () => {
-    if (currentPath !== '/') {
-      handleNavigate('/#intake-form');
-    } else {
-      const el = document.getElementById('intake-form');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+  // Dynamic Route Resolver
+  const renderCurrentRoute = () => {
+    // 1. Standalone About Page: /about
+    if (currentPath === '/about') {
+      return <AboutPage onNavigate={handleNavigate} />;
     }
-  };
 
-  // Route matching
-  const renderCurrentView = () => {
-    // Dedicated Story View (/stories/:slug)
+    // 2. Standalone Advisory Page: /advisory or /consulting
+    if (currentPath === '/advisory' || currentPath === '/consulting') {
+      return <AdvisoryPage onNavigate={handleNavigate} />;
+    }
+
+    // 3. Standalone Story Reader: /stories/:slug
     if (currentPath.startsWith('/stories/')) {
-      const slug = currentPath.replace('/stories/', '').replace(/\/$/, '');
-      return (
-        <StoryPage
-          slug={slug}
-          onNavigate={handleNavigate}
-          onOpenInquiry={handleOpenInquiry}
-        />
-      );
+      const slug = currentPath.replace('/stories/', '');
+      return <StoryPage slug={slug} onNavigate={handleNavigate} />;
     }
 
-    // Dedicated Desk Archive Views (/life, /food, /work, /stories)
-    if (currentPath === '/life' || currentPath === '/food' || currentPath === '/work' || currentPath === '/stories') {
-      const desk = currentPath.replace('/', '');
-      const urlParams = new URLSearchParams(window.location.search);
-      const initialTag = urlParams.get('tag');
-      return (
-        <DeskPage
-          desk={desk}
-          initialTag={initialTag}
-          onNavigate={handleNavigate}
-        />
-      );
+    // 4. Standalone Desk Archives: /life, /food, /work, /stories
+    if (currentPath === '/life') {
+      return <DeskPage deskId="life" onNavigate={handleNavigate} />;
+    }
+    if (currentPath === '/food') {
+      return <DeskPage deskId="food" onNavigate={handleNavigate} />;
+    }
+    if (currentPath === '/work') {
+      return <DeskPage deskId="work" onNavigate={handleNavigate} />;
+    }
+    if (currentPath === '/stories') {
+      return <DeskPage deskId="stories" onNavigate={handleNavigate} />;
     }
 
-    // Default: The Main Home Broadside
+    // 5. Default: Lean Home Broadside (Concept 1)
+    // Vertical height reduced by ~60%, eliminating scroll fatigue:
+    // Hero -> HomeAboutTeaser -> Three Desks -> Curated Dispatches -> Advisory Teaser -> Letterbox -> Footer
     return (
       <main>
-        {/* Two-Tone Editorial Hero */}
-        <Hero onOpenInquiry={handleOpenInquiry} />
+        {/* Section 1: Hero with 5 Spice Drawers */}
+        <Hero onOpenInquiry={() => handleNavigate('/advisory')} />
 
-        {/* The Three Desks: Reader's Contract */}
+        {/* Section 2: The Human Anchor Teaser (Vivek Shukla Memoir Intro) */}
+        <HomeAboutTeaser onNavigate={handleNavigate} />
+
+        {/* Section 3: The Three Desks (Life, Food, Work) */}
         <ValueProps onNavigate={handleNavigate} />
 
-        {/* Editorial Writing Board & Dispatches */}
+        {/* Section 4: Curated Dispatches & Stories */}
         <WritingBoard onNavigate={handleNavigate} />
 
-        {/* The Letterbox: Community Q&A */}
+        {/* Section 5: Advisory Invitation Card (Terracotta Sparring Card) */}
+        <HomeAdvisoryTeaser onNavigate={handleNavigate} />
+
+        {/* Section 6: The Letterbox (Community Q&A with anti-spam) */}
         <Letterbox />
-
-        {/* Advisory Practice & Strategic Intake ("Ben to Jules") */}
-        <ConsultingModule />
-
-        {/* Profile & Personal Story (Vivek Shukla) */}
-        <Profile onOpenInquiry={handleOpenInquiry} />
       </main>
     );
   };
 
   return (
-    <div
-      className={`relative min-h-screen transition-colors duration-300 ${
-        isDark ? 'bg-canvas-dark text-white' : 'bg-white text-ink-900'
-      } bg-sandpaper-texture selection:bg-berry-500/20 selection:text-berry-700`}
-    >
-      {/* Sticky Masthead Navbar */}
+    <div className={`relative min-h-screen transition-colors duration-300 ${
+      isDark ? 'bg-canvas-dark text-white' : 'bg-white text-ink-900'
+    } bg-sandpaper-texture selection:bg-berry-500/20 selection:text-berry-700`}>
+      {/* Sticky Masthead Navigation */}
       <Navbar
-        onOpenInquiry={handleOpenInquiry}
-        isDark={isDark}
-        onToggleTheme={handleToggleTheme}
         onNavigate={handleNavigate}
         currentPath={currentPath}
+        isDark={isDark}
+        onToggleTheme={handleToggleTheme}
       />
 
-      {/* Dynamic Route View */}
-      {renderCurrentView()}
+      {/* Dynamic Content View */}
+      {renderCurrentRoute()}
 
-      {/* Editorial Manifesto Footer */}
+      {/* Manifesto Footer */}
       <Footer onNavigate={handleNavigate} />
     </div>
   );
