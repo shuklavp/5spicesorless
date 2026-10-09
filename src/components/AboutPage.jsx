@@ -79,9 +79,34 @@ export default function AboutPage({ onNavigate }) {
               </p>
             </div>
 
-            {/* Right: The Kitchen Visual Plate & Spice Pills */}
-            <div className="lg:col-span-5 space-y-4">
-              <div className="rounded-3xl overflow-hidden bg-white dark:bg-[#1A1412] border-2 border-[#EADCC9] dark:border-[#38281F] p-4 text-center shadow-lg group">
+            {/* Right: The Five Spices Box & Kitchen Sketch (Captions Removed, Order Stacked) */}
+            <div className="lg:col-span-5 space-y-5">
+              {/* 1. The Five Ingredients Pills (No bottom caption) */}
+              <div className="p-5 rounded-2xl bg-white/80 dark:bg-[#1A1412]/80 border border-[#EADCC9] dark:border-[#38281F] space-y-3 shadow-sm">
+                <div className="text-[11px] font-mono uppercase font-bold tracking-wider text-amber-900 dark:text-amber-200">
+                  The Five Spices in the Desi Ghee:
+                </div>
+                <div className="flex flex-wrap gap-2 text-xs font-mono">
+                  <span className="px-3 py-1.5 rounded-full bg-amber-50 dark:bg-canvas-dark border border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200 font-medium">
+                    01. Black Pepper
+                  </span>
+                  <span className="px-3 py-1.5 rounded-full bg-amber-50 dark:bg-canvas-dark border border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200 font-medium">
+                    02. Rock Salt
+                  </span>
+                  <span className="px-3 py-1.5 rounded-full bg-amber-50 dark:bg-canvas-dark border border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200 font-medium">
+                    03. Pinch of Turmeric
+                  </span>
+                  <span className="px-3 py-1.5 rounded-full bg-amber-50 dark:bg-canvas-dark border border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200 font-medium">
+                    04. Black Cardamom
+                  </span>
+                  <span className="px-3 py-1.5 rounded-full bg-amber-50 dark:bg-canvas-dark border border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200 font-medium">
+                    05. Star Anise
+                  </span>
+                </div>
+              </div>
+
+              {/* 2. The Kitchen Sketch Frame (No bottom caption) */}
+              <div className="rounded-3xl overflow-hidden bg-white dark:bg-[#1A1412] border-2 border-[#EADCC9] dark:border-[#38281F] p-3 sm:p-4 text-center shadow-lg group">
                 <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-[#FAF6F0] dark:bg-[#120E0D] border border-[#EADCC9]/60 dark:border-[#38281F]/60 flex items-center justify-center p-2">
                   <img
                     src="/genesis-kitchen.png"
@@ -94,36 +119,6 @@ export default function AboutPage({ onNavigate }) {
                     className="w-full h-full object-contain hidden dark:block transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-                <div className="mt-3 text-xs font-mono text-ink-600 dark:text-ink-400 italic">
-                  An unhurried kitchen discussion while the pot simmers
-                </div>
-              </div>
-
-              {/* The Five Ingredients Pills */}
-              <div className="p-5 rounded-2xl bg-white/70 dark:bg-[#1A1412]/70 border border-[#EADCC9] dark:border-[#38281F] space-y-3">
-                <div className="text-[11px] font-mono uppercase font-bold tracking-wider text-amber-900 dark:text-amber-200">
-                  The Five Spices in the Desi Ghee:
-                </div>
-                <div className="flex flex-wrap gap-1.5 text-xs font-mono">
-                  <span className="px-3 py-1 rounded-full bg-amber-50 dark:bg-canvas-dark border border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200 font-medium">
-                    01. Black Pepper
-                  </span>
-                  <span className="px-3 py-1 rounded-full bg-amber-50 dark:bg-canvas-dark border border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200 font-medium">
-                    02. Rock Salt
-                  </span>
-                  <span className="px-3 py-1 rounded-full bg-amber-50 dark:bg-canvas-dark border border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200 font-medium">
-                    03. Pinch of Turmeric
-                  </span>
-                  <span className="px-3 py-1 rounded-full bg-amber-50 dark:bg-canvas-dark border border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200 font-medium">
-                    04. Black Cardamom
-                  </span>
-                  <span className="px-3 py-1 rounded-full bg-amber-50 dark:bg-canvas-dark border border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200 font-medium">
-                    05. Star Anise
-                  </span>
-                </div>
-                <p className="text-[11px] font-mono text-ink-500 dark:text-ink-400 italic pt-1 border-t border-[#EADCC9]/50 dark:border-[#38281F]/50">
-                  Cooked with patient heat in pure desi ghee: aroma precedes taste.
-                </p>
               </div>
             </div>
 
