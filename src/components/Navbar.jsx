@@ -34,7 +34,7 @@ export default function Navbar({ onNavigate, currentPath = '/', isDark, onToggle
   // On light mode pages, use /logo.png.
   const logoSrc = isDark || isTerracotta ? '/logo_dark.png' : '/logo.png';
 
-  // Navigation text color scheme based on background
+  // Navigation text colour scheme based on background
   const navTextClass = isTerracotta
     ? 'text-white/90 hover:text-white'
     : 'text-ink-700 dark:text-ink-200 hover:text-berry-600 dark:hover:text-berry-400';

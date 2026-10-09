@@ -219,7 +219,7 @@ export default function Footer({ onNavigate, currentPath = '/' }) {
               src={theme.image}
               alt={theme.alt}
               onError={(e) => {
-                e.currentTarget.src = '/mortar-pestle-dark.png';
+                e.currentTarget.src = '/footer-spice-box.png';
               }}
               className="w-full h-auto object-contain transition-transform duration-500 hover:scale-105"
             />
