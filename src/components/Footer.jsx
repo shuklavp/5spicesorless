@@ -335,12 +335,7 @@ export default function Footer({ onNavigate, currentPath = '/' }) {
                     About Vivek
                   </a>
                 </li>
-                <li>
-                  <a href="/studio" onClick={(e) => handleLinkClick(e, '/studio')} className="text-berry-600 dark:text-berry-400 font-mono text-xs hover:underline inline-flex items-center gap-1.5">
-                    <span>Dispatch Studio</span>
-                    <span className="text-[10px] bg-berry-50 dark:bg-canvas-dark px-1.5 py-0.2 rounded border border-berry-200 dark:border-canvas-darkBorder font-bold">Author</span>
-                  </a>
-                </li>
+
               </ul>
             </div>
 

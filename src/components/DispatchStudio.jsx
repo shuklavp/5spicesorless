@@ -73,6 +73,27 @@ const TAXONOMY = {
 };
 
 export default function DispatchStudio({ onNavigate }) {
+  // Author Authentication (Default passkey: 5spices)
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('dispatch_studio_auth') === 'granted';
+    }
+    return false;
+  });
+  const [passcode, setPasscode] = useState('');
+  const [authError, setAuthError] = useState(false);
+
+  const handleUnlock = (e) => {
+    e.preventDefault();
+    if (passcode.trim().toLowerCase() === '5spices') {
+      setIsAuthenticated(true);
+      localStorage.setItem('dispatch_studio_auth', 'granted');
+      setAuthError(false);
+    } else {
+      setAuthError(true);
+    }
+  };
+
   // Core Dispatch State
   const [category, setCategory] = useState('Life');
   const [subCategory, setSubCategory] = useState(TAXONOMY.Life.subCategories[0]);
@@ -283,6 +304,66 @@ export default function DispatchStudio({ onNavigate }) {
     setSecondaryCaption(found.secondaryCaption || '');
     setStatusMessage(`Loaded "${found.title}" as template`);
   };
+
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen pt-36 pb-24 px-6 flex items-center justify-center bg-white dark:bg-canvas-dark text-ink-900 dark:text-white">
+        <div className="max-w-md w-full p-8 sm:p-10 rounded-3xl bg-canvas-subtle dark:bg-canvas-darkCard border-2 border-canvas-border dark:border-canvas-darkBorder shadow-xl text-center space-y-6">
+          <div className="w-12 h-12 rounded-2xl bg-berry-50 dark:bg-canvas-dark border border-berry-200 dark:border-canvas-darkBorder flex items-center justify-center text-berry-600 dark:text-berry-400 mx-auto">
+            <Feather className="w-6 h-6" />
+          </div>
+
+          <div className="space-y-2">
+            <span className="text-[11px] font-mono uppercase tracking-widest text-berry-600 dark:text-berry-400 font-bold">
+              Private Author Workspace
+            </span>
+            <h1 className="font-serif text-2xl font-bold text-ink-900 dark:text-white">
+              The Dispatch Studio
+            </h1>
+            <p className="text-xs font-mono text-ink-500 dark:text-ink-400">
+              Enter author passkey to open writing and layout canvas.
+            </p>
+          </div>
+
+          <form onSubmit={handleUnlock} className="space-y-4">
+            <div className="space-y-1 text-left">
+              <input
+                type="password"
+                value={passcode}
+                onChange={(e) => { setPasscode(e.target.value); setAuthError(false); }}
+                placeholder="Enter passkey..."
+                autoFocus
+                className={`w-full px-4 py-3 rounded-xl bg-white dark:bg-canvas-dark border ${
+                  authError ? 'border-red-500 focus:border-red-600' : 'border-canvas-border dark:border-canvas-darkBorder focus:border-berry-600'
+                } text-sm text-ink-900 dark:text-white focus:outline-none font-mono text-center tracking-widest`}
+              />
+              {authError && (
+                <p className="text-[11px] font-mono text-red-500 text-center mt-1">
+                  Incorrect passkey. Please try again.
+                </p>
+              )}
+            </div>
+
+            <button
+              type="submit"
+              className="w-full py-3 rounded-xl bg-ink-900 text-white dark:bg-berry-600 font-mono text-xs font-bold uppercase tracking-wider hover:bg-berry-700 transition-colors shadow-sm"
+            >
+              Unlock Studio
+            </button>
+          </form>
+
+          <div className="pt-4 border-t border-canvas-border dark:border-canvas-darkBorder">
+            <button
+              onClick={() => onNavigate('/')}
+              className="text-xs font-mono text-ink-500 hover:text-berry-600 transition-colors"
+            >
+              ← Return to Home Broadside
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen pt-28 pb-20 px-4 sm:px-8 bg-white dark:bg-canvas-dark text-ink-900 dark:text-white transition-colors duration-300">

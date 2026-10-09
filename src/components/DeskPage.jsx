@@ -90,17 +90,10 @@ export default function DeskPage({ deskId, onNavigate }) {
             {config.subtitle}
           </p>
 
-          <div className="pt-2 flex flex-wrap items-center justify-between gap-4">
+          <div className="pt-1">
             <span className="text-xs font-mono text-ink-400 dark:text-ink-500 font-medium">
               Cadence: {config.cadence}
             </span>
-            <button
-              onClick={() => onNavigate('/studio')}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-canvas-border dark:border-canvas-darkBorder bg-white dark:bg-canvas-darkCard hover:border-berry-600 text-ink-700 dark:text-ink-200 text-xs font-mono font-medium hover:text-berry-600 transition-colors shadow-sm"
-            >
-              <Feather className="w-3.5 h-3.5 text-berry-600" />
-              <span>Open Dispatch Studio</span>
-            </button>
           </div>
         </div>
 
