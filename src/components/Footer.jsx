@@ -332,7 +332,7 @@ export default function Footer({ onNavigate, currentPath = '/' }) {
                 </li>
                 <li>
                   <a href="/about" onClick={(e) => handleLinkClick(e, '/about')} className="hover:text-berry-600 transition-colors">
-                    About Vivek
+                    About
                   </a>
                 </li>
 

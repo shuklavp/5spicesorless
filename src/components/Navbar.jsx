@@ -135,7 +135,7 @@ export default function Navbar({ onNavigate, currentPath = '/', isDark, onToggle
               currentPath === '/about' ? activeLinkClass : navTextClass
             }`}
           >
-            About Vivek
+            About
           </a>
           <a
             href="/advisory"
@@ -232,7 +232,7 @@ export default function Navbar({ onNavigate, currentPath = '/', isDark, onToggle
             onClick={(e) => handleLinkClick(e, '/about')}
             className="text-base font-medium text-ink-900 dark:text-white hover:text-berry-600"
           >
-            About Vivek Shukla
+            About
           </a>
           <a
             href="/advisory"
