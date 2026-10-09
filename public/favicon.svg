@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="16" fill="#0C1427"/>
+  <!-- Stylised 5 Spices Star & Flame Icon -->
+  <path d="M32 10 C32 10, 42 22, 42 34 C42 43, 36 49, 32 54 C28 49, 22 43, 22 34 C22 22, 32 10, 32 10 Z" fill="#DE2573"/>
+  <circle cx="32" cy="36" r="6" fill="#FDE047"/>
+  <!-- Five subtle spice marks -->
+  <circle cx="32" cy="18" r="2" fill="#FFFFFF" opacity="0.9"/>
+  <circle cx="24" cy="30" r="1.8" fill="#FFFFFF" opacity="0.8"/>
+  <circle cx="40" cy="30" r="1.8" fill="#FFFFFF" opacity="0.8"/>
+  <circle cx="26" cy="44" r="1.8" fill="#FFFFFF" opacity="0.8"/>
+  <circle cx="38" cy="44" r="1.8" fill="#FFFFFF" opacity="0.8"/>
+</svg>
