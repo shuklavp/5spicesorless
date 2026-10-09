@@ -2,79 +2,135 @@
 import React, { useState } from 'react';
 import { ArrowUpRight, Check, Flame, Linkedin } from 'lucide-react';
 
-const MANIFESTO_QUOTES = {
+const MANIFESTO_THEMES = {
   '/': {
     kicker: 'The Five Spices Manifesto',
     quote: 'True mastery is simplification. The amateur adds ingredients to mask poor technique. The master uses only what is essential, and executes with quiet confidence.',
     subtext: 'Whether seasoning a humble pot of lentils, refining a company strategy, or structuring your days: fewer levers, deeper focus, enduring outcomes.',
+    cardClass: 'bg-gradient-to-br from-[#0B0F19] via-[#161224] to-[#1E0E1B] border-[#2D1B2D]',
+    glowClass: 'bg-berry-600/15',
+    accentText: 'text-berry-400',
+    dotBg: 'bg-berry-400',
   },
   '/about': {
     kicker: 'On Survival & Sincerity',
     quote: 'When you are told you may never speak or write again, all the trivial anxieties of ambition evaporate. Surviving well is not about proving anything, it is about paying attention to what remains.',
     subtext: 'From assembling computers in a Lucknow bedroom to surviving a ten-hour craniotomy: life is measured by the clarity of your days, not the volume of your calendar.',
+    cardClass: 'bg-gradient-to-br from-[#0A101D] via-[#111927] to-[#181528] border-[#1E293B]',
+    glowClass: 'bg-cobalt-600/15',
+    accentText: 'text-blue-400',
+    dotBg: 'bg-blue-400',
   },
   '/advisory': {
     kicker: 'On Operational Perspective',
     quote: 'In boardroom storms and founder bottlenecks, the greatest asset is not a clever slide deck. It is an experienced, calm voice that refuses to panic.',
     subtext: 'A Ben to your Jules: confidential executive sparring, zero corporate theatre, and the quiet courage to make bold moves with steady backing.',
+    cardClass: 'bg-gradient-to-br from-[#1A0B0E] via-[#241014] to-[#2E1218] border-[#3D1A20]',
+    glowClass: 'bg-[#BC5259]/25',
+    accentText: 'text-[#FCA5A5]',
+    dotBg: 'bg-[#FCA5A5]',
   },
   '/consulting': {
     kicker: 'On Operational Perspective',
     quote: 'In boardroom storms and founder bottlenecks, the greatest asset is not a clever slide deck. It is an experienced, calm voice that refuses to panic.',
     subtext: 'A Ben to your Jules: confidential executive sparring, zero corporate theatre, and the quiet courage to make bold moves with steady backing.',
+    cardClass: 'bg-gradient-to-br from-[#1A0B0E] via-[#241014] to-[#2E1218] border-[#3D1A20]',
+    glowClass: 'bg-[#BC5259]/25',
+    accentText: 'text-[#FCA5A5]',
+    dotBg: 'bg-[#FCA5A5]',
   },
   '/life': {
     kicker: 'On Patience & Human Bonds',
     quote: 'Life does not ask you to be extraordinary every morning. It asks you to be kind, to keep your dignity intact, and to learn how to stand up without blaming the road.',
     subtext: 'Reflections on fatherhood, long devotion, second chances, and the quiet patience required to uncomplicate everyday human living.',
+    cardClass: 'bg-gradient-to-br from-[#0A1412] via-[#0E1D19] to-[#132620] border-[#18362E]',
+    glowClass: 'bg-emerald-600/15',
+    accentText: 'text-emerald-400',
+    dotBg: 'bg-emerald-400',
   },
   '/food': {
     kicker: 'On Culinary Restraint',
     quote: 'In Lucknow cooking, the nose delivers judgment before the spoon ever reaches the tongue. Great food does not need thirty spices, it needs honest aroma, deliberate heat, and respect for the pot.',
     subtext: 'Five spices or fewer: clearing executive fatigue, cooking for pure joy, and the lost art of patient simmering.',
+    cardClass: 'bg-gradient-to-br from-[#140D05] via-[#1E1308] to-[#2A180A] border-[#3B2412]',
+    glowClass: 'bg-amber-600/15',
+    accentText: 'text-amber-400',
+    dotBg: 'bg-amber-400',
   },
   '/work': {
     kicker: 'On Enterprise & Character',
     quote: 'A business plan with twenty priorities has none. True governance is not a 50-page presentation, it is keeping faith with those who trusted you with their people and capital.',
     subtext: 'Thirty years of enterprise scars: category creation, clean exits, hiring for character, and stripping away bureaucratic clutter.',
+    cardClass: 'bg-gradient-to-br from-[#080C14] via-[#0D1524] to-[#121E33] border-[#1E293B]',
+    glowClass: 'bg-blue-600/15',
+    accentText: 'text-sky-400',
+    dotBg: 'bg-sky-400',
   },
   '/stories': {
     kicker: 'On The Dispatch Archive',
     quote: 'We write not to impress strangers, but to document hard-won lessons while we still have memory. The truest words are always those written after the applause has died down.',
     subtext: 'Field notes from thirty years of enterprise, survival, culinary physics, and roadside observations.',
+    cardClass: 'bg-gradient-to-br from-[#0E0C17] via-[#171226] to-[#1E1430] border-[#2E1F47]',
+    glowClass: 'bg-purple-600/15',
+    accentText: 'text-purple-400',
+    dotBg: 'bg-purple-400',
   },
 };
 
-const STORY_QUOTES = {
+const STORY_THEMES = {
   'waking-up-declared-dead': {
     kicker: 'On Recovery & Ground Truth',
     quote: 'When you have looked death in the eyes and clawed your way back word by word, corporate politics and vanity metrics cease to have power over you.',
     subtext: 'Relearning speech, motor precision, and mental acuity through daily simplification: one syllable at a time.',
+    cardClass: 'bg-gradient-to-br from-[#0A1412] via-[#0E1D19] to-[#132620] border-[#18362E]',
+    glowClass: 'bg-emerald-600/15',
+    accentText: 'text-emerald-400',
+    dotBg: 'bg-emerald-400',
   },
   'category-creation-water-exit': {
     kicker: 'On Fiduciary Integrity',
     quote: 'True success in entrepreneurship is not a paper valuation, it is taking bold risks, backing your people, and keeping faith with those who trusted you with their capital.',
     subtext: 'Creating an industry category in India across four regional offices, and choosing shareholder duty over founder vanity.',
+    cardClass: 'bg-gradient-to-br from-[#080C14] via-[#0D1524] to-[#121E33] border-[#1E293B]',
+    glowClass: 'bg-blue-600/15',
+    accentText: 'text-sky-400',
+    dotBg: 'bg-sky-400',
   },
   'the-deal-that-failed-max-kelly': {
     kicker: 'On Quiet Encouragement',
     quote: 'A mentor is not someone who gives you clever answers. A mentor is someone who sits quietly beside you while you figure out how to stand up again.',
     subtext: 'Why real mentors provide psychological air cover, refuse commercial fees, and teach by refusing to panic.',
+    cardClass: 'bg-gradient-to-br from-[#080C14] via-[#0D1524] to-[#121E33] border-[#1E293B]',
+    glowClass: 'bg-blue-600/15',
+    accentText: 'text-sky-400',
+    dotBg: 'bg-sky-400',
   },
   'food-and-the-five-spices': {
     kicker: 'On Aroma & Discipline',
     quote: 'The amateur throws thirty ingredients into the pan hoping complexity looks like mastery. The master uses five spices and lets heat do the work.',
     subtext: 'The physics of Awadhi cooking: aroma precedes taste, and executive restraint precedes enduring trust.',
+    cardClass: 'bg-gradient-to-br from-[#140D05] via-[#1E1308] to-[#2A180A] border-[#3B2412]',
+    glowClass: 'bg-amber-600/15',
+    accentText: 'text-amber-400',
+    dotBg: 'bg-amber-400',
   },
   'the-blue-skoda-story': {
     kicker: 'On Roadside Wisdom',
     quote: 'A breakdown on a deserted highway is not an interruption to your journey. Very often, it is the only part of the journey that matters.',
     subtext: 'A midnight breakdown on the Grand Trunk Road, and sixty rupees for a lifetime of perspective.',
+    cardClass: 'bg-gradient-to-br from-[#0E0C17] via-[#171226] to-[#1E1430] border-[#2E1F47]',
+    glowClass: 'bg-purple-600/15',
+    accentText: 'text-purple-400',
+    dotBg: 'bg-purple-400',
   },
   'hiring-without-hype': {
     kicker: 'On Hiring Discipline',
     quote: 'In the early days of a venture, you do not hire resumes. You hire character, curiosity, and people who do not mind carrying their own luggage.',
     subtext: 'What building a 160-person team across four regional offices taught me about character over pedigree resumes.',
+    cardClass: 'bg-gradient-to-br from-[#080C14] via-[#0D1524] to-[#121E33] border-[#1E293B]',
+    glowClass: 'bg-blue-600/15',
+    accentText: 'text-sky-400',
+    dotBg: 'bg-sky-400',
   },
 };
 
@@ -94,39 +150,39 @@ export default function Footer({ onNavigate, currentPath = '/' }) {
     }
   };
 
-  // Determine the dynamic manifesto quote based on active route
-  const getManifesto = () => {
+  // Determine the dynamic manifesto theme based on active route
+  const getTheme = () => {
     if (currentPath && currentPath.startsWith('/stories/')) {
       const slug = currentPath.replace('/stories/', '');
-      if (STORY_QUOTES[slug]) return STORY_QUOTES[slug];
+      if (STORY_THEMES[slug]) return STORY_THEMES[slug];
     }
-    return MANIFESTO_QUOTES[currentPath] || MANIFESTO_QUOTES['/'];
+    return MANIFESTO_THEMES[currentPath] || MANIFESTO_THEMES['/'];
   };
 
-  const manifesto = getManifesto();
+  const theme = getTheme();
 
   return (
     <footer id="manifesto" className="bg-canvas-subtle dark:bg-canvas-dark text-ink-800 dark:text-ink-100 border-t border-canvas-border dark:border-canvas-darkBorder pt-20 pb-16 px-6 md:px-12 relative overflow-hidden transition-colors duration-300">
       <div className="max-w-6xl mx-auto">
         
-        {/* The Dynamic Manifesto Banner */}
-        <div className="p-8 sm:p-14 rounded-3xl bg-ink-900 text-white border border-ink-800 mb-20 relative shadow-2xl overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 transition-all duration-300">
-          <div className="absolute top-0 right-0 w-80 h-80 bg-berry-600/15 rounded-full blur-[100px] pointer-events-none" />
+        {/* The Dynamic Manifesto Card with Bespoke Dark Palette per Page */}
+        <div className={`p-8 sm:p-14 rounded-3xl ${theme.cardClass} text-white border mb-20 relative shadow-2xl overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 transition-all duration-500`}>
+          <div className={`absolute top-0 right-0 w-80 h-80 ${theme.glowClass} rounded-full blur-[100px] pointer-events-none transition-colors duration-500`} />
           
-          <div className="max-w-2xl relative z-10">
-            <div className="flex items-center gap-2 mb-3">
-              <span className="w-2 h-2 rounded-full bg-berry-400" />
-              <span className="text-xs font-mono uppercase tracking-widest text-berry-400 font-bold">
-                {manifesto.kicker}
+          <div className="max-w-2xl relative z-10 space-y-3">
+            <div className="flex items-center gap-2 mb-2">
+              <span className={`w-2 h-2 rounded-full ${theme.dotBg} animate-pulse`} />
+              <span className={`text-xs font-mono uppercase tracking-widest ${theme.accentText} font-bold`}>
+                {theme.kicker}
               </span>
             </div>
 
             <blockquote className="font-serif text-2xl sm:text-4xl text-white font-bold leading-snug">
-              "{manifesto.quote}"
+              "{theme.quote}"
             </blockquote>
             
-            <p className="mt-6 text-sm text-ink-300 font-light max-w-xl leading-relaxed">
-              {manifesto.subtext}
+            <p className="mt-4 text-sm text-slate-300 font-light max-w-xl leading-relaxed">
+              {theme.subtext}
             </p>
           </div>
 

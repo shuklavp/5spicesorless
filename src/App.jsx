@@ -157,7 +157,7 @@ export default function App() {
       {renderCurrentRoute()}
 
       {/* Manifesto Footer */}
-      <Footer onNavigate={handleNavigate} />
+      <Footer onNavigate={handleNavigate} currentPath={currentPath} />
     </div>
   );
 }
