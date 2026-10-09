@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: '"Plus Jakarta Sans"', Inter, -apple-system, sans-serif;
+    background-color: #FFFFFF;
+    color: #0C1427;
+  }
+}
+
+/* Light Sandpaper & Fine Grain Tactile Paper Texture (Replaces checkered grid) */
+.bg-sandpaper-texture {
+  background-color: #FFFFFF;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='sandpaperNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23sandpaperNoise)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+.dark .bg-sandpaper-texture {
+  background-color: #080D18;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='sandpaperNoiseDark'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23sandpaperNoiseDark)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+/* Editorial Drop Cap in Electric Berry Magenta */
+.editorial-drop-cap::first-letter {
+  font-family: 'Fraunces', 'Playfair Display', Georgia, serif;
+  font-size: 3.8rem;
+  line-height: 0.85;
+  float: left;
+  margin-right: 0.85rem;
+  margin-top: 0.2rem;
+  color: #DE2573;
+  font-weight: 800;
+}
+
+/* Custom Clean Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F8FAFC;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #080D18;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #1E293B;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #DE2573;
+}
