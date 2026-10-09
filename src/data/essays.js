@@ -10,7 +10,7 @@ export const ESSAYS_DATA = [
     subtitle: 'On losing memory, motor skills, and vanity, and discovering that survival is an act of daily simplification.',
     category: 'Life',
     subCategory: 'Health & Recovery',
-    illustration: '/footer-journal-chai-uncropped.png',
+    illustration: '/footer-journal-chai-bold.png',
     illustrationCaption: 'Architectural sketch: Vintage fountain pen and Lakhnawi cutting chai',
     tags: ['Perspective', 'Survival', 'Habits', 'Lucknow'],
     readTime: '7 min read',

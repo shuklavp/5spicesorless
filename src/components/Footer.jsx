@@ -22,7 +22,7 @@ const MANIFESTO_THEMES = {
     glowClass: 'bg-cobalt-600/15',
     accentText: 'text-blue-400',
     dotBg: 'bg-blue-400',
-    image: '/footer-journal-chai-uncropped.png',
+    image: '/footer-journal-chai-bold.png',
     alt: 'Vintage Fountain Pen and Steaming Lakhnawi Cutting Chai',
   },
   '/advisory': {
@@ -102,7 +102,7 @@ const STORY_THEMES = {
     glowClass: 'bg-blue-600/15',
     accentText: 'text-blue-400',
     dotBg: 'bg-blue-400',
-    image: '/footer-journal-chai-uncropped.png',
+    image: '/footer-journal-chai-bold.png',
     alt: 'Vintage Fountain Pen and Steaming Lakhnawi Cutting Chai',
   },
   'category-creation-water-exit': {
