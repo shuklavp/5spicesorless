@@ -11,6 +11,8 @@ const MANIFESTO_THEMES = {
     glowClass: 'bg-berry-600/15',
     accentText: 'text-berry-400',
     dotBg: 'bg-berry-400',
+    image: '/footer-spice-box.png',
+    alt: 'Traditional Brass Masala Dabba with Whole Spices',
   },
   '/about': {
     kicker: 'On Survival & Sincerity',
@@ -20,6 +22,8 @@ const MANIFESTO_THEMES = {
     glowClass: 'bg-cobalt-600/15',
     accentText: 'text-blue-400',
     dotBg: 'bg-blue-400',
+    image: '/footer-journal-chai.png',
+    alt: 'Vintage Fountain Pen and Steaming Lakhnawi Cutting Chai',
   },
   '/advisory': {
     kicker: 'On Operational Perspective',
@@ -29,6 +33,8 @@ const MANIFESTO_THEMES = {
     glowClass: 'bg-[#BC5259]/25',
     accentText: 'text-[#FCA5A5]',
     dotBg: 'bg-[#FCA5A5]',
+    image: '/footer-chess-compass.png',
+    alt: 'Chess King and Knight with Brass Navigational Compass',
   },
   '/consulting': {
     kicker: 'On Operational Perspective',
@@ -38,6 +44,8 @@ const MANIFESTO_THEMES = {
     glowClass: 'bg-[#BC5259]/25',
     accentText: 'text-[#FCA5A5]',
     dotBg: 'bg-[#FCA5A5]',
+    image: '/footer-chess-compass.png',
+    alt: 'Chess King and Knight with Brass Navigational Compass',
   },
   '/life': {
     kicker: 'On Patience & Human Bonds',
@@ -47,6 +55,8 @@ const MANIFESTO_THEMES = {
     glowClass: 'bg-emerald-600/15',
     accentText: 'text-emerald-400',
     dotBg: 'bg-emerald-400',
+    image: '/footer-cairn-stones.png',
+    alt: 'Balanced River Stones Cairn with Water Ripple',
   },
   '/food': {
     kicker: 'On Culinary Restraint',
@@ -56,6 +66,8 @@ const MANIFESTO_THEMES = {
     glowClass: 'bg-amber-600/15',
     accentText: 'text-amber-400',
     dotBg: 'bg-amber-400',
+    image: '/footer-kadai-spices.png',
+    alt: 'Cast Iron Kadai with Wooden Spoon and Whole Spices',
   },
   '/work': {
     kicker: 'On Enterprise & Character',
@@ -65,6 +77,8 @@ const MANIFESTO_THEMES = {
     glowClass: 'bg-blue-600/15',
     accentText: 'text-sky-400',
     dotBg: 'bg-sky-400',
+    image: '/footer-drafting-tools.png',
+    alt: 'Precision Drafting Compass, Ruler and Calipers over Blueprints',
   },
   '/stories': {
     kicker: 'On The Dispatch Archive',
@@ -74,6 +88,8 @@ const MANIFESTO_THEMES = {
     glowClass: 'bg-purple-600/15',
     accentText: 'text-purple-400',
     dotBg: 'bg-purple-400',
+    image: '/footer-typewriter.png',
+    alt: 'Vintage Manual Mechanical Typewriter with Paper',
   },
 };
 
@@ -82,10 +98,12 @@ const STORY_THEMES = {
     kicker: 'On Recovery & Ground Truth',
     quote: 'When you have looked death in the eyes and clawed your way back word by word, corporate politics and vanity metrics cease to have power over you.',
     subtext: 'Relearning speech, motor precision, and mental acuity through daily simplification: one syllable at a time.',
-    cardClass: 'bg-gradient-to-br from-[#0A1412] via-[#0E1D19] to-[#132620] border-[#18362E]',
-    glowClass: 'bg-emerald-600/15',
-    accentText: 'text-emerald-400',
-    dotBg: 'bg-emerald-400',
+    cardClass: 'bg-gradient-to-br from-[#0A101D] via-[#111927] to-[#181528] border-[#1E293B]',
+    glowClass: 'bg-blue-600/15',
+    accentText: 'text-blue-400',
+    dotBg: 'bg-blue-400',
+    image: '/footer-journal-chai.png',
+    alt: 'Vintage Fountain Pen and Steaming Lakhnawi Cutting Chai',
   },
   'category-creation-water-exit': {
     kicker: 'On Fiduciary Integrity',
@@ -95,15 +113,19 @@ const STORY_THEMES = {
     glowClass: 'bg-blue-600/15',
     accentText: 'text-sky-400',
     dotBg: 'bg-sky-400',
+    image: '/footer-drafting-tools.png',
+    alt: 'Precision Drafting Compass, Ruler and Calipers over Blueprints',
   },
   'the-deal-that-failed-max-kelly': {
     kicker: 'On Quiet Encouragement',
     quote: 'A mentor is not someone who gives you clever answers. A mentor is someone who sits quietly beside you while you figure out how to stand up again.',
     subtext: 'Why real mentors provide psychological air cover, refuse commercial fees, and teach by refusing to panic.',
-    cardClass: 'bg-gradient-to-br from-[#080C14] via-[#0D1524] to-[#121E33] border-[#1E293B]',
-    glowClass: 'bg-blue-600/15',
-    accentText: 'text-sky-400',
-    dotBg: 'bg-sky-400',
+    cardClass: 'bg-gradient-to-br from-[#1A0B0E] via-[#241014] to-[#2E1218] border-[#3D1A20]',
+    glowClass: 'bg-[#BC5259]/25',
+    accentText: 'text-[#FCA5A5]',
+    dotBg: 'bg-[#FCA5A5]',
+    image: '/footer-chess-compass.png',
+    alt: 'Chess King and Knight with Brass Navigational Compass',
   },
   'food-and-the-five-spices': {
     kicker: 'On Aroma & Discipline',
@@ -113,6 +135,8 @@ const STORY_THEMES = {
     glowClass: 'bg-amber-600/15',
     accentText: 'text-amber-400',
     dotBg: 'bg-amber-400',
+    image: '/footer-kadai-spices.png',
+    alt: 'Cast Iron Kadai with Wooden Spoon and Whole Spices',
   },
   'the-blue-skoda-story': {
     kicker: 'On Roadside Wisdom',
@@ -122,6 +146,8 @@ const STORY_THEMES = {
     glowClass: 'bg-purple-600/15',
     accentText: 'text-purple-400',
     dotBg: 'bg-purple-400',
+    image: '/footer-typewriter.png',
+    alt: 'Vintage Manual Mechanical Typewriter with Paper',
   },
   'hiring-without-hype': {
     kicker: 'On Hiring Discipline',
@@ -131,6 +157,8 @@ const STORY_THEMES = {
     glowClass: 'bg-blue-600/15',
     accentText: 'text-sky-400',
     dotBg: 'bg-sky-400',
+    image: '/footer-drafting-tools.png',
+    alt: 'Precision Drafting Compass, Ruler and Calipers over Blueprints',
   },
 };
 
@@ -150,7 +178,6 @@ export default function Footer({ onNavigate, currentPath = '/' }) {
     }
   };
 
-  // Determine the dynamic manifesto theme based on active route
   const getTheme = () => {
     if (currentPath && currentPath.startsWith('/stories/')) {
       const slug = currentPath.replace('/stories/', '');
@@ -165,7 +192,7 @@ export default function Footer({ onNavigate, currentPath = '/' }) {
     <footer id="manifesto" className="bg-canvas-subtle dark:bg-canvas-dark text-ink-800 dark:text-ink-100 border-t border-canvas-border dark:border-canvas-darkBorder pt-20 pb-16 px-6 md:px-12 relative overflow-hidden transition-colors duration-300">
       <div className="max-w-6xl mx-auto">
         
-        {/* The Dynamic Manifesto Card with Bespoke Dark Palette per Page */}
+        {/* The Dynamic Manifesto Card */}
         <div className={`p-8 sm:p-14 rounded-3xl ${theme.cardClass} text-white border mb-20 relative shadow-2xl overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 transition-all duration-500`}>
           <div className={`absolute top-0 right-0 w-80 h-80 ${theme.glowClass} rounded-full blur-[100px] pointer-events-none transition-colors duration-500`} />
           
@@ -186,15 +213,15 @@ export default function Footer({ onNavigate, currentPath = '/' }) {
             </p>
           </div>
 
-          {/* Stone Mortar and Pestle on Kitchen Counter */}
-          <div className="w-56 sm:w-72 md:w-80 shrink-0 relative z-10 select-none pointer-events-none">
+          {/* White Pencil Sketch Thematic Asset on the Right */}
+          <div className="w-56 sm:w-72 md:w-80 shrink-0 relative z-10 select-none pointer-events-none drop-shadow-2xl">
             <img
-              src="/mortar-pestle-dark.png"
-              alt="Stone Mortar and Pestle on Wooden Kitchen Counter with Spices"
+              src={theme.image}
+              alt={theme.alt}
               onError={(e) => {
-                e.currentTarget.style.display = 'none';
+                e.currentTarget.src = '/mortar-pestle-dark.png';
               }}
-              className="w-full h-auto object-contain rounded-2xl shadow-lg"
+              className="w-full h-auto object-contain transition-transform duration-500 hover:scale-105"
             />
           </div>
         </div>
