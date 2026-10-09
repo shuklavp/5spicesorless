@@ -4,19 +4,10 @@ import { ArrowLeft, ArrowUpRight, Feather, Flame, Linkedin } from 'lucide-react'
 
 export default function AboutPage({ onNavigate }) {
   return (
-    <div className="min-h-screen py-16 px-6 md:px-12 bg-white dark:bg-canvas-dark relative transition-colors duration-300">
+    <div className="min-h-screen pt-32 pb-24 px-6 md:px-12 bg-white dark:bg-canvas-dark relative transition-colors duration-300">
       <div className="max-w-6xl mx-auto">
         
-        {/* Top Back Navigation Breadcrumb */}
-        <div className="mb-10">
-          <button
-            onClick={() => onNavigate('/')}
-            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider font-bold text-ink-600 dark:text-ink-300 hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back to Home Broadside</span>
-          </button>
-        </div>
+        
 
         {/* Section Kicker */}
         <div className="flex items-center gap-3 mb-8">

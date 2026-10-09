@@ -18,7 +18,7 @@ export default function StoryPage({ slug, onNavigate }) {
   };
 
   return (
-    <div className="min-h-screen py-16 px-6 md:px-12 bg-white dark:bg-canvas-dark text-ink-900 dark:text-white transition-colors duration-300">
+    <div className="min-h-screen pt-32 pb-24 px-6 md:px-12 bg-white dark:bg-canvas-dark text-ink-900 dark:text-white transition-colors duration-300">
       <div className="max-w-3xl mx-auto">
         
         {/* Breadcrumb Navigation */}

@@ -87,19 +87,10 @@ export default function AdvisoryPage({ onNavigate }) {
   };
 
   return (
-    <div className="min-h-screen py-16 px-6 md:px-12 bg-[#BC5259] dark:bg-[#2A1417] text-white relative transition-colors duration-300">
+    <div className="min-h-screen pt-32 pb-24 px-6 md:px-12 bg-[#BC5259] dark:bg-[#2A1417] text-white relative transition-colors duration-300">
       <div className="max-w-6xl mx-auto">
         
-        {/* Top Back Navigation Breadcrumb */}
-        <div className="mb-10">
-          <button
-            onClick={() => onNavigate('/')}
-            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider font-bold text-white/80 hover:text-white transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back to Home Broadside</span>
-          </button>
-        </div>
+
 
         {/* Section Header: Matching Screenshot 7 */}
         <div className="max-w-3xl mb-16 space-y-4">
