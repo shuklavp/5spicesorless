@@ -60,7 +60,7 @@ All website copy, component metadata, article drafts, form labels, and code comm
 
 * **Editorial Tone:** A blend of understated, dry British wit and warm Lakhnawi storytelling dignity (*tehzeeb*). Self-effacing, grounded, and observant.
 
-* **Zero Corporate Jargon:** Never use empty marketing buzzwords ("synergy", "paradigm shift"). Speak in honest, grounded human language.
+* **Zero Corporate Jargon:** Never use empty marketing buzzwords ("synergy", "paradigm shift", "global connections"). Speak in honest, grounded human language.
 
 * **No Superlatives:** Avoid bragging or exaggerated claims ("flawlessly", "perfection", "world-class"). Maintain quiet confidence.
 
@@ -112,10 +112,8 @@ Any biographical mention, essay, or profile element must respect these verified 
 | **Berry Magenta** | `#DE2573` | Electric brand accent, highlights, active indicator dots, primary CTA buttons | 
 | **Cobalt Blue** | `#2563EB` | Architectural sketch linework, secondary accents, LinkedIn icons | 
 | **Canvas Border** | `#E2E8F0` | Subtle clean card borders (dark mode: `#1E293B`) | 
-| **Advisory Terracotta** | `#BC5259` | Dedicated warm terracotta background for the Advisory Practice (`#consulting`) in light mode (dark mode: `#2A1417`) | 
-| **Advisory Surface** | `#FAF8F5` | Warm cream card and intake form surface within the Advisory Practice section | 
 
-*Rule:* The Advisory Practice section intentionally utilises a warm terracotta rust-red block (`#BC5259` / `#2A1417`) paired with `#FAF8F5` cards to create visual gravity, warmth, and psychological safety for founder sparring. Other sections maintain crisp canvas pure surfaces and clean slate accents.
+*Rule:* Strictly avoid muddy beige, warm parchment, or dull brown tones.
 
 ### 4.2 Background Textures
 
@@ -145,23 +143,23 @@ All illustrations are rendered in **Cobalt Blue Architectural Fine Line Art** wi
 
 ## 5. Page Layout and Section Architecture
 
-The platform combines a rich single-page broadside with dedicated permalink reader pages and desk archives:
+The single-page application follows a deliberate, six-part narrative progression:
 
 ```
-1. HOME BROADSIDE (/)
-   ├── Hero Section (The Subtractive Philosophy & 5 Core Levers)
-   ├── The Three Desks (The Reader's Contract: Life, Food, Work)
-   ├── Curated Dispatches (Writing Board with Search & Tags)
-   ├── The Letterbox (Community Q&A: Letters to the Table)
-   ├── Advisory Practice (Bespoke Executive Sparring: Ben to Jules)
-   ├── About Vivek Shukla (The Personal Memoir & Scars)
-   └── Manifesto Footer (Colophon, Newsletter, Social Links)
+1. HERO SECTION (The Subtractive Philosophy & 5 Core Levers)
+   ↓
+2. THE THREE DESKS (The Reader's Contract: Life, Food, Work)
+   ↓
+3. THE DISPATCHES (The Writing Board: Live Essays & Stories)
+   ↓
+4. THE LETTERBOX (Community Q&A: Letters to the Cook)
+   ↓
+5. ADVISORY PRACTICE (Bespoke Executive Sparring: Ben to Jules)
+   ↓
+6. ABOUT VIVEK SHUKLA (The Personal Memoir & Scars)
+   ↓
+7. MANIFESTO FOOTER (Colophon, Newsletter, Social Links)
 
-2. DEDICATED STORY PAGES (/stories/:slug)
-   └── Clean, distraction-free reading canvas with takeaways, quotes, and author bio
-
-3. DESK ARCHIVES (/life, /food, /work, /stories)
-   └── Topic archives with real-time keyword search and tag filtering
 ```
 
 ### Detailed Component Specifications
@@ -208,8 +206,6 @@ The platform combines a rich single-page broadside with dedicated permalink read
 
   * Cadence: `Fortnightly Essays`
 
-  * Route: `/life`
-
 * **Desk 02 (FOOD):**
 
   * Kicker: `FOOD`
@@ -219,8 +215,6 @@ The platform combines a rich single-page broadside with dedicated permalink read
   * Body: Lucknow roots where aroma precedes taste. Five spices or fewer, simple steps, cooking for pure joy.
 
   * Cadence: `Fortnightly Recipe & Technique`
-
-  * Route: `/food`
 
 * **Desk 03 (WORK):**
 
@@ -232,27 +226,25 @@ The platform combines a rich single-page broadside with dedicated permalink read
 
   * Cadence: `Weekly Field Note on Sunday`
 
-  * Route: `/work`
-
 #### 3. The Dispatches (`src/components/WritingBoard.jsx`)
 
-* **Purpose:** The curated editorial board containing recent essays, real-time search, sub-tags, and links to full reading canvases.
+* **Purpose:** The editorial reader containing full essays, stories, and takeaways.
 
 * **Categories:** `All`, `Life`, `Food`, `Work`, `Fiction`.
 
 * **Current Catalog (`src/data/essays.js`):**
 
-  1. *Declared Dead at 27: What a 10-Hour Surgery and Relearning to Speak Taught Me* (Life) · Slug: `waking-up-declared-dead`
+  1. *Declared Dead at 27: What a 10-Hour Surgery and Relearning to Speak Taught Me* (Life)
 
-  2. *The \$4.5M Category Creation: Building, Scaling, and Exiting with Honour* (Work) · Slug: `category-creation-water-exit`
+  2. *The \$4.5M Category Creation: Building, Scaling, and Exiting with Honour* (Work)
 
-  3. *The Deal That Failed, The Mentor Who Stayed: On Max Kelly, Macquarie, and the Art of Quiet Encouragement* (Work) · Slug: `the-deal-that-failed-max-kelly`
+  3. *The Deal That Failed, The Mentor Who Stayed: On Max Kelly, Macquarie, and the Art of Quiet Encouragement* (Work)
 
-  4. *Hiring Without Hype: What 160 Interviews and Four Regional Offices Taught Me* (Work) · Slug: `hiring-without-hype`
+  4. *The Five-Spice Chemistry: Why a Paris MBA and a Lucknow Kitchen Share the Same Physics* (Food)
 
-  5. *The Five-Spice Chemistry: Why a Paris MBA and a Lucknow Kitchen Share the Same Physics* (Food) · Slug: `food-and-the-five-spices`
+  5. *The Blue Skoda: A Short Story on Strangers, Mechanics, and Long Roads* (Fiction)
 
-  6. *The Blue Skoda: A Short Story on Strangers, Mechanics, and Long Roads* (Fiction) · Slug: `the-blue-skoda-story`
+* **Modal Reader:** Clean reader modal with core thesis takeaways, pull quotes, and author attribution (*5 Spices or Less · Essays & Dispatches*).
 
 #### 4. The Letterbox (`src/components/Letterbox.jsx`)
 
@@ -260,25 +252,23 @@ The platform combines a rich single-page broadside with dedicated permalink read
 
 * **Kicker:** `THE LETTERBOX`
 
-* **Title:** `Letters to the Table.`
+* **Title:** `Letters to the Cook.`
 
 * **Background:** High-visibility panoramic streetscape sketch (`/streetscape-sketch.png` and `/streetscape-sketch-dark.png`) rendered from the top divider line downward with a frosted glass card overlay.
 
 * **Desk Categories:**
 
-  * `LIFE`: Personal growth, human relationships, fatherhood, and finding quiet perspective.
+  * `Heart & Life`: Love, heartbreak, relationships, and perspective.
 
-  * `FOOD`: Five-spice recipes, aroma and heat control, rescuing dishes, and the joy of honest cooking.
+  * `Food & The Pan`: Rescuing a dish, five-spice ratios, heat control.
 
-  * `WORK`: Career crossroads, navigating politics, early startups, fundraising, and boardroom reality.
+  * `Work & Career`: Founder solitude, corporate politics, fundraising, exits.
 
-* **Key Features:** Anonymous toggle (`Post anonymously` with pen name/city), optional alert email, direct textarea, anti-spam honeypot shield, dwell time verification, and social links to `@5spicesorless` and `@vivekshukla` on X.
+* **Key Features:** Anonymous toggle (`Post anonymously` with pen name/city), optional alert email, direct textarea, and social links to `@5spicesorless` and `@vivekshukla` on X.
 
 #### 5. Advisory Practice (`src/components/ConsultingModule.jsx`)
 
 * **Section ID:** `#consulting`
-
-* **Visual Identity:** Warm terracotta rust-red canvas (`bg-[#BC5259]` / `dark:bg-[#2A1417]`) with warm cream card containers (`bg-[#FAF8F5]` / `dark:bg-canvas-darkCard`) creating visual gravity and warmth.
 
 * **Three Advisory Modes:**
 
@@ -288,7 +278,7 @@ The platform combines a rich single-page broadside with dedicated permalink read
 
   3. *A Ben to Your Jules:* Dedicated 1:1 confidential sparring for high-agency founders under pressure.
 
-* **Built-in Intake Form:** Interactive submission capturing name, email, organisation, collaboration style, bottleneck, and anti-spam protection.
+* **Built-in Intake Form:** Interactive submission capturing name, email, organisation, collaboration style, and bottleneck.
 
 #### 6. About Vivek Shukla (`src/components/Profile.jsx`)
 
@@ -312,11 +302,11 @@ The platform combines a rich single-page broadside with dedicated permalink read
 
 #### 7. Footer (`src/components/Footer.jsx`)
 
-* **The Five Spices Manifesto:** *"True mastery is subtractive. The amateur adds ingredients to mask poor technique. The master uses only what is essential, and executes with quiet confidence."* (with stone mortar and pestle asset `/mortar-pestle-dark.png` featured on the right of the dark manifesto card).
+* **The Five Spices Manifesto:** *"True mastery is subtractive. The amateur adds ingredients to mask poor technique. The master uses only what is essential, and executes with quiet confidence."*
 
 * **The Sunday Reduction:** Weekly newsletter subscription form.
 
-* **Navigation Links:** Back to Top, Life (`/life`), Food (`/food`), Work (`/work`), Stories & Essays (`/stories`), The Letterbox (`/#letterbox`), Advisory ("Ben to Jules"), About Vivek (`/#profile`).
+* **Navigation Links:** Back to Top, Life, Food, Work, Stories & Essays, The Letterbox, Advisory ("Ben to Jules"), About Vivek.
 
 * **Social and Channels:**
 
@@ -350,38 +340,6 @@ When writing and registering new essays:
 
 2. Use commas and colons; strictly avoid em-dashes.
 
-3. Follow the schema: `id`, `slug`, `title`, `subtitle`, `category` (Life, Food, Work, Fiction), `tags` (array of strings), `readTime`, `date`, `author` ("Vivek Shukla"), `leadQuote`, `takeaways` (3-4 points), and `markdownBody`.
+3. Follow the schema: `id`, `title`, `subtitle`, `category` (Life, Food, Work, Fiction), `readTime`, `date`, `author` ("Vivek Shukla"), `leadQuote`, `takeaways` (3-4 points), and `markdownBody`.
 
 4. Include at least one practical, humble Lakhnawi or operational takeaway.
-
-## 7. URL Routing, Desk Archives, and Tagging Architecture
-
-### 7.1 Single-Page to Multi-Route Architecture
-The platform operates as a modern client-side routed Single-Page Application (SPA) on Cloudflare Pages, backed by `public/_redirects`:
-
-* **`/*    /index.html   200`**: Direct URL hits to any path (e.g. `https://5spicesorless.com/stories/hiring-without-hype` or `https://5spicesorless.com/work`) are served by Cloudflare's edge cache and routed seamlessly in the client browser with zero reload.
-
-### 7.2 Permalinks and Social Cards
-* Every essay features a unique, canonical URL: `/stories/:slug`
-* Social link unfurling on LinkedIn and X directs readers directly into the dedicated full-width reading view.
-* The reading canvas features dedicated social sharing triggers (X, LinkedIn, Copy Link), adjacent article pagination, and author bio cards.
-
-### 7.3 Tagging Taxonomy
-* Broad Primary Desks: `Life`, `Food`, `Work`, `Fiction`.
-* Sub-tags: Granular thematic labels attached to individual essays (e.g. `Hiring`, `Recruitment`, `Startups`, `Category Creation`, `Mentorship`, `Health`, `Recovery`).
-* Instant Search: Client-side keyword search indexing across `title`, `subtitle`, `tags`, and full text in real time with zero server latency.
-
-## 8. Anti-Spam Security Protocol
-
-### 8.1 The Invisible Honeypot Shield
-Both public intake forms (`The Letterbox` and `Advisory Intake`) embed an invisible input field styled with `display: none` and `aria-hidden="true"`:
-* **Letterbox Field:** `hp_comment`
-* **Advisory Field:** `hp_company_url`
-* Human visitors never see or interact with these fields. Automated spam bots scanning DOM structures blindly fill them out. Any submission where these fields contain text is silently captured and discarded without notifying the bot.
-
-### 8.2 Submission Velocity & Dwell Time Verification
-* Human readers take 8 to 30 seconds to compose thoughtful messages. Automated scripts submit forms within 100 to 300 milliseconds.
-* Both forms track a `formLoadedAt` timestamp initialized upon mounting. Submissions occurring under 2.5 seconds are flagged as automated scripts and rejected.
-
-### 8.3 Cloudflare Turnstile Integration
-* Ready for drop-in zero-friction background verification using Cloudflare Turnstile without intrusive visual puzzle captchas.
