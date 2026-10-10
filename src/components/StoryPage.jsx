@@ -101,6 +101,12 @@ export default function StoryPage({ slug, onNavigate }) {
                   <img
                     src={essay.illustration || essay.image}
                     alt={essay.illustrationCaption || essay.imageCaption || essay.title}
+                    onError={(e) => {
+                      if (!e.currentTarget.dataset.retried) {
+                        e.currentTarget.dataset.retried = 'true';
+                        e.currentTarget.src = e.currentTarget.src.replace('/illustrations/', '/');
+                      }
+                    }}
                     className={`max-h-72 w-auto object-contain mx-auto transition-transform duration-300 hover:scale-[1.02] ${essay.illustrationDark ? "dark:hidden" : ""} ${essay.isSketch !== false ? "mix-blend-multiply dark:mix-blend-normal" : "rounded-2xl"}`}
                   />
                   {essay.illustrationDark && (
@@ -127,6 +133,12 @@ export default function StoryPage({ slug, onNavigate }) {
                   <img
                     src={essay.secondaryImage}
                     alt={essay.secondaryCaption || essay.title}
+                    onError={(e) => {
+                      if (!e.currentTarget.dataset.retried) {
+                        e.currentTarget.dataset.retried = 'true';
+                        e.currentTarget.src = e.currentTarget.src.replace('/illustrations/', '/');
+                      }
+                    }}
                     className="max-h-80 w-auto rounded-2xl object-contain mx-auto shadow-sm"
                   />
                 </div>
@@ -160,8 +172,37 @@ export default function StoryPage({ slug, onNavigate }) {
             ) : null
           );
 
+// Helper to parse **bold**, *italic*, and [links](url) cleanly
+const renderInlineMarkdown = (text) => {
+  if (!text) return '';
+  
+  // Normalize accidental syntax like "The Water:**" -> "**The Water:**"
+  let normalized = text.replace(/([A-Za-z0-9\s&]+):\*\*/g, '**$1:**');
+
+  // Split by bold (**text**)
+  const parts = normalized.split(/(\*\*.*?\*\*)/g);
+  return parts.map((part, index) => {
+    if (part.startsWith('**') && part.endsWith('**') && part.length >= 4) {
+      return (
+        <strong key={index} className="font-bold text-ink-950 dark:text-white">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    // Split remaining by italic (*text*)
+    const subParts = part.split(/(\*[^*]+?\*)/g);
+    return subParts.map((sub, sIdx) => {
+      if (sub.startsWith('*') && sub.endsWith('*') && sub.length >= 2) {
+        return <em key={`${index}-${sIdx}`} className="italic">{sub.slice(1, -1)}</em>;
+      }
+      return sub;
+    });
+  });
+};
+
           const renderParagraphs = (paras, pfx = 'body') => (
             paras.map((para, i) => {
+              // 1. Inline Image
               if (para.startsWith('![')) {
                 const match = para.match(/!\[(.*?)\]\((.*?)\)/);
                 if (match) {
@@ -180,28 +221,84 @@ export default function StoryPage({ slug, onNavigate }) {
                   );
                 }
               }
+
+              // 2. Heading 3: ###
               if (para.startsWith('### ')) {
                 return (
                   <h3 key={`${pfx}-${i}`} className="font-serif text-2xl font-bold text-ink-900 dark:text-white pt-6 pb-2 border-b border-canvas-border dark:border-canvas-darkBorder">
-                    {para.replace('### ', '')}
+                    {renderInlineMarkdown(para.replace('### ', ''))}
                   </h3>
                 );
               }
-              if (para.startsWith('* ') || para.startsWith('1. ')) {
+
+              // 3. Heading 2: ##
+              if (para.startsWith('## ')) {
+                return (
+                  <h2 key={`${pfx}-${i}`} className="font-serif text-3xl font-bold text-ink-900 dark:text-white pt-8 pb-3 border-b border-canvas-border dark:border-canvas-darkBorder">
+                    {renderInlineMarkdown(para.replace('## ', ''))}
+                  </h2>
+                );
+              }
+
+              // 4. Numbered Step / Recipe Step (e.g. "1. " or "2. ")
+              const isNumbered = /^\d+\.\s+/.test(para);
+              if (isNumbered) {
                 const lines = para.split('\n');
                 return (
-                  <ul key={`${pfx}-${i}`} className="space-y-2 pl-4">
+                  <div key={`${pfx}-${i}`} className="space-y-3 my-4">
+                    {lines.map((l, j) => {
+                      const numMatch = l.match(/^(\d+)\.\s+(.*)/);
+                      if (numMatch) {
+                        const [, num, content] = numMatch;
+                        return (
+                          <div key={j} className="flex items-start gap-3.5 my-2.5">
+                            <span className="w-6 h-6 rounded-full bg-berry-50 dark:bg-berry-950/60 text-berry-600 dark:text-berry-400 border border-berry-200 dark:border-berry-800 text-xs font-mono font-bold flex items-center justify-center shrink-0 mt-0.5">
+                              {num}
+                            </span>
+                            <div className="flex-1 text-base sm:text-lg leading-relaxed text-ink-800 dark:text-ink-100 font-light">
+                              {renderInlineMarkdown(content)}
+                            </div>
+                          </div>
+                        );
+                      }
+                      return (
+                        <p key={j} className="text-base sm:text-lg leading-relaxed text-ink-800 dark:text-ink-100 font-light pl-9">
+                          {renderInlineMarkdown(l)}
+                        </p>
+                      );
+                    })}
+                  </div>
+                );
+              }
+
+              // 5. Bullet List items
+              if (para.startsWith('* ') || para.startsWith('- ')) {
+                const lines = para.split('\n');
+                return (
+                  <ul key={`${pfx}-${i}`} className="space-y-2.5 my-4 pl-2">
                     {lines.map((l, j) => (
-                      <li key={j} className="text-sm sm:text-base leading-relaxed">
-                        {l.replace(/^[\*\d\.\s]+/, '')}
+                      <li key={j} className="flex items-start gap-3 text-base sm:text-lg leading-relaxed text-ink-800 dark:text-ink-100 font-light">
+                        <span className="text-berry-600 dark:text-berry-400 font-bold mt-1 text-xs">•</span>
+                        <span className="flex-1">{renderInlineMarkdown(l.replace(/^[\*\-\s]+/, ''))}</span>
                       </li>
                     ))}
                   </ul>
                 );
               }
+
+              // 6. Blockquote
+              if (para.startsWith('> ')) {
+                return (
+                  <blockquote key={`${pfx}-${i}`} className="p-5 rounded-2xl bg-canvas-subtle dark:bg-canvas-darkCard border-l-4 border-berry-600 my-6 italic text-ink-900 dark:text-white">
+                    {renderInlineMarkdown(para.replace(/^>\s*/, ''))}
+                  </blockquote>
+                );
+              }
+
+              // 7. Regular paragraph with bold & italic parsing
               return (
-                <p key={`${pfx}-${i}`} className="leading-relaxed">
-                  {para}
+                <p key={`${pfx}-${i}`} className="leading-relaxed text-base sm:text-lg text-ink-800 dark:text-ink-100 font-light">
+                  {renderInlineMarkdown(para)}
                 </p>
               );
             })

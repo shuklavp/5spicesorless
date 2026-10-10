@@ -226,6 +226,64 @@ export default function DispatchStudio({ onNavigate }) {
     setTimeout(() => setCopiedXText(false), 2000);
   };
 
+  const textareaRef = React.useRef(null);
+
+  const handleWrapBold = () => {
+    const el = textareaRef.current;
+    if (!el) {
+      setMarkdownBody((prev) => prev + ' **bold text**');
+      return;
+    }
+    const start = el.selectionStart;
+    const end = el.selectionEnd;
+    const text = el.value;
+    if (start !== end) {
+      const selected = text.substring(start, end);
+      const before = text.substring(0, start);
+      const after = text.substring(end);
+      setMarkdownBody(`${before}**${selected}**${after}`);
+      setTimeout(() => {
+        el.focus();
+        el.setSelectionRange(start + 2, end + 2);
+      }, 50);
+    } else {
+      insertMarkdownSnippet('**Bold Keyword:** Explanation');
+    }
+  };
+
+  const handleWrapItalic = () => {
+    const el = textareaRef.current;
+    if (!el) {
+      setMarkdownBody((prev) => prev + ' *italic text*');
+      return;
+    }
+    const start = el.selectionStart;
+    const end = el.selectionEnd;
+    const text = el.value;
+    if (start !== end) {
+      const selected = text.substring(start, end);
+      const before = text.substring(0, start);
+      const after = text.substring(end);
+      setMarkdownBody(`${before}*${selected}*${after}`);
+      setTimeout(() => {
+        el.focus();
+        el.setSelectionRange(start + 1, end + 1);
+      }, 50);
+    } else {
+      insertMarkdownSnippet('*Italic note*');
+    }
+  };
+
+  const handleTextareaKeyDown = (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'b') {
+      e.preventDefault();
+      handleWrapBold();
+    } else if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'i') {
+      e.preventDefault();
+      handleWrapItalic();
+    }
+  };
+
   // Quick Markdown Insert Helper
   const insertMarkdownSnippet = (snippet) => {
     setMarkdownBody((prev) => prev + '\n\n' + snippet);
@@ -1119,8 +1177,25 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                   </span>
                 </div>
 
-                {/* Markdown Quick Insertion Toolbar */}
+                {/* Markdown Quick Insertion Toolbar with Bold & Numbered List */}
                 <div className="flex flex-wrap items-center gap-1.5 p-2 rounded-xl bg-canvas-subtle dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-xs font-mono">
+                  <button
+                    type="button"
+                    onClick={handleWrapBold}
+                    className="px-3 py-1 rounded bg-white dark:bg-canvas-darkCard border border-berry-300 dark:border-berry-700 text-berry-600 dark:text-berry-400 font-bold hover:bg-berry-50 flex items-center gap-1"
+                    title="Bold selected text or insert bold template (**text**)"
+                  >
+                    <span className="text-sm font-black">B</span>
+                    <span>Bold (**text**)</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleWrapItalic}
+                    className="px-2.5 py-1 rounded bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder hover:border-berry-500 text-ink-700 dark:text-ink-200 italic"
+                    title="Italicize selected text (*text*)"
+                  >
+                    <span className="font-serif">I</span> Italic (*text*)
+                  </button>
                   <button
                     type="button"
                     onClick={() => insertMarkdownSnippet('### New Section Heading')}
@@ -1130,10 +1205,17 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                   </button>
                   <button
                     type="button"
+                    onClick={() => insertMarkdownSnippet('1. **First step:** Details\n2. **Second step:** Details\n3. **Third step:** Details')}
+                    className="px-2.5 py-1 rounded bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder hover:border-berry-500 text-ink-700 dark:text-ink-200 font-bold"
+                  >
+                    1. 2. 3. Numbered Steps
+                  </button>
+                  <button
+                    type="button"
                     onClick={() => insertMarkdownSnippet('* First bullet item\n* Second bullet item\n* Third bullet item')}
                     className="px-2.5 py-1 rounded bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder hover:border-berry-500 text-ink-700 dark:text-ink-200"
                   >
-                    + Bullet List
+                    • Bullet List
                   </button>
                   <button
                     type="button"
@@ -1153,9 +1235,11 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
 
                 {/* Editor Textarea */}
                 <textarea
+                  ref={textareaRef}
                   rows={14}
                   value={markdownBody}
                   onChange={(e) => setMarkdownBody(e.target.value)}
+                  onKeyDown={handleTextareaKeyDown}
                   placeholder="Write your story in natural markdown. Use double line breaks between paragraphs..."
                   className="w-full p-4 rounded-2xl bg-canvas-subtle dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-ink-900 dark:text-white font-sans text-sm leading-relaxed focus:outline-none focus:border-berry-600 resize-y"
                 />
@@ -1320,6 +1404,24 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                       ) : null
                     );
 
+                    const renderInline = (txt) => {
+                      if (!txt) return '';
+                      let norm = txt.replace(/([A-Za-z0-9\s&]+):\*\*/g, '**$1:**');
+                      const parts = norm.split(/(\*\*.*?\*\*)/g);
+                      return parts.map((part, index) => {
+                        if (part.startsWith('**') && part.endsWith('**') && part.length >= 4) {
+                          return <strong key={index} className="font-bold text-ink-950 dark:text-white">{part.slice(2, -2)}</strong>;
+                        }
+                        const subParts = part.split(/(\*[^*]+?\*)/g);
+                        return subParts.map((sub, sIdx) => {
+                          if (sub.startsWith('*') && sub.endsWith('*') && sub.length >= 2) {
+                            return <em key={`${index}-${sIdx}`} className="italic">{sub.slice(1, -1)}</em>;
+                          }
+                          return sub;
+                        });
+                      });
+                    };
+
                     const renderParagraphs = (paras, keyPrefix = 'p') => (
                       paras.map((para, i) => {
                         if (para.startsWith('![')) {
@@ -1331,11 +1433,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                                 <div className="rounded-2xl overflow-hidden border border-canvas-border dark:border-canvas-darkBorder bg-canvas-subtle dark:bg-canvas-dark p-3 inline-block max-w-full">
                                   <img src={url} alt={alt} className="max-h-72 w-auto rounded-xl object-contain mx-auto" />
                                 </div>
-                                {alt && (
-                                  <figcaption className="mt-2 text-xs font-mono text-ink-500 dark:text-ink-400 italic">
-                                    {alt}
-                                  </figcaption>
-                                )}
+                                {alt && <figcaption className="mt-2 text-xs font-mono text-ink-500 dark:text-ink-400 italic">{alt}</figcaption>}
                               </figure>
                             );
                           }
@@ -1343,25 +1441,55 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                         if (para.startsWith('### ')) {
                           return (
                             <h3 key={`${keyPrefix}-${i}`} className="font-serif text-xl font-bold text-ink-900 dark:text-white pt-4 pb-1 border-b border-canvas-border dark:border-canvas-darkBorder">
-                              {para.replace('### ', '')}
+                              {renderInline(para.replace('### ', ''))}
                             </h3>
                           );
                         }
-                        if (para.startsWith('* ') || para.startsWith('1. ')) {
+                        const isNum = /^\d+\.\s+/.test(para);
+                        if (isNum) {
                           const lines = para.split('\n');
                           return (
-                            <ul key={`${keyPrefix}-${i}`} className="space-y-1.5 pl-4">
+                            <div key={`${keyPrefix}-${i}`} className="space-y-2.5 my-3">
+                              {lines.map((l, j) => {
+                                const numMatch = l.match(/^(\d+)\.\s+(.*)/);
+                                if (numMatch) {
+                                  const [, num, content] = numMatch;
+                                  return (
+                                    <div key={j} className="flex items-start gap-3 my-2">
+                                      <span className="w-5 h-5 rounded-full bg-berry-50 dark:bg-berry-950/60 text-berry-600 dark:text-berry-400 border border-berry-200 dark:border-berry-800 text-[10px] font-mono font-bold flex items-center justify-center shrink-0 mt-0.5">
+                                        {num}
+                                      </span>
+                                      <div className="flex-1 text-xs sm:text-sm leading-relaxed text-ink-800 dark:text-ink-100">
+                                        {renderInline(content)}
+                                      </div>
+                                    </div>
+                                  );
+                                }
+                                return (
+                                  <p key={j} className="text-xs sm:text-sm leading-relaxed text-ink-800 dark:text-ink-100 pl-8">
+                                    {renderInline(l)}
+                                  </p>
+                                );
+                              })}
+                            </div>
+                          );
+                        }
+                        if (para.startsWith('* ') || para.startsWith('- ')) {
+                          const lines = para.split('\n');
+                          return (
+                            <ul key={`${keyPrefix}-${i}`} className="space-y-1.5 pl-2 my-2">
                               {lines.map((l, j) => (
-                                <li key={j} className="text-xs sm:text-sm leading-relaxed">
-                                  {l.replace(/^[\*\d\.\s]+/, '')}
+                                <li key={j} className="flex items-start gap-2.5 text-xs sm:text-sm leading-relaxed text-ink-800 dark:text-ink-100">
+                                  <span className="text-berry-600 dark:text-berry-400 font-bold">•</span>
+                                  <span className="flex-1">{renderInline(l.replace(/^[\*\-\s]+/, ''))}</span>
                                 </li>
                               ))}
                             </ul>
                           );
                         }
                         return (
-                          <p key={`${keyPrefix}-${i}`} className="leading-relaxed">
-                            {para}
+                          <p key={`${keyPrefix}-${i}`} className="leading-relaxed text-xs sm:text-sm text-ink-800 dark:text-ink-100">
+                            {renderInline(para)}
                           </p>
                         );
                       })
