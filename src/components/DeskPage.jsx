@@ -40,7 +40,7 @@ export default function DeskPage({ deskId, onNavigate }) {
   const deskEssays =
     deskId === 'stories'
       ? ESSAYS_DATA
-      : ESSAYS_DATA.filter((e) => e.category.toLowerCase() === deskId.toLowerCase());
+      : ESSAYS_DATA.filter((e) => e && e.category && e.category.toLowerCase() === deskId.toLowerCase());
 
   // Collect all unique tags
   const allTags = ['All', ...new Set(deskEssays.flatMap((e) => e.tags || []))];

@@ -13,7 +13,7 @@ export default function WritingBoard({ onNavigate }) {
   const filteredEssays =
     selectedCategory === 'All'
       ? ESSAYS_DATA
-      : ESSAYS_DATA.filter((e) => e.category === selectedCategory);
+      : ESSAYS_DATA.filter((e) => e && e.category === selectedCategory);
 
   const handleCopyLink = () => {
     navigator.clipboard?.writeText(window.location.href);

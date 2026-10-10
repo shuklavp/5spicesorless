@@ -6,10 +6,11 @@ import { ESSAYS_DATA } from '../data/essays';
 export default function StoryPage({ slug, onNavigate }) {
   const [copied, setCopied] = useState(false);
 
-  const essay = ESSAYS_DATA.find((e) => e.slug === slug || e.id === slug) || ESSAYS_DATA[0];
-  const currentIndex = ESSAYS_DATA.findIndex((e) => e.slug === essay.slug);
-  const nextEssay = currentIndex < ESSAYS_DATA.length - 1 ? ESSAYS_DATA[currentIndex + 1] : ESSAYS_DATA[0];
-  const prevEssay = currentIndex > 0 ? ESSAYS_DATA[currentIndex - 1] : ESSAYS_DATA[ESSAYS_DATA.length - 1];
+  const validEssays = (ESSAYS_DATA || []).filter(Boolean);
+  const essay = validEssays.find((e) => e.slug === slug || e.id === slug) || validEssays[0] || {};
+  const currentIndex = validEssays.findIndex((e) => e && e.slug === essay.slug);
+  const nextEssay = currentIndex < validEssays.length - 1 ? validEssays[currentIndex + 1] : validEssays[0];
+  const prevEssay = currentIndex > 0 ? validEssays[currentIndex - 1] : validEssays[validEssays.length - 1];
 
   const handleCopyLink = () => {
     navigator.clipboard?.writeText(window.location.href);

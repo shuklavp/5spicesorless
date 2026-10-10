@@ -63,7 +63,7 @@ Anyone can brew a decent cup of tea, and nearly everyone carries their own quiet
 6. The Milk and The Colour: After a minute of simmering, pour in 1 cup of whole milk. Bring the pot back to a gentle, rising boil. Let the froth crest once or twice, lowering the heat just before it spills, until the surface settles into a warm, toasted golden hue that is neither milky pale nor astringently dark.
 
 7. The Pour: Strain into two warm cups. Enjoy it piping hot in the company of someone whose presence you cherish. And if you are alone, let the second cup keep you company.`,
-  },,
+  },
   {
     id: 'the-pot-on-the-burner',
     slug: 'the-pot-on-the-burner',
