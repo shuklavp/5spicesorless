@@ -274,7 +274,7 @@ export default function AboutPage({ onNavigate }) {
                 onClick={() => onNavigate('/advisory')}
                 className="px-7 py-3.5 rounded-full bg-berry-600 hover:bg-berry-700 text-white font-bold text-xs tracking-wider uppercase transition-all shadow-md shadow-berry-600/20 flex items-center gap-2"
               >
-                <span>Spar in Advisory ("Ben to Jules")</span>
+                <span>Talk to Vivek ("Ben to Jules")</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </button>
               

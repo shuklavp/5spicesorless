@@ -94,26 +94,26 @@ export default function StoryPage({ slug, onNavigate }) {
           const takeawaysPos = essay.takeawaysPosition || 'top';
           const showThesis = essay.showTakeaways !== false && essay.takeaways && essay.takeaways.length > 0;
 
-          const renderPrimaryPlate = () => (
+                    const renderPrimaryPlate = () => (
             (essay.illustration || essay.image) ? (
-              <div key="story-img1" className="my-8 rounded-3xl overflow-hidden border border-canvas-border dark:border-canvas-darkBorder bg-canvas-subtle dark:bg-canvas-darkCard p-4 sm:p-6 text-center shadow-sm">
-                <div className="relative max-w-md mx-auto flex items-center justify-center min-h-[160px]">
+              <div key="story-img1" className="my-10 rounded-3xl overflow-hidden border border-canvas-border dark:border-canvas-darkBorder bg-canvas-subtle dark:bg-canvas-darkCard p-4 sm:p-8 text-center shadow-sm">
+                <div className="relative w-full max-w-2xl mx-auto flex items-center justify-center min-h-[200px]">
                   <img
                     src={essay.illustration || essay.image}
                     alt={essay.illustrationCaption || essay.imageCaption || essay.title}
                     onError={(e) => {
                       if (!e.currentTarget.dataset.retried) {
                         e.currentTarget.dataset.retried = 'true';
-                        e.currentTarget.src = e.currentTarget.src.replace('/illustrations/', '/');
+                        e.currentTarget.src = e.currentTarget.src.replace('/illustrations/', '/').replace('.jpg', '.png');
                       }
                     }}
-                    className={`max-h-72 w-auto object-contain mx-auto transition-transform duration-300 hover:scale-[1.02] ${essay.illustrationDark ? "dark:hidden" : ""} ${essay.isSketch !== false ? "mix-blend-multiply dark:mix-blend-normal" : "rounded-2xl"}`}
+                    className={`w-full max-h-[460px] object-contain mx-auto transition-transform duration-300 hover:scale-[1.01] ${essay.illustrationDark ? "dark:hidden" : ""}`}
                   />
                   {essay.illustrationDark && (
                     <img
                       src={essay.illustrationDark}
                       alt={essay.illustrationCaption || essay.imageCaption || essay.title}
-                      className="max-h-72 w-auto object-contain mx-auto hidden dark:block transition-transform duration-300 hover:scale-[1.02]"
+                      className="w-full max-h-[460px] object-contain mx-auto hidden dark:block transition-transform duration-300 hover:scale-[1.01]"
                     />
                   )}
                 </div>
@@ -127,20 +127,27 @@ export default function StoryPage({ slug, onNavigate }) {
           );
 
           const renderSecondaryPlate = () => (
-            essay.secondaryImage ? (
-              <div key="story-img2" className="my-10 rounded-3xl overflow-hidden border border-canvas-border dark:border-canvas-darkBorder bg-canvas-subtle dark:bg-canvas-darkCard p-4 sm:p-6 text-center shadow-sm">
-                <div className="relative max-w-lg mx-auto flex items-center justify-center">
+            (essay.secondaryImage) ? (
+              <div key="story-img2" className="my-10 rounded-3xl overflow-hidden border border-canvas-border dark:border-canvas-darkBorder bg-canvas-subtle dark:bg-canvas-darkCard p-4 sm:p-8 text-center shadow-sm">
+                <div className="relative w-full max-w-2xl mx-auto flex items-center justify-center min-h-[200px]">
                   <img
                     src={essay.secondaryImage}
                     alt={essay.secondaryCaption || essay.title}
                     onError={(e) => {
                       if (!e.currentTarget.dataset.retried) {
                         e.currentTarget.dataset.retried = 'true';
-                        e.currentTarget.src = e.currentTarget.src.replace('/illustrations/', '/');
+                        e.currentTarget.src = e.currentTarget.src.replace('/illustrations/', '/').replace('.jpg', '.png');
                       }
                     }}
-                    className="max-h-80 w-auto rounded-2xl object-contain mx-auto shadow-sm"
+                    className={`w-full max-h-[460px] object-contain mx-auto shadow-sm ${essay.secondaryImageDark ? "dark:hidden" : ""}`}
                   />
+                  {essay.secondaryImageDark && (
+                    <img
+                      src={essay.secondaryImageDark}
+                      alt={essay.secondaryCaption || essay.title}
+                      className="w-full max-h-[460px] object-contain mx-auto hidden dark:block"
+                    />
+                  )}
                 </div>
                 {essay.secondaryCaption && (
                   <p className="mt-3 text-xs font-mono text-ink-500 dark:text-ink-400 italic">
@@ -172,15 +179,15 @@ export default function StoryPage({ slug, onNavigate }) {
             ) : null
           );
 
-// Helper to parse **bold**, *italic*, and [links](url) cleanly
+// Robust inline markdown parser for **bold**, *italic*, and cleanup of stray stars
 const renderInlineMarkdown = (text) => {
   if (!text) return '';
-  
-  // Normalize accidental syntax like "The Water:**" -> "**The Water:**"
-  let normalized = text.replace(/([A-Za-z0-9\s&]+):\*\*/g, '**$1:**');
 
-  // Split by bold (**text**)
-  const parts = normalized.split(/(\*\*.*?\*\*)/g);
+  // Clean any accidental "Word:**" into "**Word:**"
+  let cleanText = text.replace(/([A-Za-z0-9\s&()/-]+):\*\*/g, '**$1:**');
+
+  // Split on bold (**text**)
+  const parts = cleanText.split(/(\*\*.*?\*\*)/g);
   return parts.map((part, index) => {
     if (part.startsWith('**') && part.endsWith('**') && part.length >= 4) {
       return (
@@ -200,9 +207,26 @@ const renderInlineMarkdown = (text) => {
   });
 };
 
+// Render recipe / numbered step with bold label automatically
+const renderStepItem = (content) => {
+  // Matches "The Water:**", "**The Water:**", or "The Water:"
+  const match = content.match(/^(\*{0,2})([^:*]+)(:)(\*{0,2})\s*(.*)/);
+  if (match) {
+    const [, , label, colon, , rest] = match;
+    return (
+      <>
+        <strong className="font-bold text-ink-950 dark:text-white mr-1.5">
+          {label.trim()}{colon}
+        </strong>
+        {renderInlineMarkdown(rest)}
+      </>
+    );
+  }
+  return renderInlineMarkdown(content);
+};
+
           const renderParagraphs = (paras, pfx = 'body') => (
             paras.map((para, i) => {
-              // 1. Inline Image
               if (para.startsWith('![')) {
                 const match = para.match(/!\[(.*?)\]\((.*?)\)/);
                 if (match) {
@@ -222,7 +246,6 @@ const renderInlineMarkdown = (text) => {
                 }
               }
 
-              // 2. Heading 3: ###
               if (para.startsWith('### ')) {
                 return (
                   <h3 key={`${pfx}-${i}`} className="font-serif text-2xl font-bold text-ink-900 dark:text-white pt-6 pb-2 border-b border-canvas-border dark:border-canvas-darkBorder">
@@ -231,7 +254,6 @@ const renderInlineMarkdown = (text) => {
                 );
               }
 
-              // 3. Heading 2: ##
               if (para.startsWith('## ')) {
                 return (
                   <h2 key={`${pfx}-${i}`} className="font-serif text-3xl font-bold text-ink-900 dark:text-white pt-8 pb-3 border-b border-canvas-border dark:border-canvas-darkBorder">
@@ -240,7 +262,7 @@ const renderInlineMarkdown = (text) => {
                 );
               }
 
-              // 4. Numbered Step / Recipe Step (e.g. "1. " or "2. ")
+              // Numbered Step (e.g. "1. " or "2. ")
               const isNumbered = /^\d+\.\s+/.test(para);
               if (isNumbered) {
                 const lines = para.split('\n');
@@ -256,14 +278,14 @@ const renderInlineMarkdown = (text) => {
                               {num}
                             </span>
                             <div className="flex-1 text-base sm:text-lg leading-relaxed text-ink-800 dark:text-ink-100 font-light">
-                              {renderInlineMarkdown(content)}
+                              {renderStepItem(content)}
                             </div>
                           </div>
                         );
                       }
                       return (
                         <p key={j} className="text-base sm:text-lg leading-relaxed text-ink-800 dark:text-ink-100 font-light pl-9">
-                          {renderInlineMarkdown(l)}
+                          {renderStepItem(l)}
                         </p>
                       );
                     })}
@@ -271,7 +293,7 @@ const renderInlineMarkdown = (text) => {
                 );
               }
 
-              // 5. Bullet List items
+              // Bullet List items
               if (para.startsWith('* ') || para.startsWith('- ')) {
                 const lines = para.split('\n');
                 return (
@@ -286,7 +308,6 @@ const renderInlineMarkdown = (text) => {
                 );
               }
 
-              // 6. Blockquote
               if (para.startsWith('> ')) {
                 return (
                   <blockquote key={`${pfx}-${i}`} className="p-5 rounded-2xl bg-canvas-subtle dark:bg-canvas-darkCard border-l-4 border-berry-600 my-6 italic text-ink-900 dark:text-white">
@@ -295,7 +316,6 @@ const renderInlineMarkdown = (text) => {
                 );
               }
 
-              // 7. Regular paragraph with bold & italic parsing
               return (
                 <p key={`${pfx}-${i}`} className="leading-relaxed text-base sm:text-lg text-ink-800 dark:text-ink-100 font-light">
                   {renderInlineMarkdown(para)}
@@ -394,7 +414,7 @@ const renderInlineMarkdown = (text) => {
                 onClick={() => onNavigate('/advisory')}
                 className="text-xs font-mono font-bold text-ink-600 dark:text-ink-300 hover:underline"
               >
-                Spar in Advisory →
+                Talk to Vivek →
               </button>
             </div>
           </div>

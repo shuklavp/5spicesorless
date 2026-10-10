@@ -15,10 +15,11 @@ export const ESSAYS_DATA = [
     date: 'October 2026',
     author: 'Vivek Shukla',
     leadQuote: "Feeling sad, have tea. Feeling happy, have tea. Feeling nothing, have tea. There's nothing which can't be fixed by a hot cup of tea.",
-    illustration: '/illustrations/village-courtyard.jpg',
-    illustrationDark: '',
+    illustration: '/illustrations/village-courtyard.png',
+    illustrationDark: '/illustrations/village-courtyard-dark.png',
     illustrationCaption: 'Architectural sketch: Village courtyard morning tea around the charpai and fire',
-    secondaryImage: '/illustrations/chai-setup.jpg',
+    secondaryImage: '/illustrations/chai-setup.png',
+    secondaryImageDark: '/illustrations/chai-setup-dark.png',
     secondaryCaption: 'Architectural sketch: Traditional brass mortar and pestle, crushed ginger, and saucepan on the burner',
     image1Position: 'top',
     image2Position: 'bottom',
@@ -49,14 +50,20 @@ Anyone can brew a decent cup of tea, and nearly everyone carries their own quiet
 
 *Yield: 2 cups (approximately 180 ml each)*
 
-1. **The Water:** Pour 2 cups of fresh water into a small, heavy saucepan and bring it to a rolling boil over a steady flame (a detail obvious to all, yet occasionally forgotten in haste).
-2. **The Root:** Take an inch-cube of fresh ginger. Crush it firmly in a mortar and pestle rather than grating it. Grating bruises the fibres and turns the liquid harsh, while crushing releases the fragrant oils and juice cleanly without bitterness.
-3. **The Infusion:** Add the crushed ginger into the simmering water. Allow it to bubble for a minute or two, long enough to impart its warmth, but not so long that the spice overpowers the liquor.
-4. **The Leaf:** Lower the heat slightly and add 1 heaped teaspoon of robust CTC tea leaf (Tata Tea Gold or Brooke Bond Taj Mahal are my staples).
-5. **The Varanasi Secret (Sugar at the Boil):** Add two small teaspoons of sugar while the liquor is actively boiling. Years ago, while sipping tea at dawn near the ghats in Varanasi, I had the good fortune of meeting a chemistry professor from Banaras Hindu University. Over steaming cups, he gave me a rigorous scientific breakdown of caramelisation and molecular extraction to explain why sugar must dissolve while the tea leaves are boiling, rather than stirred in at the end. I could not follow the chemical equations then, and I do not pretend to comprehend them now. But I trust the man implicitly, and the cup has never lied.
-6. **The Milk and The Colour:** After a minute of simmering, pour in 1 cup of whole milk. Bring the pot back to a gentle, rising boil. Let the froth crest once or twice, lowering the heat just before it spills, until the surface settles into a warm, toasted golden hue that is neither milky pale nor astringently dark.
-7. **The Pour:** Strain into two warm cups. Enjoy it piping hot in the company of someone whose presence you cherish. And if you are alone, let the second cup keep you company.`,
-  },
+1. The Water: Pour 2 cups of fresh water into a small, heavy saucepan and bring it to a rolling boil over a steady flame (a detail obvious to all, yet occasionally forgotten in haste).
+
+2. The Root: Take an inch-cube of fresh ginger. Crush it firmly in a mortar and pestle rather than grating it. Grating bruises the fibres and turns the liquid harsh, while crushing releases the fragrant oils and juice cleanly without bitterness.
+
+3. The Infusion: Add the crushed ginger into the simmering water. Allow it to bubble for a minute or two, long enough to impart its warmth, but not so long that the spice overpowers the liquor.
+
+4. The Leaf: Lower the heat slightly and add 1 heaped teaspoon of robust CTC tea leaf (Tata Tea Gold or Brooke Bond Taj Mahal are my staples).
+
+5. The Varanasi Secret (Sugar at the Boil): Add two small teaspoons of sugar while the liquor is actively boiling. Years ago, while sipping tea at dawn near the ghats in Varanasi, I had the good fortune of meeting a chemistry professor from Banaras Hindu University. Over steaming cups, he gave me a rigorous scientific breakdown of caramelisation and molecular extraction to explain why sugar must dissolve while the tea leaves are boiling, rather than stirred in at the end. I could not follow the chemical equations then, and I do not pretend to comprehend them now. But I trust the man implicitly, and the cup has never lied.
+
+6. The Milk and The Colour: After a minute of simmering, pour in 1 cup of whole milk. Bring the pot back to a gentle, rising boil. Let the froth crest once or twice, lowering the heat just before it spills, until the surface settles into a warm, toasted golden hue that is neither milky pale nor astringently dark.
+
+7. The Pour: Strain into two warm cups. Enjoy it piping hot in the company of someone whose presence you cherish. And if you are alone, let the second cup keep you company.`,
+  },,
   {
     id: 'the-pot-on-the-burner',
     slug: 'the-pot-on-the-burner',
