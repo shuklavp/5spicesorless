@@ -17,6 +17,12 @@ export default function StoryPage({ slug, onNavigate }) {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const handleShareToX = () => {
+    const quotePart = essay.leadQuote ? `\n\n"${essay.leadQuote}"` : '';
+    const textToPost = `"${essay.title}" by Vivek Shukla (@vivekshukla) on @5spicesorless${quotePart}\n\n${window.location.href}\n\n#5SpicesOrLess`;
+    window.open(`https://x.com/intent/post?text=${encodeURIComponent(textToPost)}`, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <div className="min-h-screen pt-32 pb-24 px-6 md:px-12 bg-white dark:bg-canvas-dark text-ink-900 dark:text-white transition-colors duration-300">
       <div className="max-w-3xl mx-auto">
@@ -31,13 +37,26 @@ export default function StoryPage({ slug, onNavigate }) {
             <span>Back to All Stories</span>
           </button>
 
-          <button
-            onClick={handleCopyLink}
-            className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-ink-500 dark:text-ink-400 hover:text-berry-600 transition-colors"
-          >
-            {copied ? <Check className="w-3.5 h-3.5 text-berry-600" /> : <Copy className="w-3.5 h-3.5" />}
-            <span>{copied ? 'Link Copied' : 'Share Article'}</span>
-          </button>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={handleShareToX}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-ink-900 dark:bg-canvas-darkCard border border-ink-800 dark:border-canvas-darkBorder text-white text-xs font-mono font-medium hover:bg-berry-600 transition-colors shadow-sm"
+              title="Share on X (Twitter)"
+            >
+              <svg className="w-3 h-3 fill-current text-white" viewBox="0 0 24 24">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+              <span>Share to X</span>
+            </button>
+
+            <button
+              onClick={handleCopyLink}
+              className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-ink-500 dark:text-ink-400 hover:text-berry-600 transition-colors"
+            >
+              {copied ? <Check className="w-3.5 h-3.5 text-berry-600" /> : <Copy className="w-3.5 h-3.5" />}
+              <span>{copied ? 'Link Copied' : 'Copy Link'}</span>
+            </button>
+          </div>
         </div>
 
         {/* Article Meta Header */}
@@ -68,123 +87,172 @@ export default function StoryPage({ slug, onNavigate }) {
           </p>
         </div>
 
-        {/* Primary Artwork / Story Illustration */}
-        {(essay.illustration || essay.image) && (
-          <div className="my-8 rounded-3xl overflow-hidden border border-canvas-border dark:border-canvas-darkBorder bg-canvas-subtle dark:bg-canvas-darkCard p-4 sm:p-6 text-center shadow-sm">
-            <div className="relative max-w-md mx-auto flex items-center justify-center min-h-[160px]">
-              <img
-                src={essay.illustration || essay.image}
-                alt={essay.illustrationCaption || essay.imageCaption || essay.title}
-                className={`max-h-72 w-auto object-contain mx-auto transition-transform duration-300 hover:scale-[1.02] ${essay.illustrationDark ? "dark:hidden" : ""} ${essay.isSketch !== false ? "mix-blend-multiply dark:mix-blend-normal" : "rounded-2xl"}`}
-              />
-              {essay.illustrationDark && (
-                <img
-                  src={essay.illustrationDark}
-                  alt={essay.illustrationCaption || essay.imageCaption || essay.title}
-                  className="max-h-72 w-auto object-contain mx-auto hidden dark:block transition-transform duration-300 hover:scale-[1.02]"
-                />
-              )}
-            </div>
-            {(essay.illustrationCaption || essay.imageCaption) && (
-              <p className="mt-3 text-xs font-mono text-ink-500 dark:text-ink-400 italic">
-                {essay.illustrationCaption || essay.imageCaption}
-              </p>
-            )}
-          </div>
-        )}
+        {/* DYNAMIC ARTICLE FLOW: Flexible Images & Optional Takeaways */}
+        {(() => {
+          const img1Pos = essay.image1Position || 'top';
+          const img2Pos = essay.image2Position || 'bottom';
+          const takeawaysPos = essay.takeawaysPosition || 'top';
+          const showThesis = essay.showTakeaways !== false && essay.takeaways && essay.takeaways.length > 0;
 
-        {/* Lead Pull Quote Box */}
-        <div className="p-6 rounded-3xl bg-canvas-subtle dark:bg-canvas-darkCard border-l-4 border-berry-600 my-8 shadow-sm">
-          <blockquote className="font-serif italic text-base sm:text-lg text-ink-900 dark:text-white font-medium leading-relaxed">
-            "{essay.leadQuote}"
-          </blockquote>
-        </div>
+          const renderPrimaryPlate = () => (
+            (essay.illustration || essay.image) ? (
+              <div key="story-img1" className="my-8 rounded-3xl overflow-hidden border border-canvas-border dark:border-canvas-darkBorder bg-canvas-subtle dark:bg-canvas-darkCard p-4 sm:p-6 text-center shadow-sm">
+                <div className="relative max-w-md mx-auto flex items-center justify-center min-h-[160px]">
+                  <img
+                    src={essay.illustration || essay.image}
+                    alt={essay.illustrationCaption || essay.imageCaption || essay.title}
+                    className={`max-h-72 w-auto object-contain mx-auto transition-transform duration-300 hover:scale-[1.02] ${essay.illustrationDark ? "dark:hidden" : ""} ${essay.isSketch !== false ? "mix-blend-multiply dark:mix-blend-normal" : "rounded-2xl"}`}
+                  />
+                  {essay.illustrationDark && (
+                    <img
+                      src={essay.illustrationDark}
+                      alt={essay.illustrationCaption || essay.imageCaption || essay.title}
+                      className="max-h-72 w-auto object-contain mx-auto hidden dark:block transition-transform duration-300 hover:scale-[1.02]"
+                    />
+                  )}
+                </div>
+                {(essay.illustrationCaption || essay.imageCaption) && (
+                  <p className="mt-3 text-xs font-mono text-ink-500 dark:text-ink-400 italic">
+                    {essay.illustrationCaption || essay.imageCaption}
+                  </p>
+                )}
+              </div>
+            ) : null
+          );
 
-        {/* Core Thesis & Takeaways Box */}
-        {essay.takeaways && essay.takeaways.length > 0 && (
-          <div className="p-6 sm:p-8 rounded-3xl bg-[#FAF8F5] dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder mb-12 space-y-4 shadow-sm">
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-berry-600" />
-              <span className="text-xs font-mono uppercase tracking-widest text-ink-900 dark:text-white font-bold">
-                Core Thesis &amp; Ground Truths
-              </span>
-            </div>
-            <ul className="space-y-2.5">
-              {essay.takeaways.map((point, idx) => (
-                <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-ink-800 dark:text-ink-100 font-medium">
-                  <span className="text-berry-600 dark:text-berry-400 font-bold mt-0.5">•</span>
-                  <span className="leading-relaxed">{point}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+          const renderSecondaryPlate = () => (
+            essay.secondaryImage ? (
+              <div key="story-img2" className="my-10 rounded-3xl overflow-hidden border border-canvas-border dark:border-canvas-darkBorder bg-canvas-subtle dark:bg-canvas-darkCard p-4 sm:p-6 text-center shadow-sm">
+                <div className="relative max-w-lg mx-auto flex items-center justify-center">
+                  <img
+                    src={essay.secondaryImage}
+                    alt={essay.secondaryCaption || essay.title}
+                    className="max-h-80 w-auto rounded-2xl object-contain mx-auto shadow-sm"
+                  />
+                </div>
+                {essay.secondaryCaption && (
+                  <p className="mt-3 text-xs font-mono text-ink-500 dark:text-ink-400 italic">
+                    {essay.secondaryCaption}
+                  </p>
+                )}
+              </div>
+            ) : null
+          );
 
-        {/* Full Essay Body Typography */}
-        <div className="prose prose-ink dark:prose-invert max-w-none text-base sm:text-lg font-light leading-relaxed space-y-6 text-ink-800 dark:text-ink-100 mb-16">
-          {essay.markdownBody.split('\n\n').map((para, i) => {
-            if (para.startsWith('![')) {
-              const match = para.match(/!\[(.*?)\]\((.*?)\)/);
-              if (match) {
-                const [, alt, url] = match;
-                return (
-                  <figure key={i} className="my-8 text-center">
-                    <div className="rounded-3xl overflow-hidden border border-canvas-border dark:border-canvas-darkBorder bg-canvas-subtle dark:bg-canvas-darkCard p-3 sm:p-5 inline-block max-w-full shadow-sm">
-                      <img src={url} alt={alt} className="max-h-96 w-auto rounded-2xl object-contain mx-auto" />
-                    </div>
-                    {alt && (
-                      <figcaption className="mt-2.5 text-xs font-mono text-ink-500 dark:text-ink-400 italic">
-                        {alt}
-                      </figcaption>
-                    )}
-                  </figure>
-                );
-              }
-            }
-            if (para.startsWith('### ')) {
-              return (
-                <h3 key={i} className="font-serif text-2xl font-bold text-ink-900 dark:text-white pt-6 pb-2 border-b border-canvas-border dark:border-canvas-darkBorder">
-                  {para.replace('### ', '')}
-                </h3>
-              );
-            }
-            if (para.startsWith('* ') || para.startsWith('1. ')) {
-              const lines = para.split('\n');
-              return (
-                <ul key={i} className="space-y-2 pl-4">
-                  {lines.map((l, j) => (
-                    <li key={j} className="text-sm sm:text-base leading-relaxed">
-                      {l.replace(/^[\*\d\.\s]+/, '')}
+          const renderTakeaways = () => (
+            showThesis ? (
+              <div key="story-takeaways" className="p-6 sm:p-8 rounded-3xl bg-[#FAF8F5] dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder my-8 space-y-4 shadow-sm">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-berry-600" />
+                  <span className="text-xs font-mono uppercase tracking-widest text-ink-900 dark:text-white font-bold">
+                    Core Thesis &amp; Ground Truths
+                  </span>
+                </div>
+                <ul className="space-y-2.5">
+                  {essay.takeaways.map((point, idx) => (
+                    <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-ink-800 dark:text-ink-100 font-medium">
+                      <span className="text-berry-600 dark:text-berry-400 font-bold mt-0.5">•</span>
+                      <span className="leading-relaxed">{point}</span>
                     </li>
                   ))}
                 </ul>
-              );
-            }
-            return (
-              <p key={i} className="leading-relaxed">
-                {para}
-              </p>
-            );
-          })}
-        </div>
+              </div>
+            ) : null
+          );
 
-        {/* Secondary Artwork / Accompanying Plate */}
-        {essay.secondaryImage && (
-          <div className="my-10 rounded-3xl overflow-hidden border border-canvas-border dark:border-canvas-darkBorder bg-canvas-subtle dark:bg-canvas-darkCard p-4 sm:p-6 text-center shadow-sm">
-            <div className="relative max-w-lg mx-auto flex items-center justify-center">
-              <img
-                src={essay.secondaryImage}
-                alt={essay.secondaryCaption || essay.title}
-                className="max-h-80 w-auto rounded-2xl object-contain mx-auto shadow-sm"
-              />
-            </div>
-            {essay.secondaryCaption && (
-              <p className="mt-3 text-xs font-mono text-ink-500 dark:text-ink-400 italic">
-                {essay.secondaryCaption}
-              </p>
-            )}
-          </div>
-        )}
+          const renderParagraphs = (paras, pfx = 'body') => (
+            paras.map((para, i) => {
+              if (para.startsWith('![')) {
+                const match = para.match(/!\[(.*?)\]\((.*?)\)/);
+                if (match) {
+                  const [, alt, url] = match;
+                  return (
+                    <figure key={`${pfx}-${i}`} className="my-8 text-center">
+                      <div className="rounded-3xl overflow-hidden border border-canvas-border dark:border-canvas-darkBorder bg-canvas-subtle dark:bg-canvas-darkCard p-3 sm:p-5 inline-block max-w-full shadow-sm">
+                        <img src={url} alt={alt} className="max-h-96 w-auto rounded-2xl object-contain mx-auto" />
+                      </div>
+                      {alt && (
+                        <figcaption className="mt-2.5 text-xs font-mono text-ink-500 dark:text-ink-400 italic">
+                          {alt}
+                        </figcaption>
+                      )}
+                    </figure>
+                  );
+                }
+              }
+              if (para.startsWith('### ')) {
+                return (
+                  <h3 key={`${pfx}-${i}`} className="font-serif text-2xl font-bold text-ink-900 dark:text-white pt-6 pb-2 border-b border-canvas-border dark:border-canvas-darkBorder">
+                    {para.replace('### ', '')}
+                  </h3>
+                );
+              }
+              if (para.startsWith('* ') || para.startsWith('1. ')) {
+                const lines = para.split('\n');
+                return (
+                  <ul key={`${pfx}-${i}`} className="space-y-2 pl-4">
+                    {lines.map((l, j) => (
+                      <li key={j} className="text-sm sm:text-base leading-relaxed">
+                        {l.replace(/^[\*\d\.\s]+/, '')}
+                      </li>
+                    ))}
+                  </ul>
+                );
+              }
+              return (
+                <p key={`${pfx}-${i}`} className="leading-relaxed">
+                  {para}
+                </p>
+              );
+            })
+          );
+
+          const allParas = (essay.markdownBody || '').split('\n\n').filter(Boolean);
+          const midIdx = Math.max(1, Math.floor(allParas.length / 2));
+          const firstParas = allParas.slice(0, midIdx);
+          const secondParas = allParas.slice(midIdx);
+
+          return (
+            <>
+              {/* Top Placed Images */}
+              {img1Pos === 'top' && renderPrimaryPlate()}
+              {img2Pos === 'top' && renderSecondaryPlate()}
+
+              {/* Lead Pull Quote Box */}
+              {essay.leadQuote && (
+                <div className="p-6 rounded-3xl bg-canvas-subtle dark:bg-canvas-darkCard border-l-4 border-berry-600 my-8 shadow-sm">
+                  <blockquote className="font-serif italic text-base sm:text-lg text-ink-900 dark:text-white font-medium leading-relaxed">
+                    "{essay.leadQuote}"
+                  </blockquote>
+                </div>
+              )}
+
+              {/* Below-Quote Placed Images */}
+              {img1Pos === 'after-quote' && renderPrimaryPlate()}
+              {img2Pos === 'after-quote' && renderSecondaryPlate()}
+
+              {/* Top-Positioned Takeaways */}
+              {takeawaysPos === 'top' && renderTakeaways()}
+
+              {/* Essay Body Typography (with mid-story image support) */}
+              <div className="prose prose-ink dark:prose-invert max-w-none text-base sm:text-lg font-light leading-relaxed space-y-6 text-ink-800 dark:text-ink-100 my-8">
+                {renderParagraphs(firstParas, 'fp')}
+
+                {img1Pos === 'middle' && renderPrimaryPlate()}
+                {img2Pos === 'middle' && renderSecondaryPlate()}
+
+                {renderParagraphs(secondParas, 'sp')}
+              </div>
+
+              {/* Bottom-Positioned Takeaways */}
+              {takeawaysPos === 'bottom' && renderTakeaways()}
+
+              {/* Bottom Placed Images */}
+              {img1Pos === 'bottom' && renderPrimaryPlate()}
+              {img2Pos === 'bottom' && renderSecondaryPlate()}
+            </>
+          );
+        })()}
 
         {/* Tag Pills */}
         {essay.tags && (

@@ -1,6 +1,7 @@
 // src/components/AdvisoryPage.jsx
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, ArrowRight, Check, Compass, ShieldCheck, Sparkles, Send } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Check, Compass, ShieldCheck, Sparkles, Send, Loader2 } from 'lucide-react';
+import { FORMS_CONFIG } from '../config/forms';
 
 const ADVISORY_MODES = [
   {
@@ -52,6 +53,8 @@ export default function AdvisoryPage({ onNavigate }) {
   const [loadTime, setLoadTime] = useState(Date.now());
   const [submitted, setSubmitted] = useState(false);
   const [spamRejected, setSpamRejected] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -65,8 +68,9 @@ export default function AdvisoryPage({ onNavigate }) {
     setLoadTime(Date.now());
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitError('');
 
     // Anti-Spam Check 1: Honeypot field must be empty
     if (formData.website_url) {
@@ -83,7 +87,39 @@ export default function AdvisoryPage({ onNavigate }) {
       return;
     }
 
-    setSubmitted(true);
+    setIsSubmitting(true);
+
+    try {
+      if (FORMS_CONFIG.web3formsAccessKey && FORMS_CONFIG.web3formsAccessKey !== 'YOUR_ACCESS_KEY_HERE') {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            access_key: FORMS_CONFIG.web3formsAccessKey,
+            subject: `[5 Spices Advisory] Confidential Enquiry from ${formData.name || 'Founder'} (${formData.venture || 'Venture'})`,
+            from_name: '5 Spices or Less — Advisory Intake',
+            founder_name: formData.name,
+            founder_email: formData.email,
+            venture: formData.venture,
+            mode_selected: formData.advisoryMode,
+            bottleneck: formData.bottleneck,
+          }),
+        });
+        const resData = await response.json();
+        if (resData.success) {
+          setSubmitted(true);
+        } else {
+          setSubmitError(resData.message || 'Submission error. Please try again.');
+        }
+      } else {
+        setSubmitted(true);
+      }
+    } catch (err) {
+      console.error('Submission error:', err);
+      setSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -315,12 +351,27 @@ export default function AdvisoryPage({ onNavigate }) {
                 <span>Confidential, direct, and unvarnished communication.</span>
               </div>
 
+              {submitError && (
+                <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-xs font-mono text-center">
+                  {submitError}
+                </div>
+              )}
               <button
                 type="submit"
-                className="w-full py-4 rounded-full bg-[#BC5259] hover:bg-[#A3434A] text-white font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-lg shadow-[#BC5259]/30 active:scale-[0.99]"
+                disabled={isSubmitting}
+                className="w-full py-4 rounded-full bg-[#BC5259] hover:bg-[#A3434A] disabled:opacity-60 text-white font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-lg shadow-[#BC5259]/30 active:scale-[0.99]"
               >
-                <Send className="w-4 h-4" />
-                <span>Send Message to Vivek</span>
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <span>Delivering Message to Vivek...</span>
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4" />
+                    <span>Send Message to Vivek</span>
+                  </>
+                )}
               </button>
             </form>
           )}

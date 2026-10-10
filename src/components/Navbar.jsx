@@ -172,7 +172,7 @@ export default function Navbar({ onNavigate, currentPath = '/', isDark, onToggle
                 : 'bg-berry-600 hover:bg-berry-700 text-white shadow-berry-600/20'
             }`}
           >
-            <span>Spar With Vivek</span>
+            <span>Talk To Vivek</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
           </button>
 
@@ -247,7 +247,7 @@ export default function Navbar({ onNavigate, currentPath = '/', isDark, onToggle
               onClick={(e) => handleLinkClick(e, '/advisory')}
               className="w-full text-center py-3 rounded-full bg-berry-600 text-white font-bold text-xs uppercase tracking-wider"
             >
-              Spar With Vivek
+              Talk To Vivek
             </button>
           </div>
         </div>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="flameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#DE2573"/>
+      <stop offset="60%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#FDE047"/>
+    </linearGradient>
+  </defs>
+  <!-- Pure Crisp Circular Badge -->
+  <rect width="64" height="64" rx="16" fill="#0C1427"/>
+  <rect x="1" y="1" width="62" height="62" rx="15" fill="none" stroke="#DE2573" stroke-width="2"/>
+  
+  <!-- Dynamic Tadka Flame -->
+  <path d="M 32 10 C 37 18 44 26 44 36 C 44 44 38 49 32 49 C 26 49 20 44 20 36 C 20 28 27 22 28 17 C 29 23 33 26 33 29 C 33 32 30 34 32 37 C 33.5 35 34.5 32 34 29 C 33.5 24 32 16 32 10 Z" fill="url(#flameGrad)"/>
+  
+  <!-- 5 Arc Spice Seeds -->
+  <circle cx="16" cy="54" r="2.2" fill="#FFFFFF"/>
+  <circle cx="24" cy="56" r="2.2" fill="#FFFFFF"/>
+  <circle cx="32" cy="57" r="2.5" fill="#FDE047"/>
+  <circle cx="40" cy="56" r="2.2" fill="#FFFFFF"/>
+  <circle cx="48" cy="54" r="2.2" fill="#FFFFFF"/>
+</svg>

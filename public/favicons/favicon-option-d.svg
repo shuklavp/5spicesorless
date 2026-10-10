@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="berryGradD" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E93B86"/>
+      <stop offset="100%" stop-color="#A3124C"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#berryGradD)"/>
+  <circle cx="32" cy="32" r="26" fill="none" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="1.5"/>
+  <!-- Stylised 5 & S Interlocking Motif -->
+  <!-- Bold 5 on left -->
+  <path d="M 18 20 L 32 20 L 32 25 L 23 25 L 22.5 31 C 24 30 26 29.5 28 29.5 C 33 29.5 36 32.5 36 37 C 36 42 32 45 27 45 C 22 45 19 42 18 38 L 23 37 C 23.5 39 25 40.5 27 40.5 C 29 40.5 31 39 31 37 C 31 35 29 33.5 26.5 33.5 C 24.5 33.5 23 34.5 22 35.5 L 18 34.5 Z" fill="#FFFFFF"/>
+  <!-- Stylised S on right -->
+  <path d="M 44 24 C 42 22 39 21 36 21 C 33 21 31 22.5 31 24.5 C 31 26.5 33 27.5 36 28.5 C 41 30 44 32 44 36 C 44 41 40 44 35 44 C 31 44 28 42 27 39 L 31 37.5 C 31.5 39 33 40 35 40 C 37.5 40 39 38.5 39 36.5 C 39 34.5 37.5 33.5 34.5 32.5 C 30 31 27 29 27 25 C 27 20.5 31 17.5 36 17.5 C 40 17.5 43 19 44.5 21 Z" fill="#FDE047"/>
+  <!-- Golden Spice Seed Accent -->
+  <circle cx="46" cy="18" r="2.2" fill="#FFFFFF"/>
+</svg>

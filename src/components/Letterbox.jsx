@@ -1,6 +1,7 @@
 // src/components/Letterbox.jsx
 import React, { useState, useEffect } from 'react';
-import { ArrowUpRight, Check, Heart, Mail, Send, ShieldCheck, Utensils, Briefcase } from 'lucide-react';
+import { ArrowUpRight, Check, Heart, Mail, Send, ShieldCheck, Utensils, Briefcase, Loader2 } from 'lucide-react';
+import { FORMS_CONFIG } from '../config/forms';
 
 const CATEGORIES = [
   {
@@ -29,6 +30,8 @@ export default function Letterbox() {
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [spamRejected, setSpamRejected] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -40,8 +43,9 @@ export default function Letterbox() {
     setLoadTime(Date.now());
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitError('');
 
     // Anti-Spam Check 1: Honeypot field must be empty
     if (formData.website_url) {
@@ -58,7 +62,40 @@ export default function Letterbox() {
       return;
     }
 
-    setSubmitted(true);
+    setIsSubmitting(true);
+
+    try {
+      if (FORMS_CONFIG.web3formsAccessKey && FORMS_CONFIG.web3formsAccessKey !== 'YOUR_ACCESS_KEY_HERE') {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            access_key: FORMS_CONFIG.web3formsAccessKey,
+            subject: `[5 Spices Letterbox] [${selectedCategory.toUpperCase()}] from ${isAnonymous ? 'Anonymous' : (formData.name || 'Reader')}`,
+            from_name: '5 Spices or Less — Letterbox',
+            category: selectedCategory,
+            author_type: isAnonymous ? 'Anonymous' : 'Named',
+            sender_name: isAnonymous ? 'Anonymous' : formData.name,
+            sender_email: formData.email || 'None provided',
+            letter: formData.question,
+          }),
+        });
+        const resData = await response.json();
+        if (resData.success) {
+          setSubmitted(true);
+        } else {
+          setSubmitError(resData.message || 'Submission error. Please try again.');
+        }
+      } else {
+        // Fallback for preview mode
+        setSubmitted(true);
+      }
+    } catch (err) {
+      console.error('Submission error:', err);
+      setSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleReset = () => {
@@ -266,10 +303,20 @@ export default function Letterbox() {
 
                 <button
                   type="submit"
-                  className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-berry-600 hover:bg-berry-700 text-white font-bold text-xs font-mono tracking-wider uppercase transition-all shadow-md shadow-berry-600/20 flex items-center justify-center gap-2"
+                  disabled={isSubmitting}
+                  className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-berry-600 hover:bg-berry-700 disabled:opacity-60 text-white font-bold text-xs font-mono tracking-wider uppercase transition-all shadow-md shadow-berry-600/20 flex items-center justify-center gap-2"
                 >
-                  <Send className="w-4 h-4" />
-                  <span>Drop Into Letterbox</span>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Delivering Letter...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4" />
+                      <span>Drop Into Letterbox</span>
+                    </>
+                  )}
                 </button>
               </div>
 

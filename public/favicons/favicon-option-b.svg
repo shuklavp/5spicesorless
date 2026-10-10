@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="berryGradB" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E93B86"/>
+      <stop offset="100%" stop-color="#9D1146"/>
+    </linearGradient>
+  </defs>
+  <!-- Outer Badge -->
+  <rect width="64" height="64" rx="16" fill="url(#berryGradB)"/>
+  <circle cx="32" cy="32" r="28" fill="none" stroke="#FFFFFF" stroke-opacity="0.3" stroke-width="1.5"/>
+  <!-- 5 Spice Bowls / Teardrops in Radial Symmetry -->
+  <g transform="translate(32, 32)">
+    <!-- 5 Petal/Spice Cups -->
+    <circle cx="0" cy="-14" r="6" fill="#FFFFFF"/>
+    <circle cx="13.3" cy="-4.3" r="6" fill="#FFFFFF"/>
+    <circle cx="8.2" cy="11.3" r="6" fill="#FFFFFF"/>
+    <circle cx="-8.2" cy="11.3" r="6" fill="#FFFFFF"/>
+    <circle cx="-13.3" cy="-4.3" r="6" fill="#FFFFFF"/>
+
+    <!-- Inner Spice Seeds in contrasting saffron -->
+    <circle cx="0" cy="-14" r="2.5" fill="#DE2573"/>
+    <circle cx="13.3" cy="-4.3" r="2.5" fill="#F59E0B"/>
+    <circle cx="8.2" cy="11.3" r="2.5" fill="#DE2573"/>
+    <circle cx="-8.2" cy="11.3" r="2.5" fill="#F59E0B"/>
+    <circle cx="-13.3" cy="-4.3" r="2.5" fill="#DE2573"/>
+
+    <!-- Center Golden Turmeric Core -->
+    <circle cx="0" cy="0" r="4.5" fill="#FDE047"/>
+    <circle cx="0" cy="0" r="2" fill="#FFFFFF"/>
+  </g>
+</svg>
