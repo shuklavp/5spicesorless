@@ -886,40 +886,91 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                       4. Illustrations &amp; Visual Plates (Provision for 1 or 2 Images)
                     </span>
                   </div>
-                  <button
-                    type="button"
-                    onClick={generateSketchPrompt}
-                    className="px-3 py-1 rounded-full bg-cobalt-50 dark:bg-cobalt-950/60 border border-cobalt-200 dark:border-cobalt-800 text-cobalt-600 dark:text-cobalt-300 text-[11px] font-mono font-bold flex items-center gap-1.5 hover:bg-cobalt-100 transition-colors"
-                  >
-                    <Sparkles className="w-3 h-3 text-cobalt-600" />
-                    <span>Generate AI Sketch Prompt</span>
-                  </button>
                 </div>
 
-                {/* AI Prompt Box if generated */}
-                {generatedPrompt && (
-                  <div className="p-4 rounded-2xl bg-cobalt-50/60 dark:bg-cobalt-950/40 border border-cobalt-200 dark:border-cobalt-800 space-y-2">
-                    <div className="flex items-center justify-between text-xs font-mono">
-                      <span className="font-bold text-cobalt-800 dark:text-cobalt-200">
-                        Cobalt Blue Architectural Sketch Prompt:
+                {/* AI Sketch Prompt Composer & Generator (Fully Editable) */}
+                <div className="p-5 rounded-2xl bg-cobalt-50/60 dark:bg-cobalt-950/40 border border-cobalt-200 dark:border-cobalt-800 space-y-3 shadow-sm">
+                  <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
+                    <div className="flex items-center gap-2">
+                      <Sparkles className="w-4 h-4 text-cobalt-600 dark:text-cobalt-400" />
+                      <span className="font-bold text-cobalt-800 dark:text-cobalt-200 uppercase tracking-wider text-[11px]">
+                        AI Sketch Prompt Composer (Customisable &amp; Editable)
                       </span>
+                    </div>
+
+                    <div className="flex items-center gap-2">
                       <button
-                        onClick={handleCopyPrompt}
-                        className="text-cobalt-600 hover:text-cobalt-700 font-bold flex items-center gap-1"
+                        type="button"
+                        onClick={generateSketchPrompt}
+                        className="px-2.5 py-1 rounded-lg bg-white dark:bg-canvas-dark border border-cobalt-300 dark:border-cobalt-700 text-cobalt-600 dark:text-cobalt-300 text-[11px] font-mono font-bold flex items-center gap-1.5 hover:bg-cobalt-100 dark:hover:bg-cobalt-900 transition-colors shadow-sm"
+                        title="Auto-detect story metaphors and generate draft prompt"
                       >
-                        {copiedPrompt ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+                        <RefreshCw className="w-3 h-3" />
+                        <span>Auto-Suggest Prompt</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={handleCopyPrompt}
+                        disabled={!generatedPrompt}
+                        className="px-3 py-1 rounded-lg bg-cobalt-600 text-white text-[11px] font-mono font-bold flex items-center gap-1.5 hover:bg-cobalt-700 transition-colors shadow-sm disabled:opacity-40"
+                      >
+                        {copiedPrompt ? <Check className="w-3 h-3 text-white" /> : <Copy className="w-3 h-3" />}
                         <span>{copiedPrompt ? 'Copied!' : 'Copy Prompt'}</span>
                       </button>
                     </div>
-                    <p className="text-xs font-mono text-ink-700 dark:text-ink-200 bg-white/80 dark:bg-canvas-dark/80 p-2.5 rounded-lg border border-cobalt-200/50 leading-relaxed select-all">
-                      {generatedPrompt}
-                    </p>
-                    <p className="text-[10px] font-mono text-ink-500 dark:text-ink-400">
-                      💡 Tip: Save generated sketch into <code className="bg-canvas-subtle px-1 py-0.5 rounded">public/illustrations/{slug || 'story-name'}.png</code> and reference below.
-                    </p>
                   </div>
-                )}
 
+                  {/* Fully Editable Textarea for Custom Prompts */}
+                  <textarea
+                    rows={3}
+                    value={generatedPrompt}
+                    onChange={(e) => setGeneratedPrompt(e.target.value)}
+                    placeholder="Type your own custom image prompt here (e.g. A traditional village house with courtyard cot and family enjoying tea in blue pencil style)..."
+                    className="w-full p-3 rounded-xl bg-white dark:bg-canvas-dark border border-cobalt-200 dark:border-cobalt-800 text-xs font-mono text-ink-900 dark:text-white leading-relaxed focus:outline-none focus:border-cobalt-600 focus:ring-1 focus:ring-cobalt-600 placeholder:text-ink-400"
+                  />
+
+                  {/* Quick Style Injectors */}
+                  <div className="flex flex-wrap items-center justify-between gap-2 pt-1 text-[11px] font-mono">
+                    <div className="flex flex-wrap items-center gap-1.5">
+                      <span className="text-ink-400">Append Style:</span>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const styleFormula = ' Minimalist architectural pencil sketch in rich cobalt blue ink (#2563EB) on crisp white background. Fine line art, delicate cross-hatching, traditional technical drafting aesthetic, clean contours, no text, generous negative space.';
+                          setGeneratedPrompt((prev) => (prev ? prev.trim() + styleFormula : styleFormula.trim()));
+                        }}
+                        className="px-2 py-0.5 rounded bg-white dark:bg-canvas-dark border border-cobalt-200 dark:border-cobalt-800 text-cobalt-600 dark:text-cobalt-400 hover:border-cobalt-500 transition-colors"
+                      >
+                        + Cobalt Blue Pencil Style
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const darkFormula = ' White pencil line art on rich dark slate charcoal background with subtle line weights.';
+                          setGeneratedPrompt((prev) => (prev ? prev.trim() + darkFormula : darkFormula.trim()));
+                        }}
+                        className="px-2 py-0.5 rounded bg-white dark:bg-canvas-dark border border-cobalt-200 dark:border-cobalt-800 text-cobalt-600 dark:text-cobalt-400 hover:border-cobalt-500 transition-colors"
+                      >
+                        + Dark Mode Inversion
+                      </button>
+                    </div>
+
+                    {generatedPrompt && (
+                      <button
+                        type="button"
+                        onClick={() => setGeneratedPrompt('')}
+                        className="text-ink-400 hover:text-red-500 text-[10px] transition-colors"
+                      >
+                        Clear Prompt
+                      </button>
+                    )}
+                  </div>
+
+                  <p className="text-[10px] font-mono text-ink-500 dark:text-ink-400">
+                    💡 Tip: Edit or type your custom prompt here, click <b>Copy Prompt</b>, generate the image, and save to <code className="bg-white dark:bg-canvas-dark px-1.5 py-0.5 rounded border border-cobalt-200/60">public/illustrations/{slug || 'story-name'}.png</code> to reference in Image 1 below.
+                  </p>
+                </div>
                 {/* Primary Image Fields */}
                 <div className="space-y-3 p-4 rounded-2xl bg-canvas-subtle dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder">
                   <div className="flex items-center justify-between">
