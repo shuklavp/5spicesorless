@@ -134,6 +134,14 @@ export default function DispatchStudio({ onNavigate }) {
   const [xPostText, setXPostText] = useState('');
   const [copiedXText, setCopiedXText] = useState(false);
 
+  // Stories Archive Manager State
+  const [allEssays, setAllEssays] = useState(() => {
+    return [...ESSAYS_DATA];
+  });
+  const [showArchiveModal, setShowArchiveModal] = useState(false);
+  const [copiedFullFile, setCopiedFullFile] = useState(false);
+  const [copiedGitCmd, setCopiedGitCmd] = useState(false);
+
   // UI Modes
   const [viewMode, setViewMode] = useState('split'); // 'editor', 'split', 'preview'
   const [copiedCode, setCopiedCode] = useState(false);
@@ -218,6 +226,119 @@ export default function DispatchStudio({ onNavigate }) {
     const textToPost = xPostText.trim() || getInitialXText(selectedXAccount);
     const intentUrl = `https://x.com/intent/post?text=${encodeURIComponent(textToPost)}`;
     window.open(intentUrl, '_blank', 'noopener,noreferrer');
+  };
+
+  // Generate full essays.js code for the entire publication
+  const formatEssayObject = (e) => {
+    return `  {
+    id: ${JSON.stringify(e.id || e.slug)},
+    slug: ${JSON.stringify(e.slug)},
+    title: ${JSON.stringify(e.title || 'Untitled')},
+    subtitle: ${JSON.stringify(e.subtitle || '')},
+    category: ${JSON.stringify(e.category || 'Life')},
+    subCategory: ${JSON.stringify(e.subCategory || '')},
+    tags: ${JSON.stringify(e.tags || [])},
+    readTime: ${JSON.stringify(e.readTime || '5 min read')},
+    date: ${JSON.stringify(e.date || 'October 2026')},
+    author: ${JSON.stringify(e.author || 'Vivek Shukla')},
+    leadQuote: ${JSON.stringify(e.leadQuote || '')},${e.illustration ? `\n    illustration: ${JSON.stringify(e.illustration)},` : ''}${e.illustrationDark ? `\n    illustrationDark: ${JSON.stringify(e.illustrationDark)},` : ''}${e.illustrationCaption ? `\n    illustrationCaption: ${JSON.stringify(e.illustrationCaption)},` : ''}${e.secondaryImage ? `\n    secondaryImage: ${JSON.stringify(e.secondaryImage)},` : ''}${e.secondaryImageDark ? `\n    secondaryImageDark: ${JSON.stringify(e.secondaryImageDark)},` : ''}${e.secondaryCaption ? `\n    secondaryCaption: ${JSON.stringify(e.secondaryCaption)},` : ''}${e.image1Position ? `\n    image1Position: ${JSON.stringify(e.image1Position)},` : ''}${e.image2Position ? `\n    image2Position: ${JSON.stringify(e.image2Position)},` : ''}
+    showTakeaways: ${e.showTakeaways !== false},
+    takeawaysPosition: ${JSON.stringify(e.takeawaysPosition || 'top')},
+    takeaways: ${JSON.stringify(e.takeaways || [], null, 6).replace(/\n\s{6}\]/, '\n    ]')},
+    markdownBody: \`${(e.markdownBody || '').replace(/`/g, '\\`')}\`
+  }`;
+  };
+
+  const generateFullEssaysJsFile = (list = allEssays) => {
+    return `// src/data/essays.js
+// Single source of truth for all published essays and dispatches.
+// Strict British English mandate: -ise, -our, pre-authorisation, no em-dashes.
+
+export const ESSAYS_DATA = [
+${list.map(formatEssayObject).join(',\n')}
+];
+`;
+  };
+
+  const handleDownloadFullEssaysJs = () => {
+    const code = generateFullEssaysJsFile();
+    const blob = new Blob([code], { type: 'text/javascript' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'essays.js';
+    a.click();
+    URL.revokeObjectURL(url);
+    setStatusMessage('Downloaded full essays.js to your Downloads folder!');
+  };
+
+  const handleCopyFullEssaysJs = () => {
+    const code = generateFullEssaysJsFile();
+    navigator.clipboard?.writeText(code);
+    setCopiedFullFile(true);
+    setStatusMessage('Copied full essays.js file to clipboard!');
+    setTimeout(() => setCopiedFullFile(false), 2500);
+  };
+
+  const handleOpenGitHubEditor = () => {
+    handleCopyFullEssaysJs();
+    window.open('https://github.com/shuklavp/5spicesorless/edit/main/src/data/essays.js', '_blank', 'noopener,noreferrer');
+  };
+
+  const handleSaveCurrentStoryToArchive = () => {
+    const finalSlug = slug.trim() || 'untitled-dispatch';
+    const finalSubCat = customSubCategory.trim() || subCategory;
+    const currentStoryObj = {
+      id: finalSlug,
+      slug: finalSlug,
+      title: title.trim() || 'Untitled Dispatch',
+      subtitle: subtitle.trim(),
+      category,
+      subCategory: finalSubCat,
+      tags,
+      readTime: calculatedReadTime,
+      date,
+      author,
+      leadQuote,
+      illustration,
+      illustrationDark,
+      illustrationCaption,
+      secondaryImage,
+      secondaryCaption,
+      image1Position,
+      image2Position,
+      showTakeaways,
+      takeawaysPosition,
+      takeaways: showTakeaways ? takeaways : [],
+      markdownBody
+    };
+
+    setAllEssays((prev) => {
+      const idx = prev.findIndex((e) => e.slug === finalSlug || e.id === finalSlug);
+      if (idx !== -1) {
+        const copy = [...prev];
+        copy[idx] = currentStoryObj;
+        return copy;
+      }
+      return [currentStoryObj, ...prev];
+    });
+
+    setStatusMessage(`Saved "${currentStoryObj.title}" to Archive memory!`);
+  };
+
+  const handleDeleteStoryFromArchive = (targetSlug, e) => {
+    e?.stopPropagation();
+    if (window.confirm(`Are you sure you want to delete "${targetSlug}" from the archive?`)) {
+      setAllEssays((prev) => prev.filter((item) => item.slug !== targetSlug && item.id !== targetSlug));
+      setStatusMessage(`Deleted "${targetSlug}" from archive list.`);
+    }
+  };
+
+  const handleCopyGitCommand = () => {
+    const cmd = 'git add src/data/essays.js && git commit -m "Update published stories archive" && git push origin main';
+    navigator.clipboard?.writeText(cmd);
+    setCopiedGitCmd(true);
+    setTimeout(() => setCopiedGitCmd(false), 2000);
   };
 
   const handleCopyXText = () => {
@@ -537,6 +658,16 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                 Full Preview
               </button>
             </div>
+
+            {/* Manage Stories Archive Interface Button */}
+            <button
+              onClick={() => setShowArchiveModal(true)}
+              className="px-3.5 py-2 rounded-xl bg-cobalt-600 hover:bg-cobalt-700 text-white text-xs font-mono font-bold flex items-center gap-1.5 shadow-sm transition-all"
+              title="Open Stories Manager to edit, delete, or commit essays.js"
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>Stories Archive ({allEssays.length})</span>
+            </button>
 
             {/* Direct X Publishing Button */}
             <button
@@ -1265,6 +1396,23 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
 
                   <button
                     type="button"
+                    onClick={handleSaveCurrentStoryToArchive}
+                    className="px-4 py-2 rounded-xl bg-white dark:bg-canvas-dark border border-berry-300 dark:border-berry-800 text-berry-600 dark:text-berry-400 text-xs font-mono font-bold hover:bg-berry-50 transition-colors"
+                    title="Save current editor story to archive list"
+                  >
+                    Save to Archive
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setShowArchiveModal(true)}
+                    className="px-4 py-2 rounded-xl bg-cobalt-50 dark:bg-cobalt-950/60 border border-cobalt-300 dark:border-cobalt-700 text-cobalt-600 dark:text-cobalt-300 text-xs font-mono font-bold hover:bg-cobalt-100 transition-colors"
+                  >
+                    Manage Archive ({allEssays.length})
+                  </button>
+
+                  <button
+                    type="button"
                     onClick={handleDownloadJSON}
                     className="px-4 py-2 rounded-xl border border-canvas-border dark:border-canvas-darkBorder text-xs font-mono font-medium hover:bg-white dark:hover:bg-canvas-dark transition-colors flex items-center gap-1.5"
                   >
@@ -1584,6 +1732,185 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
           )}
 
         </div>
+
+      {/* ================= MODAL: STORIES ARCHIVE & ESSAYS.JS MANAGER ================= */}
+      {showArchiveModal && (
+        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto animate-fadeIn">
+          <div className="max-w-4xl w-full my-8 bg-white dark:bg-canvas-darkCard border-2 border-canvas-border dark:border-canvas-darkBorder rounded-3xl shadow-2xl p-6 sm:p-8 space-y-6 text-ink-900 dark:text-white relative max-h-[90vh] flex flex-col">
+            
+            {/* Modal Header */}
+            <div className="flex items-start justify-between border-b border-canvas-border dark:border-canvas-darkBorder pb-4 shrink-0">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-2xl bg-berry-600 text-white flex items-center justify-center shrink-0">
+                  <BookOpen className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-serif text-2xl font-bold">
+                    Stories Archive &amp; essays.js Manager
+                  </h3>
+                  <p className="text-xs font-mono text-ink-500 dark:text-ink-400">
+                    Direct interface to edit, delete, or commit published dispatches without touching terminal.
+                  </p>
+                </div>
+              </div>
+
+              <button
+                onClick={() => setShowArchiveModal(false)}
+                className="p-2 rounded-xl text-ink-400 hover:text-ink-900 dark:hover:text-white hover:bg-canvas-subtle dark:hover:bg-canvas-dark transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Quick Export & Zero-Terminal Commit Bar */}
+            <div className="p-4 rounded-2xl bg-canvas-subtle dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder space-y-3 shrink-0">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div className="space-y-0.5">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-ink-900 dark:text-white block">
+                    Zero-Terminal GitHub Sync
+                  </span>
+                  <span className="text-[11px] font-mono text-ink-500 dark:text-ink-400 block">
+                    Click to copy the full updated file and open GitHub's web editor to commit in 1 click.
+                  </span>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={handleCopyFullEssaysJs}
+                    className="px-3 py-1.5 rounded-xl border border-canvas-border dark:border-canvas-darkBorder bg-white dark:bg-canvas-darkCard text-xs font-mono font-medium hover:border-berry-600 transition-colors flex items-center gap-1.5"
+                  >
+                    {copiedFullFile ? <Check className="w-3.5 h-3.5 text-green-600" /> : <Copy className="w-3.5 h-3.5 text-ink-500" />}
+                    <span>{copiedFullFile ? 'Copied essays.js!' : 'Copy Full File'}</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleDownloadFullEssaysJs}
+                    className="px-3 py-1.5 rounded-xl border border-canvas-border dark:border-canvas-darkBorder bg-white dark:bg-canvas-darkCard text-xs font-mono font-medium hover:border-berry-600 transition-colors flex items-center gap-1.5"
+                  >
+                    <Download className="w-3.5 h-3.5 text-cobalt-600" />
+                    <span>Download essays.js</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleOpenGitHubEditor}
+                    className="px-4 py-1.5 rounded-xl bg-berry-600 hover:bg-berry-700 text-white text-xs font-mono font-bold flex items-center gap-1.5 shadow-sm transition-all"
+                  >
+                    <span>Commit on GitHub (1-Click)</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Terminal Command Snippet for Mac Users */}
+              <div className="pt-2 border-t border-canvas-border dark:border-canvas-darkBorder flex items-center justify-between text-xs font-mono text-ink-500">
+                <span className="truncate pr-2">
+                  Terminal command: <code className="bg-white dark:bg-canvas-darkCard px-1.5 py-0.5 rounded border border-canvas-border dark:border-canvas-darkBorder select-all">git add src/data/essays.js && git commit -m "Update stories archive" && git push origin main</code>
+                </span>
+                <button
+                  type="button"
+                  onClick={handleCopyGitCommand}
+                  className="text-berry-600 hover:underline shrink-0 flex items-center gap-1 text-[11px]"
+                >
+                  {copiedGitCmd ? <Check className="w-3 h-3 text-green-600" /> : <Copy className="w-3 h-3" />}
+                  <span>{copiedGitCmd ? 'Copied' : 'Copy'}</span>
+                </button>
+              </div>
+            </div>
+
+            {/* List of Published Stories */}
+            <div className="flex-1 overflow-y-auto space-y-3 pr-1">
+              <div className="flex items-center justify-between text-xs font-mono text-ink-500 pb-1">
+                <span>Active Published Stories ({allEssays.length})</span>
+                <span>Click "Edit" to load into canvas or "Delete" to remove</span>
+              </div>
+
+              {allEssays.map((essayItem, index) => (
+                <div
+                  key={essayItem.slug || essayItem.id || index}
+                  className="p-4 rounded-2xl bg-canvas-subtle dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder hover:border-ink-400 dark:hover:border-ink-600 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+                >
+                  <div className="space-y-1 flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-berry-50 dark:bg-berry-950/60 text-berry-600 dark:text-berry-400 border border-berry-200 dark:border-berry-800 font-bold uppercase">
+                        {essayItem.category}
+                      </span>
+                      {essayItem.subCategory && (
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cobalt-50 dark:bg-cobalt-950/60 text-cobalt-600 dark:text-cobalt-400 border border-cobalt-200 dark:border-cobalt-800 font-medium">
+                          {essayItem.subCategory}
+                        </span>
+                      )}
+                      <span className="text-[11px] font-mono text-ink-400">
+                        {essayItem.date || 'October 2026'} · {essayItem.readTime || '5 min read'}
+                      </span>
+                    </div>
+
+                    <h4 className="font-serif text-base font-bold text-ink-900 dark:text-white truncate">
+                      {essayItem.title}
+                    </h4>
+
+                    {essayItem.subtitle && (
+                      <p className="text-xs text-ink-500 dark:text-ink-400 truncate font-light">
+                        {essayItem.subtitle}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="flex items-center gap-2 shrink-0">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        handleLoadTemplate(essayItem.id || essayItem.slug);
+                        setShowArchiveModal(false);
+                      }}
+                      className="px-3 py-1.5 rounded-xl bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder text-xs font-mono font-medium hover:border-berry-600 text-ink-900 dark:text-white transition-colors"
+                      title="Load into editor to modify"
+                    >
+                      ✏️ Edit
+                    </button>
+
+                    <a
+                      href={`https://5spicesorless.com/stories/${essayItem.slug}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="p-2 rounded-xl text-ink-400 hover:text-ink-900 dark:hover:text-white hover:bg-white dark:hover:bg-canvas-darkCard transition-colors"
+                      title="View live story on site"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+
+                    <button
+                      type="button"
+                      onClick={(e) => handleDeleteStoryFromArchive(essayItem.slug || essayItem.id, e)}
+                      className="p-2 rounded-xl text-ink-400 hover:text-red-600 hover:bg-white dark:hover:bg-canvas-darkCard transition-colors"
+                      title="Delete story from archive"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Modal Footer */}
+            <div className="pt-4 border-t border-canvas-border dark:border-canvas-darkBorder flex items-center justify-between shrink-0">
+              <span className="text-xs font-mono text-ink-500">
+                Tip: After deleting or editing stories, click <b>Commit on GitHub</b> or download <b>essays.js</b>.
+              </span>
+              <button
+                type="button"
+                onClick={() => setShowArchiveModal(false)}
+                className="px-5 py-2 rounded-xl bg-ink-900 dark:bg-white text-white dark:text-ink-900 text-xs font-mono font-bold uppercase tracking-wider hover:bg-berry-600 transition-colors"
+              >
+                Close Manager
+              </button>
+            </div>
+
+          </div>
+        </div>
+      )}
 
       {/* ================= MODAL: DIRECT X (TWITTER) PUBLISHER ================= */}
       {showXModal && (
