@@ -16,6 +16,11 @@ import StoryPage from './components/StoryPage';
 import DeskPage from './components/DeskPage';
 import DispatchStudio from './components/DispatchStudio';
 
+// Standalone Advisory Pillar Pages
+import PillarOperatorPage from './components/PillarOperatorPage';
+import PillarEIRPage from './components/PillarEIRPage';
+import PillarConfidantPage from './components/PillarConfidantPage';
+
 export default function App() {
   const [isDark, setIsDark] = useState(false);
   const [currentPath, setCurrentPath] = useState(
@@ -28,7 +33,6 @@ export default function App() {
       setCurrentPath(window.location.pathname);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
-
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
@@ -78,7 +82,6 @@ export default function App() {
       }
       return;
     }
-
     window.history.pushState({}, '', path);
     setCurrentPath(path);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -86,83 +89,75 @@ export default function App() {
 
   // Dynamic Route Resolver
   const renderCurrentRoute = () => {
-        // 0. The Dispatch Studio Authoring Suite: /studio
+    // 0. The Dispatch Studio Authoring Suite: /studio
     if (currentPath === '/studio') {
-      return <DispatchStudio onNavigate={handleNavigate} />;
+      return <DispatchStudio onNavigate={handleNavigate} isDark={isDark} />;
     }
-
     // 1. Standalone About Page: /about
     if (currentPath === '/about') {
-      return <AboutPage onNavigate={handleNavigate} />;
+      return <AboutPage onNavigate={handleNavigate} isDark={isDark} />;
     }
-
     // 2. Standalone Advisory Page: /advisory or /consulting
     if (currentPath === '/advisory' || currentPath === '/consulting') {
-      return <AdvisoryPage onNavigate={handleNavigate} />;
+      return <AdvisoryPage onNavigate={handleNavigate} isDark={isDark} />;
     }
-
+    // 2a. Standalone Advisory Pillar Pages
+    if (currentPath === '/advisory/fractional-operator') {
+      return <PillarOperatorPage onNavigate={handleNavigate} isDark={isDark} />;
+    }
+    if (currentPath === '/advisory/eir') {
+      return <PillarEIRPage onNavigate={handleNavigate} isDark={isDark} />;
+    }
+    if (
+      currentPath === '/advisory/founder-confidant' ||
+      currentPath === '/advisory/ben-to-jules'
+    ) {
+      return <PillarConfidantPage onNavigate={handleNavigate} isDark={isDark} />;
+    }
     // 3. Standalone Story Reader: /stories/:slug
     if (currentPath.startsWith('/stories/')) {
       const slug = currentPath.replace('/stories/', '');
-      return <StoryPage slug={slug} onNavigate={handleNavigate} />;
+      return <StoryPage slug={slug} onNavigate={handleNavigate} isDark={isDark} />;
     }
-
     // 4. Standalone Desk Archives: /life, /food, /work, /stories
     if (currentPath === '/life') {
-      return <DeskPage deskId="life" onNavigate={handleNavigate} />;
+      return <DeskPage desk=life onNavigate={handleNavigate} isDark={isDark} />;
     }
     if (currentPath === '/food') {
-      return <DeskPage deskId="food" onNavigate={handleNavigate} />;
+      return <DeskPage desk=food onNavigate={handleNavigate} isDark={isDark} />;
     }
     if (currentPath === '/work') {
-      return <DeskPage deskId="work" onNavigate={handleNavigate} />;
+      return <DeskPage desk=work onNavigate={handleNavigate} isDark={isDark} />;
     }
     if (currentPath === '/stories') {
-      return <DeskPage deskId="stories" onNavigate={handleNavigate} />;
+      return <DeskPage desk=stories onNavigate={handleNavigate} isDark={isDark} />;
     }
 
     // 5. Default: Front Page
-    // Section order: Hero -> The Three Desks -> The Latest Writing/Stories -> The Letterbox -> Advisory -> Short Memoir
     return (
       <main>
-        {/* Section 1: Hero with 5 Spice Drawers */}
-        <Hero onOpenInquiry={() => handleNavigate('/advisory')} />
-
-        {/* Section 2: The Three Desks (Life, Food, Work) */}
-        <ValueProps onNavigate={handleNavigate} />
-
-        {/* Section 3: The Latest Stories & Letters */}
-        <WritingBoard onNavigate={handleNavigate} />
-
-        {/* Section 4: The Letterbox (Community Q&A with anti-spam) */}
-        <Letterbox />
-
-        {/* Section 5: Advisory Invitation Card (Terracotta Counsel Card) */}
-        <HomeAdvisoryTeaser onNavigate={handleNavigate} />
-
-        {/* Section 6: Short Memoir / The Human Anchor Teaser */}
-        <HomeAboutTeaser onNavigate={handleNavigate} />
+        <Hero onNavigate={handleNavigate} isDark={isDark} />
+        <ValueProps onNavigate={handleNavigate} isDark={isDark} />
+        <WritingBoard onNavigate={handleNavigate} isDark={isDark} />
+        <Letterbox onNavigate={handleNavigate} isDark={isDark} />
+        <HomeAdvisoryTeaser onNavigate={handleNavigate} isDark={isDark} />
+        <HomeAboutTeaser onNavigate={handleNavigate} isDark={isDark} />
       </main>
     );
   };
 
   return (
-    <div className={`relative min-h-screen transition-colors duration-300 ${
-      isDark ? 'bg-canvas-dark text-white' : 'bg-white text-ink-900'
-    } bg-sandpaper-texture selection:bg-berry-500/20 selection:text-berry-700`}>
-      {/* Sticky Masthead Navigation */}
+    <div className="min-h-screen bg-white dark:bg-canvas-dark text-ink-900 dark:text-gray-100 flex flex-col font-sans transition-colors duration-300">
       <Navbar
-        onNavigate={handleNavigate}
         currentPath={currentPath}
+        onNavigate={handleNavigate}
         isDark={isDark}
         onToggleTheme={handleToggleTheme}
       />
-
-      {/* Dynamic Content View */}
-      {renderCurrentRoute()}
-
-      {/* Manifesto Footer */}
-      <Footer onNavigate={handleNavigate} currentPath={currentPath} />
+      <div className="flex-1">
+        {renderCurrentRoute()}
+      </div>
+      <Footer currentPath={currentPath} onNavigate={handleNavigate} isDark={isDark} />
     </div>
   );
 }
