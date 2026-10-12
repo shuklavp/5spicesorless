@@ -169,29 +169,23 @@ export default function AdvisoryPage({ onNavigate }) {
     setIsSubmitting(true);
 
     try {
-      if (FORMS_CONFIG.web3formsAccessKey && FORMS_CONFIG.web3formsAccessKey !== 'YOUR_ACCESS_KEY_HERE') {
-        const response = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify({
-            access_key: FORMS_CONFIG.web3formsAccessKey,
-            subject: `[5 Spices Advisory] Confidential Enquiry from ${formData.name || 'Founder'} (${formData.venture || 'Venture'})`,
-            from_name: '5 Spices or Less: Advisory Intake',
-            founder_name: formData.name,
-            founder_email: formData.email,
-            venture: formData.venture,
-            mode_selected: formData.advisoryMode,
-            bottleneck: formData.bottleneck,
-          }),
-        });
-        const resData = await response.json();
-        if (resData.success) {
-          setSubmitted(true);
-        } else {
-          setSubmitError(resData.message || 'Submission error. Please try again.');
-        }
-      } else {
+      const response = await fetch('https://formspree.io/f/xvkzbwak', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          subject: `[5 Spices Advisory] Confidential Enquiry from ${formData.name || 'Founder'} (${formData.venture || 'Venture'})`,
+          from_name: '5 Spices or Less: Advisory Intake',
+          founder_name: formData.name,
+          email: formData.email,
+          venture: formData.venture,
+          mode_selected: formData.advisoryMode,
+          bottleneck: formData.bottleneck,
+        }),
+      });
+      if (response.ok) {
         setSubmitted(true);
+      } else {
+        setSubmitError('Submission error. Please try again.');
       }
     } catch (err) {
       console.error('Submission error:', err);

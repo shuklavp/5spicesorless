@@ -190,18 +190,16 @@ export default function Footer({ onNavigate, currentPath = '/' }) {
     setIsSubmitting(true);
     try {
       localStorage.setItem('memo_last_submit', Date.now().toString());
-      if (FORMS_CONFIG.web3formsAccessKey && FORMS_CONFIG.web3formsAccessKey !== 'YOUR_ACCESS_KEY_HERE') {
-        await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify({
-            access_key: FORMS_CONFIG.web3formsAccessKey,
-            subject: '[5 Spices Sunday Memo] New Subscriber: ' + trimmed,
-            from_name: '5 Spices or Less: Sunday Memo',
-            subscriber_email: trimmed,
-          }),
-        });
-      }
+      await fetch('https://formspree.io/f/xvkzbwak', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          subject: '[5 Spices Sunday Memo] New Subscriber: ' + trimmed,
+          from_name: '5 Spices or Less: Sunday Memo',
+          email: trimmed,
+          subscriber_email: trimmed,
+        }),
+      });
     } catch (err) {
       console.error('Subscription error:', err);
     } finally {
