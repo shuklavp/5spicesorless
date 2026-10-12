@@ -69,7 +69,7 @@ const TRIGGER_SCENARIOS = [
     situation:
       'A co-founder is drifting out of sync, an early hire has hit their ceiling as the company scales, or the leadership table is quietly divided on direction. You carry the entire weight of this alone because bringing it up prematurely could rattle the company.',
     intervention:
-      'Complete psychological safety and discretion: an ego-free, neutral sparring partner to help you think through difficult personnel decisions, equity realities, and sensitive transitions with fairness, dignity, and calm.',
+      'Complete psychological safety and discretion: an ego-free, neutral sounding board to help you think through difficult personnel decisions, equity realities, and sensitive transitions with fairness, dignity, and calm.',
     formValue: 'Co-founder & Executive Friction (Sensitive Crossroads)',
   },
   {

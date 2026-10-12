@@ -122,7 +122,7 @@ export default function App() {
     }
 
     // 5. Default: Front Page
-    // Section order: Hero -> The Three Desks -> The Latest Dispatches/Stories -> The Letterbox -> Advisory -> Short Memoir
+    // Section order: Hero -> The Three Desks -> The Latest Writing/Stories -> The Letterbox -> Advisory -> Short Memoir
     return (
       <main>
         {/* Section 1: Hero with 5 Spice Drawers */}
@@ -137,7 +137,7 @@ export default function App() {
         {/* Section 4: The Letterbox (Community Q&A with anti-spam) */}
         <Letterbox />
 
-        {/* Section 5: Advisory Invitation Card (Terracotta Sparring Card) */}
+        {/* Section 5: Advisory Invitation Card (Terracotta Counsel Card) */}
         <HomeAdvisoryTeaser onNavigate={handleNavigate} />
 
         {/* Section 6: Short Memoir / The Human Anchor Teaser */}

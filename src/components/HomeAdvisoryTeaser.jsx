@@ -22,7 +22,7 @@ export default function HomeAdvisoryTeaser({ onNavigate }) {
               </h2>
 
               <p className="text-sm sm:text-base text-ink-700 dark:text-ink-200 font-light leading-relaxed">
-                Like Robert De Niro in <em>The Intern</em>, an ego-free, calm veteran in your corner. I partner with founders and leadership teams through fractional operations, EIR validation, and confidential 1:1 sparring, removing clutter so the founder can see the work.
+                Like Robert De Niro in <em>The Intern</em>, an ego-free, calm veteran in your corner. I partner with founders and leadership teams through fractional operations, EIR validation, and confidential 1:1 counsel, removing clutter so the founder can see the work.
               </p>
 
               {/* Three Pill Indicators */}
@@ -45,7 +45,7 @@ export default function HomeAdvisoryTeaser({ onNavigate }) {
                 onClick={() => onNavigate('/advisory')}
                 className="px-8 py-4 rounded-full bg-[#BC5259] hover:bg-[#a6454c] text-white font-bold text-xs tracking-wider uppercase transition-all shadow-lg shadow-[#BC5259]/30 flex items-center justify-center gap-2 group"
               >
-                <span>Explore Advisory Practice &amp; Sparring</span>
+                <span>Explore Advisory Practice &amp; Counsel</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </button>
 

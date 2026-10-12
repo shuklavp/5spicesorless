@@ -29,7 +29,7 @@ const MANIFESTO_THEMES = {
   '/advisory': {
     kicker: 'On Operational Perspective',
     quote: 'In boardroom storms and founder bottlenecks, the greatest asset is not a clever slide deck. It is an experienced, calm voice that refuses to panic.',
-    subtext: 'A Ben to your Jules: confidential executive sparring, zero corporate theatre, and the quiet courage to make bold moves with steady backing.',
+    subtext: 'A Ben to your Jules: confidential founder counsel, zero corporate theatre, and the quiet courage to make bold moves with steady backing.',
     cardClass: 'bg-gradient-to-br from-[#1A0B0E] via-[#241014] to-[#2E1218] border-[#3D1A20]',
     glowClass: 'bg-[#BC5259]/25',
     accentText: 'text-[#FCA5A5]',
@@ -40,7 +40,7 @@ const MANIFESTO_THEMES = {
   '/consulting': {
     kicker: 'On Operational Perspective',
     quote: 'In boardroom storms and founder bottlenecks, the greatest asset is not a clever slide deck. It is an experienced, calm voice that refuses to panic.',
-    subtext: 'A Ben to your Jules: confidential executive sparring, zero corporate theatre, and the quiet courage to make bold moves with steady backing.',
+    subtext: 'A Ben to your Jules: confidential founder counsel, zero corporate theatre, and the quiet courage to make bold moves with steady backing.',
     cardClass: 'bg-gradient-to-br from-[#1A0B0E] via-[#241014] to-[#2E1218] border-[#3D1A20]',
     glowClass: 'bg-[#BC5259]/25',
     accentText: 'text-[#FCA5A5]',
