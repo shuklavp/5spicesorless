@@ -22,13 +22,13 @@ export default function HomeAdvisoryTeaser({ onNavigate }) {
               </h2>
 
               <p className="text-sm sm:text-base text-ink-700 dark:text-ink-200 font-light leading-relaxed">
-                Like Robert De Niro in <em>The Intern</em>, an ego-free, calm veteran in your corner. I partner with founders and leadership teams through fractional operations, EIR validation, and confidential 1:1 sparring, stripping away clutter so you can focus on winning moves.
+                Like Robert De Niro in <em>The Intern</em>, an ego-free, calm veteran in your corner. I partner with founders and leadership teams through hands-on operations, EIR validation, and confidential 1:1 sparring, removing clutter so you can see the work clearly.
               </p>
 
               {/* Three Pill Indicators */}
               <div className="flex flex-wrap gap-2 pt-2">
                 <span className="text-xs font-mono font-semibold px-3 py-1 rounded-full bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-ink-800 dark:text-ink-100">
-                  01 / Fractional Operator
+                  01 / The Hands-On Operator
                 </span>
                 <span className="text-xs font-mono font-semibold px-3 py-1 rounded-full bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-ink-800 dark:text-ink-100">
                   02 / Entrepreneur in Residence

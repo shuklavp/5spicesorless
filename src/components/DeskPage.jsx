@@ -7,20 +7,20 @@ const DESK_CONFIGS = {
   life: {
     title: 'The Life Desk',
     kicker: 'LIFE, PERSPECTIVE, & HUMAN BONDS',
-    subtitle: 'Everyday lessons from growing up in a not-so-big city of Lucknow, learning the nuances of communication and tehzeeb, and making honest mistakes. Becoming a hopeless dreamer and builder, and learning to be a kinder human being rather than playing an unearned guru.',
-    cadence: 'Published Fortnightly',
+    subtitle: 'Everyday lessons from growing up in Lucknow, learning the nuances of communication and tehzeeb, and making honest mistakes. Becoming a quiet builder, and learning to be a kinder human being rather than playing an unearned guru.',
+    cadence: 'Every two weeks',
   },
   food: {
     title: 'The Food Desk',
     kicker: 'FIVE SPICES OR FEWER',
     subtitle: 'Lucknow roots where aroma precedes taste. Five spices, deliberate heat, and simple steps cooking for pure joy and mental decompression.',
-    cadence: 'Fortnightly Recipe & Technique',
+    cadence: 'One recipe every fortnight',
   },
   work: {
     title: 'The Work Desk',
     kicker: 'STARTUPS, BOARDROOMS, & OPERATIONAL DISCIPLINE',
-    subtitle: 'Thirty years of enterprise building enduring ventures, trusted partnerships, and practical operator judgment. Cutting through operational noise, boardroom theatre, and vanity to focus on what truly works.',
-    cadence: 'Weekly Field Note on Sunday',
+    subtitle: 'Thirty years of enterprise building enduring ventures, trusted partnerships, and practical operator judgement. Cutting through operational noise, boardroom theatre, and vanity to focus on what truly works.',
+    cadence: 'A weekly note on Sunday',
   },
   stories: {
     title: 'All Dispatches & Stories',
@@ -58,6 +58,8 @@ export default function DeskPage({ deskId, onNavigate }) {
     return matchesSearch && matchesTag;
   });
 
+  const isDeskEmpty = deskEssays.length === 0;
+
   return (
     <div className="min-h-screen pt-32 pb-24 px-6 md:px-12 bg-white dark:bg-canvas-dark text-ink-900 dark:text-white transition-colors duration-300">
       <div className="max-w-6xl mx-auto">
@@ -69,7 +71,7 @@ export default function DeskPage({ deskId, onNavigate }) {
             className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider font-bold text-ink-600 dark:text-ink-300 hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Back to Home Broadside</span>
+            <span>Back to the front page</span>
           </button>
         </div>
 
@@ -91,49 +93,60 @@ export default function DeskPage({ deskId, onNavigate }) {
           </p>
 
           <div className="pt-1">
-            <span className="text-xs font-mono text-ink-400 dark:text-ink-500 font-medium">
+            <span className="text-xs font-mono text-ink-500 dark:text-ink-400 font-medium">
               Cadence: {config.cadence}
             </span>
           </div>
         </div>
 
-        {/* Search Bar & Tag Filter Pills */}
-        <div className="mb-12 space-y-5">
-          <div className="relative max-w-md">
-            <Search className="w-4 h-4 text-ink-400 absolute left-4 top-1/2 -translate-y-1/2" />
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Search by topic, keyword, or lesson..."
-              className="w-full pl-11 pr-4 py-3 rounded-2xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600"
-            />
-          </div>
-
-          {/* Tags */}
-          {allTags.length > 1 && (
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-xs font-mono text-ink-400 mr-2">Filter by tag:</span>
-              {allTags.map((tag) => (
-                <button
-                  key={tag}
-                  onClick={() => setSelectedTag(tag)}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-medium transition-all ${
-                    selectedTag === tag
-                      ? 'bg-ink-900 text-white dark:bg-berry-600 dark:text-white shadow-sm'
-                      : 'bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder text-ink-600 dark:text-ink-300 hover:border-berry-500'
-                  }`}
-                >
-                  {tag}
-                </button>
-              ))}
+        {/* Search Bar & Tag Filter Pills (Only shown if desk has essays) */}
+        {!isDeskEmpty && (
+          <div className="mb-12 space-y-5">
+            <div className="relative max-w-md">
+              <Search className="w-4 h-4 text-ink-400 absolute left-4 top-1/2 -translate-y-1/2" />
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search by topic, keyword, or lesson..."
+                className="w-full pl-11 pr-4 py-3 rounded-2xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600"
+              />
             </div>
-          )}
-        </div>
 
-        {/* Essays Grid */}
-        {filteredEssays.length === 0 ? (
-          <div className="text-center py-20 border border-dashed border-canvas-border dark:border-canvas-darkBorder rounded-3xl">
+            {/* Tags */}
+            {allTags.length > 1 && (
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-xs font-mono text-ink-400 mr-2">Filter by tag:</span>
+                {allTags.map((tag) => (
+                  <button
+                    key={tag}
+                    onClick={() => setSelectedTag(tag)}
+                    className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-medium transition-all ${
+                      selectedTag === tag
+                        ? 'bg-ink-900 text-white dark:bg-berry-600 dark:text-white shadow-sm'
+                        : 'bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder text-ink-600 dark:text-ink-300 hover:border-berry-500'
+                    }`}
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Empty State vs Filtered Results vs Essays Grid */}
+        {isDeskEmpty ? (
+          <div className="text-center py-20 border border-dashed border-canvas-border dark:border-canvas-darkBorder rounded-3xl bg-canvas-subtle/50 dark:bg-canvas-darkCard/50 p-8 space-y-3">
+            <p className="text-sm font-mono text-ink-600 dark:text-ink-300 font-semibold">
+              Nothing filed on this desk yet.
+            </p>
+            <p className="text-xs font-mono text-ink-400 dark:text-ink-500 max-w-md mx-auto">
+              Dispatches for {config.title} arrive {config.cadence.toLowerCase()}. Check back shortly.
+            </p>
+          </div>
+        ) : filteredEssays.length === 0 ? (
+          <div className="text-center py-20 border border-dashed border-canvas-border dark:border-canvas-darkBorder rounded-3xl p-8">
             <p className="text-sm font-mono text-ink-400">No dispatches match your search criteria.</p>
           </div>
         ) : (

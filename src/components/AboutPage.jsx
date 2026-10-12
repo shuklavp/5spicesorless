@@ -6,9 +6,17 @@ export default function AboutPage({ onNavigate }) {
   return (
     <div className="min-h-screen pt-32 pb-24 px-6 md:px-12 bg-white dark:bg-canvas-dark relative transition-colors duration-300">
       <div className="max-w-6xl mx-auto">
-        
-        
 
+        {/* Breadcrumb Navigation */}
+        <div className="mb-8">
+          <button
+            onClick={() => onNavigate('/')}
+            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider font-bold text-ink-600 dark:text-ink-300 hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>Back to the front page</span>
+          </button>
+        </div>
         {/* Section Kicker */}
         <div className="flex items-center gap-3 mb-8">
           <Feather className="w-4 h-4 text-berry-600" />
@@ -62,7 +70,7 @@ export default function AboutPage({ onNavigate }) {
                 The dish called for exactly five spices: freshly crushed black pepper, salt, a pinch of turmeric, black cardamom, and whole star anise.
               </p>
               <p>
-                The curry turned out exceptionally rich, with each element holding its ground without crowding the pot. As we sat by the flame, our conversation drifted to enterprise.
+                The curry turned out rich, with each element holding its ground without crowding the pot. As we sat by the flame, our conversation drifted to enterprise.
               </p>
               <p>
                 I remarked that early-stage ventures almost always lose their way because founders never learn how to stop adding. They clutter their offices, they clutter their operational metrics, and they get trapped in twenty trivial distractions.
@@ -99,7 +107,7 @@ export default function AboutPage({ onNavigate }) {
             <div className="lg:col-span-5 flex flex-col justify-start">
               <div className="p-5 rounded-2xl bg-white/85 dark:bg-[#1A1412]/85 border border-[#EADCC9] dark:border-[#38281F] space-y-3 shadow-sm backdrop-blur-sm">
                 <div className="text-[11px] font-mono uppercase font-bold tracking-wider text-amber-900 dark:text-amber-200">
-                  The Five Spices in the Desi Ghee:
+                  The Five Spices in That Dish (Black Pepper Chicken Curry):
                 </div>
                 <div className="flex flex-wrap gap-2 text-xs font-mono">
                   <span className="px-3 py-1.5 rounded-full bg-amber-50 dark:bg-canvas-dark border border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200 font-medium">
@@ -118,6 +126,9 @@ export default function AboutPage({ onNavigate }) {
                     05. Star Anise
                   </span>
                 </div>
+                <p className="text-[11px] font-mono text-ink-500 dark:text-ink-400 pt-1 leading-relaxed">
+                  (The house five-spice philosophy rests on Cumin, Turmeric, Coriander, Red Chillies, and Aromatics; these five belonged solely to that dish.)
+                </p>
               </div>
             </div>
 
@@ -215,7 +226,7 @@ export default function AboutPage({ onNavigate }) {
                 </div>
                 <div>
                   <div className="text-xs font-bold text-ink-900 dark:text-white group-hover:text-berry-600 transition-colors">
-                    Follow on X (Twitter)
+                    Follow on X
                   </div>
                   <div className="text-[11px] font-mono text-ink-500 dark:text-ink-300">
                     @vivekshukla
@@ -264,7 +275,7 @@ export default function AboutPage({ onNavigate }) {
                 </span>
               </div>
               <blockquote className="font-serif italic text-base sm:text-lg text-ink-900 dark:text-white font-medium leading-relaxed">
-                "I write because survival taught me to pay attention, and I advise because I know how lonely the founder's chair can get. No buzzwords, no posturing, and no desire to be bucketed. Just warm Lakhnawi tea, hard-won operational judgment, and steady counsel when things get noisy."
+                "I write because survival taught me to pay attention, and I advise because I know how lonely the founder's chair can get. No buzzwords, no posturing, and no desire to be bucketed. Just warm Lakhnawi tea, hard-won operational judgement, and steady counsel when things get noisy."
               </blockquote>
             </div>
 

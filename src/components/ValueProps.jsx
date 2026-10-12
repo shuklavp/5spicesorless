@@ -10,14 +10,14 @@ const DESKS = [
     kicker: 'LIFE',
     title: 'Life, Relationships, & Perspective',
     summary:
-      'Life has a quiet way of teaching us through observation, patience, and warmth. I do not write to give romantic advice or pretend to be wise. I write about what growing up in a not-so-big city of Lucknow, learning the nuances of communication and tehzeeb, raising a daughter, and building things from scratch have taught me about becoming a kinder human being. Simple reflections on patience, fatherhood, and keeping your dignity intact.',
+      'Life has a quiet way of teaching us through observation, patience, and warmth. I do not write to give romantic advice or pretend to be wise. I write about what growing up in Lucknow, learning the nuances of communication and tehzeeb, raising a daughter, and building things from scratch have taught me about becoming a kinder human being. Simple reflections on patience, fatherhood, and keeping your dignity intact.',
     expectations: [
       'Why everyone should fall in love at least once in their lifetime',
       'The quiet wisdom of long devotion and arranged partnerships',
       'Perspective over panic: un-complicating everyday human life',
     ],
-    cadence: 'Fortnightly Essays',
-    cta: 'Browse Life Desk Archive',
+    cadence: 'Every two weeks',
+    cta: 'Visit the Life Desk',
     accentColor: 'border-t-berry-600',
     tagColor: 'text-berry-600 dark:text-berry-400 bg-berry-50 dark:bg-berry-950/60 border-berry-200 dark:border-berry-900',
   },
@@ -26,16 +26,16 @@ const DESKS = [
     path: '/food',
     number: '02',
     kicker: 'FOOD',
-    title: 'One Simple Recipe a Week',
+    title: 'Comfort Food with 5 Spices or Less',
     summary:
-      'In Lucknow, where I come from, the nose makes the final judgment before the tongue ever gets a turn. Great food does not need thirty jars of spices. It needs good aroma, deliberate heat, and simple steps. I cook purely for the joy of it, using five spices or fewer. Every fortnight, I share one simple, comforting recipe that anyone can master.',
+      'In Lucknow, where I come from, the nose makes the final judgement before the tongue ever gets a turn. Good food does not need thirty jars of spices. It needs good aroma, deliberate heat, and simple steps. I cook purely for the joy of it, using five spices or fewer, sharing one simple, comforting recipe every fortnight.',
     expectations: [
-      'One foolproof, tested recipe published every week',
+      'One foolproof, tested recipe every fortnight',
       'Mastering the 5-spice alchemy from Cumin to Aromatics',
       'How deliberate cooking clears and calms a cluttered executive mind',
     ],
-    cadence: 'Fortnightly Recipe & Technique',
-    cta: 'Browse Food Desk Archive',
+    cadence: 'One recipe every fortnight',
+    cta: 'Visit the Food Desk',
     accentColor: 'border-t-cobalt-600',
     tagColor: 'text-cobalt-600 dark:text-cobalt-400 bg-cobalt-50 dark:bg-cobalt-950/60 border-cobalt-200 dark:border-cobalt-900',
   },
@@ -52,8 +52,8 @@ const DESKS = [
       'Building from zero: customer acquisition, hiring, and unit economics',
       'Investor relations, board dynamics, and the discipline of clean exits',
     ],
-    cadence: 'Weekly Field Note on Sunday',
-    cta: 'Browse Work Desk Archive',
+    cadence: 'A weekly note on Sunday',
+    cta: 'Visit the Work Desk',
     accentColor: 'border-t-ink-900 dark:border-t-white',
     tagColor: 'text-ink-700 dark:text-ink-300 bg-canvas-subtle dark:bg-canvas-dark border-canvas-border dark:border-canvas-darkBorder',
   },
@@ -63,7 +63,7 @@ export default function ValueProps({ onNavigate }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <section id="philosophy" className="py-24 px-6 md:px-12 bg-[#E6E9EF] dark:bg-canvas-dark relative border-t border-canvas-border dark:border-canvas-darkBorder transition-colors duration-300">
+    <section id="philosophy" className="py-24 px-6 md:px-12 bg-[#F1F2F4] dark:bg-canvas-dark relative border-t border-canvas-border dark:border-canvas-darkBorder transition-colors duration-300">
       <div className="max-w-6xl mx-auto">
         
         {/* Section Header: The Reader's Contract */}
@@ -139,7 +139,7 @@ export default function ValueProps({ onNavigate }) {
                 <div className="pt-6 border-t border-canvas-border dark:border-canvas-darkBorder mt-auto">
                   <div className="flex items-center justify-between text-xs mb-4">
                     <span className="font-mono text-[11px] text-ink-500 dark:text-ink-400 font-medium">
-                      {item.cadence}
+                      Cadence: {item.cadence}
                     </span>
                   </div>
 

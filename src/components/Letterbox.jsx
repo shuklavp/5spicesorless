@@ -47,20 +47,38 @@ export default function Letterbox() {
     e.preventDefault();
     setSubmitError('');
 
-    // Anti-Spam Check 1: Honeypot field must be empty
-    if (formData.website_url) {
-      console.warn('Bot submission blocked via honeypot.');
-      setSpamRejected(true);
+    const cleanQuestion = (formData.question || '').trim();
+
+    // Spam Check 1: Reject empty or too-short letter
+    if (cleanQuestion.length < 15) {
+      setSubmitError('Please write at least a sentence or two so Vivek has enough context to reflect on your question.');
       return;
     }
 
-    // Anti-Spam Check 2: Dwell time must be at least 2.5 seconds
-    const elapsed = Date.now() - loadTime;
-    if (elapsed < 2500) {
-      console.warn('Bot submission blocked via dwell time.');
-      setSpamRejected(true);
+    // Spam Check 2: Ignore filled honeypot and show same thank-you
+    if (formData.website_url) {
+      console.warn('Silent bot drop via honeypot.');
+      setSubmitted(true);
       return;
     }
+
+    // Spam Check 3: Rate limit repeat posts (60s cooldown per browser)
+    const lastPost = localStorage.getItem('last_letterbox_post_time');
+    if (lastPost && Date.now() - Number(lastPost) < 60000) {
+      console.warn('Duplicate/repeat post dropped quietly.');
+      setSubmitted(true);
+      return;
+    }
+
+    // Spam Check 4: Dwell time check (minimum 2 seconds)
+    const elapsed = Date.now() - loadTime;
+    if (elapsed < 2000) {
+      console.warn('Instant bot drop via dwell time.');
+      setSubmitted(true);
+      return;
+    }
+
+    localStorage.setItem('last_letterbox_post_time', String(Date.now()));
 
     setIsSubmitting(true);
 

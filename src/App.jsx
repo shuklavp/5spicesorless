@@ -86,7 +86,7 @@ export default function App() {
 
   // Dynamic Route Resolver
   const renderCurrentRoute = () => {
-        // 0. The Dispatch Studio Authoring Suite: /studio
+    // 0. The Dispatch Studio Authoring Suite: /studio
     if (currentPath === '/studio') {
       return <DispatchStudio onNavigate={handleNavigate} />;
     }
@@ -121,28 +121,27 @@ export default function App() {
       return <DeskPage deskId="stories" onNavigate={handleNavigate} />;
     }
 
-    // 5. Default: Lean Home Broadside (Concept 1)
-    // Vertical height reduced by ~60%, eliminating scroll fatigue:
-    // Hero -> HomeAboutTeaser -> Three Desks -> Curated Dispatches -> Advisory Teaser -> Letterbox -> Footer
+    // 5. Default Front Page (Order per Editorial Rule):
+    // Hero -> The Three Desks -> Latest Dispatches -> The Letterbox -> Advisory -> Short Memoir (My Story)
     return (
       <main>
         {/* Section 1: Hero with 5 Spice Drawers */}
         <Hero onOpenInquiry={() => handleNavigate('/advisory')} />
 
-        {/* Section 2: The Human Anchor Teaser (Vivek Shukla Memoir Intro) */}
-        <HomeAboutTeaser onNavigate={handleNavigate} />
-
-        {/* Section 3: The Three Desks (Life, Food, Work) */}
+        {/* Section 2: The Three Desks (Life, Food, Work) */}
         <ValueProps onNavigate={handleNavigate} />
 
-        {/* Section 4: Curated Dispatches & Stories */}
+        {/* Section 3: Curated Dispatches & Stories */}
         <WritingBoard onNavigate={handleNavigate} />
+
+        {/* Section 4: The Letterbox (Community Q&A with anti-spam) */}
+        <Letterbox />
 
         {/* Section 5: Advisory Invitation Card (Terracotta Sparring Card) */}
         <HomeAdvisoryTeaser onNavigate={handleNavigate} />
 
-        {/* Section 6: The Letterbox (Community Q&A with anti-spam) */}
-        <Letterbox />
+        {/* Section 6: The Human Anchor Teaser (Vivek Shukla Short Memoir / My Story) */}
+        <HomeAboutTeaser onNavigate={handleNavigate} />
       </main>
     );
   };
