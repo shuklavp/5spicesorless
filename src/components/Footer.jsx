@@ -196,7 +196,7 @@ export default function Footer({ onNavigate, currentPath = '/' }) {
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
           body: JSON.stringify({
             access_key: FORMS_CONFIG.web3formsAccessKey,
-            subject: ,
+            subject: '[5 Spices Sunday Memo] New Subscriber: ' + trimmed,
             from_name: '5 Spices or Less: Sunday Memo',
             subscriber_email: trimmed,
           }),
