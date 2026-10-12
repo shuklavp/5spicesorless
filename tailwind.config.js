@@ -29,7 +29,7 @@ export default {
           900: '#750B35',
           800: '#A3124C',
           700: '#C2185B',
-          600: '#DE2573',
+          600: '#DE2573', // Exact reference title color
           500: '#E93B86',
           400: '#F06292',
           300: '#F48FB1',
@@ -45,33 +45,15 @@ export default {
           700: '#1D5EC9',
           600: '#2563EB',
           500: '#3B82F6',
-          400: '#419BE9',
+          400: '#419BE9', // Exact map legend blue
           300: '#93C5FD',
           100: '#DBEAFE',
           50: '#EFF6FF',
         },
-        // Forest Sage & Pale Mint (Provetale Editorial Palette)
-        sage: {
-          900: '#0B524E',
-          800: '#1A493F', // Deep Evergreen overline text
-          600: '#147166', // Deep Forest / Sea Teal accent
-          500: '#248277',
-          200: '#BFEADB',
-          100: '#D8F3EC', // Pale Mint callout surface
-          50: '#F0FAF6',
-        },
-        // Muted Lavender & Iris (Provetale Tag / Badge Accent)
-        lavender: {
-          900: '#211C42',
-          800: '#2E2856', // Deep purple text
-          200: '#CCC5E8',
-          100: '#DDD9F2', // Soft lavender pill background
-          50: '#F3F1FA',
-        },
-        // Crisp Modern Canvas (Cool Alabaster & Pure White)
+        // Crisp Modern Canvas (Zero Beige, Zero Dull Brown)
         canvas: {
           pure: '#FFFFFF',
-          subtle: '#F1F2F4', // Cool Alabaster paper backdrop
+          subtle: '#F8FAFC',
           card: '#FFFFFF',
           border: '#E2E8F0',
           dark: '#080D18',

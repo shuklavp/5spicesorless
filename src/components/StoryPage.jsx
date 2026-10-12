@@ -42,7 +42,7 @@ export default function StoryPage({ slug, onNavigate }) {
             <button
               onClick={handleShareToX}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-ink-900 dark:bg-canvas-darkCard border border-ink-800 dark:border-canvas-darkBorder text-white text-xs font-mono font-medium hover:bg-berry-600 transition-colors shadow-sm"
-              title="Share on X (Twitter)"
+              title="Share on X"
             >
               <svg className="w-3 h-3 fill-current text-white" viewBox="0 0 24 24">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -421,8 +421,9 @@ const renderStepItem = (content) => {
           </div>
         </div>
 
-        {/* Next / Previous Essay Footer Navigation */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-canvas-border dark:border-canvas-darkBorder">
+        {/* Next / Previous Essay Footer Navigation (Only when multiple essays exist) */}
+        {validEssays.length > 1 && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-canvas-border dark:border-canvas-darkBorder">
           <div
             onClick={() => onNavigate(`/stories/${prevEssay.slug}`)}
             className="p-6 rounded-2xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder cursor-pointer hover:border-berry-600 transition-all"

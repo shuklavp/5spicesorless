@@ -1,3 +1,4 @@
+import { FORMS_CONFIG } from '../config/forms';
 // src/components/Footer.jsx
 import React, { useState } from 'react';
 import { ArrowUpRight, Check, Flame, Linkedin } from 'lucide-react';
@@ -5,7 +6,7 @@ import { ArrowUpRight, Check, Flame, Linkedin } from 'lucide-react';
 const MANIFESTO_THEMES = {
   '/': {
     kicker: 'The Five Spices Manifesto',
-    quote: 'True mastery is simplification. The amateur adds ingredients to mask poor technique. The master uses only what is essential, and executes with quiet confidence.',
+    quote: 'True mastery is subtractive. The amateur adds ingredients to mask poor technique. The master uses only what is essential, and executes with quiet confidence.',
     subtext: 'Whether seasoning a humble pot of lentils, refining a company strategy, or structuring your days: fewer levers, deeper focus, enduring outcomes.',
     cardClass: 'bg-gradient-to-br from-[#0B0F19] via-[#161224] to-[#1E0E1B] border-[#2D1B2D]',
     glowClass: 'bg-berry-600/15',
@@ -60,7 +61,7 @@ const MANIFESTO_THEMES = {
   },
   '/food': {
     kicker: 'On Culinary Restraint',
-    quote: 'In Lucknow cooking, the nose delivers judgment before the spoon ever reaches the tongue. Great food does not need thirty spices, it needs honest aroma, deliberate heat, and respect for the pot.',
+    quote: 'In Lucknow cooking, the nose delivers judgement before the spoon ever reaches the tongue. Good food does not need thirty spices, it needs honest aroma, deliberate heat, and respect for the pot.',
     subtext: 'Five spices or fewer: clearing executive fatigue, cooking for pure joy, and the lost art of patient simmering.',
     cardClass: 'bg-gradient-to-br from-[#140D05] via-[#1E1308] to-[#2A180A] border-[#3B2412]',
     glowClass: 'bg-amber-600/15',
@@ -164,11 +165,49 @@ const STORY_THEMES = {
 
 export default function Footer({ onNavigate, currentPath = '/' }) {
   const [email, setEmail] = useState('');
+  const [honeypot, setHoneypot] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubscribe = (e) => {
+  const handleSubscribe = async (e) => {
     e.preventDefault();
-    if (email) setSubscribed(true);
+    const trimmed = (email || '').trim();
+    if (!trimmed || trimmed.length < 5 || !trimmed.includes('@')) return;
+
+    // Anti-spam 1: Ignore filled honeypot field silently
+    if (honeypot) {
+      setSubscribed(true);
+      return;
+    }
+
+    // Anti-spam 2: Limit repeat posts (60-second cooldown)
+    const lastMemo = localStorage.getItem('memo_last_submit');
+    if (lastMemo && Date.now() - parseInt(lastMemo, 10) < 60000) {
+      setSubscribed(true);
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      localStorage.setItem('memo_last_submit', Date.now().toString());
+      if (FORMS_CONFIG.web3formsAccessKey && FORMS_CONFIG.web3formsAccessKey !== 'YOUR_ACCESS_KEY_HERE') {
+        await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            access_key: FORMS_CONFIG.web3formsAccessKey,
+            subject: ,
+            from_name: '5 Spices or Less: Sunday Memo',
+            subscriber_email: trimmed,
+          }),
+        });
+      }
+    } catch (err) {
+      console.error('Subscription error:', err);
+    } finally {
+      setIsSubmitting(false);
+      setSubscribed(true);
+    }
   };
 
   const handleLinkClick = (e, path) => {
@@ -261,7 +300,7 @@ export default function Footer({ onNavigate, currentPath = '/' }) {
             </div>
             
             <p className="text-sm text-ink-600 dark:text-ink-200 font-light leading-relaxed max-w-md mb-6">
-              A brief, rich weekly email sent every Sunday morning. One tactical business framework, one life lesson, one minimalist recipe, or simply a timely common-sense reminder.
+              One short email every Sunday morning. A life lesson, a simple recipe, or a real-world startup takeaway. No spam, no fluff.
             </p>
 
             {subscribed ? (
@@ -270,21 +309,35 @@ export default function Footer({ onNavigate, currentPath = '/' }) {
                 <span>You are subscribed to The Sunday Reduction. Welcome.</span>
               </div>
             ) : (
-              <form onSubmit={handleSubscribe} className="flex gap-2 max-w-md">
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email address"
-                  className="flex-1 px-4 py-2.5 rounded-full bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600"
-                />
-                <button
-                  type="submit"
-                  className="px-6 py-2.5 rounded-full bg-berry-600 hover:bg-berry-700 text-white text-xs font-bold transition-colors shadow-md"
-                >
-                  Join Memo
-                </button>
+              <form onSubmit={handleSubscribe} className="space-y-2 max-w-md">
+                {/* Honeypot Field */}
+                <div className="hidden" aria-hidden="true">
+                  <input
+                    type="text"
+                    name="website_url"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+                <div className="flex gap-2">
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email address"
+                    className="flex-1 px-4 py-2.5 rounded-full bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600"
+                  />
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="px-6 py-2.5 rounded-full bg-berry-600 hover:bg-berry-700 text-white text-xs font-bold transition-colors shadow-md disabled:opacity-50"
+                  >
+                    {isSubmitting ? 'Joining...' : 'Join Memo'}
+                  </button>
+                </div>
               </form>
             )}
           </div>

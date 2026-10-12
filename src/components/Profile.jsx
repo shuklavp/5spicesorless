@@ -99,7 +99,7 @@ export default function Profile({ onOpenInquiry }) {
                 </div>
                 <div>
                   <div className="text-xs font-bold text-ink-900 dark:text-white group-hover:text-berry-600 transition-colors">
-                    Follow on X (Twitter)
+                    Follow on X
                   </div>
                   <div className="text-[11px] font-mono text-ink-500 dark:text-ink-300">
                     @vivekshukla
@@ -148,7 +148,7 @@ export default function Profile({ onOpenInquiry }) {
                 </span>
               </div>
               <blockquote className="font-serif italic text-base sm:text-lg text-ink-900 dark:text-white font-medium leading-relaxed">
-                "I write because survival taught me to pay attention, and I advise because I know how lonely the founder's chair can get. No buzzwords, no posturing, and no desire to be bucketed. Just warm Lakhnawi tea, hard-won operational judgment, and steady counsel when things get noisy."
+                "I write because survival taught me to pay attention, and I advise because I know how lonely the founder's chair can get. No buzzwords, no posturing, and no desire to be bucketed. Just warm Lakhnawi tea, hard-won operational judgement, and steady counsel when things get noisy."
               </blockquote>
             </div>
 

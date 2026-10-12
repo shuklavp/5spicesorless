@@ -8,19 +8,19 @@ const DESK_CONFIGS = {
     title: 'The Life Desk',
     kicker: 'LIFE, PERSPECTIVE, & HUMAN BONDS',
     subtitle: 'Everyday lessons from growing up in a not-so-big city of Lucknow, learning the nuances of communication and tehzeeb, and making honest mistakes. Becoming a hopeless dreamer and builder, and learning to be a kinder human being rather than playing an unearned guru.',
-    cadence: 'Published Fortnightly',
+    cadence: 'Every two weeks',
   },
   food: {
     title: 'The Food Desk',
     kicker: 'FIVE SPICES OR FEWER',
     subtitle: 'Lucknow roots where aroma precedes taste. Five spices, deliberate heat, and simple steps cooking for pure joy and mental decompression.',
-    cadence: 'Fortnightly Recipe & Technique',
+    cadence: 'One recipe every fortnight',
   },
   work: {
     title: 'The Work Desk',
     kicker: 'STARTUPS, BOARDROOMS, & OPERATIONAL DISCIPLINE',
-    subtitle: 'Thirty years of enterprise building enduring ventures, trusted partnerships, and practical operator judgment. Cutting through operational noise, boardroom theatre, and vanity to focus on what truly works.',
-    cadence: 'Weekly Field Note on Sunday',
+    subtitle: 'Thirty years of enterprise building enduring ventures, trusted partnerships, and practical operator judgement. Cutting through operational noise, boardroom theatre, and vanity to focus on what truly works.',
+    cadence: 'A weekly note on Sunday',
   },
   stories: {
     title: 'All Stories & Letters',
@@ -69,7 +69,7 @@ export default function DeskPage({ deskId, onNavigate }) {
             className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider font-bold text-ink-600 dark:text-ink-300 hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Back to Home Broadside</span>
+            <span>Back to the front page</span>
           </button>
         </div>
 
@@ -97,46 +97,75 @@ export default function DeskPage({ deskId, onNavigate }) {
           </div>
         </div>
 
-        {/* Search Bar & Tag Filter Pills */}
-        <div className="mb-12 space-y-5">
-          <div className="relative max-w-md">
-            <Search className="w-4 h-4 text-ink-400 absolute left-4 top-1/2 -translate-y-1/2" />
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Search by topic, keyword, or lesson..."
-              className="w-full pl-11 pr-4 py-3 rounded-2xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600"
-            />
-          </div>
-
-          {/* Tags */}
-          {allTags.length > 1 && (
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-xs font-mono text-ink-400 mr-2">Filter by tag:</span>
-              {allTags.map((tag) => (
-                <button
-                  key={tag}
-                  onClick={() => setSelectedTag(tag)}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-medium transition-all ${
-                    selectedTag === tag
-                      ? 'bg-ink-900 text-white dark:bg-berry-600 dark:text-white shadow-sm'
-                      : 'bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder text-ink-600 dark:text-ink-300 hover:border-berry-500'
-                  }`}
-                >
-                  {tag}
-                </button>
-              ))}
+        {/* Empty Archive Guard or Search & Essays Grid */}
+        {deskEssays.length === 0 ? (
+          <div className="py-20 px-8 text-center rounded-3xl bg-canvas-subtle dark:bg-canvas-darkCard border border-dashed border-canvas-border dark:border-canvas-darkBorder my-8">
+            <div className="w-12 h-12 rounded-full bg-berry-50 dark:bg-canvas-dark border border-berry-200 dark:border-canvas-darkBorder mx-auto flex items-center justify-center mb-4 text-berry-600 dark:text-berry-400">
+              <Feather className="w-5 h-5" />
             </div>
-          )}
-        </div>
-
-        {/* Essays Grid */}
-        {filteredEssays.length === 0 ? (
-          <div className="text-center py-20 border border-dashed border-canvas-border dark:border-canvas-darkBorder rounded-3xl">
-            <p className="text-sm font-mono text-ink-400">No stories match your search criteria.</p>
+            <h3 className="font-serif text-2xl font-bold text-ink-900 dark:text-white mb-2">
+              Nothing filed on this desk yet.
+            </h3>
+            <p className="text-sm text-ink-600 dark:text-ink-300 font-light max-w-md mx-auto mb-6 leading-relaxed">
+              The first note is in progress and scheduled per our editorial cadence. In the meantime, you are welcome to explore our Food desk or return home.
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <button
+                onClick={() => onNavigate('/food')}
+                className="px-5 py-2.5 rounded-full bg-ink-900 text-white dark:bg-berry-600 text-xs font-mono font-bold hover:bg-berry-700 transition-colors"
+              >
+                Read Food Desk Note →
+              </button>
+              <button
+                onClick={() => onNavigate('/')}
+                className="px-5 py-2.5 rounded-full bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-ink-700 dark:text-ink-200 text-xs font-mono font-bold hover:border-berry-600 transition-colors"
+              >
+                Back to the front page
+              </button>
+            </div>
           </div>
         ) : (
+          <>
+            {/* Search Bar & Tag Filter Pills */}
+            <div className="mb-12 space-y-5">
+              <div className="relative max-w-md">
+                <Search className="w-4 h-4 text-ink-400 absolute left-4 top-1/2 -translate-y-1/2" />
+                <input
+                  type="text"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  placeholder="Search by topic, keyword, or lesson..."
+                  className="w-full pl-11 pr-4 py-3 rounded-2xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600"
+                />
+              </div>
+
+              {/* Tags */}
+              {allTags.length > 1 && (
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-xs font-mono text-ink-400 mr-2">Filter by tag:</span>
+                  {allTags.map((tag) => (
+                    <button
+                      key={tag}
+                      onClick={() => setSelectedTag(tag)}
+                      className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-medium transition-all ${
+                        selectedTag === tag
+                          ? 'bg-ink-900 text-white dark:bg-berry-600 dark:text-white shadow-sm'
+                          : 'bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder text-ink-600 dark:text-ink-300 hover:border-berry-500'
+                      }`}
+                    >
+                      {tag}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Essays Grid */}
+            {filteredEssays.length === 0 ? (
+              <div className="text-center py-20 border border-dashed border-canvas-border dark:border-canvas-darkBorder rounded-3xl">
+                <p className="text-sm font-mono text-ink-400">No stories match your search criteria.</p>
+              </div>
+            ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredEssays.map((essay) => (
               <article
@@ -184,6 +213,8 @@ export default function DeskPage({ deskId, onNavigate }) {
               </article>
             ))}
           </div>
+        )}
+          </>
         )}
 
       </div>

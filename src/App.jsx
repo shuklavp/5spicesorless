@@ -121,28 +121,27 @@ export default function App() {
       return <DeskPage deskId="stories" onNavigate={handleNavigate} />;
     }
 
-    // 5. Default: Lean Home Broadside (Concept 1)
-    // Vertical height reduced by ~60%, eliminating scroll fatigue:
-    // Hero -> HomeAboutTeaser -> Three Desks -> Curated Stories -> Advisory Teaser -> Letterbox -> Footer
+    // 5. Default: Front Page
+    // Section order: Hero -> The Three Desks -> The Latest Dispatches/Stories -> The Letterbox -> Advisory -> Short Memoir
     return (
       <main>
         {/* Section 1: Hero with 5 Spice Drawers */}
         <Hero onOpenInquiry={() => handleNavigate('/advisory')} />
 
-        {/* Section 2: The Human Anchor Teaser (Vivek Shukla Memoir Intro) */}
-        <HomeAboutTeaser onNavigate={handleNavigate} />
-
-        {/* Section 3: The Three Desks (Life, Food, Work) */}
+        {/* Section 2: The Three Desks (Life, Food, Work) */}
         <ValueProps onNavigate={handleNavigate} />
 
-        {/* Section 4: Curated Stories & Letters */}
+        {/* Section 3: The Latest Stories & Letters */}
         <WritingBoard onNavigate={handleNavigate} />
+
+        {/* Section 4: The Letterbox (Community Q&A with anti-spam) */}
+        <Letterbox />
 
         {/* Section 5: Advisory Invitation Card (Terracotta Sparring Card) */}
         <HomeAdvisoryTeaser onNavigate={handleNavigate} />
 
-        {/* Section 6: The Letterbox (Community Q&A with anti-spam) */}
-        <Letterbox />
+        {/* Section 6: Short Memoir / The Human Anchor Teaser */}
+        <HomeAboutTeaser onNavigate={handleNavigate} />
       </main>
     );
   };

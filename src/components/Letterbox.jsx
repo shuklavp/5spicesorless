@@ -29,7 +29,6 @@ export default function Letterbox() {
   const [selectedCategory, setSelectedCategory] = useState('life');
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [spamRejected, setSpamRejected] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
   const [formData, setFormData] = useState({
@@ -47,20 +46,34 @@ export default function Letterbox() {
     e.preventDefault();
     setSubmitError('');
 
-    // Anti-Spam Check 1: Honeypot field must be empty
-    if (formData.website_url) {
-      console.warn('Bot submission blocked via honeypot.');
-      setSpamRejected(true);
+    // Validation: Reject empty or too-short letter
+    const trimmedLetter = (formData.question || '').trim();
+    if (!trimmedLetter || trimmedLetter.length < 15) {
+      setSubmitError('Please write at least 15 characters before sending your note.');
       return;
     }
 
-    // Anti-Spam Check 2: Dwell time must be at least 2.5 seconds
-    const elapsed = Date.now() - loadTime;
-    if (elapsed < 2500) {
-      console.warn('Bot submission blocked via dwell time.');
-      setSpamRejected(true);
+    // Anti-Spam Check 1: Honeypot field. If filled, drop silently and show thank-you.
+    if (formData.website_url) {
+      setSubmitted(true);
       return;
     }
+
+    // Anti-Spam Check 2: Dwell time. If under 2.5s, drop silently and show thank-you.
+    const elapsed = Date.now() - loadTime;
+    if (elapsed < 2500) {
+      setSubmitted(true);
+      return;
+    }
+
+    // Anti-Spam Check 3: Rate limit (60-second cooldown). If repeat, drop silently and show thank-you.
+    const lastLetter = localStorage.getItem('letterbox_last_submit');
+    if (lastLetter && Date.now() - parseInt(lastLetter, 10) < 60000) {
+      setSubmitted(true);
+      return;
+    }
+
+    localStorage.setItem('letterbox_last_submit', Date.now().toString());
 
     setIsSubmitting(true);
 
@@ -72,7 +85,7 @@ export default function Letterbox() {
           body: JSON.stringify({
             access_key: FORMS_CONFIG.web3formsAccessKey,
             subject: `[5 Spices Letterbox] [${selectedCategory.toUpperCase()}] from ${isAnonymous ? 'Anonymous' : (formData.name || 'Reader')}`,
-            from_name: '5 Spices or Less — Letterbox',
+            from_name: '5 Spices or Less: Letterbox',
             category: selectedCategory,
             author_type: isAnonymous ? 'Anonymous' : 'Named',
             sender_name: isAnonymous ? 'Anonymous' : formData.name,
@@ -100,7 +113,6 @@ export default function Letterbox() {
 
   const handleReset = () => {
     setSubmitted(false);
-    setSpamRejected(false);
     setFormData({ name: '', email: '', question: '', website_url: '' });
   };
 
@@ -139,7 +151,7 @@ export default function Letterbox() {
           </h2>
 
           <p className="text-sm sm:text-base text-ink-800 dark:text-ink-200 font-medium leading-relaxed bg-white/75 dark:bg-canvas-dark/75 backdrop-blur-sm rounded-2xl py-3 px-5 inline-block shadow-sm">
-            Whether you are grappling with personal perspective, trying to rescue a dish with five spices, or untangling a messy founder bottleneck: write in. One letter answered with care every Sunday.
+            Whether you are grappling with personal perspective, trying to rescue a dish with five spices, or untangling a messy founder bottleneck: write in. One letter answered each Sunday.
           </p>
         </div>
 
@@ -155,7 +167,7 @@ export default function Letterbox() {
                 Your letter has reached Vivek's desk.
               </h3>
               <p className="text-sm text-ink-600 dark:text-ink-300 max-w-md mx-auto leading-relaxed">
-                Thank you for your honesty and trust. Selected questions are answered with care in our Sunday letter.
+                Thank you for your honesty and trust. One letter answered each Sunday.
               </p>
               <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
                 <button
@@ -166,22 +178,7 @@ export default function Letterbox() {
                 </button>
               </div>
             </div>
-          ) : spamRejected ? (
-            <div className="text-center py-12 px-4 space-y-4 max-w-md mx-auto">
-              <div className="w-16 h-16 rounded-full bg-red-100 dark:bg-red-950 flex items-center justify-center text-red-600 dark:text-red-400 mx-auto">
-                <ShieldCheck className="w-8 h-8" />
-              </div>
-              <h3 className="font-serif text-xl font-bold text-ink-900 dark:text-white">Spam Verification</h3>
-              <p className="text-xs text-ink-600 dark:text-ink-300 leading-relaxed">
-                Automated submission pattern detected. Please wait a few seconds and try submitting again.
-              </p>
-              <button
-                onClick={handleReset}
-                className="px-6 py-2 rounded-full bg-berry-600 text-white text-xs font-bold font-mono"
-              >
-                Reset Form
-              </button>
-            </div>
+          
           ) : (
             <form onSubmit={handleSubmit} className="space-y-8">
               

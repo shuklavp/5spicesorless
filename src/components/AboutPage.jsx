@@ -62,7 +62,7 @@ export default function AboutPage({ onNavigate }) {
                 The dish called for exactly five spices: freshly crushed black pepper, salt, a pinch of turmeric, black cardamom, and whole star anise.
               </p>
               <p>
-                The curry turned out exceptionally rich, with each element holding its ground without crowding the pot. As we sat by the flame, our conversation drifted to enterprise.
+                The curry turned out rich, with each element holding its ground without crowding the pot. As we sat by the flame, our conversation drifted to enterprise.
               </p>
               <p>
                 I remarked that early-stage ventures almost always lose their way because founders never learn how to stop adding. They clutter their offices, they clutter their operational metrics, and they get trapped in twenty trivial distractions.
@@ -76,8 +76,11 @@ export default function AboutPage({ onNavigate }) {
             <div className="lg:col-span-5 flex flex-col justify-start">
               <div className="p-5 rounded-2xl bg-white/85 dark:bg-[#1A1412]/85 border border-[#EADCC9] dark:border-[#38281F] space-y-3 shadow-sm backdrop-blur-sm">
                 <div className="text-[11px] font-mono uppercase font-bold tracking-wider text-amber-900 dark:text-amber-200">
-                  The Five Spices in the Desi Ghee:
+                  The Five Spices in That Dish:
                 </div>
+                <p className="text-[11px] text-amber-800/80 dark:text-amber-300/80 font-light italic">
+                  Belonging to this specific chicken curry dish, not to the house five-spice philosophy:
+                </p>
                 <div className="flex flex-wrap gap-2 text-xs font-mono">
                   <span className="px-3 py-1.5 rounded-full bg-amber-50 dark:bg-canvas-dark border border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200 font-medium">
                     01. Black Pepper
@@ -244,7 +247,7 @@ export default function AboutPage({ onNavigate }) {
                 </div>
                 <div>
                   <div className="text-xs font-bold text-ink-900 dark:text-white group-hover:text-berry-600 transition-colors">
-                    Follow on X (Twitter)
+                    Follow on X
                   </div>
                   <div className="text-[11px] font-mono text-ink-500 dark:text-ink-300">
                     @vivekshukla
@@ -293,7 +296,7 @@ export default function AboutPage({ onNavigate }) {
                 </span>
               </div>
               <blockquote className="font-serif italic text-base sm:text-lg text-ink-900 dark:text-white font-medium leading-relaxed">
-                "I write because survival taught me to pay attention, and I advise because I know how lonely the founder's chair can get. No buzzwords, no posturing, and no desire to be bucketed. Just warm Lakhnawi tea, hard-won operational judgment, and steady counsel when things get noisy."
+                "I write because survival taught me to pay attention, and I advise because I know how lonely the founder's chair can get. No buzzwords, no posturing, and no desire to be bucketed. Just warm Lakhnawi tea, hard-won operational judgement, and steady counsel when things get noisy."
               </blockquote>
             </div>
 

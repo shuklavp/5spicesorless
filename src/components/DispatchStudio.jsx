@@ -206,9 +206,9 @@ export default function DispatchStudio({ onNavigate }) {
     const cleanTags = tags.length > 0 ? tags.slice(0, 3).map((t) => `#${t.replace(/\s+/g, '')}`).join(' ') : '#Simplification';
 
     if (account === '5spicesorless') {
-      return `New dispatch from the ${category} Desk: "${title || 'Untitled Dispatch'}"\n\n${leadQuote ? `"${leadQuote}"\n\n` : ''}${showTakeaways && takeaways.length > 0 ? `Core Truths:\n• ${takeaways[0]}\n\n` : ''}Read the complete piece on 5 Spices or Less:\n${storyUrl}\n\n${cleanTags}`;
+      return `New story from the ${category} Desk: "${title || 'Untitled Story'}"\n\n${leadQuote ? `"${leadQuote}"\n\n` : ''}${showTakeaways && takeaways.length > 0 ? `Core Truths:\n• ${takeaways[0]}\n\n` : ''}Read the complete piece on 5 Spices or Less:\n${storyUrl}\n\n${cleanTags}`;
     } else {
-      return `Reflecting on ${category.toLowerCase()} and the quiet power of simplification:\n\n"${title || 'Untitled Dispatch'}"${subtitle ? ` — ${subtitle}` : ''}\n\n${leadQuote ? `"${leadQuote}"\n\n` : ''}Full essay on @5spicesorless:\n${storyUrl}\n\n#5SpicesOrLess ${cleanTags}`;
+      return `Reflecting on ${category.toLowerCase()} and the quiet power of simplification:\n\n"${title || 'Untitled Story'}"${subtitle ? ` : ${subtitle}` : ''}\n\n${leadQuote ? `"${leadQuote}"\n\n` : ''}Full essay on @5spicesorless:\n${storyUrl}\n\n#5SpicesOrLess ${cleanTags}`;
     }
   };
 
@@ -251,7 +251,7 @@ export default function DispatchStudio({ onNavigate }) {
 
   const generateFullEssaysJsFile = (list = allEssays) => {
     return `// src/data/essays.js
-// Single source of truth for all published essays and dispatches.
+// Single source of truth for all published essays and stories.
 // Strict British English mandate: -ise, -our, pre-authorisation, no em-dashes.
 
 export const ESSAYS_DATA = [
@@ -291,7 +291,7 @@ ${list.map(formatEssayObject).join(',\n')}
     const currentStoryObj = {
       id: finalSlug,
       slug: finalSlug,
-      title: title.trim() || 'Untitled Dispatch',
+      title: title.trim() || 'Untitled Story',
       subtitle: subtitle.trim(),
       category,
       subCategory: finalSubCat,
@@ -458,7 +458,7 @@ ${list.map(formatEssayObject).join(',\n')}
     return `  {
     id: '${finalSlug}',
     slug: '${finalSlug}',
-    title: ${JSON.stringify(title || 'Untitled Dispatch')},
+    title: ${JSON.stringify(title || 'Untitled Story')},
     subtitle: ${JSON.stringify(subtitle || '')},
     category: '${category}',
     subCategory: ${JSON.stringify(finalSubCat)},
@@ -478,7 +478,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
     const code = generateExportCode();
     navigator.clipboard?.writeText(code);
     setCopiedCode(true);
-    setStatusMessage('Dispatch code copied to clipboard! Paste into src/data/essays.js');
+    setStatusMessage('Story code copied to clipboard! Paste into src/data/essays.js');
     setTimeout(() => setCopiedCode(false), 2500);
   };
 
@@ -556,7 +556,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
               Private Author Workspace
             </span>
             <h1 className="font-serif text-2xl font-bold text-ink-900 dark:text-white">
-              The Dispatch Studio
+              The Writing Studio
             </h1>
             <p className="text-xs font-mono text-ink-500 dark:text-ink-400">
               Enter author passkey to open writing and layout canvas.
@@ -617,7 +617,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
               </span>
             </div>
             <h1 className="font-serif text-3xl sm:text-4xl font-black tracking-tight text-ink-900 dark:text-white">
-              The Dispatch Studio
+              The Writing Studio
             </h1>
             <p className="text-xs sm:text-sm font-mono text-ink-500 dark:text-ink-400">
               Draft, organise by sub-category, generate blue pencil sketch prompts, and copy live story code.
@@ -687,7 +687,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
               className="px-4 py-2 rounded-xl bg-berry-600 hover:bg-berry-700 text-white text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-2 shadow-sm transition-all"
             >
               {copiedCode ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-              <span>{copiedCode ? 'Copied Code!' : 'Copy Dispatch Code'}</span>
+              <span>{copiedCode ? 'Copied Code!' : 'Copy Story Code'}</span>
             </button>
           </div>
         </div>
@@ -704,7 +704,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
               defaultValue=""
               className="px-3 py-2 rounded-xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-ink-900 dark:text-white text-xs focus:outline-none focus:border-berry-600 w-full sm:w-64"
             >
-              <option value="" disabled>Select an existing dispatch...</option>
+              <option value="" disabled>Select an existing story...</option>
               {ESSAYS_DATA.map((e) => (
                 <option key={e.id} value={e.id}>
                   [{e.category}] {e.title}
@@ -939,7 +939,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                     rows={2}
                     value={leadQuote}
                     onChange={(e) => setLeadQuote(e.target.value)}
-                    placeholder="A memorable sentence that anchors the entire dispatch..."
+                    placeholder="A memorable sentence that anchors the entire story..."
                     className="w-full p-3 rounded-xl bg-canvas-subtle dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-ink-900 dark:text-white font-serif italic text-sm focus:outline-none focus:border-berry-600"
                   />
                 </div>
@@ -1052,7 +1052,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                 ) : (
                   <div className="p-5 rounded-2xl bg-canvas-subtle dark:bg-canvas-dark border border-dashed border-canvas-border dark:border-canvas-darkBorder text-center space-y-2">
                     <p className="text-xs font-mono text-ink-500 dark:text-ink-400">
-                      Section 3 is currently excluded. Best for narrative essays, fiction dispatches, and memoirs where a bulleted thesis box is not required.
+                      Section 3 is currently excluded. Best for narrative essays, fiction pieces, and memoirs where a bulleted thesis box is not required.
                     </p>
                     <button
                       type="button"
@@ -1749,7 +1749,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                     Stories Archive &amp; essays.js Manager
                   </h3>
                   <p className="text-xs font-mono text-ink-500 dark:text-ink-400">
-                    Direct interface to edit, delete, or commit published dispatches without touching terminal.
+                    Direct interface to edit, delete, or commit published stories without touching terminal.
                   </p>
                 </div>
               </div>
@@ -1927,7 +1927,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                 </div>
                 <div>
                   <h3 className="font-serif text-xl sm:text-2xl font-bold">
-                    Share Dispatch to X (Twitter)
+                    Share Story to X
                   </h3>
                   <p className="text-xs font-mono text-ink-500 dark:text-ink-400">
                     Direct publishing to both accounts with editable message text.

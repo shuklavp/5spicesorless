@@ -197,7 +197,7 @@ export default function Navbar({ onNavigate, currentPath = '/', isDark, onToggle
             onClick={(e) => handleLinkClick(e, '/')}
             className="text-base font-medium text-ink-900 dark:text-white hover:text-berry-600"
           >
-            Home Broadside
+            Front Page
           </a>
           <a
             href="/life"
