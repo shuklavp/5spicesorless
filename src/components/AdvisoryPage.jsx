@@ -1,10 +1,11 @@
 // src/components/AdvisoryPage.jsx
-import React, { useState } from 'react';
-import { ArrowLeft, ArrowRight, Check, Compass, ShieldCheck, Sparkles, Send } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ArrowLeft, ArrowRight, Check, Compass, ShieldCheck, Sparkles, Send, X, Layers, Users, Target } from 'lucide-react';
 import { FORMS_CONFIG } from '../config/forms';
 
 const ADVISORY_MODES = [
   {
+    id: 'operator',
     title: 'The Hands-On Operator',
     focus: 'Operational De-cluttering & GTM Discipline',
     cadence: 'Embedded Operator',
@@ -13,14 +14,25 @@ const ADVISORY_MODES = [
     tagClass: 'bg-sage-100 text-sage-800 dark:bg-sage-900/60 dark:text-sage-100 border-sage-200 dark:border-sage-800',
     checkColor: 'text-sage-600 dark:text-sage-400',
     btnClass: 'bg-sage-600 hover:bg-sage-700 text-white',
-    description:
+    borderAccent: 'border-l-sage-600',
+    leadQuote: 'True mastery is subtractive. We do not add more meetings or slide decks; we strip away operational friction so your team can focus entirely on what moves the business forward.',
+    modalBtnClass: 'bg-sage-600 hover:bg-sage-700 text-white',
+    cardSnippet:
       'Drawing on thirty years of enterprise experience and managing operations with 160+ people across 4 regional offices, I work alongside founders to cut through operational friction. We remove bureaucratic clutter, install single-page decision memos over slides, and focus your team entirely on what moves the business forward.',
+    detailedOverview:
+      'Growth creates invisible drag. As companies expand from initial seed traction into scaling teams, systems begin to creak. What was once spontaneous coordination turns into calendar congestion, endless alignment meetings, and 50-slide decks that conceal indecision. In this mode, I embed directly as an operational co-pilot alongside the founder. I do not act as an aloof consultant handing down slide decks; I work in the operational trenches to strip away clutter, re-align executive priorities, and establish rigorous, lightweight execution habits.',
+    idealFor:
+      'Founders and CEOs navigating the 15 to 60 person scaling wall, feeling bogged down in administrative coordination, experiencing operational drag across departments, or noticing team motion outpacing real progress.',
     deliverables: [
-      'Diagnostic review of team bandwidth, roadmaps, and recurring syncs',
+      'Diagnostic review of team bandwidth, product roadmaps, and recurring syncs',
       'Installation of single-page decision memos over 50-slide decks',
       'Go-to-market alignment with disciplined, sustainable unit economics',
       'Hands-on guidance through high-friction scaling inflection points',
+      'Calendar reclaim audit to eliminate phantom alignment meetings',
+      'Interim operational air cover for department leads facing bottlenecks',
     ],
+    engagementFormat:
+      'Weekly operational sprint review, async Slack/WhatsApp emergency line, direct memo critique, and bi-weekly strategic cadence.',
   },
   {
     id: 'eir',
@@ -32,16 +44,28 @@ const ADVISORY_MODES = [
     tagClass: 'bg-lavender-100 text-lavender-800 dark:bg-lavender-900/60 dark:text-lavender-100 border-lavender-200 dark:border-lavender-800',
     checkColor: 'text-[#7C3AED] dark:text-[#A78BFA]',
     btnClass: 'bg-[#7C3AED] hover:bg-[#6D28D9] text-white',
-    description:
+    borderAccent: 'border-l-[#7C3AED]',
+    leadQuote: 'At the category creation stage, testing false assumptions against customer ground truth early saves years of wasted capital, equity, and team morale.',
+    modalBtnClass: 'bg-[#7C3AED] hover:bg-[#6D28D9] text-white',
+    cardSnippet:
       'Having pioneered an entire industry category in India (institutional backing from Macquarie, residential water sub-metering), I partner with venture studios, incubators, or family offices to evaluate market opportunities and pressure-test product viability.',
+    detailedOverview:
+      'Pioneering a completely new product or category requires distinct instincts from standard scaling. At seed and incubation stages, the cost of pursuing false consumer assumptions is fatal. Drawing on my journey building India\'s first residential water sub-metering enterprise from zero to institutional funding and a clean exit, I partner with venture funds, incubators, and studios to stress-test new concepts before capital is burnt. We test customer ground truth, design scrappy minimum viable pilots, and structure defensible unit economics from day zero.',
+    idealFor:
+      'Venture studios, investment funds, corporate innovation arms, or early founding teams preparing to enter unmapped markets, validate category-defining technology, or structure new business spin-outs.',
     deliverables: [
       'Category creation stress-testing and customer problem validation',
       'Early operational design and capital-efficient execution roadmaps',
+      'Direct customer interview audits to verify real purchasing urgency',
       'Mentoring founding teams to take bold, calculated bets',
       'Governance and trust-anchored oversight from day zero',
+      'Unit economics and pricing psychology stress-testing',
     ],
+    engagementFormat:
+      'Fixed-term partnership sprints (3 to 6 months), weekly milestone sparring, customer validation audits, and executive synthesis for investment committees.',
   },
   {
+    id: 'mentor',
     title: 'A Ben to Your Jules',
     focus: 'Trusted Confidant for High-Agency Founders',
     cadence: '1:1 Founder Mentoring',
@@ -50,14 +74,25 @@ const ADVISORY_MODES = [
     tagClass: 'bg-[#BC5259]/10 text-[#BC5259] dark:bg-berry-950/60 dark:text-berry-300 border-[#BC5259]/20 dark:border-berry-800',
     checkColor: 'text-[#BC5259] dark:text-berry-400',
     btnClass: 'bg-[#BC5259] hover:bg-[#A3434A] text-white',
-    description:
+    borderAccent: 'border-l-[#BC5259]',
+    leadQuote: 'The founder\'s chair is lonely. You do not need another advisor giving unsolicited opinions; you need calm operator judgement, total discretion, and someone who has lived through the fire.',
+    modalBtnClass: 'bg-[#BC5259] hover:bg-[#A3434A] text-white',
+    cardSnippet:
       'Like Robert De Niro in "The Intern", an ego-free, calm, deeply experienced veteran in your corner. Someone who has raised institutional venture capital, survived being declared dead, weathered boardroom storms, and exited with honour, providing psychological safety and unvarnished judgement.',
+    detailedOverview:
+      'The founder\'s chair is an intensely lonely place. The most critical crossroads, co-founder tensions, boardroom disputes, restructuring choices, and private anxieties, cannot be shared with employees or broadcast to investors. Named after Robert De Niro\'s character in "The Intern", this mode provides an unhurried, ego-free sounding board who has lived through the fire. I provide absolute psychological safety, discretion, and unvarnished operator judgement, helping you distinguish temporary noise from existential risks and stand firm under pressure.',
+    idealFor:
+      'Solo founders, CEOs, and executive leaders carrying the psychological weight of scale, facing co-founder realignment, managing delicate boardroom negotiations, or facing high-stakes strategic choices.',
     deliverables: [
-      'Fortnightly private strategy reviews (async and voice line)',
+      'Fortnightly private strategy reviews (async voice line and deep sessions)',
       'Unbiased sounding board on co-founder tensions, hiring, and board dynamics',
       'Crisis perspective: helping you distinguish fatal risks from temporary noise',
+      'Boardroom preparation: stress-testing the real narrative before institutional meetings',
       'Strictly capped at two to three concurrent founder relationships',
+      'On-demand crisis availability when critical decisions arise',
     ],
+    engagementFormat:
+      'Fortnightly private 60-minute strategy calls, dedicated private asynchronous voice note channel, and priority emergency response line.',
   },
 ];
 
@@ -137,21 +172,51 @@ export default function AdvisoryPage({ onNavigate }) {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  const [activeModalMode, setActiveModalMode] = useState(null);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     venture: '',
     stage: 'Seed / Series A',
-    advisoryMode: 'A Ben to Your Jules (Founder Confidant)',
+    advisoryMode: 'The Hands-On Operator',
     timeline: 'Immediate (Next 2-4 weeks)',
     bottleneck: '',
     website_url: '', // Honeypot trap
   });
 
-  const handleSelectModeAndScroll = (modeTitle) => {
+  // Lock scroll and handle escape key for modal
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setActiveModalMode(null);
+      }
+    };
+
+    if (activeModalMode) {
+      window.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [activeModalMode]);
+
+  const handleOpenModal = (mode) => {
+    setActiveModalMode(mode);
+  };
+
+  const handleSelectModeFromModal = (modeTitle) => {
+    setActiveModalMode(null);
     setFormData((prev) => ({ ...prev, advisoryMode: modeTitle }));
-    const el = document.getElementById('intake-form');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    setTimeout(() => {
+      const el = document.getElementById('intake-form');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 150);
   };
 
   const handleSelectScenarioAndScroll = (scenarioText) => {
@@ -254,7 +319,7 @@ export default function AdvisoryPage({ onNavigate }) {
               Straight talk from someone who has <span className="italic text-[#28181A] dark:text-[#FECDD3] font-serif font-black">built, scaled, and exited.</span>
             </h1>
 
-            <p className="text-[#FDF2F4] dark:text-ink-200 font-normal text-base sm:text-lg leading-relaxed pt-2 max-w-2xl">
+            <p className="text-[#FDF2F4] dark:text-ink-200 font-normal text-base sm:text-lg leading-relaxed pt-2 max-w-3xl">
               No 60-slide decks or corporate theatre. I partner with founders as a hands-on operator, sounding board, or mentor, removing clutter so you can see the work clearly.
             </p>
 
@@ -307,7 +372,7 @@ export default function AdvisoryPage({ onNavigate }) {
               How We Work Together.
             </h2>
             <p className="text-sm sm:text-base text-ink-700 dark:text-ink-300 font-light leading-relaxed">
-              Three distinct ways to partner, depending on your venture stage, team friction, and where you need clear thinking.
+              Three distinct ways to partner, depending on your venture stage, team friction, and where you need clear thinking. Click below to inspect the full service breakdown.
             </p>
           </div>
 
@@ -341,15 +406,15 @@ export default function AdvisoryPage({ onNavigate }) {
 
                   {/* Description */}
                   <p className="text-sm text-ink-700 dark:text-ink-200 font-light leading-relaxed mb-6">
-                    {mode.description}
+                    {mode.cardSnippet}
                   </p>
 
-                  {/* Deliverables Checklist */}
+                  {/* Deliverables Preview */}
                   <div className="space-y-3 pt-4 border-t border-canvas-border dark:border-canvas-darkBorder mb-8">
                     <span className="text-xs font-mono uppercase tracking-wider text-ink-900 dark:text-white font-bold block mb-2">
                       Scope of Collaboration:
                     </span>
-                    {mode.deliverables.map((item, i) => (
+                    {mode.deliverables.slice(0, 4).map((item, i) => (
                       <div key={i} className="flex items-start gap-2.5 text-xs text-ink-800 dark:text-ink-100 font-medium">
                         <Check className={`w-3.5 h-3.5 ${mode.checkColor} shrink-0 mt-0.5`} />
                         <span className="leading-snug">{item}</span>
@@ -358,13 +423,12 @@ export default function AdvisoryPage({ onNavigate }) {
                   </div>
                 </div>
 
-                {/* Direct Action Button */}
+                {/* Know More Modal Trigger Button */}
                 <button
-                  onClick={() => handleSelectModeAndScroll(mode.title)}
-                  className={`w-full py-3.5 rounded-full ${mode.btnClass} text-xs font-mono font-bold uppercase tracking-wider text-center transition-all flex items-center justify-center gap-2 shadow-md`}
+                  onClick={() => handleOpenModal(mode)}
+                  className={`w-full py-3.5 rounded-full ${mode.btnClass} text-xs font-mono font-bold uppercase tracking-wider text-center transition-all flex items-center justify-center gap-2 shadow-sm hover:shadow-md active:scale-95`}
                 >
-                  <span>Select {mode.title}</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <span>KNOW MORE →</span>
                 </button>
               </div>
             ))}
@@ -372,6 +436,114 @@ export default function AdvisoryPage({ onNavigate }) {
 
         </div>
       </section>
+
+      {/* =========================================================================
+          DETAILED OVERLAY POPUP MODAL (The requested succinct and informative overlay)
+          ========================================================================= */}
+      {activeModalMode && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-ink-950/75 dark:bg-black/85 backdrop-blur-md animate-fadeIn"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setActiveModalMode(null);
+          }}
+        >
+          <div className="relative w-full max-w-3xl max-h-[88vh] overflow-y-auto rounded-3xl bg-white dark:bg-canvas-darkCard border-2 border-canvas-border dark:border-canvas-darkBorder p-6 sm:p-10 shadow-2xl space-y-6">
+            
+            {/* Modal Top Bar */}
+            <div className="flex items-center justify-between pb-4 border-b border-canvas-border dark:border-canvas-darkBorder">
+              <div className="flex items-center gap-2.5">
+                <span className={`text-xs font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full border ${activeModalMode.tagClass}`}>
+                  Mode 0{activeModalMode.number} · {activeModalMode.cadence}
+                </span>
+              </div>
+
+              <button
+                onClick={() => setActiveModalMode(null)}
+                className="p-2 rounded-full bg-canvas-subtle dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-ink-600 dark:text-ink-300 hover:text-berry-600 hover:border-berry-600 transition-colors"
+                aria-label="Close modal"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Title & Core Subtitle */}
+            <div className="space-y-2">
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-black text-ink-900 dark:text-white leading-[1.15]">
+                {activeModalMode.title}
+              </h2>
+              <div className="text-xs sm:text-sm font-mono font-bold text-berry-600 dark:text-berry-400 uppercase tracking-wider">
+                {activeModalMode.focus}
+              </div>
+            </div>
+
+            {/* Lead Pullquote (Story Modal Style) */}
+            {activeModalMode.leadQuote && (
+              <div className={`p-5 sm:p-6 rounded-2xl bg-canvas-subtle dark:bg-canvas-dark border-l-4 ${activeModalMode.borderAccent || "border-l-berry-600"} text-base sm:text-lg font-serif italic text-ink-900 dark:text-white font-medium leading-relaxed shadow-sm`}>
+                "{activeModalMode.leadQuote}"
+              </div>
+            )}
+
+            {/* Detailed Service Narrative */}
+            <div className="space-y-4 text-sm sm:text-base text-ink-800 dark:text-ink-100 font-light leading-relaxed border-t border-canvas-border dark:border-canvas-darkBorder pt-4">
+              <p>
+                {activeModalMode.detailedOverview}
+              </p>
+            </div>
+
+            {/* Ideal Stage & Fit Box */}
+            <div className="p-5 rounded-2xl bg-[#F1F2F4] dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder space-y-2">
+              <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-ink-900 dark:text-white">
+                <Target className="w-4 h-4 text-berry-600" />
+                <span>Who This Is Built For:</span>
+              </div>
+              <p className="text-xs sm:text-sm text-ink-700 dark:text-ink-200 font-normal leading-relaxed">
+                {activeModalMode.idealFor}
+              </p>
+            </div>
+
+            {/* Detailed Scope of Collaboration & Deliverables */}
+            <div className="space-y-3 pt-2">
+              <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-ink-900 dark:text-white">
+                <Layers className="w-4 h-4 text-cobalt-600 dark:text-cobalt-400" />
+                <span>Full Scope of Collaboration &amp; Deliverables:</span>
+              </div>
+              <div className="grid grid-cols-1 gap-2.5">
+                {activeModalMode.deliverables.map((item, dIdx) => (
+                  <div key={dIdx} className="flex items-start gap-3 p-3 rounded-xl bg-canvas-subtle/80 dark:bg-canvas-dark/60 border border-canvas-border dark:border-canvas-darkBorder text-xs sm:text-sm text-ink-800 dark:text-ink-100 font-medium">
+                    <Check className={`w-4 h-4 ${activeModalMode.checkColor} shrink-0 mt-0.5`} />
+                    <span className="leading-snug">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Engagement Format */}
+            <div className="p-4 rounded-xl bg-canvas-subtle dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-xs font-mono text-ink-600 dark:text-ink-300">
+              <span className="font-bold text-ink-900 dark:text-white block mb-1">Cadence &amp; Channels:</span>
+              <span>{activeModalMode.engagementFormat}</span>
+            </div>
+
+            {/* Modal Bottom Actions */}
+            <div className="pt-6 border-t border-canvas-border dark:border-canvas-darkBorder flex flex-col sm:flex-row items-center justify-between gap-4">
+              <button
+                onClick={() => setActiveModalMode(null)}
+                className="w-full sm:w-auto px-6 py-3 rounded-full border border-canvas-border dark:border-canvas-darkBorder text-ink-700 dark:text-ink-200 hover:text-ink-900 text-xs font-mono font-bold uppercase tracking-wider transition-colors order-2 sm:order-1"
+              >
+                Close
+              </button>
+
+              <button
+                onClick={() => handleSelectModeFromModal(activeModalMode.title)}
+                className={`w-full sm:w-auto px-8 py-3.5 rounded-full ${activeModalMode.modalBtnClass} text-xs font-mono font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-lg active:scale-95 order-1 sm:order-2`}
+              >
+                <span>Select This Mode &amp; Inquire</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+
+          </div>
+        </div>
+      )}
 
       {/* =========================================================================
           ZONE 3: WHEN FOUNDERS CALL ME (Deep Midnight Slate Atmosphere)
