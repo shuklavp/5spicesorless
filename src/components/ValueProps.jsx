@@ -18,8 +18,11 @@ const DESKS = [
     ],
     cadence: 'Every two weeks',
     cta: 'Visit the Life Desk',
-    accentColor: 'border-t-berry-600',
-    tagColor: 'text-berry-600 dark:text-berry-400 bg-berry-50 dark:bg-berry-950/60 border-berry-200 dark:border-berry-900',
+    accentColor: 'border-t-[#7C3AED]',
+    tagColor: 'text-lavender-800 dark:text-lavender-100 bg-lavender-100 dark:bg-lavender-900/60 border-lavender-200 dark:border-lavender-800',
+    dotColor: 'text-[#7C3AED] dark:text-[#A78BFA]',
+    hoverBorder: 'hover:border-[#7C3AED]/50',
+    ctaTextHover: 'hover:text-[#7C3AED] dark:hover:text-[#A78BFA]',
   },
   {
     id: 'food',
@@ -36,8 +39,11 @@ const DESKS = [
     ],
     cadence: 'One recipe every fortnight',
     cta: 'Visit the Food Desk',
-    accentColor: 'border-t-cobalt-600',
-    tagColor: 'text-cobalt-600 dark:text-cobalt-400 bg-cobalt-50 dark:bg-cobalt-950/60 border-cobalt-200 dark:border-cobalt-900',
+    accentColor: 'border-t-sage-600',
+    tagColor: 'text-sage-800 dark:text-sage-100 bg-sage-100 dark:bg-sage-900/60 border-sage-200 dark:border-sage-800',
+    dotColor: 'text-sage-600 dark:text-sage-400',
+    hoverBorder: 'hover:border-sage-600/50',
+    ctaTextHover: 'hover:text-sage-600 dark:hover:text-sage-400',
   },
   {
     id: 'work',
@@ -54,8 +60,11 @@ const DESKS = [
     ],
     cadence: 'A weekly note on Sunday',
     cta: 'Visit the Work Desk',
-    accentColor: 'border-t-ink-900 dark:border-t-white',
-    tagColor: 'text-ink-700 dark:text-ink-300 bg-canvas-subtle dark:bg-canvas-dark border-canvas-border dark:border-canvas-darkBorder',
+    accentColor: 'border-t-ink-900 dark:border-t-slate-200',
+    tagColor: 'text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-slate-800/80 border-slate-300 dark:border-slate-700',
+    dotColor: 'text-slate-600 dark:text-slate-400',
+    hoverBorder: 'hover:border-slate-500/50',
+    ctaTextHover: 'hover:text-ink-950 dark:hover:text-white',
   },
 ];
 
@@ -94,10 +103,8 @@ export default function ValueProps({ onNavigate }) {
                 id={item.id}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className={`relative rounded-3xl p-8 bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder border-t-4 scroll-mt-28 ${item.accentColor} transition-all duration-300 flex flex-col justify-between shadow-sm ${
-                  isHovered
-                    ? 'shadow-xl -translate-y-1 border-canvas-border dark:border-canvas-darkBorder'
-                    : ''
+                className={`relative rounded-3xl p-8 bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder border-t-4 scroll-mt-28 ${item.accentColor} transition-all duration-300 flex flex-col justify-between shadow-sm ${item.hoverBorder} ${
+                  isHovered ? 'shadow-xl -translate-y-1' : ''
                 }`}
               >
                 <div>
@@ -128,7 +135,7 @@ export default function ValueProps({ onNavigate }) {
                     </div>
                     {item.expectations.map((exp, i) => (
                       <div key={i} className="flex items-start gap-2.5 text-xs text-ink-800 dark:text-ink-100 font-medium">
-                        <span className="text-berry-600 dark:text-berry-400 font-bold shrink-0 mt-0.5">•</span>
+                        <span className={`${item.dotColor} font-bold shrink-0 mt-0.5`}>•</span>
                         <span className="leading-relaxed">{exp}</span>
                       </div>
                     ))}
@@ -145,10 +152,10 @@ export default function ValueProps({ onNavigate }) {
 
                   <button
                     onClick={() => onNavigate && onNavigate(item.path)}
-                    className="w-full inline-flex items-center justify-between text-xs font-bold tracking-wide text-ink-900 dark:text-white hover:text-berry-600 dark:hover:text-berry-400 transition-colors pt-2 group"
+                    className={`w-full inline-flex items-center justify-between text-xs font-bold tracking-wide text-ink-900 dark:text-white ${item.ctaTextHover} transition-colors pt-2 group`}
                   >
                     <span>{item.cta}</span>
-                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1 text-berry-600 dark:text-berry-400" />
+                    <ArrowRight className={`w-3.5 h-3.5 transition-transform group-hover:translate-x-1 ${item.dotColor}`} />
                   </button>
                 </div>
               </div>

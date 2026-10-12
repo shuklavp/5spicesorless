@@ -9,24 +9,36 @@ const DESK_CONFIGS = {
     kicker: 'LIFE, PERSPECTIVE, & HUMAN BONDS',
     subtitle: 'Everyday lessons from growing up in Lucknow, learning the nuances of communication and tehzeeb, and making honest mistakes. Becoming a quiet builder, and learning to be a kinder human being rather than playing an unearned guru.',
     cadence: 'Every two weeks',
+    dotColor: 'bg-[#7C3AED]',
+    kickerColor: 'text-[#7C3AED] dark:text-[#A78BFA]',
+    pillBg: 'bg-lavender-100 text-lavender-800 dark:bg-lavender-900/60 dark:text-lavender-100 border-lavender-200 dark:border-lavender-800',
   },
   food: {
     title: 'The Food Desk',
     kicker: 'FIVE SPICES OR FEWER',
     subtitle: 'Lucknow roots where aroma precedes taste. Five spices, deliberate heat, and simple steps cooking for pure joy and mental decompression.',
     cadence: 'One recipe every fortnight',
+    dotColor: 'bg-sage-600',
+    kickerColor: 'text-sage-600 dark:text-sage-400',
+    pillBg: 'bg-sage-100 text-sage-800 dark:bg-sage-900/60 dark:text-sage-100 border-sage-200 dark:border-sage-800',
   },
   work: {
     title: 'The Work Desk',
     kicker: 'STARTUPS, BOARDROOMS, & OPERATIONAL DISCIPLINE',
     subtitle: 'Thirty years of enterprise building enduring ventures, trusted partnerships, and practical operator judgement. Cutting through operational noise, boardroom theatre, and vanity to focus on what truly works.',
     cadence: 'A weekly note on Sunday',
+    dotColor: 'bg-slate-700 dark:bg-slate-300',
+    kickerColor: 'text-slate-800 dark:text-slate-200',
+    pillBg: 'bg-slate-100 text-slate-800 dark:bg-slate-800/80 dark:text-slate-200 border-slate-300 dark:border-slate-700',
   },
   stories: {
     title: 'All Dispatches & Stories',
     kicker: 'THE EDITORIAL ARCHIVE',
     subtitle: 'Reflective personal essays, culinary observations, operator playbooks, and short fiction by Vivek Shukla.',
     cadence: 'Complete Archive',
+    dotColor: 'bg-berry-600',
+    kickerColor: 'text-berry-600 dark:text-berry-400',
+    pillBg: 'bg-berry-50 text-berry-700 dark:bg-canvas-darkCard dark:text-berry-300 border-berry-200 dark:border-canvas-darkBorder',
   },
 };
 
@@ -78,8 +90,8 @@ export default function DeskPage({ deskId, onNavigate }) {
         {/* Section Header */}
         <div className="max-w-3xl mb-12 space-y-3">
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-berry-600" />
-            <span className="text-xs font-mono tracking-widest uppercase text-berry-600 dark:text-berry-400 font-bold">
+            <span className={`w-2.5 h-2.5 rounded-full ${config.dotColor}`} />
+            <span className={`text-xs font-mono tracking-widest uppercase font-bold ${config.kickerColor}`}>
               {config.kicker}
             </span>
           </div>
@@ -93,7 +105,7 @@ export default function DeskPage({ deskId, onNavigate }) {
           </p>
 
           <div className="pt-1">
-            <span className="text-xs font-mono text-ink-500 dark:text-ink-400 font-medium">
+            <span className="text-xs font-mono text-ink-400 dark:text-ink-500 font-medium">
               Cadence: {config.cadence}
             </span>
           </div>
@@ -160,7 +172,7 @@ export default function DeskPage({ deskId, onNavigate }) {
                 <div>
                   <div className="flex items-center justify-between text-xs font-mono mb-4">
                     <div className="flex flex-wrap items-center gap-1.5">
-                      <span className="text-berry-700 dark:text-berry-300 bg-white dark:bg-canvas-dark px-3 py-1 rounded-full border border-berry-200 dark:border-canvas-darkBorder font-bold uppercase text-[10px]">
+                      <span className={`px-3 py-1 rounded-full border font-bold uppercase text-[10px] ${config.pillBg}`}>
                         {essay.category}
                       </span>
                       {essay.subCategory && (

@@ -75,29 +75,7 @@ export default function AboutPage({ onNavigate }) {
               <p>
                 I remarked that early-stage ventures almost always lose their way because founders never learn how to stop adding. They clutter their offices, they clutter their operational metrics, and they get trapped in twenty trivial distractions.
               </p>
-              <div className="p-5 rounded-2xl bg-white/85 dark:bg-canvas-darkCard/85 border border-[#EADCC9] dark:border-[#38281F] space-y-2.5 my-3 shadow-sm backdrop-blur-sm">
-                <div className="text-xs font-mono uppercase font-bold tracking-wider text-amber-800 dark:text-amber-300">
-                  Four Operational Ground Truths:
-                </div>
-                <ul className="space-y-1.5 text-xs sm:text-sm font-normal">
-                  <li className="flex items-start gap-2">
-                    <span className="text-amber-600 font-bold">•</span>
-                    <span><strong>Simple communication:</strong> Zero corporate theatre and clear internal memos over slides.</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-amber-600 font-bold">•</span>
-                    <span><strong>Quarterly process audits:</strong> Stripping away unnecessary clutter that no longer serves.</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-amber-600 font-bold">•</span>
-                    <span><strong>Customer ground truth:</strong> Absolute clarity on how customers arrive, and what happens once they join.</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-amber-600 font-bold">•</span>
-                    <span><strong>Founder discipline:</strong> Mastering the few vital levers, and stopping the habit of poking your nose into everything.</span>
-                  </li>
-                </ul>
-              </div>
+
               <p>
                 That evening, the phrase stuck in my mind: Five Spices or Less. A quiet thought on cooking with fewer ingredients, and offering grounded advisory to founders who want to strip away the noise. I booked the domain that night on an impulse, let it simmer for years, and am now finally penning down the lessons.
               </p>
@@ -259,11 +237,39 @@ export default function AboutPage({ onNavigate }) {
                 I jumped right back into work. First, I joined an early-stage startup run by a wonderfully eccentric, larger-than-life founder whose chaotic energy was totally infectious. Later, I moved to an online job portal owned by a media house, and under a boss who was a strategic genius, someone who could break down any complex problem on earth, even if he rarely liked taking a definitive stance. We hit it off immediately: he brought me along when he transitioned to his next role, and when I stepped out to launch my own venture, he kept me on as a senior consultant.
               </p>
               <p>
-                For the next two years, I essentially lived a double life. On one hand, I was building a medical insurance pre-authorisation platform for his firm; on the other, I was in the trenches running an IoT hardware startup. We pioneered the water sub-metering category in India, raised venture funding, introduced Metering-as-a-Service, expanded across four major cities, and eventually engineered a successful exit for our investors.
+                For the next two years, I essentially lived a double life. On one hand, I was designing a medical insurance pre-authorisation platform for his firm; on the other, I was in the trenches running an IoT hardware startup. We pioneered the water sub-metering category in India, raised venture funding, introduced Metering-as-a-Service, expanded across four major cities, and eventually engineered a successful exit for our investors.
               </p>
               <p>
                 Looking back, that entire journey left me with two big takeaways: first, just how little any of us really know, and second, how important it is to document and share these hard-won lessons while I still can.
               </p>
+            </div>
+
+            {/* Four Operational Ground Truths - Placed after the last line of memoir */}
+            <div className="p-6 sm:p-8 rounded-3xl bg-[#FAF8F5] dark:bg-canvas-darkCard border-2 border-canvas-border dark:border-canvas-darkBorder space-y-4 shadow-sm">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-berry-600" />
+                <span className="text-xs font-mono uppercase font-bold tracking-wider text-ink-900 dark:text-white">
+                  Four Operational Ground Truths
+                </span>
+              </div>
+              <ul className="space-y-2.5 text-xs sm:text-sm text-ink-800 dark:text-ink-100 font-normal">
+                <li className="flex items-start gap-2.5">
+                  <span className="text-berry-600 dark:text-berry-400 font-bold shrink-0 mt-0.5">•</span>
+                  <span><strong>Simple communication:</strong> Zero corporate theatre and clear internal memos over slides.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-berry-600 dark:text-berry-400 font-bold shrink-0 mt-0.5">•</span>
+                  <span><strong>Quarterly process audits:</strong> Stripping away unnecessary clutter that no longer serves.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-berry-600 dark:text-berry-400 font-bold shrink-0 mt-0.5">•</span>
+                  <span><strong>Customer ground truth:</strong> Absolute clarity on how customers arrive, and what happens once they join.</span>
+                </li>
+                <li className="flex items-start gap-2.5">
+                  <span className="text-berry-600 dark:text-berry-400 font-bold shrink-0 mt-0.5">•</span>
+                  <span><strong>Founder discipline:</strong> Mastering the few vital levers, and stopping the habit of poking your nose into everything.</span>
+                </li>
+              </ul>
             </div>
 
             {/* The Mission Today Callout */}
