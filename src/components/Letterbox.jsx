@@ -87,7 +87,7 @@ export default function Letterbox() {
           category: selectedCategory,
           author_type: isAnonymous ? 'Anonymous' : 'Named',
           name: isAnonymous ? 'Anonymous' : formData.name,
-          email: formData.email || 'None provided',
+          ...(formData.email && formData.email.includes('@') ? { email: formData.email } : {}),
           letter: formData.question,
           message: formData.question,
         }),
