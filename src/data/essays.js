@@ -1,28 +1,31 @@
 // src/data/essays.js
-// Single source of truth for all published essays and dispatches.
+// Single source of truth for all published essays and stories.
+// STRICT INVARIANT: Only active published stories belong here. All placeholder stories are removed.
 // Strict British English mandate: -ise, -our, pre-authorisation, no em-dashes.
 
 export const ESSAYS_DATA = [
   {
-    id: "tea",
-    slug: "tea",
+    id: 'tea',
+    slug: 'tea',
     title: "Anything can happen over a hot cup of tea!",
     subtitle: "For some, tea is addiction. For a lot of others', it's an emotion.",
-    category: "Food",
+    category: 'Food',
     subCategory: "Recipes (Five Spices or Fewer)",
-    tags: ["Tea","Chai","Lucknow","Ritual"],
-    readTime: "5 min read",
-    date: "October 2026",
-    author: "Vivek Shukla",
+    tags: ["Tea", "Chai", "Lucknow", "Ritual"],
+    readTime: '5 min read',
+    date: 'October 2026',
+    author: 'Vivek Shukla',
     leadQuote: "Feeling sad, have tea. Feeling happy, have tea. Feeling nothing, have tea. There's nothing which can't be fixed by a hot cup of tea.",
-    illustration: "/illustrations/village-courtyard.png",
-    illustrationDark: "/illustrations/village-courtyard-dark.png",
-    secondaryImage: "/illustrations/chai-setup.png",
-    secondaryImageDark: "/illustrations/chai-setup-dark.png",
-    image1Position: "top",
-    image2Position: "bottom",
+    illustration: '/illustrations/village-courtyard.png',
+    illustrationDark: '/illustrations/village-courtyard-dark.png',
+    illustrationCaption: '',
+    secondaryImage: '/illustrations/chai-setup.png',
+    secondaryImageDark: '/illustrations/chai-setup-dark.png',
+    secondaryCaption: '',
+    image1Position: 'top',
+    image2Position: 'bottom',
     showTakeaways: false,
-    takeawaysPosition: "top",
+    takeawaysPosition: 'top',
     takeaways: [],
     markdownBody: `As children, we were allowed tea only when we visited our ancestral village during Dussehra or the winter holidays. My mother always warned us that drinking tea would darken our complexion. My grandmother, thankfully, subscribed to no such superstition.
 
@@ -60,6 +63,6 @@ Anyone can brew a decent cup of tea, and nearly everyone carries their own quiet
 
 6. The Milk and The Colour: After a minute of simmering, pour in 1 cup of whole milk. Bring the pot back to a gentle, rising boil. Let the froth crest once or twice, lowering the heat just before it spills, until the surface settles into a warm, toasted golden hue that is neither milky pale nor astringently dark.
 
-7. The Pour: Strain into two warm cups. Enjoy it piping hot in the company of someone whose presence you cherish. And if you are alone, let the second cup keep you company.`
-  }
+7. The Pour: Strain into two warm cups. Enjoy it piping hot in the company of someone whose presence you cherish. And if you are alone, let the second cup keep you company.`,
+  },
 ];
