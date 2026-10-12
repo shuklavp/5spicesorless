@@ -7,7 +7,7 @@ export const FORMS_CONFIG = {
   // Get your free key in 30 seconds at: https://web3forms.com
   web3formsAccessKey: 'YOUR_ACCESS_KEY_HERE',
 
-  // Optional: Formspree endpoint (e.g., 'https://formspree.io/f/mqknzryp')
+  // Optional: Formspree endpoint (e.g., 'https://formspree.io/f/xvkzbwak')
   formspreeEndpoint: '',
 
   // Fallback contact email:
