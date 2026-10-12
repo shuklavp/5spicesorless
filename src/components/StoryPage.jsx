@@ -448,6 +448,7 @@ const renderStepItem = (content) => {
             </div>
           </div>
         </div>
+        )}
 
       </div>
     </div>
