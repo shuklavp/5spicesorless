@@ -146,11 +146,11 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
     <div className="min-h-screen bg-[#F1F2F4] dark:bg-[#080D18] text-[#0F172A] dark:text-[#F8FAFC] transition-colors duration-300">
       <div className="pt-32 pb-24 max-w-6xl mx-auto px-6 space-y-20">
 
-        {/* SECTION 1: HERO & CONTEXT (With RHS Architectural Sketch) */}
-        <section className="bg-white dark:bg-[#0F1829] rounded-3xl p-8 md:p-14 border border-[#E2E4E8] dark:border-[#1E293B] shadow-sm">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            {/* LHS: Operator Narrative & Positioning */}
-            <div className="lg:col-span-7 space-y-6">
+        {/* SECTION 1: HERO & CONTEXT (With Scaled Line Art Matching Mockup Proportions) */}
+        <section className="bg-white dark:bg-[#0F1829] rounded-3xl p-8 md:p-12 lg:p-14 border border-[#E2E4E8] dark:border-[#1E293B] shadow-sm relative overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
+            {/* LHS: Operator Narrative & Positioning (Col 6) */}
+            <div className="lg:col-span-6 xl:col-span-6 space-y-6 z-10 relative">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FCE4EC] dark:bg-[#BC5259]/20 text-[#BC5259] text-xs font-mono tracking-widest uppercase">
                 <Compass className="w-3.5 h-3.5" />
                 Advisory & Operational Partnerships
@@ -160,7 +160,7 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
                 Direct counsel from someone who has lived the full founder cycle.
               </h1>
 
-              <div className="space-y-4 text-base text-[#475569] dark:text-[#CBD5E1] leading-relaxed">
+              <div className="space-y-4 text-base text-[#475569] dark:text-[#CBD5E1] leading-relaxed max-w-xl">
                 <p>
                   Most external business advice arrives as theoretical slides or generic playbooks. Having spent thirty years inside operating enterprises, founding an IoT company from scratch, leading a team of 160+ people across four regional offices, and steering a clean exit, I partner directly with founders to cut away operational clutter.
                 </p>
@@ -180,17 +180,17 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
               </div>
             </div>
 
-            {/* RHS: Large Borderless Architectural Line Art (No Enclosing Box, No Captions) */}
-            <div className="lg:col-span-5 flex items-center justify-center lg:justify-end relative z-10">
+            {/* RHS: Scaled Prominent Line Art (Col 6, Filling the Height and Width) */}
+            <div className="lg:col-span-6 xl:col-span-6 flex items-center justify-center lg:justify-end relative z-10">
               <img
                 src="/illustrations/advisory-study.png"
                 alt="Executive Advisory Study Line Art"
-                className="w-full max-w-md lg:max-w-xl h-auto object-contain mix-blend-multiply dark:hidden transition-transform duration-500 hover:scale-105"
+                className="w-full sm:w-[95%] md:w-[90%] lg:w-[120%] xl:w-[130%] max-w-2xl h-auto object-contain mix-blend-multiply dark:hidden lg:origin-right transition-transform duration-500 hover:scale-[1.02]"
               />
               <img
                 src="/illustrations/advisory-study-dark.png"
                 alt="Executive Advisory Study Line Art"
-                className="w-full max-w-md lg:max-w-xl h-auto object-contain hidden dark:block transition-transform duration-500 hover:scale-105"
+                className="w-full sm:w-[95%] md:w-[90%] lg:w-[120%] xl:w-[130%] max-w-2xl h-auto object-contain hidden dark:block lg:origin-right transition-transform duration-500 hover:scale-[1.02]"
               />
             </div>
           </div>
