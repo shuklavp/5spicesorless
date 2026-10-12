@@ -121,16 +121,16 @@ export default function App() {
     }
     // 4. Standalone Desk Archives: /life, /food, /work, /stories
     if (currentPath === '/life') {
-      return <DeskPage desk=life onNavigate={handleNavigate} isDark={isDark} />;
+      return <DeskPage desk="life" onNavigate={handleNavigate} isDark={isDark} />;
     }
     if (currentPath === '/food') {
-      return <DeskPage desk=food onNavigate={handleNavigate} isDark={isDark} />;
+      return <DeskPage desk="food" onNavigate={handleNavigate} isDark={isDark} />;
     }
     if (currentPath === '/work') {
-      return <DeskPage desk=work onNavigate={handleNavigate} isDark={isDark} />;
+      return <DeskPage desk="work" onNavigate={handleNavigate} isDark={isDark} />;
     }
     if (currentPath === '/stories') {
-      return <DeskPage desk=stories onNavigate={handleNavigate} isDark={isDark} />;
+      return <DeskPage desk="stories" onNavigate={handleNavigate} isDark={isDark} />;
     }
 
     // 5. Default: Front Page
