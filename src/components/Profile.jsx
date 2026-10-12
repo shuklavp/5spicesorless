@@ -99,7 +99,7 @@ export default function Profile({ onOpenInquiry }) {
                 </div>
                 <div>
                   <div className="text-xs font-bold text-ink-900 dark:text-white group-hover:text-berry-600 transition-colors">
-                    Follow on X
+                    Follow on X (Twitter)
                   </div>
                   <div className="text-[11px] font-mono text-ink-500 dark:text-ink-300">
                     @vivekshukla
@@ -132,7 +132,7 @@ export default function Profile({ onOpenInquiry }) {
                 I jumped right back into work. First, I joined an early-stage startup run by a wonderfully eccentric, larger-than-life founder whose chaotic energy was totally infectious. Later, I moved to an online job portal owned by a media house, and under a boss who was a strategic genius, someone who could break down any complex problem on earth, even if he rarely liked taking a definitive stance. We hit it off immediately: he brought me along when he transitioned to his next role, and when I stepped out to launch my own venture, he kept me on as a senior consultant.
               </p>
               <p>
-                For the next two years, I essentially lived a double life. On one hand, I was designing a medical insurance pre-authorisation platform for his firm; on the other, I was in the trenches running an IoT hardware startup. We pioneered the water sub-metering category in India, raised venture funding, introduced Metering-as-a-Service, expanded across four major cities, and eventually engineered a successful exit for our investors.
+                For the next two years, I essentially lived a double life. On one hand, I was building a medical insurance pre-authorisation platform for his firm; on the other, I was in the trenches running an IoT hardware startup. We pioneered the water sub-metering category in India, raised venture funding, introduced Metering-as-a-Service, expanded across four major cities, and eventually engineered a successful exit for our investors.
               </p>
               <p>
                 Looking back, that entire journey left me with two big takeaways: first, just how little any of us really know, and second, how important it is to document and share these hard-won lessons while I still can.
@@ -148,7 +148,7 @@ export default function Profile({ onOpenInquiry }) {
                 </span>
               </div>
               <blockquote className="font-serif italic text-base sm:text-lg text-ink-900 dark:text-white font-medium leading-relaxed">
-                "I write because survival taught me to pay attention, and I advise because I know how lonely the founder's chair can get. No buzzwords, no posturing, and no desire to be bucketed. Just warm Lakhnawi tea, hard-won operational judgement, and steady counsel when things get noisy."
+                "I write because survival taught me to pay attention, and I advise because I know how lonely the founder's chair can get. No buzzwords, no posturing, and no desire to be bucketed. Just warm Lakhnawi tea, hard-won operational judgment, and steady counsel when things get noisy."
               </blockquote>
             </div>
 

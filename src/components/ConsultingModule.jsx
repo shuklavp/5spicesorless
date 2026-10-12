@@ -34,7 +34,7 @@ const ADVISORY_MODES = [
     focus: 'Trusted Confidant for High-Agency Founders',
     cadence: '1:1 Founder Mentoring',
     description:
-      'Like Robert De Niro in "The Intern", an ego-free, calm, deeply experienced veteran in your corner. Someone who has raised institutional venture capital, survived being declared dead, weathered boardroom storms, and exited with honour, providing psychological safety and unvarnished judgement.',
+      'Like Robert De Niro in "The Intern", an ego-free, calm, deeply experienced veteran in your corner. Someone who has raised institutional venture capital, survived being declared dead, weathered boardroom storms, and exited with honour, providing psychological safety and unvarnished judgment.',
     deliverables: [
       'Fortnightly private strategy reviews (async and voice line)',
       'Unbiased sounding board on co-founder tensions, hiring, and board dynamics',

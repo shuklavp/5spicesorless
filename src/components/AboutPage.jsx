@@ -6,17 +6,9 @@ export default function AboutPage({ onNavigate }) {
   return (
     <div className="min-h-screen pt-32 pb-24 px-6 md:px-12 bg-white dark:bg-canvas-dark relative transition-colors duration-300">
       <div className="max-w-6xl mx-auto">
+        
+        
 
-        {/* Breadcrumb Navigation */}
-        <div className="mb-8">
-          <button
-            onClick={() => onNavigate('/')}
-            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider font-bold text-ink-600 dark:text-ink-300 hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            <span>Back to the front page</span>
-          </button>
-        </div>
         {/* Section Kicker */}
         <div className="flex items-center gap-3 mb-8">
           <Feather className="w-4 h-4 text-berry-600" />
@@ -70,12 +62,11 @@ export default function AboutPage({ onNavigate }) {
                 The dish called for exactly five spices: freshly crushed black pepper, salt, a pinch of turmeric, black cardamom, and whole star anise.
               </p>
               <p>
-                The curry turned out rich, with each element holding its ground without crowding the pot. As we sat by the flame, our conversation drifted to enterprise.
+                The curry turned out exceptionally rich, with each element holding its ground without crowding the pot. As we sat by the flame, our conversation drifted to enterprise.
               </p>
               <p>
                 I remarked that early-stage ventures almost always lose their way because founders never learn how to stop adding. They clutter their offices, they clutter their operational metrics, and they get trapped in twenty trivial distractions.
               </p>
-
               <p>
                 That evening, the phrase stuck in my mind: Five Spices or Less. A quiet thought on cooking with fewer ingredients, and offering grounded advisory to founders who want to strip away the noise. I booked the domain that night on an impulse, let it simmer for years, and am now finally penning down the lessons.
               </p>
@@ -85,7 +76,7 @@ export default function AboutPage({ onNavigate }) {
             <div className="lg:col-span-5 flex flex-col justify-start">
               <div className="p-5 rounded-2xl bg-white/85 dark:bg-[#1A1412]/85 border border-[#EADCC9] dark:border-[#38281F] space-y-3 shadow-sm backdrop-blur-sm">
                 <div className="text-[11px] font-mono uppercase font-bold tracking-wider text-amber-900 dark:text-amber-200">
-                  The Five Spices in That Dish (Black Pepper Chicken Curry):
+                  The Five Spices in the Desi Ghee:
                 </div>
                 <div className="flex flex-wrap gap-2 text-xs font-mono">
                   <span className="px-3 py-1.5 rounded-full bg-amber-50 dark:bg-canvas-dark border border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200 font-medium">
@@ -104,16 +95,65 @@ export default function AboutPage({ onNavigate }) {
                     05. Star Anise
                   </span>
                 </div>
-                <p className="text-[11px] font-mono text-ink-500 dark:text-ink-400 pt-1 leading-relaxed">
-                  (The house five-spice philosophy rests on Cumin, Turmeric, Coriander, Red Chillies, and Aromatics; these five belonged solely to that dish.)
-                </p>
               </div>
             </div>
 
           </div>
         </div>
 
-        {/* Transition Divider to Personal Memoir */}
+        {/* Five Operational Ground Truths for Work & Life (Positioned between Genesis and Personal Story) */}
+        <div className="rounded-3xl p-8 sm:p-10 lg:p-12 bg-[#FAF8F5] dark:bg-canvas-darkCard border-2 border-canvas-border dark:border-canvas-darkBorder shadow-lg relative mb-16 transition-colors duration-300">
+          <div className="max-w-3xl space-y-6">
+            {/* Header */}
+            <div className="flex items-center gap-2.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-berry-600 dark:bg-berry-400" />
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-ink-900 dark:text-white">
+                FIVE OPERATIONAL GROUND TRUTHS FOR WORK &amp; LIFE
+              </span>
+            </div>
+
+            {/* Five Levers Bullet Points */}
+            <ul className="space-y-4 text-sm sm:text-base text-ink-800 dark:text-ink-200 font-light leading-relaxed">
+              <li className="flex items-start gap-3">
+                <span className="text-berry-600 dark:text-berry-400 font-bold text-lg leading-none mt-0.5">•</span>
+                <span>
+                  <strong className="font-semibold text-ink-900 dark:text-white">The Foundation:</strong>{' '}
+                  Unhurried patience with first principles. Whether building an enterprise or nurturing a relationship, when you get the basics right without cutting corners, the rest holds naturally.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-berry-600 dark:text-berry-400 font-bold text-lg leading-none mt-0.5">•</span>
+                <span>
+                  <strong className="font-semibold text-ink-900 dark:text-white">Ground Truth:</strong>{' '}
+                  Knowing when to stop. Facing unvarnished reality early, and resisting the urge to over-tinker, over-process, or micromanage people into quiet frustration.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-berry-600 dark:text-berry-400 font-bold text-lg leading-none mt-0.5">•</span>
+                <span>
+                  <strong className="font-semibold text-ink-900 dark:text-white">Cohesion:</strong>{' '}
+                  The quiet discipline of alignment. Consistent, transparent communication that softens friction, forgives human slips, and keeps partners bound together during rough weather.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-berry-600 dark:text-berry-400 font-bold text-lg leading-none mt-0.5">•</span>
+                <span>
+                  <strong className="font-semibold text-ink-900 dark:text-white">Calculated Risk:</strong>{' '}
+                  Decisive courage when the stakes are real. Playing not to lose is the quietest route to failure, both in enterprise strategy and in personal life.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-berry-600 dark:text-berry-400 font-bold text-lg leading-none mt-0.5">•</span>
+                <span>
+                  <strong className="font-semibold text-ink-900 dark:text-white">Restraint:</strong>{' '}
+                  Knowing when your part is finished. Stepping back with dignity, protecting your team, and choosing reputation, character, and honour over ego at every finish line.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+                {/* Transition Divider to Personal Memoir */}
         <div className="flex items-center justify-center gap-4 mb-16 select-none opacity-40 dark:opacity-30">
           <div className="h-px w-24 bg-gradient-to-r from-transparent to-ink-400 dark:to-white" />
           <span className="font-serif text-sm italic text-ink-600 dark:text-ink-300">❖</span>
@@ -204,7 +244,7 @@ export default function AboutPage({ onNavigate }) {
                 </div>
                 <div>
                   <div className="text-xs font-bold text-ink-900 dark:text-white group-hover:text-berry-600 transition-colors">
-                    Follow on X
+                    Follow on X (Twitter)
                   </div>
                   <div className="text-[11px] font-mono text-ink-500 dark:text-ink-300">
                     @vivekshukla
@@ -237,39 +277,11 @@ export default function AboutPage({ onNavigate }) {
                 I jumped right back into work. First, I joined an early-stage startup run by a wonderfully eccentric, larger-than-life founder whose chaotic energy was totally infectious. Later, I moved to an online job portal owned by a media house, and under a boss who was a strategic genius, someone who could break down any complex problem on earth, even if he rarely liked taking a definitive stance. We hit it off immediately: he brought me along when he transitioned to his next role, and when I stepped out to launch my own venture, he kept me on as a senior consultant.
               </p>
               <p>
-                For the next two years, I essentially lived a double life. On one hand, I was designing a medical insurance pre-authorisation platform for his firm; on the other, I was in the trenches running an IoT hardware startup. We pioneered the water sub-metering category in India, raised venture funding, introduced Metering-as-a-Service, expanded across four major cities, and eventually engineered a successful exit for our investors.
+                For the next two years, I essentially lived a double life. On one hand, I was building a medical insurance pre-authorisation platform for his firm; on the other, I was in the trenches running an IoT hardware startup. We pioneered the water sub-metering category in India, raised venture funding, introduced Metering-as-a-Service, expanded across four major cities, and eventually engineered a successful exit for our investors.
               </p>
               <p>
                 Looking back, that entire journey left me with two big takeaways: first, just how little any of us really know, and second, how important it is to document and share these hard-won lessons while I still can.
               </p>
-            </div>
-
-            {/* Four Operational Ground Truths - Placed after the last line of memoir */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-[#FAF8F5] dark:bg-canvas-darkCard border-2 border-canvas-border dark:border-canvas-darkBorder space-y-4 shadow-sm">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-berry-600" />
-                <span className="text-xs font-mono uppercase font-bold tracking-wider text-ink-900 dark:text-white">
-                  Four Operational Ground Truths
-                </span>
-              </div>
-              <ul className="space-y-2.5 text-xs sm:text-sm text-ink-800 dark:text-ink-100 font-normal">
-                <li className="flex items-start gap-2.5">
-                  <span className="text-berry-600 dark:text-berry-400 font-bold shrink-0 mt-0.5">•</span>
-                  <span><strong>Simple communication:</strong> Zero corporate theatre and clear internal memos over slides.</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-berry-600 dark:text-berry-400 font-bold shrink-0 mt-0.5">•</span>
-                  <span><strong>Quarterly process audits:</strong> Stripping away unnecessary clutter that no longer serves.</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-berry-600 dark:text-berry-400 font-bold shrink-0 mt-0.5">•</span>
-                  <span><strong>Customer ground truth:</strong> Absolute clarity on how customers arrive, and what happens once they join.</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="text-berry-600 dark:text-berry-400 font-bold shrink-0 mt-0.5">•</span>
-                  <span><strong>Founder discipline:</strong> Mastering the few vital levers, and stopping the habit of poking your nose into everything.</span>
-                </li>
-              </ul>
             </div>
 
             {/* The Mission Today Callout */}
@@ -281,7 +293,7 @@ export default function AboutPage({ onNavigate }) {
                 </span>
               </div>
               <blockquote className="font-serif italic text-base sm:text-lg text-ink-900 dark:text-white font-medium leading-relaxed">
-                "I write because survival taught me to pay attention, and I advise because I know how lonely the founder's chair can get. No buzzwords, no posturing, and no desire to be bucketed. Just warm Lakhnawi tea, hard-won operational judgement, and steady counsel when things get noisy."
+                "I write because survival taught me to pay attention, and I advise because I know how lonely the founder's chair can get. No buzzwords, no posturing, and no desire to be bucketed. Just warm Lakhnawi tea, hard-won operational judgment, and steady counsel when things get noisy."
               </blockquote>
             </div>
 

@@ -7,26 +7,10 @@ export default function StoryPage({ slug, onNavigate }) {
   const [copied, setCopied] = useState(false);
 
   const validEssays = (ESSAYS_DATA || []).filter(Boolean);
-  const essay =
-    validEssays.find(
-      (e) =>
-        e.slug === slug ||
-        e.id === slug ||
-        (slug === 'tea-investment-story' && (e.slug === 'tea' || e.id === 'tea'))
-    ) ||
-    validEssays[0] ||
-    {};
-
+  const essay = validEssays.find((e) => e.slug === slug || e.id === slug) || validEssays[0] || {};
   const currentIndex = validEssays.findIndex((e) => e && e.slug === essay.slug);
-  const hasMultipleEssays = validEssays.length > 1;
-  const nextEssay =
-    hasMultipleEssays && currentIndex < validEssays.length - 1
-      ? validEssays[currentIndex + 1]
-      : validEssays[0];
-  const prevEssay =
-    hasMultipleEssays && currentIndex > 0
-      ? validEssays[currentIndex - 1]
-      : validEssays[validEssays.length - 1];
+  const nextEssay = currentIndex < validEssays.length - 1 ? validEssays[currentIndex + 1] : validEssays[0];
+  const prevEssay = currentIndex > 0 ? validEssays[currentIndex - 1] : validEssays[validEssays.length - 1];
 
   const handleCopyLink = () => {
     navigator.clipboard?.writeText(window.location.href);
@@ -58,7 +42,7 @@ export default function StoryPage({ slug, onNavigate }) {
             <button
               onClick={handleShareToX}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-ink-900 dark:bg-canvas-darkCard border border-ink-800 dark:border-canvas-darkBorder text-white text-xs font-mono font-medium hover:bg-berry-600 transition-colors shadow-sm"
-              title="Share on X"
+              title="Share on X (Twitter)"
             >
               <svg className="w-3 h-3 fill-current text-white" viewBox="0 0 24 24">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -111,7 +95,7 @@ export default function StoryPage({ slug, onNavigate }) {
           const takeawaysPos = essay.takeawaysPosition || 'top';
           const showThesis = essay.showTakeaways !== false && essay.takeaways && essay.takeaways.length > 0;
 
-          const renderPrimaryPlate = () =>
+                    const renderPrimaryPlate = () => (
             (essay.illustration || essay.image) ? (
               <div key="story-img1" className="my-10 rounded-3xl overflow-hidden border border-canvas-border dark:border-canvas-darkBorder bg-canvas-subtle dark:bg-canvas-darkCard p-4 sm:p-8 text-center shadow-sm">
                 <div className="relative w-full max-w-2xl mx-auto flex items-center justify-center min-h-[200px]">
@@ -124,7 +108,7 @@ export default function StoryPage({ slug, onNavigate }) {
                         e.currentTarget.src = e.currentTarget.src.replace('/illustrations/', '/').replace('.jpg', '.png');
                       }
                     }}
-                    className={`w-full max-h-[460px] object-contain mx-auto transition-transform duration-300 hover:scale-[1.01] ${essay.illustrationDark ? 'dark:hidden' : ''}`}
+                    className={`w-full max-h-[460px] object-contain mx-auto transition-transform duration-300 hover:scale-[1.01] ${essay.illustrationDark ? "dark:hidden" : ""}`}
                   />
                   {essay.illustrationDark && (
                     <img
@@ -140,10 +124,11 @@ export default function StoryPage({ slug, onNavigate }) {
                   </p>
                 )}
               </div>
-            ) : null;
+            ) : null
+          );
 
-          const renderSecondaryPlate = () =>
-            essay.secondaryImage ? (
+          const renderSecondaryPlate = () => (
+            (essay.secondaryImage) ? (
               <div key="story-img2" className="my-10 rounded-3xl overflow-hidden border border-canvas-border dark:border-canvas-darkBorder bg-canvas-subtle dark:bg-canvas-darkCard p-4 sm:p-8 text-center shadow-sm">
                 <div className="relative w-full max-w-2xl mx-auto flex items-center justify-center min-h-[200px]">
                   <img
@@ -155,7 +140,7 @@ export default function StoryPage({ slug, onNavigate }) {
                         e.currentTarget.src = e.currentTarget.src.replace('/illustrations/', '/').replace('.jpg', '.png');
                       }
                     }}
-                    className={`w-full max-h-[460px] object-contain mx-auto shadow-sm ${essay.secondaryImageDark ? 'dark:hidden' : ''}`}
+                    className={`w-full max-h-[460px] object-contain mx-auto shadow-sm ${essay.secondaryImageDark ? "dark:hidden" : ""}`}
                   />
                   {essay.secondaryImageDark && (
                     <img
@@ -171,68 +156,77 @@ export default function StoryPage({ slug, onNavigate }) {
                   </p>
                 )}
               </div>
-            ) : null;
+            ) : null
+          );
 
-          const renderTakeaways = () =>
+          const renderTakeaways = () => (
             showThesis ? (
-              <div key="story-takeaways" className="p-6 sm:p-8 rounded-3xl bg-[#D8F3EC] dark:bg-canvas-darkCard border border-[#147166]/25 dark:border-canvas-darkBorder my-8 space-y-4 shadow-sm">
+              <div key="story-takeaways" className="p-6 sm:p-8 rounded-3xl bg-[#FAF8F5] dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder my-8 space-y-4 shadow-sm">
                 <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#147166]" />
-                  <span className="text-xs font-mono uppercase tracking-widest text-[#1A493F] dark:text-[#5EEAD4] font-bold">
+                  <span className="w-2.5 h-2.5 rounded-full bg-berry-600" />
+                  <span className="text-xs font-mono uppercase tracking-widest text-ink-900 dark:text-white font-bold">
                     Core Thesis &amp; Ground Truths
                   </span>
                 </div>
                 <ul className="space-y-2.5">
                   {essay.takeaways.map((point, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-ink-900 dark:text-ink-100 font-medium">
-                      <span className="text-[#147166] dark:text-[#2DD4BF] font-bold mt-0.5">•</span>
+                    <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-ink-800 dark:text-ink-100 font-medium">
+                      <span className="text-berry-600 dark:text-berry-400 font-bold mt-0.5">•</span>
                       <span className="leading-relaxed">{point}</span>
                     </li>
                   ))}
                 </ul>
               </div>
-            ) : null;
+            ) : null
+          );
 
-          // Inline markdown parser
-          const renderInlineMarkdown = (text) => {
-            if (!text) return '';
-            let cleanText = text.replace(/([A-Za-z0-9\s&()/-]+):\*\*/g, '**$1:**');
-            const parts = cleanText.split(/(\*\*.*?\*\*)/g);
-            return parts.map((part, index) => {
-              if (part.startsWith('**') && part.endsWith('**') && part.length >= 4) {
-                return (
-                  <strong key={index} className="font-bold text-ink-950 dark:text-white">
-                    {part.slice(2, -2)}
-                  </strong>
-                );
-              }
-              const subParts = part.split(/(\*[^*]+?\*)/g);
-              return subParts.map((sub, sIdx) => {
-                if (sub.startsWith('*') && sub.endsWith('*') && sub.length >= 2) {
-                  return <em key={`${index}-${sIdx}`} className="italic">{sub.slice(1, -1)}</em>;
-                }
-                return sub;
-              });
-            });
-          };
+// Robust inline markdown parser for **bold**, *italic*, and cleanup of stray stars
+const renderInlineMarkdown = (text) => {
+  if (!text) return '';
 
-          const renderStepItem = (content) => {
-            const match = content.match(/^(\*{0,2})([^:*]+)(:)(\*{0,2})\s*(.*)/);
-            if (match) {
-              const [, , label, colon, , rest] = match;
-              return (
-                <>
-                  <strong className="font-bold text-ink-950 dark:text-white mr-1.5">
-                    {label.trim()}{colon}
-                  </strong>
-                  {renderInlineMarkdown(rest)}
-                </>
-              );
-            }
-            return renderInlineMarkdown(content);
-          };
+  // Clean any accidental "Word:**" into "**Word:**"
+  let cleanText = text.replace(/([A-Za-z0-9\s&()/-]+):\*\*/g, '**$1:**');
 
-          const renderParagraphs = (paras, pfx = 'body') =>
+  // Split on bold (**text**)
+  const parts = cleanText.split(/(\*\*.*?\*\*)/g);
+  return parts.map((part, index) => {
+    if (part.startsWith('**') && part.endsWith('**') && part.length >= 4) {
+      return (
+        <strong key={index} className="font-bold text-ink-950 dark:text-white">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    // Split remaining by italic (*text*)
+    const subParts = part.split(/(\*[^*]+?\*)/g);
+    return subParts.map((sub, sIdx) => {
+      if (sub.startsWith('*') && sub.endsWith('*') && sub.length >= 2) {
+        return <em key={`${index}-${sIdx}`} className="italic">{sub.slice(1, -1)}</em>;
+      }
+      return sub;
+    });
+  });
+};
+
+// Render recipe / numbered step with bold label automatically
+const renderStepItem = (content) => {
+  // Matches "The Water:**", "**The Water:**", or "The Water:"
+  const match = content.match(/^(\*{0,2})([^:*]+)(:)(\*{0,2})\s*(.*)/);
+  if (match) {
+    const [, , label, colon, , rest] = match;
+    return (
+      <>
+        <strong className="font-bold text-ink-950 dark:text-white mr-1.5">
+          {label.trim()}{colon}
+        </strong>
+        {renderInlineMarkdown(rest)}
+      </>
+    );
+  }
+  return renderInlineMarkdown(content);
+};
+
+          const renderParagraphs = (paras, pfx = 'body') => (
             paras.map((para, i) => {
               if (para.startsWith('![')) {
                 const match = para.match(/!\[(.*?)\]\((.*?)\)/);
@@ -269,6 +263,7 @@ export default function StoryPage({ slug, onNavigate }) {
                 );
               }
 
+              // Numbered Step (e.g. "1. " or "2. ")
               const isNumbered = /^\d+\.\s+/.test(para);
               if (isNumbered) {
                 const lines = para.split('\n');
@@ -299,6 +294,7 @@ export default function StoryPage({ slug, onNavigate }) {
                 );
               }
 
+              // Bullet List items
               if (para.startsWith('* ') || para.startsWith('- ')) {
                 const lines = para.split('\n');
                 return (
@@ -326,7 +322,8 @@ export default function StoryPage({ slug, onNavigate }) {
                   {renderInlineMarkdown(para)}
                 </p>
               );
-            });
+            })
+          );
 
           const allParas = (essay.markdownBody || '').split('\n\n').filter(Boolean);
           const midIdx = Math.max(1, Math.floor(allParas.length / 2));
@@ -335,9 +332,11 @@ export default function StoryPage({ slug, onNavigate }) {
 
           return (
             <>
+              {/* Top Placed Images */}
               {img1Pos === 'top' && renderPrimaryPlate()}
               {img2Pos === 'top' && renderSecondaryPlate()}
 
+              {/* Lead Pull Quote Box */}
               {essay.leadQuote && (
                 <div className="p-6 rounded-3xl bg-canvas-subtle dark:bg-canvas-darkCard border-l-4 border-berry-600 my-8 shadow-sm">
                   <blockquote className="font-serif italic text-base sm:text-lg text-ink-900 dark:text-white font-medium leading-relaxed">
@@ -346,19 +345,27 @@ export default function StoryPage({ slug, onNavigate }) {
                 </div>
               )}
 
+              {/* Below-Quote Placed Images */}
               {img1Pos === 'after-quote' && renderPrimaryPlate()}
               {img2Pos === 'after-quote' && renderSecondaryPlate()}
 
+              {/* Top-Positioned Takeaways */}
               {takeawaysPos === 'top' && renderTakeaways()}
 
+              {/* Essay Body Typography (with mid-story image support) */}
               <div className="prose prose-ink dark:prose-invert max-w-none text-base sm:text-lg font-light leading-relaxed space-y-6 text-ink-800 dark:text-ink-100 my-8">
                 {renderParagraphs(firstParas, 'fp')}
+
                 {img1Pos === 'middle' && renderPrimaryPlate()}
                 {img2Pos === 'middle' && renderSecondaryPlate()}
+
                 {renderParagraphs(secondParas, 'sp')}
               </div>
 
+              {/* Bottom-Positioned Takeaways */}
               {takeawaysPos === 'bottom' && renderTakeaways()}
+
+              {/* Bottom Placed Images */}
               {img1Pos === 'bottom' && renderPrimaryPlate()}
               {img2Pos === 'bottom' && renderSecondaryPlate()}
             </>
@@ -414,52 +421,31 @@ export default function StoryPage({ slug, onNavigate }) {
           </div>
         </div>
 
-        {/* Single or Multiple Story Navigation */}
-        <div className="pt-6 border-t border-canvas-border dark:border-canvas-darkBorder">
-          {hasMultipleEssays ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div
-                onClick={() => onNavigate(`/stories/${prevEssay.slug}`)}
-                className="p-6 rounded-2xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder cursor-pointer hover:border-berry-600 transition-all"
-              >
-                <span className="text-[11px] font-mono text-ink-400 uppercase tracking-wider block mb-1">
-                  ← Previous Essay
-                </span>
-                <div className="font-serif text-base font-bold text-ink-900 dark:text-white line-clamp-1">
-                  {prevEssay.title}
-                </div>
-              </div>
-
-              <div
-                onClick={() => onNavigate(`/stories/${nextEssay.slug}`)}
-                className="p-6 rounded-2xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder cursor-pointer hover:border-berry-600 transition-all text-left sm:text-right"
-              >
-                <span className="text-[11px] font-mono text-ink-400 uppercase tracking-wider block mb-1">
-                  Next Essay →
-                </span>
-                <div className="font-serif text-base font-bold text-ink-900 dark:text-white line-clamp-1">
-                  {nextEssay.title}
-                </div>
-              </div>
+        {/* Next / Previous Essay Footer Navigation */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-canvas-border dark:border-canvas-darkBorder">
+          <div
+            onClick={() => onNavigate(`/stories/${prevEssay.slug}`)}
+            className="p-6 rounded-2xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder cursor-pointer hover:border-berry-600 transition-all"
+          >
+            <span className="text-[11px] font-mono text-ink-400 uppercase tracking-wider block mb-1">
+              ← Previous Essay
+            </span>
+            <div className="font-serif text-base font-bold text-ink-900 dark:text-white line-clamp-1">
+              {prevEssay.title}
             </div>
-          ) : (
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 py-2">
-              <button
-                onClick={() => onNavigate('/stories')}
-                className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider font-bold text-ink-600 dark:text-ink-300 hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
-              >
-                <ArrowLeft className="w-4 h-4" />
-                <span>← Back to All Stories</span>
-              </button>
+          </div>
 
-              <button
-                onClick={() => onNavigate('/food')}
-                className="inline-flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-berry-600 dark:text-berry-400 hover:underline"
-              >
-                <span>Visit The Food Desk →</span>
-              </button>
+          <div
+            onClick={() => onNavigate(`/stories/${nextEssay.slug}`)}
+            className="p-6 rounded-2xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder cursor-pointer hover:border-berry-600 transition-all text-left sm:text-right"
+          >
+            <span className="text-[11px] font-mono text-ink-400 uppercase tracking-wider block mb-1">
+              Next Essay →
+            </span>
+            <div className="font-serif text-base font-bold text-ink-900 dark:text-white line-clamp-1">
+              {nextEssay.title}
             </div>
-          )}
+          </div>
         </div>
 
       </div>

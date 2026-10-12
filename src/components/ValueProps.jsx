@@ -10,40 +10,34 @@ const DESKS = [
     kicker: 'LIFE',
     title: 'Life, Relationships, & Perspective',
     summary:
-      'Life has a quiet way of teaching us through observation, patience, and warmth. I do not write to give romantic advice or pretend to be wise. I write about what growing up in Lucknow, learning the nuances of communication and tehzeeb, raising a daughter, and building things from scratch have taught me about becoming a kinder human being. Simple reflections on patience, fatherhood, and keeping your dignity intact.',
+      'Life has a quiet way of teaching us through observation, patience, and warmth. I do not write to give romantic advice or pretend to be wise. I write about what growing up in a not-so-big city of Lucknow, learning the nuances of communication and tehzeeb, raising a daughter, and building things from scratch have taught me about becoming a kinder human being. Simple reflections on patience, fatherhood, and keeping your dignity intact.',
     expectations: [
       'Why everyone should fall in love at least once in their lifetime',
       'The quiet wisdom of long devotion and arranged partnerships',
       'Perspective over panic: un-complicating everyday human life',
     ],
-    cadence: 'Every two weeks',
-    cta: 'Visit the Life Desk',
-    accentColor: 'border-t-[#7C3AED]',
-    tagColor: 'text-lavender-800 dark:text-lavender-100 bg-lavender-100 dark:bg-lavender-900/60 border-lavender-200 dark:border-lavender-800',
-    dotColor: 'text-[#7C3AED] dark:text-[#A78BFA]',
-    hoverBorder: 'hover:border-[#7C3AED]/50',
-    ctaTextHover: 'hover:text-[#7C3AED] dark:hover:text-[#A78BFA]',
+    cadence: 'Fortnightly Essays',
+    cta: 'Browse Life Desk Archive',
+    accentColor: 'border-t-berry-600',
+    tagColor: 'text-berry-600 dark:text-berry-400 bg-berry-50 dark:bg-berry-950/60 border-berry-200 dark:border-berry-900',
   },
   {
     id: 'food',
     path: '/food',
     number: '02',
     kicker: 'FOOD',
-    title: 'Comfort Food with 5 Spices or Less',
+    title: 'One Simple Recipe a Week',
     summary:
-      'In Lucknow, where I come from, the nose makes the final judgement before the tongue ever gets a turn. Good food does not need thirty jars of spices. It needs good aroma, deliberate heat, and simple steps. I cook purely for the joy of it, using five spices or fewer, sharing one simple, comforting recipe every fortnight.',
+      'In Lucknow, where I come from, the nose makes the final judgment before the tongue ever gets a turn. Great food does not need thirty jars of spices. It needs good aroma, deliberate heat, and simple steps. I cook purely for the joy of it, using five spices or fewer. Every fortnight, I share one simple, comforting recipe that anyone can master.',
     expectations: [
-      'One foolproof, tested recipe every fortnight',
+      'One foolproof, tested recipe published every week',
       'Mastering the 5-spice alchemy from Cumin to Aromatics',
       'How deliberate cooking clears and calms a cluttered executive mind',
     ],
-    cadence: 'One recipe every fortnight',
-    cta: 'Visit the Food Desk',
-    accentColor: 'border-t-sage-600',
-    tagColor: 'text-sage-800 dark:text-sage-100 bg-sage-100 dark:bg-sage-900/60 border-sage-200 dark:border-sage-800',
-    dotColor: 'text-sage-600 dark:text-sage-400',
-    hoverBorder: 'hover:border-sage-600/50',
-    ctaTextHover: 'hover:text-sage-600 dark:hover:text-sage-400',
+    cadence: 'Fortnightly Recipe & Technique',
+    cta: 'Browse Food Desk Archive',
+    accentColor: 'border-t-cobalt-600',
+    tagColor: 'text-cobalt-600 dark:text-cobalt-400 bg-cobalt-50 dark:bg-cobalt-950/60 border-cobalt-200 dark:border-cobalt-900',
   },
   {
     id: 'work',
@@ -58,13 +52,10 @@ const DESKS = [
       'Building from zero: customer acquisition, hiring, and unit economics',
       'Investor relations, board dynamics, and the discipline of clean exits',
     ],
-    cadence: 'A weekly note on Sunday',
-    cta: 'Visit the Work Desk',
-    accentColor: 'border-t-ink-900 dark:border-t-slate-200',
-    tagColor: 'text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-slate-800/80 border-slate-300 dark:border-slate-700',
-    dotColor: 'text-slate-600 dark:text-slate-400',
-    hoverBorder: 'hover:border-slate-500/50',
-    ctaTextHover: 'hover:text-ink-950 dark:hover:text-white',
+    cadence: 'Weekly Field Note on Sunday',
+    cta: 'Browse Work Desk Archive',
+    accentColor: 'border-t-ink-900 dark:border-t-white',
+    tagColor: 'text-ink-700 dark:text-ink-300 bg-canvas-subtle dark:bg-canvas-dark border-canvas-border dark:border-canvas-darkBorder',
   },
 ];
 
@@ -72,7 +63,7 @@ export default function ValueProps({ onNavigate }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <section id="philosophy" className="py-24 px-6 md:px-12 bg-[#F1F2F4] dark:bg-canvas-dark relative border-t border-canvas-border dark:border-canvas-darkBorder transition-colors duration-300">
+    <section id="philosophy" className="py-24 px-6 md:px-12 bg-[#E6E9EF] dark:bg-canvas-dark relative border-t border-canvas-border dark:border-canvas-darkBorder transition-colors duration-300">
       <div className="max-w-6xl mx-auto">
         
         {/* Section Header: The Reader's Contract */}
@@ -103,8 +94,10 @@ export default function ValueProps({ onNavigate }) {
                 id={item.id}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className={`relative rounded-3xl p-8 bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder border-t-4 scroll-mt-28 ${item.accentColor} transition-all duration-300 flex flex-col justify-between shadow-sm ${item.hoverBorder} ${
-                  isHovered ? 'shadow-xl -translate-y-1' : ''
+                className={`relative rounded-3xl p-8 bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder border-t-4 scroll-mt-28 ${item.accentColor} transition-all duration-300 flex flex-col justify-between shadow-sm ${
+                  isHovered
+                    ? 'shadow-xl -translate-y-1 border-canvas-border dark:border-canvas-darkBorder'
+                    : ''
                 }`}
               >
                 <div>
@@ -135,7 +128,7 @@ export default function ValueProps({ onNavigate }) {
                     </div>
                     {item.expectations.map((exp, i) => (
                       <div key={i} className="flex items-start gap-2.5 text-xs text-ink-800 dark:text-ink-100 font-medium">
-                        <span className={`${item.dotColor} font-bold shrink-0 mt-0.5`}>•</span>
+                        <span className="text-berry-600 dark:text-berry-400 font-bold shrink-0 mt-0.5">•</span>
                         <span className="leading-relaxed">{exp}</span>
                       </div>
                     ))}
@@ -146,16 +139,16 @@ export default function ValueProps({ onNavigate }) {
                 <div className="pt-6 border-t border-canvas-border dark:border-canvas-darkBorder mt-auto">
                   <div className="flex items-center justify-between text-xs mb-4">
                     <span className="font-mono text-[11px] text-ink-500 dark:text-ink-400 font-medium">
-                      Cadence: {item.cadence}
+                      {item.cadence}
                     </span>
                   </div>
 
                   <button
                     onClick={() => onNavigate && onNavigate(item.path)}
-                    className={`w-full inline-flex items-center justify-between text-xs font-bold tracking-wide text-ink-900 dark:text-white ${item.ctaTextHover} transition-colors pt-2 group`}
+                    className="w-full inline-flex items-center justify-between text-xs font-bold tracking-wide text-ink-900 dark:text-white hover:text-berry-600 dark:hover:text-berry-400 transition-colors pt-2 group"
                   >
                     <span>{item.cta}</span>
-                    <ArrowRight className={`w-3.5 h-3.5 transition-transform group-hover:translate-x-1 ${item.dotColor}`} />
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1 text-berry-600 dark:text-berry-400" />
                   </button>
                 </div>
               </div>

@@ -130,7 +130,7 @@ export default function Hero({ onOpenInquiry }) {
                 className="group px-7 py-3.5 rounded-full border-2 border-ink-900 dark:border-white text-ink-900 dark:text-white hover:bg-ink-900 hover:text-white dark:hover:bg-white dark:hover:text-ink-950 font-bold text-xs uppercase tracking-wider font-mono flex items-center gap-2.5 transition-all active:scale-95"
               >
                 <Compass className="w-4 h-4 text-cobalt-600 dark:text-cobalt-400" />
-                <span>Founder Advisory →</span>
+                <span>Bespoke Founder Advisory →</span>
               </button>
             </div>
           </div>
@@ -146,7 +146,7 @@ export default function Hero({ onOpenInquiry }) {
                   Core Levers
                 </span>
                 <span className="text-xs font-mono text-berry-600 dark:text-berry-400 font-bold uppercase tracking-wider mt-0.5">
-                  Zero Noise
+                  Zero Operational Bloat
                 </span>
               </div>
             </div>

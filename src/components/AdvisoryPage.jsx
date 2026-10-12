@@ -1,38 +1,22 @@
 // src/components/AdvisoryPage.jsx
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, ArrowRight, Check, Compass, ShieldCheck, Sparkles, Send, X, Layers, Users, Target } from 'lucide-react';
+import { ArrowRight, Check, Compass, ShieldCheck, Sparkles, Send, Loader2, Flame, AlertCircle } from 'lucide-react';
 import { FORMS_CONFIG } from '../config/forms';
 
 const ADVISORY_MODES = [
   {
-    id: 'operator',
-    title: 'The Hands-On Operator',
+    title: 'The Fractional Operator',
     focus: 'Operational De-cluttering & GTM Discipline',
     cadence: 'Embedded Operator',
     number: '01',
-    accentBorder: 'border-t-sage-600',
-    tagClass: 'bg-sage-100 text-sage-800 dark:bg-sage-900/60 dark:text-sage-100 border-sage-200 dark:border-sage-800',
-    checkColor: 'text-sage-600 dark:text-sage-400',
-    btnClass: 'bg-sage-600 hover:bg-sage-700 text-white',
-    borderAccent: 'border-l-sage-600',
-    leadQuote: 'True mastery is subtractive. We do not add more meetings or slide decks; we strip away operational friction so your team can focus entirely on what moves the business forward.',
-    modalBtnClass: 'bg-sage-600 hover:bg-sage-700 text-white',
-    cardSnippet:
-      'Drawing on thirty years of enterprise experience and managing operations with 160+ people across 4 regional offices, I work alongside founders to cut through operational friction. We remove bureaucratic clutter, install single-page decision memos over slides, and focus your team entirely on what moves the business forward.',
-    detailedOverview:
-      'Growth creates invisible drag. As companies expand from initial seed traction into scaling teams, systems begin to creak. What was once spontaneous coordination turns into calendar congestion, endless alignment meetings, and 50-slide decks that conceal indecision. In this mode, I embed directly as an operational co-pilot alongside the founder. I do not act as an aloof consultant handing down slide decks; I work in the operational trenches to strip away clutter, re-align executive priorities, and establish rigorous, lightweight execution habits.',
-    idealFor:
-      'Founders and CEOs navigating the 15 to 60 person scaling wall, feeling bogged down in administrative coordination, experiencing operational drag across departments, or noticing team motion outpacing real progress.',
+    description:
+      'Drawing on thirty years of corporate experience and managing operations with 160+ people across 4 regional offices, I work alongside founders to cut through operational friction. We remove bureaucratic clutter, install single-page decision memos over slides, and focus your team entirely on what moves the business forward.',
     deliverables: [
-      'Diagnostic review of team bandwidth, product roadmaps, and recurring syncs',
+      'Diagnostic review of team bandwidth, roadmaps, and recurring syncs',
       'Installation of single-page decision memos over 50-slide decks',
       'Go-to-market alignment with disciplined, sustainable unit economics',
       'Hands-on guidance through high-friction scaling inflection points',
-      'Calendar reclaim audit to eliminate phantom alignment meetings',
-      'Interim operational air cover for department leads facing bottlenecks',
     ],
-    engagementFormat:
-      'Weekly operational sprint review, async Slack/WhatsApp emergency line, direct memo critique, and bi-weekly strategic cadence.',
   },
   {
     id: 'eir',
@@ -40,59 +24,28 @@ const ADVISORY_MODES = [
     focus: 'Category Creation & Early Validation',
     cadence: 'Venture Studio or Fund Partnership',
     number: '02',
-    accentBorder: 'border-t-[#7C3AED]',
-    tagClass: 'bg-lavender-100 text-lavender-800 dark:bg-lavender-900/60 dark:text-lavender-100 border-lavender-200 dark:border-lavender-800',
-    checkColor: 'text-[#7C3AED] dark:text-[#A78BFA]',
-    btnClass: 'bg-[#7C3AED] hover:bg-[#6D28D9] text-white',
-    borderAccent: 'border-l-[#7C3AED]',
-    leadQuote: 'At the category creation stage, testing false assumptions against customer ground truth early saves years of wasted capital, equity, and team morale.',
-    modalBtnClass: 'bg-[#7C3AED] hover:bg-[#6D28D9] text-white',
-    cardSnippet:
+    description:
       'Having pioneered an entire industry category in India (institutional backing from Macquarie, residential water sub-metering), I partner with venture studios, incubators, or family offices to evaluate market opportunities and pressure-test product viability.',
-    detailedOverview:
-      'Pioneering a completely new product or category requires distinct instincts from standard scaling. At seed and incubation stages, the cost of pursuing false consumer assumptions is fatal. Drawing on my journey building India\'s first residential water sub-metering enterprise from zero to institutional funding and a clean exit, I partner with venture funds, incubators, and studios to stress-test new concepts before capital is burnt. We test customer ground truth, design scrappy minimum viable pilots, and structure defensible unit economics from day zero.',
-    idealFor:
-      'Venture studios, investment funds, corporate innovation arms, or early founding teams preparing to enter unmapped markets, validate category-defining technology, or structure new business spin-outs.',
     deliverables: [
       'Category creation stress-testing and customer problem validation',
       'Early operational design and capital-efficient execution roadmaps',
-      'Direct customer interview audits to verify real purchasing urgency',
       'Mentoring founding teams to take bold, calculated bets',
-      'Governance and trust-anchored oversight from day zero',
-      'Unit economics and pricing psychology stress-testing',
+      'Governance and fiduciary oversight from day zero',
     ],
-    engagementFormat:
-      'Fixed-term partnership sprints (3 to 6 months), weekly milestone sparring, customer validation audits, and executive synthesis for investment committees.',
   },
   {
-    id: 'mentor',
     title: 'A Ben to Your Jules',
     focus: 'Trusted Confidant for High-Agency Founders',
     cadence: '1:1 Founder Mentoring',
     number: '03',
-    accentBorder: 'border-t-[#BC5259]',
-    tagClass: 'bg-[#BC5259]/10 text-[#BC5259] dark:bg-berry-950/60 dark:text-berry-300 border-[#BC5259]/20 dark:border-berry-800',
-    checkColor: 'text-[#BC5259] dark:text-berry-400',
-    btnClass: 'bg-[#BC5259] hover:bg-[#A3434A] text-white',
-    borderAccent: 'border-l-[#BC5259]',
-    leadQuote: 'The founder\'s chair is lonely. You do not need another advisor giving unsolicited opinions; you need calm operator judgement, total discretion, and someone who has lived through the fire.',
-    modalBtnClass: 'bg-[#BC5259] hover:bg-[#A3434A] text-white',
-    cardSnippet:
-      'Like Robert De Niro in "The Intern", an ego-free, calm, deeply experienced veteran in your corner. Someone who has raised institutional venture capital, survived being declared dead, weathered boardroom storms, and exited with honour, providing psychological safety and unvarnished judgement.',
-    detailedOverview:
-      'The founder\'s chair is an intensely lonely place. The most critical crossroads, co-founder tensions, boardroom disputes, restructuring choices, and private anxieties, cannot be shared with employees or broadcast to investors. Named after Robert De Niro\'s character in "The Intern", this mode provides an unhurried, ego-free sounding board who has lived through the fire. I provide absolute psychological safety, discretion, and unvarnished operator judgement, helping you distinguish temporary noise from existential risks and stand firm under pressure.',
-    idealFor:
-      'Solo founders, CEOs, and executive leaders carrying the psychological weight of scale, facing co-founder realignment, managing delicate boardroom negotiations, or facing high-stakes strategic choices.',
+    description:
+      'Like Robert De Niro in "The Intern", an ego-free, calm, deeply experienced veteran in your corner. Someone who has raised institutional venture capital, survived being declared dead, weathered boardroom storms, and exited with honour, providing psychological safety and unvarnished judgment.',
     deliverables: [
-      'Fortnightly private strategy reviews (async voice line and deep sessions)',
+      'Fortnightly private strategy reviews (async and voice line)',
       'Unbiased sounding board on co-founder tensions, hiring, and board dynamics',
       'Crisis perspective: helping you distinguish fatal risks from temporary noise',
-      'Boardroom preparation: stress-testing the real narrative before institutional meetings',
       'Strictly capped at two to three concurrent founder relationships',
-      'On-demand crisis availability when critical decisions arise',
     ],
-    engagementFormat:
-      'Fortnightly private 60-minute strategy calls, dedicated private asynchronous voice note channel, and priority emergency response line.',
   },
 ];
 
@@ -168,101 +121,52 @@ const FIT_FILTERS = [
 ];
 
 export default function AdvisoryPage({ onNavigate }) {
-  const [loadTime] = useState(Date.now());
+  const [loadTime, setLoadTime] = useState(Date.now());
   const [submitted, setSubmitted] = useState(false);
+  const [spamRejected, setSpamRejected] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
-  const [activeModalMode, setActiveModalMode] = useState(null);
-
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     venture: '',
-    stage: 'Seed / Series A',
-    advisoryMode: 'The Hands-On Operator',
-    timeline: 'Immediate (Next 2-4 weeks)',
+    advisoryMode: 'A Ben to Your Jules (Founder Confidant)',
     bottleneck: '',
     website_url: '', // Honeypot trap
   });
 
-  // Lock scroll and handle escape key for modal
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') {
-        setActiveModalMode(null);
-      }
-    };
+    setLoadTime(Date.now());
+  }, []);
 
-    if (activeModalMode) {
-      window.addEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
+  const handleSelectModeAndScroll = (modeName) => {
+    setFormData((prev) => ({ ...prev, advisoryMode: modeName }));
+    const formElement = document.getElementById('intake-form');
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: 'smooth' });
     }
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = '';
-    };
-  }, [activeModalMode]);
-
-  const handleOpenModal = (mode) => {
-    setActiveModalMode(mode);
-  };
-
-  const handleSelectModeFromModal = (modeTitle) => {
-    setActiveModalMode(null);
-    setFormData((prev) => ({ ...prev, advisoryMode: modeTitle }));
-    setTimeout(() => {
-      const el = document.getElementById('intake-form');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
-    }, 150);
-  };
-
-  const handleSelectScenarioAndScroll = (scenarioText) => {
-    setFormData((prev) => ({
-      ...prev,
-      bottleneck: `[Focus Area: ${scenarioText}]\n\n${prev.bottleneck}`,
-    }));
-    const el = document.getElementById('intake-form');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitError('');
 
-    // Spam Check 1: Honeypot drop
+    // Anti-Spam Check 1: Honeypot field must be empty
     if (formData.website_url) {
-      console.warn('Bot drop via honeypot.');
-      setSubmitted(true);
+      console.warn('Bot submission blocked via honeypot.');
+      setSpamRejected(true);
       return;
     }
 
-    // Spam Check 2: Dwell time check
+    // Anti-Spam Check 2: Dwell time must be at least 2.5 seconds
     const elapsed = Date.now() - loadTime;
-    if (elapsed < 2000) {
-      console.warn('Bot drop via dwell time.');
-      setSubmitted(true);
-      return;
-    }
-
-    // Spam Check 3: Minimum message length
-    if ((formData.bottleneck || '').trim().length < 15) {
-      setSubmitError('Please write at least a sentence describing the bottleneck or decision.');
-      return;
-    }
-
-    // Spam Check 4: Rate limit repeat posts (60s cooldown)
-    const lastSub = localStorage.getItem('last_advisory_submit_time');
-    if (lastSub && Date.now() - Number(lastSub) < 60000) {
-      console.warn('Repeat submission quiet drop.');
-      setSubmitted(true);
+    if (elapsed < 2500) {
+      console.warn('Bot submission blocked via dwell time.');
+      setSpamRejected(true);
       return;
     }
 
     setIsSubmitting(true);
-    localStorage.setItem('last_advisory_submit_time', String(Date.now()));
 
     try {
       if (FORMS_CONFIG.web3formsAccessKey && FORMS_CONFIG.web3formsAccessKey !== 'YOUR_ACCESS_KEY_HERE') {
@@ -271,372 +175,196 @@ export default function AdvisoryPage({ onNavigate }) {
           headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
           body: JSON.stringify({
             access_key: FORMS_CONFIG.web3formsAccessKey,
-            subject: `[5 Spices Advisory] Inquiry from ${formData.name} (${formData.venture})`,
-            from_name: '5 Spices or Less: Founder Advisory',
-            ...formData,
+            subject: `[5 Spices Advisory] Confidential Enquiry from ${formData.name || 'Founder'} (${formData.venture || 'Venture'})`,
+            from_name: '5 Spices or Less: Advisory Intake',
+            founder_name: formData.name,
+            founder_email: formData.email,
+            venture: formData.venture,
+            mode_selected: formData.advisoryMode,
+            bottleneck: formData.bottleneck,
           }),
         });
         const resData = await response.json();
-        if (!resData.success) {
-          console.warn('Web3Forms returned non-success:', resData);
+        if (resData.success) {
+          setSubmitted(true);
+        } else {
+          setSubmitError(resData.message || 'Submission error. Please try again.');
         }
+      } else {
+        setSubmitted(true);
       }
     } catch (err) {
-      console.warn('Handled submission:', err);
+      console.error('Submission error:', err);
+      setSubmitted(true);
     } finally {
       setIsSubmitting(false);
-      setSubmitted(true);
     }
   };
 
   return (
-    <div className="min-h-screen text-ink-900 dark:text-white transition-colors duration-300">
-      
-      {/* =========================================================================
-          ZONE 1: HERO & OPENING STANCE (Warm Terracotta Atmosphere)
-          ========================================================================= */}
-      <section className="pt-32 pb-20 px-6 md:px-12 bg-[#BC5259] dark:bg-[#2A1417] text-white relative transition-colors duration-300">
-        <div className="max-w-6xl mx-auto">
-          
-          {/* Breadcrumb Navigation */}
-          <div className="mb-8">
-            <button
-              onClick={() => onNavigate('/')}
-              className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider font-bold text-white/80 hover:text-white transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span>Back to the front page</span>
-            </button>
+    <div className="min-h-screen pt-32 pb-24 px-6 md:px-12 bg-[#1A0B0E] dark:bg-[#12080A] text-white relative transition-colors duration-300">
+      <div className="max-w-6xl mx-auto">
+
+        {/* Section Header: Hero */}
+        <div className="max-w-3xl mb-16 space-y-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 dark:bg-white/10 border border-white/25 text-white text-xs font-mono font-bold uppercase tracking-wider backdrop-blur-sm">
+            <Compass className="w-3.5 h-3.5 text-white" />
+            <span>ADVISORY &amp; OPERATIONAL PARTNERSHIPS</span>
           </div>
 
-          <div className="max-w-3xl space-y-5">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 dark:bg-white/10 border border-white/25 text-white text-xs font-mono font-bold uppercase tracking-wider backdrop-blur-sm">
-              <Compass className="w-3.5 h-3.5 text-white" />
-              <span>FOUNDER ADVISORY · LUCKNOW ROOTS · 1:1 CONFIDENTIAL</span>
-            </div>
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.08]">
+            Seasoned counsel from someone who has <span className="italic text-[#FCA5A5] dark:text-[#FECDD3] font-serif font-black">lived the full founder cycle.</span>
+          </h1>
 
-            <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.08]">
-              Straight talk from someone who has <span className="italic text-[#28181A] dark:text-[#FECDD3] font-serif font-black">built, scaled, and exited.</span>
-            </h1>
-
-            <p className="text-[#FDF2F4] dark:text-ink-200 font-normal text-base sm:text-lg leading-relaxed pt-2 max-w-3xl">
-              No 60-slide decks or corporate theatre. I partner with founders as a hands-on operator, sounding board, or mentor, removing clutter so you can see the work clearly.
-            </p>
-
-            {/* In-Page Jump Anchor Pills */}
-            <div className="pt-4 flex flex-wrap items-center gap-3">
-              <a
-                href="#modes"
-                className="px-5 py-2.5 rounded-full bg-white text-[#BC5259] hover:bg-white/95 text-xs font-mono font-bold uppercase tracking-wider transition-all shadow-md"
-              >
-                03 Collaboration Modes ↓
-              </a>
-              <a
-                href="#scenarios"
-                className="px-5 py-2.5 rounded-full bg-white/15 hover:bg-white/25 text-white border border-white/25 text-xs font-mono font-bold uppercase tracking-wider transition-all"
-              >
-                Trigger Scenarios ↓
-              </a>
-              <a
-                href="#fit"
-                className="px-5 py-2.5 rounded-full bg-white/15 hover:bg-white/25 text-white border border-white/25 text-xs font-mono font-bold uppercase tracking-wider transition-all"
-              >
-                Mutual Fit Check ↓
-              </a>
-              <a
-                href="#intake-form"
-                className="px-5 py-2.5 rounded-full bg-ink-950 hover:bg-black text-white text-xs font-mono font-bold uppercase tracking-wider transition-all shadow-lg"
-              >
-                Start Conversation ↓
-              </a>
-            </div>
-          </div>
-
+          <p className="text-[#FDF2F4] dark:text-ink-200 font-normal text-base sm:text-lg leading-relaxed pt-2">
+            I do not deliver generic consulting slide decks. I partner with founders and leaders as an embedded operator, EIR, or steady confidant, helping you take bold risks while backing you completely.
+          </p>
         </div>
-      </section>
 
-      {/* =========================================================================
-          ZONE 2: THE THREE COLLABORATION MODES (Cool Alabaster Atmosphere)
-          ========================================================================= */}
-      <section id="modes" className="py-24 px-6 md:px-12 bg-[#F1F2F4] dark:bg-canvas-dark border-t border-canvas-border dark:border-canvas-darkBorder transition-colors duration-300">
-        <div className="max-w-6xl mx-auto">
-          
-          <div className="max-w-3xl mb-16 space-y-3">
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-berry-600" />
-              <span className="text-xs font-mono uppercase tracking-widest text-berry-600 dark:text-berry-400 font-bold">
-                THREE COLLABORATION MODES
-              </span>
-            </div>
-            <h2 className="font-serif text-3xl sm:text-5xl font-black text-ink-900 dark:text-white leading-tight">
-              How We Work Together.
-            </h2>
-            <p className="text-sm sm:text-base text-ink-700 dark:text-ink-300 font-light leading-relaxed">
-              Three distinct ways to partner, depending on your venture stage, team friction, and where you need clear thinking. Click below to inspect the full service breakdown.
-            </p>
-          </div>
-
-          {/* 3 Floating Elevated Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-            {ADVISORY_MODES.map((mode, idx) => (
-              <div
-                key={idx}
-                className={`rounded-3xl p-8 bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder border-t-4 ${mode.accentBorder} shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group`}
-              >
-                <div>
-                  {/* Top Bar: Cadence & Number */}
-                  <div className="flex items-center justify-between mb-4">
-                    <span className={`text-[11px] font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full border ${mode.tagClass}`}>
-                      {mode.cadence}
-                    </span>
-                    <span className="font-serif font-black text-xl text-ink-300 dark:text-ink-600">
-                      0{idx + 1}
-                    </span>
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="font-serif text-2xl font-bold text-ink-900 dark:text-white mb-2 leading-snug">
-                    {mode.title}
-                  </h3>
-
-                  {/* Subtitle / Focus */}
-                  <div className="text-xs font-mono text-ink-500 dark:text-ink-400 mb-6 pb-4 border-b border-canvas-border dark:border-canvas-darkBorder font-medium">
-                    {mode.focus}
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-sm text-ink-700 dark:text-ink-200 font-light leading-relaxed mb-6">
-                    {mode.cardSnippet}
-                  </p>
-
-                  {/* Deliverables Preview */}
-                  <div className="space-y-3 pt-4 border-t border-canvas-border dark:border-canvas-darkBorder mb-8">
-                    <span className="text-xs font-mono uppercase tracking-wider text-ink-900 dark:text-white font-bold block mb-2">
-                      Scope of Collaboration:
-                    </span>
-                    {mode.deliverables.slice(0, 4).map((item, i) => (
-                      <div key={i} className="flex items-start gap-2.5 text-xs text-ink-800 dark:text-ink-100 font-medium">
-                        <Check className={`w-3.5 h-3.5 ${mode.checkColor} shrink-0 mt-0.5`} />
-                        <span className="leading-snug">{item}</span>
-                      </div>
-                    ))}
-                  </div>
+        {/* 3 Advisory Modes Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24 items-stretch">
+          {ADVISORY_MODES.map((mode, idx) => (
+            <div
+              key={idx}
+              className="rounded-3xl p-8 bg-[#FAF8F5] dark:bg-canvas-darkCard border border-white/20 dark:border-canvas-darkBorder transition-all duration-300 flex flex-col justify-between group shadow-xl hover:-translate-y-1.5 hover:shadow-2xl text-ink-900 dark:text-white"
+            >
+              <div>
+                {/* Cadence Tag & Number */}
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-xs font-mono font-bold text-[#BC5259] dark:text-berry-400 uppercase tracking-wider">
+                    {mode.cadence}
+                  </span>
+                  <span className="font-serif font-black text-xl text-cobalt-600 dark:text-cobalt-400">
+                    {mode.number}
+                  </span>
                 </div>
 
-                {/* Know More Modal Trigger Button */}
-                <button
-                  onClick={() => handleOpenModal(mode)}
-                  className={`w-full py-3.5 rounded-full ${mode.btnClass} text-xs font-mono font-bold uppercase tracking-wider text-center transition-all flex items-center justify-center gap-2 shadow-sm hover:shadow-md active:scale-95`}
-                >
-                  <span>KNOW MORE →</span>
-                </button>
-              </div>
-            ))}
-          </div>
+                {/* Title */}
+                <h2 className="font-serif text-2xl font-bold mb-2 group-hover:text-[#BC5259] dark:group-hover:text-berry-400 transition-colors">
+                  {mode.title}
+                </h2>
+                
+                {/* Subtitle text */}
+                <div className="text-xs font-mono text-ink-600 dark:text-ink-300 mb-6 pb-4 border-b border-canvas-border dark:border-canvas-darkBorder font-medium">
+                  {mode.focus}
+                </div>
 
+                {/* Description */}
+                <p className="text-sm text-ink-700 dark:text-ink-200 font-light leading-relaxed mb-6">
+                  {mode.description}
+                </p>
+
+                {/* Scope of Collaboration Checklist */}
+                <div className="space-y-3 pt-4 border-t border-canvas-border dark:border-canvas-darkBorder mb-8">
+                  <span className="text-xs font-mono uppercase tracking-wider text-ink-900 dark:text-white font-bold block mb-2">
+                    Scope of Collaboration:
+                  </span>
+                  {mode.deliverables.map((item, i) => (
+                    <div key={i} className="flex items-start gap-2.5 text-xs text-ink-800 dark:text-ink-100 font-medium">
+                      <Check className="w-3.5 h-3.5 text-[#BC5259] dark:text-cobalt-400 shrink-0 mt-0.5" />
+                      <span className="leading-snug">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Action Link to Form */}
+              <button
+                type="button"
+                onClick={() => handleSelectModeAndScroll(mode.title)}
+                className="w-full py-3.5 rounded-full bg-ink-950 hover:bg-[#BC5259] text-white dark:bg-white dark:text-ink-950 dark:hover:bg-berry-500 dark:hover:text-white text-xs font-bold text-center transition-all flex items-center justify-center gap-2 shadow-md group-hover:shadow-lg"
+              >
+                <span>Discuss This Collaboration</span>
+                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+              </button>
+            </div>
+          ))}
         </div>
-      </section>
 
-      {/* =========================================================================
-          DETAILED OVERLAY POPUP MODAL (The requested succinct and informative overlay)
-          ========================================================================= */}
-      {activeModalMode && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-ink-950/75 dark:bg-black/85 backdrop-blur-md animate-fadeIn"
-          onClick={(e) => {
-            if (e.target === e.currentTarget) setActiveModalMode(null);
-          }}
-        >
-          <div className="relative w-full max-w-3xl max-h-[88vh] overflow-y-auto rounded-3xl bg-white dark:bg-canvas-darkCard border-2 border-canvas-border dark:border-canvas-darkBorder p-6 sm:p-10 shadow-2xl space-y-6">
-            
-            {/* Modal Top Bar */}
-            <div className="flex items-center justify-between pb-4 border-b border-canvas-border dark:border-canvas-darkBorder">
-              <div className="flex items-center gap-2.5">
-                <span className={`text-xs font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full border ${activeModalMode.tagClass}`}>
-                  Mode 0{activeModalMode.number} · {activeModalMode.cadence}
-                </span>
-              </div>
-
-              <button
-                onClick={() => setActiveModalMode(null)}
-                className="p-2 rounded-full bg-canvas-subtle dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-ink-600 dark:text-ink-300 hover:text-berry-600 hover:border-berry-600 transition-colors"
-                aria-label="Close modal"
-              >
-                <X className="w-5 h-5" />
-              </button>
+        {/* Section: When Founders Call Me (Trigger Scenarios & Inflection Points) */}
+        <div className="mb-24">
+          <div className="max-w-3xl mb-12 space-y-3">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 dark:bg-white/10 border border-white/25 text-white text-xs font-mono font-bold uppercase tracking-wider backdrop-blur-sm">
+              <Flame className="w-3.5 h-3.5 text-[#FECDD3]" />
+              <span>INFLECTION POINTS &amp; BOTTLENECKS</span>
             </div>
 
-            {/* Title & Core Subtitle */}
-            <div className="space-y-2">
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-black text-ink-900 dark:text-white leading-[1.15]">
-                {activeModalMode.title}
-              </h2>
-              <div className="text-xs sm:text-sm font-mono font-bold text-berry-600 dark:text-berry-400 uppercase tracking-wider">
-                {activeModalMode.focus}
-              </div>
-            </div>
-
-            {/* Lead Pullquote (Story Modal Style) */}
-            {activeModalMode.leadQuote && (
-              <div className={`p-5 sm:p-6 rounded-2xl bg-canvas-subtle dark:bg-canvas-dark border-l-4 ${activeModalMode.borderAccent || "border-l-berry-600"} text-base sm:text-lg font-serif italic text-ink-900 dark:text-white font-medium leading-relaxed shadow-sm`}>
-                "{activeModalMode.leadQuote}"
-              </div>
-            )}
-
-            {/* Detailed Service Narrative */}
-            <div className="space-y-4 text-sm sm:text-base text-ink-800 dark:text-ink-100 font-light leading-relaxed border-t border-canvas-border dark:border-canvas-darkBorder pt-4">
-              <p>
-                {activeModalMode.detailedOverview}
-              </p>
-            </div>
-
-            {/* Ideal Stage & Fit Box */}
-            <div className="p-5 rounded-2xl bg-[#F1F2F4] dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder space-y-2">
-              <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-ink-900 dark:text-white">
-                <Target className="w-4 h-4 text-berry-600" />
-                <span>Who This Is Built For:</span>
-              </div>
-              <p className="text-xs sm:text-sm text-ink-700 dark:text-ink-200 font-normal leading-relaxed">
-                {activeModalMode.idealFor}
-              </p>
-            </div>
-
-            {/* Detailed Scope of Collaboration & Deliverables */}
-            <div className="space-y-3 pt-2">
-              <div className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-ink-900 dark:text-white">
-                <Layers className="w-4 h-4 text-cobalt-600 dark:text-cobalt-400" />
-                <span>Full Scope of Collaboration &amp; Deliverables:</span>
-              </div>
-              <div className="grid grid-cols-1 gap-2.5">
-                {activeModalMode.deliverables.map((item, dIdx) => (
-                  <div key={dIdx} className="flex items-start gap-3 p-3 rounded-xl bg-canvas-subtle/80 dark:bg-canvas-dark/60 border border-canvas-border dark:border-canvas-darkBorder text-xs sm:text-sm text-ink-800 dark:text-ink-100 font-medium">
-                    <Check className={`w-4 h-4 ${activeModalMode.checkColor} shrink-0 mt-0.5`} />
-                    <span className="leading-snug">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Engagement Format */}
-            <div className="p-4 rounded-xl bg-canvas-subtle dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-xs font-mono text-ink-600 dark:text-ink-300">
-              <span className="font-bold text-ink-900 dark:text-white block mb-1">Cadence &amp; Channels:</span>
-              <span>{activeModalMode.engagementFormat}</span>
-            </div>
-
-            {/* Modal Bottom Actions */}
-            <div className="pt-6 border-t border-canvas-border dark:border-canvas-darkBorder flex flex-col sm:flex-row items-center justify-between gap-4">
-              <button
-                onClick={() => setActiveModalMode(null)}
-                className="w-full sm:w-auto px-6 py-3 rounded-full border border-canvas-border dark:border-canvas-darkBorder text-ink-700 dark:text-ink-200 hover:text-ink-900 text-xs font-mono font-bold uppercase tracking-wider transition-colors order-2 sm:order-1"
-              >
-                Close
-              </button>
-
-              <button
-                onClick={() => handleSelectModeFromModal(activeModalMode.title)}
-                className={`w-full sm:w-auto px-8 py-3.5 rounded-full ${activeModalMode.modalBtnClass} text-xs font-mono font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-lg active:scale-95 order-1 sm:order-2`}
-              >
-                <span>Select This Mode &amp; Inquire</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-
-          </div>
-        </div>
-      )}
-
-      {/* =========================================================================
-          ZONE 3: WHEN FOUNDERS CALL ME (Deep Midnight Slate Atmosphere)
-          ========================================================================= */}
-      <section id="scenarios" className="py-24 px-6 md:px-12 bg-[#0F172A] text-white border-t border-[#1E293B] transition-colors duration-300">
-        <div className="max-w-6xl mx-auto">
-          
-          <div className="max-w-3xl mb-16 space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-mono font-bold uppercase tracking-wider text-white">
-              <Sparkles className="w-3.5 h-3.5 text-berry-400" />
-              <span>FOUNDER INFLECTION POINTS</span>
-            </div>
-            <h2 className="font-serif text-3xl sm:text-5xl font-black text-white leading-tight">
-              When Founders Pick Up the Phone.
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">
+              When the room gets noisy, <span className="italic text-[#FCA5A5] dark:text-[#FECDD3]">clarity is the first casualty.</span>
             </h2>
-            <p className="text-slate-300 font-light text-sm sm:text-base leading-relaxed">
-              Common moments of friction where an experienced outside sounding board restores speed, composure, and focus.
+
+            <p className="text-[#FDF2F4] dark:text-ink-200 text-sm sm:text-base leading-relaxed pt-1 font-light">
+              Most founders do not need another strategy framework. They need someone who has weathered the storms to help them separate real fire from smoke. Here are the four crossroads where we do our best work together:
             </p>
           </div>
 
-          {/* 4 Comparative Cards in a 2x2 Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-            {TRIGGER_SCENARIOS.map((scen, sIdx) => (
+            {TRIGGER_SCENARIOS.map((scenario, sIdx) => (
               <div
                 key={sIdx}
-                className="rounded-3xl p-8 bg-[#1E293B]/80 border border-[#334155] shadow-xl flex flex-col justify-between hover:border-berry-500/50 transition-all duration-300"
+                className="rounded-3xl p-8 sm:p-9 bg-[#FAF8F5] dark:bg-canvas-darkCard border border-white/20 dark:border-canvas-darkBorder text-ink-900 dark:text-white shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-[11px] font-mono font-bold text-berry-400 uppercase tracking-wider px-2.5 py-1 rounded-full bg-berry-950/60 border border-berry-800">
-                      {scen.tag}
+                    <span className="text-xs font-mono font-bold text-[#BC5259] dark:text-berry-400 uppercase tracking-wider">
+                      {scenario.tag}
                     </span>
-                    <span className="font-serif font-black text-xl text-slate-500">
-                      {scen.number}
+                    <span className="font-serif font-black text-xl text-cobalt-600 dark:text-cobalt-400">
+                      {scenario.number}
                     </span>
                   </div>
 
-                  <h3 className="font-serif text-2xl font-bold text-white mb-1.5">
-                    {scen.title}
+                  <h3 className="font-serif text-2xl font-bold mb-1 text-ink-900 dark:text-white">
+                    {scenario.title}
                   </h3>
-                  <div className="text-xs font-serif italic text-slate-300 mb-5">
-                    "{scen.hook}"
+
+                  <div className="text-xs font-mono text-ink-600 dark:text-ink-300 font-medium mb-6 pb-3 border-b border-canvas-border dark:border-canvas-darkBorder">
+                    {scenario.hook}
                   </div>
 
-                  {/* Dual Column Comparative Rows */}
-                  <div className="space-y-4 pt-4 border-t border-slate-700/80 mb-6">
-                    <div>
-                      <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-bold block mb-1">
-                        The Friction:
-                      </span>
-                      <p className="text-xs text-slate-300 font-light leading-relaxed">
-                        {scen.situation}
-                      </p>
-                    </div>
+                  {/* The Reality */}
+                  <div className="mb-5 space-y-1.5">
+                    <span className="text-[11px] font-mono uppercase tracking-wider font-bold text-ink-500 dark:text-ink-400 block">
+                      The Situation:
+                    </span>
+                    <p className="text-sm text-ink-700 dark:text-ink-200 font-light leading-relaxed">
+                      {scenario.situation}
+                    </p>
+                  </div>
 
-                    <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10">
-                      <span className="text-[11px] font-mono uppercase tracking-wider text-sage-400 font-bold block mb-1">
-                        How We Intervene:
-                      </span>
-                      <p className="text-xs text-slate-200 font-normal leading-relaxed">
-                        {scen.intervention}
-                      </p>
-                    </div>
+                  {/* How We Intervene */}
+                  <div className="p-4 rounded-2xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder space-y-1.5 mb-6">
+                    <span className="text-[11px] font-mono uppercase tracking-wider font-bold text-[#BC5259] dark:text-berry-400 block">
+                      How We Intervene:
+                    </span>
+                    <p className="text-xs sm:text-sm text-ink-800 dark:text-ink-100 font-normal leading-relaxed">
+                      {scenario.intervention}
+                    </p>
                   </div>
                 </div>
 
                 <button
-                  onClick={() => handleSelectScenarioAndScroll(scen.title)}
-                  className="w-full py-3 rounded-full bg-white/10 hover:bg-berry-600 text-white text-xs font-mono font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-1.5"
+                  type="button"
+                  onClick={() => handleSelectModeAndScroll(scenario.formValue)}
+                  className="w-full py-3 rounded-full bg-transparent hover:bg-ink-950 hover:text-white dark:hover:bg-white dark:hover:text-ink-950 border border-ink-900/30 dark:border-white/30 text-ink-900 dark:text-white text-xs font-bold transition-all flex items-center justify-center gap-2 group"
                 >
-                  <span>Discuss This Inflection Point</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <span>Discuss This Bottleneck</span>
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                 </button>
               </div>
             ))}
           </div>
-
         </div>
-      </section>
 
-      {/* =========================================================================
-          ZONE 4: "WE WILL NOT BE A GOOD FIT IF..." (Warm Terracotta Atmosphere per Screenshot)
-          ========================================================================= */}
-      <section id="fit" className="py-24 px-6 md:px-12 bg-[#BC5259] dark:bg-[#2A1417] text-white border-t border-white/20 transition-colors duration-300">
-        <div className="max-w-6xl mx-auto">
-          
-          <div className="max-w-3xl mb-16 space-y-4">
+        {/* Section: Who This Is Not For (Mutual Fit Filter) */}
+        <div className="mb-24">
+          <div className="max-w-3xl mb-12 space-y-3">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 dark:bg-white/10 border border-white/25 text-white text-xs font-mono font-bold uppercase tracking-wider backdrop-blur-sm">
               <ShieldCheck className="w-3.5 h-3.5 text-white" />
               <span>MUTUAL FIT &amp; WORKING STYLE</span>
             </div>
 
-            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">
               We will not be a good fit if...
             </h2>
 
@@ -645,7 +373,6 @@ export default function AdvisoryPage({ onNavigate }) {
             </p>
           </div>
 
-          {/* 3 Crisp Off-White Cards Matching Screenshot */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
             {FIT_FILTERS.map((filter, fIdx) => (
               <div
@@ -657,12 +384,12 @@ export default function AdvisoryPage({ onNavigate }) {
                     <span className="text-[11px] font-mono font-bold text-[#BC5259] dark:text-berry-400 uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#BC5259]/10 dark:bg-berry-950/50 border border-[#BC5259]/20 dark:border-berry-800">
                       {filter.badge}
                     </span>
-                    <span className="font-serif font-black text-xl text-ink-300 dark:text-ink-600">
+                    <span className="font-serif font-black text-lg text-ink-400 dark:text-ink-500">
                       {filter.number}
                     </span>
                   </div>
 
-                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-ink-900 dark:text-white mb-4 leading-snug">
+                  <h3 className="font-serif text-xl font-bold mb-3 text-ink-900 dark:text-white leading-snug">
                     {filter.title}
                   </h3>
 
@@ -673,181 +400,187 @@ export default function AdvisoryPage({ onNavigate }) {
               </div>
             ))}
           </div>
-
         </div>
-      </section>
 
-      {/* =========================================================================
-          ZONE 5: OPERATING PRINCIPLE & DIRECT INTAKE (Warm Hearth Canvas)
-          ========================================================================= */}
-      <section id="intake-form" className="py-24 px-6 md:px-12 bg-[#FDFBF7] dark:bg-canvas-dark text-ink-900 dark:text-white border-t border-canvas-border dark:border-canvas-darkBorder transition-colors duration-300">
-        <div className="max-w-4xl mx-auto space-y-16">
-          
-          {/* Operating Principle Banner */}
-          <div className="p-8 sm:p-10 rounded-3xl bg-white dark:bg-canvas-darkCard border-2 border-canvas-border dark:border-canvas-darkBorder flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-lg">
-            <div className="space-y-2 max-w-xl">
-              <span className="text-xs font-mono uppercase tracking-widest text-[#BC5259] dark:text-berry-400 font-bold">
-                Operating Principle
-              </span>
-              <h4 className="font-serif text-xl sm:text-2xl text-ink-900 dark:text-white font-bold leading-snug">
-                "Less is more. Simplicity over clutter. I back you while you take bold risks."
-              </h4>
-              <p className="text-sm text-ink-600 dark:text-ink-300 font-light leading-relaxed">
-                No retainers designed to bill hours. I only work with founders I believe in. My job is to help you breathe easier, make clear decisions, and back you completely.
-              </p>
-            </div>
-            <div className="shrink-0 flex items-center gap-3 text-xs font-mono text-[#BC5259] dark:text-berry-300 bg-canvas-subtle dark:bg-canvas-dark px-5 py-3 rounded-2xl border border-canvas-border dark:border-canvas-darkBorder font-bold shadow-sm">
-              <Sparkles className="w-4 h-4 text-[#BC5259]" />
-              <span>Direct 1:1 Engagement</span>
-            </div>
+        {/* Operating Principle Banner */}
+        <div className="p-8 sm:p-10 rounded-3xl bg-[#FAF8F5] dark:bg-canvas-darkCard border border-white/20 dark:border-canvas-darkBorder mb-24 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-xl text-ink-900 dark:text-white">
+          <div className="space-y-2 max-w-2xl">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#BC5259] dark:text-berry-400 font-bold">
+              My Guiding Operating Principle
+            </span>
+            <h3 className="font-serif text-xl sm:text-2xl font-bold">
+              "Less is more. Simplicity over clutter. I back you while you take bold risks."
+            </h3>
+            <p className="text-sm text-ink-700 dark:text-ink-200 font-light leading-relaxed">
+              No rigid rate cards or bureaucratic retainer tiers. I engage with people I believe in, helping founders and operators cut through the noise to build something that endures.
+            </p>
+          </div>
+          <div className="shrink-0 flex items-center gap-3 text-xs font-mono text-[#BC5259] dark:text-berry-300 bg-white dark:bg-canvas-dark px-5 py-3 rounded-2xl border border-canvas-border dark:border-canvas-darkBorder font-bold shadow-sm">
+            <Sparkles className="w-4 h-4 text-[#BC5259]" />
+            <span>Direct 1:1 Engagement</span>
+          </div>
+        </div>
+
+        {/* Direct Advisory Intake Form */}
+        <div id="intake-form" className="max-w-3xl mx-auto p-8 sm:p-12 rounded-3xl bg-[#FAF8F5] dark:bg-canvas-darkCard border-2 border-white/30 dark:border-canvas-darkBorder relative shadow-2xl text-ink-900 dark:text-white scroll-mt-28">
+          <div className="text-center mb-10">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#BC5259] dark:text-berry-400 font-bold">
+              Direct Contact &amp; Intake
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl font-black mt-1">
+              Start an Honest Conversation
+            </h2>
+            <p className="text-sm text-ink-600 dark:text-ink-300 mt-2 font-light max-w-lg mx-auto leading-relaxed">
+              Tell me about your venture, challenge, or what you need help with. I review every submission personally and respond within 24 business hours.
+            </p>
           </div>
 
-          {/* Direct Advisory Intake Form */}
-          <div className="p-8 sm:p-12 rounded-3xl bg-white dark:bg-canvas-darkCard border-2 border-canvas-border dark:border-canvas-darkBorder shadow-2xl relative">
-            <div className="text-center mb-10">
-              <span className="text-xs font-mono uppercase tracking-widest text-[#BC5259] dark:text-berry-400 font-bold">
-                Direct Contact &amp; Intake
-              </span>
-              <h3 className="font-serif text-3xl sm:text-4xl text-ink-900 dark:text-white font-black mt-1">
-                Start an Honest Conversation
-              </h3>
-              <p className="text-sm text-ink-600 dark:text-ink-300 mt-2 font-light max-w-lg mx-auto leading-relaxed">
-                Tell me about your venture, challenge, or what you need help with. I review every submission personally and respond within 24 business hours.
-              </p>
-            </div>
-
-            {submitted ? (
-              <div className="p-10 rounded-2xl bg-canvas-subtle dark:bg-canvas-dark border border-berry-200 dark:border-berry-800 text-center space-y-4">
-                <div className="w-12 h-12 rounded-full bg-berry-50 dark:bg-canvas-darkCard border border-berry-200 dark:border-berry-700 flex items-center justify-center text-berry-600 dark:text-berry-400 mx-auto">
-                  <Check className="w-6 h-6" />
-                </div>
-                <h4 className="font-serif text-2xl text-ink-900 dark:text-white font-bold">
-                  Message Received
-                </h4>
-                <p className="text-sm text-ink-600 dark:text-ink-200 font-light max-w-md mx-auto leading-relaxed">
-                  Thank you for reaching out. I look forward to reading your note and connecting over an exploratory conversation.
-                </p>
-                <button
-                  onClick={() => setSubmitted(false)}
-                  className="mt-4 px-6 py-2 rounded-full bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder text-xs font-mono text-ink-800 dark:text-white font-semibold"
-                >
-                  Send another message
-                </button>
+          {submitted ? (
+            <div className="p-10 rounded-2xl bg-white dark:bg-canvas-dark border border-[#BC5259]/30 dark:border-berry-800 text-center space-y-4">
+              <div className="w-12 h-12 rounded-full bg-[#BC5259]/10 dark:bg-canvas-darkCard border border-[#BC5259]/20 dark:border-berry-700 flex items-center justify-center text-[#BC5259] dark:text-berry-400 mx-auto">
+                <Check className="w-6 h-6" />
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                
-                {/* Honeypot trap */}
+              <h3 className="font-serif text-2xl font-bold">
+                Message Received
+              </h3>
+              <p className="text-sm text-ink-600 dark:text-ink-200 font-light max-w-md mx-auto leading-relaxed">
+                Thank you for reaching out. I look forward to reading your note and connecting over an exploratory call.
+              </p>
+              <button
+                type="button"
+                onClick={() => setSubmitted(false)}
+                className="mt-4 px-6 py-2 rounded-full bg-[#FAF8F5] dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder text-xs font-mono text-ink-800 dark:text-white font-semibold"
+              >
+                Send another message
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-6">
+              
+              {/* Hidden Anti-Spam Honeypot */}
+              <div className="hidden" aria-hidden="true">
+                <label htmlFor="adv_website">Leave empty</label>
                 <input
                   type="text"
+                  id="adv_website"
                   name="website_url"
-                  tabIndex="-1"
-                  autoComplete="off"
                   value={formData.website_url}
                   onChange={(e) => setFormData({ ...formData, website_url: e.target.value })}
-                  style={{ display: 'none' }}
+                  tabIndex={-1}
+                  autoComplete="off"
                 />
+              </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-xs font-mono text-ink-800 dark:text-ink-200 font-semibold mb-2">
-                      Your Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="e.g. Sarah / Rahul"
-                      className="w-full px-4 py-3 rounded-xl bg-canvas-subtle dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-[#BC5259] transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-mono text-ink-800 dark:text-ink-200 font-semibold mb-2">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="name@venture.com"
-                      className="w-full px-4 py-3 rounded-xl bg-canvas-subtle dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-[#BC5259] transition-colors"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-xs font-mono text-ink-800 dark:text-ink-200 font-semibold mb-2">
-                      Venture / Organisation &amp; Stage *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.venture}
-                      onChange={(e) => setFormData({ ...formData, venture: e.target.value })}
-                      placeholder="e.g. Seed SaaS, ClimateTech, Growth, Solo"
-                      className="w-full px-4 py-3 rounded-xl bg-canvas-subtle dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-[#BC5259] transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-mono text-ink-800 dark:text-ink-200 font-semibold mb-2">
-                      Preferred Collaboration Style
-                    </label>
-                    <select
-                      value={formData.advisoryMode}
-                      onChange={(e) => setFormData({ ...formData, advisoryMode: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-canvas-subtle dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-[#BC5259] transition-colors"
-                    >
-                      <option value="The Hands-On Operator">The Hands-On Operator (Operational Cleanup)</option>
-                      <option value="Entrepreneur in Residence (EIR)">Entrepreneur in Residence (EIR / Venture Studio)</option>
-                      <option value="A Ben to Your Jules">A Ben to Your Jules (Founder Confidant)</option>
-                      <option value="Informal / Just need guidance or advice">Informal / Just need guidance or advice</option>
-                    </select>
-                  </div>
-                </div>
-
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-xs font-mono text-ink-800 dark:text-ink-200 font-semibold mb-2">
-                    What is the core problem, bottleneck, or decision you want help with? *
+                    Your Name *
                   </label>
-                  <textarea
-                    rows="4"
+                  <input
+                    type="text"
                     required
-                    value={formData.bottleneck}
-                    onChange={(e) => setFormData({ ...formData, bottleneck: e.target.value })}
-                    placeholder="Tell me where you feel overwhelmed, where systems are cluttered, or what strategic crossroads you are facing..."
-                    className="w-full px-4 py-3 rounded-xl bg-canvas-subtle dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-[#BC5259] transition-colors resize-none leading-relaxed"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    placeholder="e.g. Sarah or Rahul"
+                    className="w-full px-4 py-3 rounded-xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-[#BC5259] transition-colors shadow-inner"
                   />
                 </div>
-
-                {submitError && (
-                  <p className="text-xs font-mono text-rose-600 dark:text-rose-400">
-                    {submitError}
-                  </p>
-                )}
-
-                <div className="flex items-center gap-3 text-xs text-ink-600 dark:text-ink-300 pt-2 font-medium">
-                  <ShieldCheck className="w-4 h-4 text-ink-900 dark:text-white shrink-0" />
-                  <span>100% direct and confidential communication.</span>
+                <div>
+                  <label className="block text-xs font-mono text-ink-800 dark:text-ink-200 font-semibold mb-2">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    placeholder="name@venture.com"
+                    className="w-full px-4 py-3 rounded-xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-[#BC5259] transition-colors shadow-inner"
+                  />
                 </div>
+              </div>
 
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full py-4 rounded-full bg-[#BC5259] hover:bg-[#A3434A] text-white font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-lg shadow-[#BC5259]/30 active:scale-[0.99]"
-                >
-                  <Send className="w-4 h-4" />
-                  <span>{isSubmitting ? 'Sending...' : 'Send Message to Vivek'}</span>
-                </button>
-              </form>
-            )}
-          </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div>
+                  <label className="block text-xs font-mono text-ink-800 dark:text-ink-200 font-semibold mb-2">
+                    Venture / Organisation &amp; Stage *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    value={formData.venture}
+                    onChange={(e) => setFormData({ ...formData, venture: e.target.value })}
+                    placeholder="e.g. Seed SaaS, ClimateTech, Growth, Solo"
+                    className="w-full px-4 py-3 rounded-xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-[#BC5259] transition-colors shadow-inner"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-mono text-ink-800 dark:text-ink-200 font-semibold mb-2">
+                    Preferred Collaboration Style
+                  </label>
+                  <select
+                    value={formData.advisoryMode}
+                    onChange={(e) => setFormData({ ...formData, advisoryMode: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-[#BC5259] transition-colors"
+                  >
+                    <option value="A Ben to Your Jules (Founder Confidant)">A Ben to Your Jules (Founder Confidant)</option>
+                    <option value="The Fractional Operator">The Fractional Operator</option>
+                    <option value="Entrepreneur in Residence (EIR)">Entrepreneur in Residence (EIR)</option>
+                    <option value="The 15 to 60 Person Wall (Scaling Friction)">The 15 to 60 Person Wall (Scaling Friction)</option>
+                    <option value="Co-founder & Executive Friction (Sensitive Crossroads)">Co-founder & Executive Friction (Sensitive Crossroads)</option>
+                    <option value="The Boardroom Crossroads (Investor Dynamics)">The Boardroom Crossroads (Investor Dynamics)</option>
+                    <option value="The Fog of Noise (Radical Subtraction)">The Fog of Noise (Radical Subtraction)</option>
+                    <option value="Undecided / Open Exploration">Undecided / Open Exploration</option>
+                  </select>
+                </div>
+              </div>
 
+              <div>
+                <label className="block text-xs font-mono text-ink-800 dark:text-ink-200 font-semibold mb-2">
+                  What is the core problem, bottleneck, or decision you want help with? *
+                </label>
+                <textarea
+                  rows="4"
+                  required
+                  value={formData.bottleneck}
+                  onChange={(e) => setFormData({ ...formData, bottleneck: e.target.value })}
+                  placeholder="Tell me where you feel overwhelmed, where systems are cluttered, or what strategic crossroad you are facing..."
+                  className="w-full px-4 py-3 rounded-xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-[#BC5259] transition-colors resize-none leading-relaxed shadow-inner"
+                />
+              </div>
+
+              <div className="flex items-center gap-3 text-xs text-ink-600 dark:text-ink-300 pt-2 font-medium">
+                <ShieldCheck className="w-4 h-4 text-ink-900 dark:text-white shrink-0" />
+                <span>Confidential, direct, and unvarnished communication.</span>
+              </div>
+
+              {submitError && (
+                <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 text-xs font-mono text-center">
+                  {submitError}
+                </div>
+              )}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full py-4 rounded-full bg-[#BC5259] hover:bg-[#A3434A] disabled:opacity-60 text-white font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition-all shadow-lg shadow-[#BC5259]/30 active:scale-[0.99]"
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <span>Delivering Message to Vivek...</span>
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4" />
+                    <span>Send Message to Vivek</span>
+                  </>
+                )}
+              </button>
+            </form>
+          )}
         </div>
-      </section>
 
+      </div>
     </div>
   );
 }

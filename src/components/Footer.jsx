@@ -5,7 +5,7 @@ import { ArrowUpRight, Check, Flame, Linkedin } from 'lucide-react';
 const MANIFESTO_THEMES = {
   '/': {
     kicker: 'The Five Spices Manifesto',
-    quote: 'True mastery is subtractive. The amateur adds ingredients to mask poor technique. The master uses only what is essential, and executes with quiet confidence.',
+    quote: 'True mastery is simplification. The amateur adds ingredients to mask poor technique. The master uses only what is essential, and executes with quiet confidence.',
     subtext: 'Whether seasoning a humble pot of lentils, refining a company strategy, or structuring your days: fewer levers, deeper focus, enduring outcomes.',
     cardClass: 'bg-gradient-to-br from-[#0B0F19] via-[#161224] to-[#1E0E1B] border-[#2D1B2D]',
     glowClass: 'bg-berry-600/15',
@@ -60,7 +60,7 @@ const MANIFESTO_THEMES = {
   },
   '/food': {
     kicker: 'On Culinary Restraint',
-    quote: 'In Lucknow cooking, the nose delivers judgement before the spoon ever reaches the tongue. Good food does not need thirty spices, it needs honest aroma, deliberate heat, and respect for the pot.',
+    quote: 'In Lucknow cooking, the nose delivers judgment before the spoon ever reaches the tongue. Great food does not need thirty spices, it needs honest aroma, deliberate heat, and respect for the pot.',
     subtext: 'Five spices or fewer: clearing executive fatigue, cooking for pure joy, and the lost art of patient simmering.',
     cardClass: 'bg-gradient-to-br from-[#140D05] via-[#1E1308] to-[#2A180A] border-[#3B2412]',
     glowClass: 'bg-amber-600/15',
@@ -81,7 +81,7 @@ const MANIFESTO_THEMES = {
     alt: 'Precision Drafting Compass, Ruler and Calipers over Blueprints',
   },
   '/stories': {
-    kicker: 'On The Dispatch Archive',
+    kicker: 'On The Stories & Letters Archive',
     quote: 'We write not to impress strangers, but to document hard-won lessons while we still have memory. The truest words are always those written after the applause has died down.',
     subtext: 'Field notes from thirty years of enterprise, survival, culinary physics, and roadside observations.',
     cardClass: 'bg-gradient-to-br from-[#0E0C17] via-[#171226] to-[#1E1430] border-[#2E1F47]',
@@ -106,7 +106,7 @@ const STORY_THEMES = {
     alt: 'Vintage Fountain Pen and Steaming Lakhnawi Cutting Chai',
   },
   'category-creation-water-exit': {
-    kicker: 'On Quiet Integrity',
+    kicker: 'On Fiduciary Integrity',
     quote: 'True success in entrepreneurship is not a paper valuation, it is taking bold risks, backing your people, and keeping faith with those who trusted you with their capital.',
     subtext: 'Creating an industry category in India across four regional offices, and choosing shareholder duty over founder vanity.',
     cardClass: 'bg-gradient-to-br from-[#080C14] via-[#0D1524] to-[#121E33] border-[#1E293B]',
@@ -164,48 +164,11 @@ const STORY_THEMES = {
 
 export default function Footer({ onNavigate, currentPath = '/' }) {
   const [email, setEmail] = useState('');
-  const [honeypot, setHoneypot] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
-  const handleSubscribe = async (e) => {
+  const handleSubscribe = (e) => {
     e.preventDefault();
-    // Anti-spam 1: honeypot check
-    if (honeypot) {
-      setSubscribed(true);
-      return;
-    }
-    // Anti-spam 2: email format check
-    if (!email || !email.includes('@') || email.length < 5) {
-      return;
-    }
-    // Anti-spam 3: rate limit repeat posts (60s cooldown)
-    const lastSub = localStorage.getItem('last_sunday_memo_post');
-    if (lastSub && Date.now() - Number(lastSub) < 60000) {
-      setSubscribed(true);
-      return;
-    }
-
-    try {
-      localStorage.setItem('last_sunday_memo_post', String(Date.now()));
-      // If endpoint configured, submit
-      const { FORMS_CONFIG } = await import('../config/forms');
-      if (FORMS_CONFIG.web3formsAccessKey && FORMS_CONFIG.web3formsAccessKey !== 'YOUR_ACCESS_KEY_HERE') {
-        await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-          body: JSON.stringify({
-            access_key: FORMS_CONFIG.web3formsAccessKey,
-            subject: '[5 Spices or Less] Sunday Memo Subscription: ' + email,
-            email: email,
-            from_name: '5 Spices or Less: Sunday Memo'
-          })
-        });
-      }
-    } catch (err) {
-      console.warn('Subscription handled locally:', err);
-    }
-
-    setSubscribed(true);
+    if (email) setSubscribed(true);
   };
 
   const handleLinkClick = (e, path) => {
@@ -298,25 +261,16 @@ export default function Footer({ onNavigate, currentPath = '/' }) {
             </div>
             
             <p className="text-sm text-ink-600 dark:text-ink-200 font-light leading-relaxed max-w-md mb-6">
-              One short email every Sunday morning. A life lesson, a simple recipe, or a real-world startup takeaway. No spam, no fluff.
+              A brief, rich weekly email sent every Sunday morning. One tactical business framework, one life lesson, one minimalist recipe, or simply a timely common-sense reminder.
             </p>
 
             {subscribed ? (
               <div className="inline-flex items-center gap-2 text-xs font-mono text-berry-700 dark:text-berry-300 bg-berry-50 dark:bg-canvas-darkCard px-4 py-2.5 rounded-full border border-berry-200 dark:border-canvas-darkBorder font-semibold">
                 <Check className="w-4 h-4 text-berry-600" />
-                <span>You are subscribed to The Sunday Memo. Welcome.</span>
+                <span>You are subscribed to The Sunday Reduction. Welcome.</span>
               </div>
             ) : (
-              <form onSubmit={handleSubscribe} className="flex gap-2 max-w-md relative">
-                <input
-                  type="text"
-                  name="_hp_company"
-                  tabIndex="-1"
-                  autoComplete="off"
-                  value={honeypot}
-                  onChange={(e) => setHoneypot(e.target.value)}
-                  style={{ display: 'none' }}
-                />
+              <form onSubmit={handleSubscribe} className="flex gap-2 max-w-md">
                 <input
                   type="email"
                   required
@@ -329,7 +283,7 @@ export default function Footer({ onNavigate, currentPath = '/' }) {
                   type="submit"
                   className="px-6 py-2.5 rounded-full bg-berry-600 hover:bg-berry-700 text-white text-xs font-bold transition-colors shadow-md"
                 >
-                  Subscribe
+                  Join Memo
                 </button>
               </form>
             )}

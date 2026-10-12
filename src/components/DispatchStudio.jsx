@@ -208,7 +208,7 @@ export default function DispatchStudio({ onNavigate }) {
     if (account === '5spicesorless') {
       return `New dispatch from the ${category} Desk: "${title || 'Untitled Dispatch'}"\n\n${leadQuote ? `"${leadQuote}"\n\n` : ''}${showTakeaways && takeaways.length > 0 ? `Core Truths:\n• ${takeaways[0]}\n\n` : ''}Read the complete piece on 5 Spices or Less:\n${storyUrl}\n\n${cleanTags}`;
     } else {
-      return `Reflecting on ${category.toLowerCase()} and the quiet power of simplification:\n\n"${title || 'Untitled Dispatch'}"${subtitle ? ` : ${subtitle}` : ''}\n\n${leadQuote ? `"${leadQuote}"\n\n` : ''}Full essay on @5spicesorless:\n${storyUrl}\n\n#5SpicesOrLess ${cleanTags}`;
+      return `Reflecting on ${category.toLowerCase()} and the quiet power of simplification:\n\n"${title || 'Untitled Dispatch'}"${subtitle ? ` — ${subtitle}` : ''}\n\n${leadQuote ? `"${leadQuote}"\n\n` : ''}Full essay on @5spicesorless:\n${storyUrl}\n\n#5SpicesOrLess ${cleanTags}`;
     }
   };
 

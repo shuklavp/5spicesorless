@@ -49,10 +49,10 @@ export default function Navbar({ onNavigate, currentPath = '/', isDark, onToggle
         className={`mx-auto transition-all duration-300 flex items-center justify-between ${
           isScrolled
             ? isTerracotta
-              ? 'max-w-5xl bg-[#8A373C]/95 dark:bg-[#1C0D0F]/95 text-white backdrop-blur-xl border border-white/25 shadow-xl rounded-full py-2 px-6'
+              ? 'max-w-5xl bg-[#241014]/95 dark:bg-[#160B0D]/95 text-white backdrop-blur-xl border border-white/25 shadow-xl rounded-full py-2 px-6'
               : 'max-w-5xl bg-white/95 dark:bg-canvas-darkCard/95 backdrop-blur-xl border border-canvas-border dark:border-canvas-darkBorder shadow-lg shadow-ink-950/5 rounded-full py-2 px-6'
             : isTerracotta
-              ? 'max-w-7xl bg-[#BC5259]/95 dark:bg-[#2A1417]/95 backdrop-blur-xl border-b border-white/20 py-3 px-4 md:px-6'
+              ? 'max-w-7xl bg-[#1A0B0E]/95 dark:bg-[#12080A]/95 backdrop-blur-xl border-b border-white/20 py-3 px-4 md:px-6'
               : 'max-w-7xl bg-white/90 dark:bg-canvas-dark/90 backdrop-blur-xl border-b border-canvas-border/80 dark:border-canvas-darkBorder/60 py-3 px-4 md:px-6'
         }`}
       >

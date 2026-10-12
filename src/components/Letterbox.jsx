@@ -47,38 +47,20 @@ export default function Letterbox() {
     e.preventDefault();
     setSubmitError('');
 
-    const cleanQuestion = (formData.question || '').trim();
-
-    // Spam Check 1: Reject empty or too-short letter
-    if (cleanQuestion.length < 15) {
-      setSubmitError('Please write at least a sentence or two so Vivek has enough context to reflect on your question.');
-      return;
-    }
-
-    // Spam Check 2: Ignore filled honeypot and show same thank-you
+    // Anti-Spam Check 1: Honeypot field must be empty
     if (formData.website_url) {
-      console.warn('Silent bot drop via honeypot.');
-      setSubmitted(true);
+      console.warn('Bot submission blocked via honeypot.');
+      setSpamRejected(true);
       return;
     }
 
-    // Spam Check 3: Rate limit repeat posts (60s cooldown per browser)
-    const lastPost = localStorage.getItem('last_letterbox_post_time');
-    if (lastPost && Date.now() - Number(lastPost) < 60000) {
-      console.warn('Duplicate/repeat post dropped quietly.');
-      setSubmitted(true);
-      return;
-    }
-
-    // Spam Check 4: Dwell time check (minimum 2 seconds)
+    // Anti-Spam Check 2: Dwell time must be at least 2.5 seconds
     const elapsed = Date.now() - loadTime;
-    if (elapsed < 2000) {
-      console.warn('Instant bot drop via dwell time.');
-      setSubmitted(true);
+    if (elapsed < 2500) {
+      console.warn('Bot submission blocked via dwell time.');
+      setSpamRejected(true);
       return;
     }
-
-    localStorage.setItem('last_letterbox_post_time', String(Date.now()));
 
     setIsSubmitting(true);
 
@@ -90,7 +72,7 @@ export default function Letterbox() {
           body: JSON.stringify({
             access_key: FORMS_CONFIG.web3formsAccessKey,
             subject: `[5 Spices Letterbox] [${selectedCategory.toUpperCase()}] from ${isAnonymous ? 'Anonymous' : (formData.name || 'Reader')}`,
-            from_name: '5 Spices or Less: Letterbox',
+            from_name: '5 Spices or Less — Letterbox',
             category: selectedCategory,
             author_type: isAnonymous ? 'Anonymous' : 'Named',
             sender_name: isAnonymous ? 'Anonymous' : formData.name,
@@ -173,7 +155,7 @@ export default function Letterbox() {
                 Your letter has reached Vivek's desk.
               </h3>
               <p className="text-sm text-ink-600 dark:text-ink-300 max-w-md mx-auto leading-relaxed">
-                Thank you for your honesty and trust. Selected questions are answered with care in our Sunday dispatch.
+                Thank you for your honesty and trust. Selected questions are answered with care in our Sunday letter.
               </p>
               <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
                 <button

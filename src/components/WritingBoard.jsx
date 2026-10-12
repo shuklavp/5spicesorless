@@ -8,12 +8,12 @@ export default function WritingBoard({ onNavigate }) {
   const [activeEssay, setActiveEssay] = useState(null);
   const [copiedLink, setCopiedLink] = useState(false);
 
-  const categories = ['All', 'Life', 'Food', 'Work'];
+  const categories = ['All', 'Life', 'Food', 'Work', 'Fiction'];
 
   const filteredEssays =
     selectedCategory === 'All'
       ? ESSAYS_DATA
-      : ESSAYS_DATA.filter((e) => e && e.category && e.category.toLowerCase() === selectedCategory.toLowerCase());
+      : ESSAYS_DATA.filter((e) => e && e.category === selectedCategory);
 
   const handleCopyLink = () => {
     navigator.clipboard?.writeText(window.location.href);
@@ -30,15 +30,15 @@ export default function WritingBoard({ onNavigate }) {
             <div className="flex items-center gap-2 mb-2">
               <span className="w-2.5 h-2.5 rounded-full bg-berry-600" />
               <span className="text-xs font-mono tracking-widest uppercase text-berry-600 dark:text-berry-400 font-bold">
-                THE DISPATCHES &amp; STORIES
+                THE STORIES &amp; LETTERS
               </span>
             </div>
             <h2 className="font-serif text-3xl sm:text-5xl font-bold text-ink-900 dark:text-white max-w-xl">
-              Life lessons, culinary observations, and operator craft.
+              Life lessons, culinary observations, founder craft &amp; fiction.
             </h2>
           </div>
 
-          {/* Category Filter Pills: All, Life, Food, Work */}
+          {/* Category Filter Pills: Life, Food, Work, Fiction */}
           <div className="flex flex-wrap gap-2">
             {categories.map((cat) => (
               <button
@@ -57,77 +57,66 @@ export default function WritingBoard({ onNavigate }) {
         </div>
 
         {/* Featured Editorial Grid */}
-        {filteredEssays.length === 0 ? (
-          <div className="text-center py-16 mb-12 rounded-3xl border border-dashed border-canvas-border dark:border-canvas-darkBorder bg-white/50 dark:bg-canvas-darkCard/50 p-8 space-y-2">
-            <p className="text-sm font-mono text-ink-600 dark:text-ink-300 font-semibold">
-              Nothing filed on this desk yet.
-            </p>
-            <p className="text-xs font-mono text-ink-400 dark:text-ink-500">
-              Essays for {selectedCategory} will appear here as they are published.
-            </p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {filteredEssays.map((essay) => (
-              <article
-                key={essay.id}
-                onClick={() => {
-                  if (onNavigate) {
-                    onNavigate(`/stories/${essay.slug}`);
-                  } else {
-                    setActiveEssay(essay);
-                  }
-                }}
-                className="cursor-pointer group rounded-3xl p-6 bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder hover:border-berry-600 dark:hover:border-berry-500 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col justify-between"
-              >
-                <div>
-                  {/* Meta details */}
-                  <div className="flex items-center justify-between text-xs font-mono mb-4">
-                    <span className="text-berry-700 dark:text-berry-300 bg-berry-50 dark:bg-canvas-dark px-3 py-1 rounded-full border border-berry-200 dark:border-canvas-darkBorder font-bold uppercase text-[10px]">
-                      {essay.category}
-                    </span>
-                    <div className="flex items-center gap-1 text-ink-500 dark:text-ink-300">
-                      <Clock className="w-3 h-3 text-cobalt-600" />
-                      <span>{essay.readTime}</span>
-                    </div>
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="font-serif text-lg font-bold text-ink-900 dark:text-white group-hover:text-berry-600 dark:group-hover:text-berry-400 transition-colors line-clamp-2 mb-2 leading-snug">
-                    {essay.title}
-                  </h3>
-
-                  {/* Subtitle / Excerpt */}
-                  <p className="text-xs text-ink-600 dark:text-ink-200 font-light leading-relaxed line-clamp-3 mb-5">
-                    {essay.subtitle}
-                  </p>
-
-                  {/* Pull Quote Box */}
-                  <div className="p-3 rounded-2xl bg-canvas-subtle dark:bg-canvas-dark border-l-3 border-berry-600 text-[11px] font-serif italic text-ink-800 dark:text-ink-100 mb-4 line-clamp-3">
-                    "{essay.leadQuote}"
-                  </div>
-                </div>
-
-                {/* Action trigger */}
-                <div className="pt-3.5 border-t border-canvas-border dark:border-canvas-darkBorder mt-3 flex items-center justify-between text-[11px] font-mono text-ink-600 dark:text-ink-300">
-                  <span>{essay.date}</span>
-                  <span className="flex items-center gap-1 text-berry-600 dark:text-berry-400 font-bold group-hover:translate-x-0.5 transition-transform">
-                    Read Story <ArrowUpRight className="w-3 h-3" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {filteredEssays.slice(0, 4).map((essay) => (
+            <article
+              key={essay.id}
+              onClick={() => {
+                if (onNavigate) {
+                  onNavigate(`/stories/${essay.slug}`);
+                } else {
+                  setActiveEssay(essay);
+                }
+              }}
+              className="cursor-pointer group rounded-3xl p-6 bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder hover:border-berry-600 dark:hover:border-berry-500 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col justify-between"
+            >
+              <div>
+                {/* Meta details */}
+                <div className="flex items-center justify-between text-xs font-mono mb-4">
+                  <span className="text-berry-700 dark:text-berry-300 bg-berry-50 dark:bg-canvas-dark px-3 py-1 rounded-full border border-berry-200 dark:border-canvas-darkBorder font-bold uppercase text-[10px]">
+                    {essay.category}
                   </span>
+                  <div className="flex items-center gap-1 text-ink-500 dark:text-ink-300">
+                    <Clock className="w-3 h-3 text-cobalt-600" />
+                    <span>{essay.readTime}</span>
+                  </div>
                 </div>
-              </article>
-            ))}
-          </div>
-        )}
+
+                {/* Title */}
+                <h3 className="font-serif text-lg font-bold text-ink-900 dark:text-white group-hover:text-berry-600 dark:group-hover:text-berry-400 transition-colors line-clamp-2 mb-2 leading-snug">
+                  {essay.title}
+                </h3>
+
+                {/* Subtitle / Excerpt */}
+                <p className="text-xs text-ink-600 dark:text-ink-200 font-light leading-relaxed line-clamp-3 mb-5">
+                  {essay.subtitle}
+                </p>
+
+                {/* Pull Quote Box */}
+                <div className="p-3 rounded-2xl bg-canvas-subtle dark:bg-canvas-dark border-l-3 border-berry-600 text-[11px] font-serif italic text-ink-800 dark:text-ink-100 mb-4 line-clamp-3">
+                  "{essay.leadQuote}"
+                </div>
+              </div>
+
+              {/* Action trigger */}
+              <div className="pt-3.5 border-t border-canvas-border dark:border-canvas-darkBorder mt-3 flex items-center justify-between text-[11px] font-mono text-ink-600 dark:text-ink-300">
+                <span>{essay.date}</span>
+                <span className="flex items-center gap-1 text-berry-600 dark:text-berry-400 font-bold group-hover:translate-x-0.5 transition-transform">
+                  Read <ArrowUpRight className="w-3 h-3" />
+                </span>
+              </div>
+            </article>
+          ))}
+        </div>
 
         {/* View Full Archive Banner */}
         <div className="p-6 rounded-2xl bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="space-y-1 text-center sm:text-left">
             <div className="font-serif font-bold text-base text-ink-900 dark:text-white">
-              Looking for earlier dispatches or recipes?
+              Looking for earlier essays or specific tags?
             </div>
             <div className="text-xs font-mono text-ink-500 dark:text-ink-400">
-              Browse stories across Life, Food, and Work with keyword and tag search.
+              Browse stories and letters by Life, Food, Work, or tag archives with keyword search.
             </div>
           </div>
 
@@ -142,7 +131,7 @@ export default function WritingBoard({ onNavigate }) {
 
       </div>
 
-      {/* Reader Modal (Fallback when opened without router) */}
+      {/* Reader Modal (Fallback when opened directly) */}
       {activeEssay && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink-950/70 backdrop-blur-sm animate-fadeIn">
           <div className="bg-white dark:bg-canvas-darkCard rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-canvas-border dark:border-canvas-darkBorder shadow-2xl relative p-6 sm:p-10">
