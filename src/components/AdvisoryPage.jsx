@@ -180,23 +180,18 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
               </div>
             </div>
 
-            {/* RHS: Contextual Hand-Drawn Sketch Still Life */}
-            <div className="lg:col-span-5 flex justify-center">
-              <div className="relative p-6 bg-[#FAF6F0] dark:bg-[#162342]/40 rounded-3xl border border-[#E2E4E8] dark:border-[#1E293B] w-full max-w-md shadow-inner">
-                <img
-                  src="/illustrations/advisory-study.png"
-                  alt="Executive Advisory Study Still Life: Chess King and Knight, Drafting Compass, Open Journal, and Steaming Tea"
-                  className="w-full h-auto object-contain rounded-2xl mix-blend-multiply dark:mix-blend-normal"
-                  onError={(e) => {
-                    // Fallback to placeholder box if image asset path differs
-                    e.currentTarget.style.display = 'none';
-                  }}
-                />
-                <div className="mt-4 pt-3 border-t border-[#E2E4E8] dark:border-[#1E293B]/60 flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-[#64748B]">
-                  <span>Focus & Perspective</span>
-                  <span>Lucknow Roots</span>
-                </div>
-              </div>
+            {/* RHS: Large Borderless Architectural Line Art (No Enclosing Box, No Captions) */}
+            <div className="lg:col-span-5 flex items-center justify-center lg:justify-end relative z-10">
+              <img
+                src="/illustrations/advisory-study.png"
+                alt="Executive Advisory Study Line Art"
+                className="w-full max-w-md lg:max-w-xl h-auto object-contain mix-blend-multiply dark:hidden transition-transform duration-500 hover:scale-105"
+              />
+              <img
+                src="/illustrations/advisory-study-dark.png"
+                alt="Executive Advisory Study Line Art"
+                className="w-full max-w-md lg:max-w-xl h-auto object-contain hidden dark:block transition-transform duration-500 hover:scale-105"
+              />
             </div>
           </div>
         </section>
