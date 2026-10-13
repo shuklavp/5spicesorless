@@ -120,11 +120,11 @@ It took years of trial, missteps, and relentless effort, but that quiet sentence
 
 Looking back across thirty years, three simple truths remain clear:
 
-First, dreams are necessary, but leaving them as vague daydreams leads nowhere. You must have the courage to write them down as concrete, grounded goals.
+1. Concrete Goals: Dreams are necessary, but leaving them as vague daydreams leads nowhere. You must have the courage to write them down as concrete, grounded goals.
 
-Second, the people who sit across the table from you determine the trajectory of your journey. Having genuine partners who wish you well is an irreplaceable gift.
+2. The Right Partners: The people who sit across the table from you determine the trajectory of your journey. Having genuine partners who wish you well is an irreplaceable gift.
 
-Third, and perhaps most vital: one must possess the humility to accept help.
+3. The Humility to Accept Help: Perhaps most vital of all, one must possess the humility to accept help.
 
 Too many capable people recognise their own deficiencies yet refuse to speak up, suffering in silence. Others allow pride and ego to swat away honest assistance when it is extended. Both impulses are tragic mistakes. Acknowledging that you cannot do everything alone, and accepting a generous hand to bridge your gaps, is not weakness. It is the very foundation upon which a lasting life is built.`
   }
