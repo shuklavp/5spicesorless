@@ -8,14 +8,14 @@ export const ESSAYS_DATA = [
     id: 'tea',
     slug: 'tea',
     title: "Anything can happen over a hot cup of tea!",
-    subtitle: "For some, tea is addiction. For a lot of others, it is an emotion.",
+    subtitle: "For some, tea is addiction. For a lot of others', it's an emotion.",
     category: 'Food',
     subCategory: "Recipes (Five Spices or Fewer)",
-    tags: ["Chai", "Lucknow", "Ritual"],
+    tags: ["Tea", "Chai", "Lucknow", "Ritual"],
     readTime: '5 min read',
     date: 'October 2026',
     author: 'Vivek Shukla',
-    leadQuote: "Feeling sad, have tea. Feeling happy, have tea. Feeling nothing, have tea. A hot cup of tea has settled more of my days than I can count.",
+    leadQuote: "Feeling sad, have tea. Feeling happy, have tea. Feeling nothing, have tea. There's nothing which can't be fixed by a hot cup of tea.",
     illustration: '/illustrations/village-courtyard.png',
     illustrationDark: '/illustrations/village-courtyard-dark.png',
     illustrationCaption: '',
@@ -65,4 +65,67 @@ Anyone can brew a decent cup of tea, and nearly everyone carries their own quiet
 
 7. The Pour: Strain into two warm cups. Enjoy it piping hot in the company of someone whose presence you cherish. And if you are alone, let the second cup keep you company.`,
   },
+  {
+    id: 'teak-tables-above-mayfair',
+    slug: 'teak-tables-above-mayfair',
+    title: "The Teak Tables Above Mayfair",
+    subtitle: "How a library in Hazratganj, a green BMW, and accepting help transformed a quiet boy from Lucknow.",
+    category: 'Life',
+    subCategory: "Perspective & Human Bonds",
+    tags: ["Lucknow", "Books", "Ambition", "Hazratganj", "Gratitude"],
+    readTime: '6 min read',
+    date: 'October 2026',
+    author: 'Vivek Shukla',
+    leadQuote: "Accepting help to mend your deficiencies requires shedding your ego. It is often the single decision that alters the course of a life.",
+    illustration: '/illustrations/british-library-lucknow.png',
+    illustrationDark: '/illustrations/british-library-lucknow-dark.png',
+    illustrationCaption: 'The reading room of the British Library above Mayfair Cinema, Hazratganj.',
+    secondaryImage: '/illustrations/quiet-goal-notebook.png',
+    secondaryImageDark: '/illustrations/quiet-goal-notebook-dark.png',
+    secondaryCaption: 'A quiet goal written down in 1997.',
+    image1Position: 'top',
+    image2Position: 'bottom',
+    showTakeaways: false,
+    takeawaysPosition: 'top',
+    takeaways: [],
+    markdownBody: `Growing up in Lucknow, my horizon was remarkably simple. I did not spend my boyhood harbouring sweeping ambitions or grand designs for the future. Like most boys around me, life was understood simply as a sequence of prescribed gates: pass the tenth standard, clear the twelfth, enter university, and then secure whatever sensible livelihood presented itself. The horizon ended at the next examination.
+
+My world changed entirely when I walked up the stairs to the British Library in Hazratganj, situated just above Mayfair Cinema.
+
+To a boy accustomed to modest classrooms with peeling distemper, that room felt like another country. It had bright white lights, smooth teak tables, comfortable chairs, and neat rows of international periodicals and books. It was orderly, cool, and quiet in a way that commanded immediate respect.
+
+It was there that my lifelong fascination with motorcars quietly took root. Leafing through a copy of Autocar, I stumbled upon a two-page spread featuring a BMW 850 in deep British green. I had never seen anything so striking. I stared at that page for what felt like hours, unaware until that afternoon that objects of such refined engineering even existed.
+
+That single afternoon unlocked an insatiable curiosity. I began reading voraciously: philosophy, technology, enterprise, and social history. I read almost everything the library held, with the solitary exception of my official degree subjects: Zoology, Botany, and Chemistry. The prescribed syllabus felt dry, but the world waiting on those teak tables was alive. I held onto that membership faithfully until 2001, when the library finally closed its doors.
+
+### Conversations Across the Table
+
+The library was also, by a comfortable margin, the finest place in the city to meet my girlfriend.
+
+I came from a Hindi-medium school. While my written English and formal grammar were solid, my conversational speech was halting and awkward. The vocabulary was locked in my head, yet forming spontaneous sentences aloud felt intimidating. She, on the other hand, had studied at one of the finest schools in Lucknow. Her English was natural, fluent, and unforced.
+
+Instead of condescension, she offered patience. Across those library tables and on quiet walks through the Ganj, she listened to my clumsy phrasing and gently helped me find the right words. She created a safe space where I could speak without embarrassment.
+
+With every passing month, the dual discipline of reading broad books and speaking without hesitation expanded my mind. I began to look outwards beyond the familiar contours of home, daring to imagine that I too could build something worthwhile.
+
+### A Notebook in 1997
+
+Around 1997, prompted by an observation in a book that every person ought to set a conscious direction for their life, I sat down with a piece of paper. I did not draft a complex scheme. I wrote a single, quiet sentence:
+
+> I want to generate employment for 100 people in my life, and make a positive difference to them.
+
+It took years of trial, missteps, and relentless effort, but that quiet sentence eventually became reality.
+
+### The Wisdom of Subtraction: Asking for Help
+
+Looking back across thirty years, three simple truths remain clear:
+
+First, dreams are necessary, but leaving them as vague daydreams leads nowhere. You must have the courage to write them down as concrete, grounded goals.
+
+Second, the people who sit across the table from you determine the trajectory of your journey. Having genuine partners who wish you well is an irreplaceable gift.
+
+Third, and perhaps most vital: one must possess the humility to accept help.
+
+Too many capable people recognise their own deficiencies yet refuse to speak up, suffering in silence. Others allow pride and ego to swat away honest assistance when it is extended. Both impulses are tragic mistakes. Acknowledging that you cannot do everything alone, and accepting a generous hand to bridge your gaps, is not weakness. It is the very foundation upon which a lasting life is built.`
+  }
 ];
