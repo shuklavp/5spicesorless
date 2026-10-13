@@ -146,11 +146,11 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
     <div className="min-h-screen bg-[#F1F2F4] dark:bg-[#080D18] text-[#0F172A] dark:text-[#F8FAFC] transition-colors duration-300">
       <div className="pt-32 pb-24 max-w-6xl mx-auto px-6 space-y-20">
 
-        {/* SECTION 1: HERO & CONTEXT (With Scaled Line Art Matching Mockup Proportions) */}
-        <section className="bg-white dark:bg-[#0F1829] rounded-3xl p-8 md:p-12 lg:p-14 border border-[#E2E4E8] dark:border-[#1E293B] shadow-sm relative overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
-            {/* LHS: Operator Narrative & Positioning (Col 6) */}
-            <div className="lg:col-span-6 xl:col-span-6 space-y-6 z-10 relative">
+        {/* SECTION 1: HERO & CONTEXT (With RHS Architectural Sketch) */}
+        <section className="bg-white dark:bg-[#0F1829] rounded-3xl p-8 md:p-14 border border-[#E2E4E8] dark:border-[#1E293B] shadow-sm">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            {/* LHS: Operator Narrative & Positioning */}
+            <div className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FCE4EC] dark:bg-[#BC5259]/20 text-[#BC5259] text-xs font-mono tracking-widest uppercase">
                 <Compass className="w-3.5 h-3.5" />
                 Advisory & Operational Partnerships
@@ -160,7 +160,7 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
                 Direct counsel from someone who has lived the full founder cycle.
               </h1>
 
-              <div className="space-y-4 text-base text-[#475569] dark:text-[#CBD5E1] leading-relaxed max-w-xl">
+              <div className="space-y-4 text-base text-[#475569] dark:text-[#CBD5E1] leading-relaxed">
                 <p>
                   Most external business advice arrives as theoretical slides or generic playbooks. Having spent thirty years inside operating enterprises, founding an IoT company from scratch, leading a team of 160+ people across four regional offices, and steering a clean exit, I partner directly with founders to cut away operational clutter.
                 </p>
@@ -180,17 +180,17 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
               </div>
             </div>
 
-            {/* RHS: Scaled Prominent Line Art (Col 6, Filling the Height and Width) */}
-            <div className="lg:col-span-6 xl:col-span-6 flex items-center justify-center lg:justify-end relative z-10">
+            {/* RHS: Large Borderless Architectural Line Art (No Enclosing Box, No Captions) */}
+            <div className="lg:col-span-5 flex items-center justify-center lg:justify-end relative z-10">
               <img
                 src="/illustrations/advisory-study.png"
                 alt="Executive Advisory Study Line Art"
-                className="w-full sm:w-[95%] md:w-[90%] lg:w-[120%] xl:w-[130%] max-w-2xl h-auto object-contain mix-blend-multiply dark:hidden lg:origin-right transition-transform duration-500 hover:scale-[1.02]"
+                className="w-full max-w-md lg:max-w-xl h-auto object-contain mix-blend-multiply dark:hidden transition-transform duration-500 hover:scale-105"
               />
               <img
                 src="/illustrations/advisory-study-dark.png"
                 alt="Executive Advisory Study Line Art"
-                className="w-full sm:w-[95%] md:w-[90%] lg:w-[120%] xl:w-[130%] max-w-2xl h-auto object-contain hidden dark:block lg:origin-right transition-transform duration-500 hover:scale-[1.02]"
+                className="w-full max-w-md lg:max-w-xl h-auto object-contain hidden dark:block transition-transform duration-500 hover:scale-105"
               />
             </div>
           </div>
@@ -321,51 +321,57 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
         <section className="bg-[#BC5259] dark:bg-[#2A1417] text-white rounded-3xl p-8 md:p-14 shadow-xl">
           <div className="max-w-3xl mb-12">
             <span className="text-xs font-mono uppercase tracking-widest text-[#FCE4EC] font-semibold block mb-2">
-              Working Principles & Ground Truth
+              MUTUAL FIT &amp; WORKING STYLE
             </span>
             <h2 className="font-serif text-2xl md:text-4xl font-bold mb-4">
-              Mutual Fit & Working Style
+              We will not be a good fit if...
             </h2>
             <p className="text-sm md:text-base text-[#FCE4EC] leading-relaxed">
-              I protect my time and yours by keeping my active client roster strictly capped at two or three founders. We will work exceptionally well together under three simple ground rules:
+              Advisory only works when both sides share the same wavelength. I cap my advisory work to two or three founders at a time so I can be genuinely helpful. To protect both our calendars, here is where my approach will not work:
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-[#FAF8F5] dark:bg-[#1C1618] text-ink-950 dark:text-white rounded-2xl p-7 shadow-sm border border-white/20">
-              <span className="text-xs font-mono text-[#BC5259] font-bold block mb-2 uppercase tracking-wider">
-                Rule 01
-              </span>
-              <h3 className="font-serif text-lg font-bold mb-2">
-                No Slide Decks
-              </h3>
-              <p className="text-xs md:text-sm text-[#475569] dark:text-[#CBD5E1] leading-relaxed">
-                We write single-page decision memos. If a proposal cannot be clearly articulated on one sheet of paper, it is not ready for execution.
-              </p>
+            <div className="bg-[#FAF8F5] dark:bg-[#1C1618] text-ink-950 dark:text-white rounded-2xl p-7 shadow-sm border border-white/20 flex flex-col justify-between">
+              <div>
+                <span className="text-[11px] font-mono text-[#BC5259] dark:text-berry-400 font-bold block mb-3 uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#BC5259]/10 dark:bg-berry-950/50 border border-[#BC5259]/20 w-fit">
+                  NO SLIDE DECKS
+                </span>
+                <h3 className="font-serif text-lg font-bold mb-3 leading-snug">
+                  Pitch Deck Decorators &amp; Buzzword Polishers
+                </h3>
+                <p className="text-xs md:text-sm text-[#475569] dark:text-[#CBD5E1] leading-relaxed font-light">
+                  If you need an agency to produce glossy 60-slide presentations filled with consulting jargon to appease outsiders, traditional firms are built for that. I work with builders who prefer simple truths, clear unit economics, and one-page decision memos.
+                </p>
+              </div>
             </div>
 
-            <div className="bg-[#FAF8F5] dark:bg-[#1C1618] text-ink-950 dark:text-white rounded-2xl p-7 shadow-sm border border-white/20">
-              <span className="text-xs font-mono text-[#BC5259] font-bold block mb-2 uppercase tracking-wider">
-                Rule 02
-              </span>
-              <h3 className="font-serif text-lg font-bold mb-2">
-                No Meeting Cultures
-              </h3>
-              <p className="text-xs md:text-sm text-[#475569] dark:text-[#CBD5E1] leading-relaxed">
-                Action takes precedence over consensus deliberations. We cut away ceremonial meetings so builders can build and leaders can lead.
-              </p>
+            <div className="bg-[#FAF8F5] dark:bg-[#1C1618] text-ink-950 dark:text-white rounded-2xl p-7 shadow-sm border border-white/20 flex flex-col justify-between">
+              <div>
+                <span className="text-[11px] font-mono text-[#BC5259] dark:text-berry-400 font-bold block mb-3 uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#BC5259]/10 dark:bg-berry-950/50 border border-[#BC5259]/20 w-fit">
+                  NO MEETING CULTURES
+                </span>
+                <h3 className="font-serif text-lg font-bold mb-3 leading-snug">
+                  Meeting-First Cultures Equating Motion With Progress
+                </h3>
+                <p className="text-xs md:text-sm text-[#475569] dark:text-[#CBD5E1] leading-relaxed font-light">
+                  If your leadership culture thrives on eight hours of back-to-back calendar syncs, endless committee sign-offs, and administrative noise, my philosophy will frustrate you. My approach is built on removing meetings so your team can do focused, uninterrupted work.
+                </p>
+              </div>
             </div>
 
-            <div className="bg-[#FAF8F5] dark:bg-[#1C1618] text-ink-950 dark:text-white rounded-2xl p-7 shadow-sm border border-white/20">
-              <span className="text-xs font-mono text-[#BC5259] font-bold block mb-2 uppercase tracking-wider">
-                Rule 03
-              </span>
-              <h3 className="font-serif text-lg font-bold mb-2">
-                No Yes-Men
-              </h3>
-              <p className="text-xs md:text-sm text-[#475569] dark:text-[#CBD5E1] leading-relaxed">
-                You do not need cheerleaders who agree with every assumption. You receive warm courtesy combined with unvarnished, direct judgement.
-              </p>
+            <div className="bg-[#FAF8F5] dark:bg-[#1C1618] text-ink-950 dark:text-white rounded-2xl p-7 shadow-sm border border-white/20 flex flex-col justify-between">
+              <div>
+                <span className="text-[11px] font-mono text-[#BC5259] dark:text-berry-400 font-bold block mb-3 uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#BC5259]/10 dark:bg-berry-950/50 border border-[#BC5259]/20 w-fit">
+                  NO YES-MEN
+                </span>
+                <h3 className="font-serif text-lg font-bold mb-3 leading-snug">
+                  Leaders Looking for an Agreeable Echo Chamber
+                </h3>
+                <p className="text-xs md:text-sm text-[#475569] dark:text-[#CBD5E1] leading-relaxed font-light">
+                  I bring warm Lakhnawi courtesy (tehzeeb) and zero ego into every conversation, but I will never tell you what you want to hear just to keep you comfortable. If you are not open to hearing an unvarnished operator assessment of where things are stalling, we will waste each other’s time.
+                </p>
+              </div>
             </div>
           </div>
         </section>
