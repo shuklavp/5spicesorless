@@ -89,48 +89,57 @@ export default function App() {
 
   // Dynamic Route Resolver
   const renderCurrentRoute = () => {
+    // Normalise current path (strip trailing slash for paths longer than 1 character)
+    const normalizedPath =
+      currentPath.length > 1 && currentPath.endsWith('/')
+        ? currentPath.slice(0, -1)
+        : currentPath;
+
     // 0. The Dispatch Studio Authoring Suite: /studio
-    if (currentPath === '/studio') {
+    if (normalizedPath === '/studio') {
       return <DispatchStudio onNavigate={handleNavigate} isDark={isDark} />;
     }
     // 1. Standalone About Page: /about
-    if (currentPath === '/about') {
+    if (normalizedPath === '/about') {
       return <AboutPage onNavigate={handleNavigate} isDark={isDark} />;
     }
     // 2. Standalone Advisory Page: /advisory or /consulting
-    if (currentPath === '/advisory' || currentPath === '/consulting') {
+    if (normalizedPath === '/advisory' || normalizedPath === '/consulting') {
       return <AdvisoryPage onNavigate={handleNavigate} isDark={isDark} />;
     }
     // 2a. Standalone Advisory Pillar Pages
-    if (currentPath === '/advisory/fractional-operator') {
+    if (normalizedPath === '/advisory/fractional-operator') {
       return <PillarOperatorPage onNavigate={handleNavigate} isDark={isDark} />;
     }
-    if (currentPath === '/advisory/eir') {
+    if (normalizedPath === '/advisory/eir') {
       return <PillarEIRPage onNavigate={handleNavigate} isDark={isDark} />;
     }
     if (
-      currentPath === '/advisory/founder-confidant' ||
-      currentPath === '/advisory/ben-to-jules'
+      normalizedPath === '/advisory/founder-confidant' ||
+      normalizedPath === '/advisory/ben-to-jules'
     ) {
       return <PillarConfidantPage onNavigate={handleNavigate} isDark={isDark} />;
     }
-    // 3. Standalone Story Reader: /stories/:slug
-    if (currentPath.startsWith('/stories/')) {
-      const slug = currentPath.replace('/stories/', '');
-      return <StoryPage slug={slug} onNavigate={handleNavigate} isDark={isDark} />;
+    // 3. Standalone Desk Archives: /stories, /life, /food, /work
+    if (normalizedPath === '/stories') {
+      return <DeskPage desk="stories" deskId="stories" onNavigate={handleNavigate} isDark={isDark} />;
     }
-    // 4. Standalone Desk Archives: /life, /food, /work, /stories
-    if (currentPath === '/life') {
-      return <DeskPage desk="life" onNavigate={handleNavigate} isDark={isDark} />;
+    if (normalizedPath === '/life') {
+      return <DeskPage desk="life" deskId="life" onNavigate={handleNavigate} isDark={isDark} />;
     }
-    if (currentPath === '/food') {
-      return <DeskPage desk="food" onNavigate={handleNavigate} isDark={isDark} />;
+    if (normalizedPath === '/food') {
+      return <DeskPage desk="food" deskId="food" onNavigate={handleNavigate} isDark={isDark} />;
     }
-    if (currentPath === '/work') {
-      return <DeskPage desk="work" onNavigate={handleNavigate} isDark={isDark} />;
+    if (normalizedPath === '/work') {
+      return <DeskPage desk="work" deskId="work" onNavigate={handleNavigate} isDark={isDark} />;
     }
-    if (currentPath === '/stories') {
-      return <DeskPage desk="stories" onNavigate={handleNavigate} isDark={isDark} />;
+    // 4. Standalone Story Reader: /stories/:slug
+    if (normalizedPath.startsWith('/stories/')) {
+      const slug = normalizedPath.replace('/stories/', '').replace(/\/$/, '');
+      if (slug) {
+        return <StoryPage slug={slug} onNavigate={handleNavigate} isDark={isDark} />;
+      }
+      return <DeskPage desk="stories" deskId="stories" onNavigate={handleNavigate} isDark={isDark} />;
     }
 
     // 5. Default: Front Page
