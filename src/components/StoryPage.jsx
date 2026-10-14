@@ -118,11 +118,6 @@ export default function StoryPage({ slug, onNavigate }) {
                     />
                   )}
                 </div>
-                {(essay.illustrationCaption || essay.imageCaption) && (
-                  <p className="mt-3 text-xs font-mono text-ink-500 dark:text-ink-400 italic">
-                    {essay.illustrationCaption || essay.imageCaption}
-                  </p>
-                )}
               </div>
             ) : null
           );
