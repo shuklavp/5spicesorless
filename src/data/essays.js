@@ -194,6 +194,6 @@ My father’s principle was an exercise in mental discipline. It meant having th
 
 3. It makes room for clarity: You realise that growth rarely comes from piling on more complexity. It comes from having the nerve to strip away the noise until only what is vital remains.
 
-**Connected Note:** *Before learning to read consumer psychology across digital screens, the habit of quiet observation first began over magazines and library tables. Read [The Teak Tables Above Mayfair](/stories/teak-tables-above-mayfair), on how books, patience, and shedding ego shaped those early years in Lucknow.*`
+**Connected Note:** Before learning to read consumer psychology across digital screens, the habit of quiet observation first began over magazines and library tables. Read [The Teak Tables Above Mayfair](/stories/teak-tables-above-mayfair), on how books, patience, and shedding ego shaped those early years in Lucknow.`
   }
 ];
