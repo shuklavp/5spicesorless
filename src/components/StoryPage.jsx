@@ -182,23 +182,47 @@ const renderInlineMarkdown = (text) => {
   // Clean any accidental "Word:**" into "**Word:**"
   let cleanText = text.replace(/([A-Za-z0-9\s&()/-]+):\*\*/g, '**$1:**');
 
-  // Split on bold (**text**)
-  const parts = cleanText.split(/(\*\*.*?\*\*)/g);
-  return parts.map((part, index) => {
-    if (part.startsWith('**') && part.endsWith('**') && part.length >= 4) {
+  // Split by markdown links: [text](url)
+  const linkParts = cleanText.split(/(\[[^\]]+\]\([^)]+\))/g);
+
+  return linkParts.map((linkPart, lIdx) => {
+    const linkMatch = linkPart.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (linkMatch) {
+      const [, label, url] = linkMatch;
       return (
-        <strong key={index} className="font-bold text-ink-950 dark:text-white">
-          {part.slice(2, -2)}
-        </strong>
+        <a
+          key={`link-${lIdx}`}
+          href={url}
+          className="text-berry-600 dark:text-berry-400 underline underline-offset-4 hover:opacity-80 font-medium transition-opacity"
+        >
+          {label}
+        </a>
       );
     }
-    // Split remaining by italic (*text*)
-    const subParts = part.split(/(\*[^*]+?\*)/g);
-    return subParts.map((sub, sIdx) => {
-      if (sub.startsWith('*') && sub.endsWith('*') && sub.length >= 2) {
-        return <em key={`${index}-${sIdx}`} className="italic">{sub.slice(1, -1)}</em>;
+
+    // Split on bold (**text**)
+    const boldParts = linkPart.split(/(\*{2}.*?\*{2})/g);
+    return boldParts.map((boldPart, bIdx) => {
+      if (boldPart.startsWith('**') && boldPart.endsWith('**') && boldPart.length >= 4) {
+        return (
+          <strong key={`bold-${lIdx}-${bIdx}`} className="font-bold text-ink-950 dark:text-white">
+            {boldPart.slice(2, -2)}
+          </strong>
+        );
       }
-      return sub;
+
+      // Split on italic (*text*)
+      const italicParts = boldPart.split(/(\*[^*]+?\*)/g);
+      return italicParts.map((sub, sIdx) => {
+        if (sub.startsWith('*') && sub.endsWith('*') && sub.length >= 2) {
+          return (
+            <em key={`italic-${lIdx}-${bIdx}-${sIdx}`} className="italic">
+              {sub.slice(1, -1)}
+            </em>
+          );
+        }
+        return sub;
+      });
     });
   });
 };
