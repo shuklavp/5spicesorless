@@ -1,6 +1,7 @@
 // src/components/Hero.jsx
 import React, { useState } from 'react';
 import { ArrowRight, BookOpen, Compass } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const SPICE_PILLARS = [
   {
@@ -125,13 +126,13 @@ export default function Hero({ onOpenInquiry }) {
                 <span>Explore Stories &amp; Lessons →</span>
               </a>
 
-              <button
-                onClick={onOpenInquiry}
+              <Link
+                to="/advisory"
                 className="group px-7 py-3.5 rounded-full border-2 border-ink-900 dark:border-white text-ink-900 dark:text-white hover:bg-ink-900 hover:text-white dark:hover:bg-white dark:hover:text-ink-950 font-bold text-xs uppercase tracking-wider font-mono flex items-center gap-2.5 transition-all active:scale-95"
               >
                 <Compass className="w-4 h-4 text-cobalt-600 dark:text-cobalt-400" />
                 <span>Dedicated Founder Advisory →</span>
-              </button>
+              </Link>
             </div>
           </div>
 
