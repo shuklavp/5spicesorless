@@ -231,12 +231,7 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
 
                     {/* Icon & Title */}
                     <div>
-                      <div
-                        className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4 transition-transform group-hover:scale-105"
-                        style={{ backgroundColor: isDark ? `${pillar.color}25` : pillar.bgPill, color: pillar.color }}
-                      >
-                        <IconComponent className="w-6 h-6" />
-                      </div>
+                      
                       <h3 className="font-serif text-xl font-bold text-ink-950 dark:text-white mb-2 leading-snug">
                         {pillar.title}
                       </h3>
