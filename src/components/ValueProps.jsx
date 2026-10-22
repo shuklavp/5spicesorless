@@ -110,13 +110,37 @@ export default function ValueProps({ onNavigate }) {
                 THE THREE DESKS
               </span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-5xl font-black text-ink-900 dark:text-white max-w-xl leading-tight">
-              What You Will Find Here.
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center mb-16 md:mb-20">
+          <div className="lg:col-span-5">
+            <h2 className="font-serif text-5xl sm:text-6xl md:text-7xl leading-[0.98] tracking-tight text-[#111111]">
+              What You <span className="italic font-normal font-serif text-[#E11D74]">Will</span>
+              <br />
+              Find Here.
             </h2>
           </div>
-          <p className="text-ink-700 dark:text-ink-200 font-normal max-w-lg text-sm sm:text-base leading-relaxed">
-            Everything here comes from personal experience: thirty years of loving, cooking, building companies, and surviving. I write to separate what truly matters from everyday noise, in the hope that these notes make your life, your table, and your work a little simpler.
-          </p>
+          <div className="lg:col-span-7">
+            <p className="font-serif text-xl sm:text-2xl text-[#2B2927] leading-[1.65] max-w-2xl">
+              Everything here comes from personal experience:{" "}
+              <span className="text-[#B85028] underline decoration-[#B85028]/60 decoration-[1.5px] underline-offset-4 font-medium">
+                thirty years
+              </span>{" "}
+              of loving, cooking, building companies, and surviving. I write to separate what truly matters from everyday noise, in the hope that these notes make your{" "}
+              <span className="text-[#B85028] underline decoration-[#B85028]/60 decoration-[1.5px] underline-offset-4 font-medium">
+                life
+              </span>
+              , your{" "}
+              <span className="text-[#B85028] underline decoration-[#B85028]/60 decoration-[1.5px] underline-offset-4 font-medium">
+                table
+              </span>
+              , and your{" "}
+              <span className="text-[#B85028] underline decoration-[#B85028]/60 decoration-[1.5px] underline-offset-4 font-medium">
+                work
+              </span>{" "}
+              a little simpler.
+            </p>
+          </div>
+        </div>
+          </div>
         </div>
 
         {/* 3 Column Cards Grid */}
