@@ -1,11 +1,12 @@
 // src/components/ValueProps.jsx
 import React, { useState } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, BookOpen, UtensilsCrossed, Briefcase } from 'lucide-react';
 
 const DESKS = [
   {
     id: 'life',
     path: '/life',
+    badge: 'FOLIO / 01',
     number: '01',
     kicker: 'LIFE',
     title: 'Life, Relationships, & Perspective',
@@ -16,17 +17,26 @@ const DESKS = [
       'The quiet wisdom of long devotion and arranged partnerships',
       'Perspective over panic: un-complicating everyday human life',
     ],
-    cadence: 'Every two weeks',
+    cadence: 'EVERY TWO WEEKS',
     cta: 'The Life Desk',
-    accentColor: 'border-t-berry-600',
-    tagColor: 'text-berry-600 dark:text-berry-400 bg-berry-50 dark:bg-berry-950/60 border-berry-200 dark:border-berry-900',
+    cardBg: 'bg-gradient-to-b from-[#0F3822] via-[#0B2A1A] to-[#071D12]',
+    border: 'border-[#1E5E3A]/60 hover:border-emerald-400',
+    watermarkColor: 'text-emerald-400/15',
+    badgeStyle: 'bg-emerald-950/80 text-emerald-300 border border-emerald-500/30',
+    kickerColor: 'text-emerald-400',
+    titleColor: 'text-white',
+    bodyColor: 'text-emerald-100/80',
+    bulletColor: 'text-emerald-400',
+    arrowBg: 'bg-emerald-500 hover:bg-emerald-400 text-emerald-950',
+    icon: BookOpen,
   },
   {
     id: 'food',
     path: '/food',
+    badge: 'PANTRY / 02',
     number: '02',
     kicker: 'FOOD',
-    title: 'Comfort Food with 5 Spices or Less',
+    title: 'Comfort Food, 5 Spices or Less',
     summary:
       'In Lucknow, where I come from, the nose makes the final judgement before the tongue ever gets a turn. Good food does not need thirty jars of spices. It needs good aroma, deliberate heat, and simple steps. I cook purely for the joy of it, using five spices or fewer. Every fortnight, I share one simple, comforting recipe that anyone can master.',
     expectations: [
@@ -34,14 +44,23 @@ const DESKS = [
       'Mastering the 5-spice alchemy from Cumin to Aromatics',
       'How deliberate cooking clears and calms a cluttered executive mind',
     ],
-    cadence: 'One recipe every fortnight',
+    cadence: 'FORTNIGHTLY RECIPE',
     cta: 'The Food Desk',
-    accentColor: 'border-t-cobalt-600',
-    tagColor: 'text-cobalt-600 dark:text-cobalt-400 bg-cobalt-50 dark:bg-cobalt-950/60 border-cobalt-200 dark:border-cobalt-900',
+    cardBg: 'bg-gradient-to-b from-[#C86218] via-[#B44E0E] to-[#8C3606]',
+    border: 'border-amber-300/40 hover:border-amber-200',
+    watermarkColor: 'text-amber-200/20',
+    badgeStyle: 'bg-black/25 text-amber-100 border border-white/30 backdrop-blur-sm',
+    kickerColor: 'text-amber-200',
+    titleColor: 'text-white',
+    bodyColor: 'text-amber-50/90',
+    bulletColor: 'text-amber-200',
+    arrowBg: 'bg-white hover:bg-amber-100 text-amber-950',
+    icon: UtensilsCrossed,
   },
   {
     id: 'work',
     path: '/work',
+    badge: 'CABINET / 03',
     number: '03',
     kicker: 'WORK',
     title: 'Career, Startups & Boardrooms',
@@ -52,21 +71,37 @@ const DESKS = [
       'Building from zero: customer acquisition, hiring, and unit economics',
       'Investor relations, board dynamics, and the discipline of clean exits',
     ],
-    cadence: 'A weekly note on Sunday',
+    cadence: 'WEEKLY NOTE ON SUNDAY',
     cta: 'The Work Desk',
-    accentColor: 'border-t-ink-900 dark:border-t-white',
-    tagColor: 'text-ink-700 dark:text-ink-300 bg-canvas-subtle dark:bg-canvas-dark border-canvas-border dark:border-canvas-darkBorder',
+    cardBg: 'bg-gradient-to-b from-[#132238] via-[#0D1829] to-[#070D17]',
+    border: 'border-[#223B61]/60 hover:border-cyan-400',
+    watermarkColor: 'text-cyan-400/15',
+    badgeStyle: 'bg-cyan-950/80 text-cyan-300 border border-cyan-500/30',
+    kickerColor: 'text-cyan-400',
+    titleColor: 'text-white',
+    bodyColor: 'text-slate-300',
+    bulletColor: 'text-cyan-400',
+    arrowBg: 'bg-cyan-500 hover:bg-cyan-400 text-slate-950',
+    icon: Briefcase,
   },
 ];
 
 export default function ValueProps({ onNavigate }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
+  const handleCircleClick = (e, path) => {
+    e.stopPropagation();
+    if (onNavigate) {
+      onNavigate(path);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section id="philosophy" className="py-24 px-6 md:px-12 bg-[#E6E9EF] dark:bg-canvas-dark relative border-t border-canvas-border dark:border-canvas-darkBorder transition-colors duration-300">
+    <section id="philosophy" className="py-24 px-6 md:px-12 bg-[#F4F6F9] dark:bg-canvas-dark relative border-t border-canvas-border dark:border-canvas-darkBorder transition-colors duration-300">
       <div className="max-w-6xl mx-auto">
         
-        {/* Section Header: The Reader's Contract */}
+        {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="space-y-3">
             <div className="flex items-center gap-2">
@@ -84,71 +119,86 @@ export default function ValueProps({ onNavigate }) {
           </p>
         </div>
 
-        {/* 3 Column Broadside Grid */}
+        {/* 3 Column Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           {DESKS.map((item, index) => {
             const isHovered = hoveredIndex === index;
+            const Icon = item.icon;
+
             return (
               <div
                 key={item.id}
                 id={item.id}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className={`relative rounded-3xl p-8 bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder border-t-4 scroll-mt-28 ${item.accentColor} transition-all duration-300 flex flex-col justify-between shadow-sm ${
-                  isHovered
-                    ? 'shadow-xl -translate-y-1 border-canvas-border dark:border-canvas-darkBorder'
-                    : ''
+                className={`relative rounded-[2rem] p-8 ${item.cardBg} ${item.border} border shadow-xl transition-all duration-500 flex flex-col justify-between overflow-hidden cursor-default ${
+                  isHovered ? '-translate-y-2 shadow-2xl scale-[1.01]' : ''
                 }`}
               >
-                <div>
-                  {/* Top Bar: Desk Tag & Number */}
+                {/* Large Background Watermark Number */}
+                <span
+                  className={`absolute right-4 top-24 font-serif text-9xl font-black select-none pointer-events-none transition-transform duration-500 ${item.watermarkColor} ${
+                    isHovered ? 'scale-110 -translate-x-2' : ''
+                  }`}
+                >
+                  {item.number}
+                </span>
+
+                <div className="relative z-10">
+                  {/* Top Bar: Badge & Icon */}
                   <div className="flex items-center justify-between mb-6">
-                    <span className={`font-mono text-[11px] font-bold px-3 py-1 rounded-full border uppercase tracking-wider ${item.tagColor}`}>
-                      {item.kicker}
+                    <span className={`font-mono text-[11px] font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider ${item.badgeStyle}`}>
+                      {item.badge}
                     </span>
-                    <span className="font-mono text-xs font-bold text-ink-400 dark:text-ink-500">
-                      DESK {item.number}
-                    </span>
+                    <Icon className="w-5 h-5 opacity-60 text-white" />
                   </div>
 
-                  {/* Headline */}
-                  <h3 className="font-serif text-2xl font-bold text-ink-900 dark:text-white mb-4 leading-snug">
+                  {/* Desk Title */}
+                  <h3 className={`font-serif text-2xl sm:text-[26px] font-bold ${item.titleColor} mb-4 leading-snug`}>
                     {item.title}
                   </h3>
 
-                  {/* Purpose Narrative */}
-                  <p className="text-sm text-ink-600 dark:text-ink-300 font-light leading-relaxed mb-6">
+                  {/* Summary Narrative */}
+                  <p className={`text-xs sm:text-sm font-light leading-relaxed mb-6 ${item.bodyColor}`}>
                     {item.summary}
                   </p>
 
-                  {/* What you can expect checklist */}
-                  <div className="pt-5 border-t border-canvas-border dark:border-canvas-darkBorder space-y-3 mb-8">
-                    <div className="text-[11px] font-mono uppercase tracking-wider text-ink-400 dark:text-ink-500 font-bold mb-2">
-                      What to expect:
+                  {/* What to Expect Checklist */}
+                  <div className="pt-5 border-t border-white/10 space-y-2.5 mb-8">
+                    <div className="text-[10px] font-mono uppercase tracking-widest text-white/50 font-bold mb-2">
+                      WHAT TO EXPECT:
                     </div>
                     {item.expectations.map((exp, i) => (
-                      <div key={i} className="flex items-start gap-2.5 text-xs text-ink-800 dark:text-ink-100 font-medium">
-                        <span className="text-berry-600 dark:text-berry-400 font-bold shrink-0 mt-0.5">•</span>
+                      <div key={i} className="flex items-start gap-2.5 text-xs text-white/90 font-normal">
+                        <span className={`${item.bulletColor} font-bold shrink-0 mt-0.5`}>•</span>
                         <span className="leading-relaxed">{exp}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Footer: Cadence & Direct Link */}
-                <div className="pt-6 border-t border-canvas-border dark:border-canvas-darkBorder mt-auto">
-                  <div className="flex items-center justify-between text-xs mb-4">
-                    <span className="font-mono text-[11px] text-ink-500 dark:text-ink-400 font-medium">
+                {/* Card Footer */}
+                <div className="relative z-10 pt-5 border-t border-white/10 mt-auto flex items-center justify-between">
+                  <div>
+                    <div className="flex items-center gap-1.5 mb-1">
+                      <span className={`text-[11px] font-mono font-bold tracking-wider uppercase ${item.kickerColor}`}>
+                        {item.kicker}
+                      </span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-white/40" />
+                    </div>
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-white/70 block">
                       {item.cadence}
                     </span>
                   </div>
 
+                  {/* Only this round placeholder with arrow is clickable */}
                   <button
-                    onClick={() => onNavigate && onNavigate(item.path)}
-                    className="w-full inline-flex items-center justify-between text-xs font-bold tracking-wide text-ink-900 dark:text-white hover:text-berry-600 dark:hover:text-berry-400 transition-colors pt-2 group"
+                    type="button"
+                    onClick={(e) => handleCircleClick(e, item.path)}
+                    className={`w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer ${item.arrowBg} hover:scale-110 active:scale-95`}
+                    aria-label={`Go to ${item.title}`}
                   >
-                    <span>{item.cta}</span>
-                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1 text-berry-600 dark:text-berry-400" />
+                    <ArrowRight className="w-5 h-5 stroke-[2.5]" />
                   </button>
                 </div>
               </div>

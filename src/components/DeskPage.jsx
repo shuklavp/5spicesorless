@@ -1,240 +1,123 @@
 // src/components/DeskPage.jsx
-import React, { useState } from 'react';
-import { ArrowLeft, ArrowUpRight, Clock, Feather, Search } from 'lucide-react';
-import { ESSAYS_DATA } from '../data/essays';
+import React, { useState, useMemo } from 'react';
+import { ArrowLeft, Search, Clock, ArrowUpRight } from 'lucide-react';
+import { essays } from '../data/essays';
 
-const DESK_CONFIGS = {
-  life: {
-    title: 'The Life Desk',
-    kicker: 'LIFE, PERSPECTIVE, & HUMAN BONDS',
-    subtitle: 'Everyday lessons from growing up in a not-so-big city of Lucknow, learning the nuances of communication and tehzeeb, and making honest mistakes. Becoming a hopeless dreamer and builder, and learning to be a kinder human being rather than playing an unearned guru.',
-    cadence: 'Every two weeks',
-  },
-  food: {
-    title: 'The Food Desk',
-    kicker: 'FIVE SPICES OR FEWER',
-    subtitle: 'Lucknow roots where aroma precedes taste. Five spices, deliberate heat, and simple steps cooking for pure joy and mental decompression.',
-    cadence: 'One recipe every fortnight',
-  },
-  work: {
-    title: 'The Work Desk',
-    kicker: 'STARTUPS, BOARDROOMS, & OPERATIONAL DISCIPLINE',
-    subtitle: 'Thirty years of enterprise building enduring ventures, trusted partnerships, and practical operator judgement. Cutting through operational noise, boardroom theatre, and vanity to focus on what truly works.',
-    cadence: 'A weekly note on Sunday',
-  },
-  stories: {
-    title: 'All Stories & Letters',
-    kicker: 'THE EDITORIAL ARCHIVE',
-    subtitle: 'Reflective personal essays, culinary observations, operator playbooks, and short fiction by Vivek Shukla.',
-    cadence: 'Complete Archive',
-  },
-};
+export default function DeskPage({ onNavigate }) {
+  const [searchQuery, setSearchQuery] = useState('');
 
-export default function DeskPage({ desk, deskId, onNavigate, isDark }) {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedTag, setSelectedTag] = useState('All');
-
-  // Support both desk and deskId props gracefully, defaulting safely to 'stories'
-  const activeDesk = (desk || deskId || 'stories').toLowerCase();
-  const config = DESK_CONFIGS[activeDesk] || DESK_CONFIGS.stories;
-
-  // Safe navigation helper
-  const navigateTo = (path) => {
-    if (onNavigate) {
-      onNavigate(path);
-    } else {
-      window.location.href = path;
-    }
-  };
-
-  // Filter essays by desk (if not all stories)
-  const deskEssays =
-    activeDesk === 'stories'
-      ? (ESSAYS_DATA || [])
-      : (ESSAYS_DATA || []).filter(
-          (e) => e && e.category && e.category.toLowerCase() === activeDesk
-        );
-
-  // Collect all unique tags safely
-  const allTags = ['All', ...new Set(deskEssays.flatMap((e) => (e && e.tags) || []))];
-
-  // Apply search and tag filters safely
-  const filteredEssays = deskEssays.filter((essay) => {
-    if (!essay) return false;
-    const title = essay.title || '';
-    const subtitle = essay.subtitle || '';
-    const subCategory = essay.subCategory || '';
-    const tags = essay.tags || [];
-
-    const matchesSearch =
-      title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      subtitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      subCategory.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      tags.some((t) => t && t.toLowerCase().includes(searchTerm.toLowerCase()));
-
-    const matchesTag = selectedTag === 'All' || tags.includes(selectedTag);
-
-    return matchesSearch && matchesTag;
-  });
+  const filteredEssays = useMemo(() => {
+    return (essays || []).filter((story) => {
+      return (
+        searchQuery.trim() === '' ||
+        (story.title && story.title.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (story.summary && story.summary.toLowerCase().includes(searchQuery.toLowerCase()))
+      );
+    });
+  }, [searchQuery]);
 
   return (
-    <div className="min-h-screen pt-32 pb-24 px-6 md:px-12 bg-white dark:bg-canvas-dark text-ink-900 dark:text-white transition-colors duration-300">
-      <div className="max-w-6xl mx-auto">
-        
-        {/* Breadcrumb Navigation */}
-        <div className="mb-10">
+    <div className="min-h-screen bg-canvas dark:bg-canvas-dark text-ink-900 dark:text-white transition-colors duration-300 pt-24 pb-20">
+      <div className="max-w-6xl mx-auto px-6 md:px-12">
+        <div className="mb-6">
           <button
-            onClick={() => navigateTo('/')}
-            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider font-bold text-ink-600 dark:text-ink-300 hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
+            type="button"
+            onClick={() => {
+              if (onNavigate) onNavigate('/');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-ink-500 dark:text-ink-400 hover:text-berry-600 transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>Back to the front page</span>
+            <span>BACK TO FRONT PAGE</span>
           </button>
         </div>
 
-        {/* Section Header */}
-        <div className="max-w-3xl mb-12 space-y-3">
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-berry-600" />
-            <span className="text-xs font-mono tracking-widest uppercase text-berry-600 dark:text-berry-400 font-bold">
-              {config.kicker}
+        <div className="relative rounded-3xl bg-[#181524] border border-berry-500/30 shadow-2xl overflow-hidden min-h-[380px] md:min-h-[440px] flex items-center mb-12">
+          <span className="absolute right-8 top-4 font-serif text-8xl md:text-9xl font-black select-none pointer-events-none text-berry-300/10 z-10">
+            ALL
+          </span>
+
+          <div className="relative z-20 max-w-xl p-8 sm:p-12 md:p-14 space-y-4">
+            <span className="text-xs font-mono uppercase tracking-widest text-berry-400 font-bold">
+              THE FULL LIBRARY
             </span>
-          </div>
-
-          <h1 className="font-serif text-3xl sm:text-5xl font-black leading-tight">
-            {config.title}
-          </h1>
-
-          <p className="text-sm sm:text-base text-ink-600 dark:text-ink-300 font-light leading-relaxed">
-            {config.subtitle}
-          </p>
-
-          <div className="pt-1">
-            <span className="text-xs font-mono text-ink-400 dark:text-ink-500 font-medium">
-              Cadence: {config.cadence}
-            </span>
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-[1.05]">
+              Stories & Lessons
+            </h1>
+            <p className="text-xs sm:text-sm font-light leading-relaxed text-gray-300 pt-1">
+              Thirty years of observations, recipes, and boardrooms compiled in one place.
+            </p>
           </div>
         </div>
 
-        {/* Empty Archive Guard or Search & Essays Grid */}
-        {deskEssays.length === 0 ? (
-          <div className="py-20 px-8 text-center rounded-3xl bg-canvas-subtle dark:bg-canvas-darkCard border border-dashed border-canvas-border dark:border-canvas-darkBorder my-8">
-            <div className="w-12 h-12 rounded-full bg-berry-50 dark:bg-canvas-dark border border-berry-200 dark:border-canvas-darkBorder mx-auto flex items-center justify-center mb-4 text-berry-600 dark:text-berry-400">
-              <Feather className="w-5 h-5" />
-            </div>
-            <h3 className="font-serif text-2xl font-bold text-ink-900 dark:text-white mb-2">
-              Nothing filed on this desk yet.
-            </h3>
-            <p className="text-sm text-ink-600 dark:text-ink-300 font-light max-w-md mx-auto mb-6 leading-relaxed">
-              The first note is in progress and scheduled per our editorial cadence. In the meantime, you are welcome to explore our Food desk or return home.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-3">
-              <button
-                onClick={() => navigateTo('/food')}
-                className="px-5 py-2.5 rounded-full bg-ink-900 text-white dark:bg-berry-600 text-xs font-mono font-bold hover:bg-berry-700 transition-colors"
-              >
-                Read Food Desk Note →
-              </button>
-              <button
-                onClick={() => navigateTo('/')}
-                className="px-5 py-2.5 rounded-full bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-ink-700 dark:text-ink-200 text-xs font-mono font-bold hover:border-berry-600 transition-colors"
-              >
-                Back to the front page
-              </button>
-            </div>
+        {/* Search */}
+        <div className="mb-12">
+          <div className="relative max-w-xl">
+            <Search className="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-ink-400" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search by topic, keyword, or lesson..."
+              className="w-full pl-11 pr-4 py-3 rounded-2xl bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder text-ink-900 dark:text-white placeholder:text-ink-400 text-sm focus:outline-none focus:ring-2 focus:ring-berry-500/30"
+            />
           </div>
-        ) : (
-          <>
-            {/* Search Bar & Tag Filter Pills */}
-            <div className="mb-12 space-y-5">
-              <div className="relative max-w-md">
-                <Search className="w-4 h-4 text-ink-400 absolute left-4 top-1/2 -translate-y-1/2" />
-                <input
-                  type="text"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  placeholder="Search by topic, keyword, or lesson..."
-                  className="w-full pl-11 pr-4 py-3 rounded-2xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600"
-                />
-              </div>
+        </div>
 
-              {/* Tags */}
-              {allTags.length > 1 && (
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-xs font-mono text-ink-400 mr-2">Filter by tag:</span>
-                  {allTags.map((tag) => (
-                    <button
-                      key={tag}
-                      onClick={() => setSelectedTag(tag)}
-                      className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-medium transition-all ${
-                        selectedTag === tag
-                          ? 'bg-ink-900 text-white dark:bg-berry-600 dark:text-white shadow-sm'
-                          : 'bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder text-ink-600 dark:text-ink-300 hover:border-berry-500'
-                      }`}
-                    >
-                      {tag}
-                    </button>
-                  ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredEssays.map((story) => (
+            <article
+              key={story.slug || story.id}
+              onClick={() => {
+                if (onNavigate) {
+                  onNavigate(`/stories/${story.slug}`);
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }}
+              className="group bg-white dark:bg-canvas-darkCard rounded-3xl p-7 border border-canvas-border dark:border-canvas-darkBorder hover:border-berry-400/50 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between"
+            >
+              <div className="space-y-4">
+                <div className="flex items-center justify-between gap-2 flex-wrap">
+                  <span className="font-mono text-[10px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-full border border-berry-400/30 text-berry-600 dark:text-berry-400 bg-berry-50 dark:bg-berry-950/40">
+                    {story.desk?.toUpperCase() || 'ESSAY'}
+                  </span>
+                  {story.readingTime && (
+                    <span className="inline-flex items-center gap-1 text-[11px] font-mono text-ink-400">
+                      <Clock className="w-3 h-3" />
+                      {story.readingTime}
+                    </span>
+                  )}
                 </div>
-              )}
-            </div>
 
-            {/* Essays Grid */}
-            {filteredEssays.length === 0 ? (
-              <div className="text-center py-20 border border-dashed border-canvas-border dark:border-canvas-darkBorder rounded-3xl">
-                <p className="text-sm font-mono text-ink-400">No stories match your search criteria.</p>
+                <h3 className="font-serif text-2xl font-bold text-ink-900 dark:text-white group-hover:text-berry-500 transition-colors leading-snug">
+                  {story.title}
+                </h3>
+
+                {story.summary && (
+                  <p className="text-xs sm:text-sm text-ink-600 dark:text-ink-300 font-light leading-relaxed">
+                    {story.summary}
+                  </p>
+                )}
+
+                {story.quote && (
+                  <div className="p-4 rounded-2xl bg-canvas-subtle dark:bg-canvas-dark/60 border border-canvas-border dark:border-canvas-darkBorder">
+                    <blockquote className="font-serif italic text-xs text-ink-700 dark:text-ink-200 leading-relaxed">
+                      "{story.quote}"
+                    </blockquote>
+                  </div>
+                )}
               </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredEssays.map((essay) => (
-                  <article
-                    key={essay.id}
-                    onClick={() => navigateTo(`/stories/${essay.slug}`)}
-                    className="cursor-pointer group rounded-3xl p-7 bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder hover:border-berry-600 dark:hover:border-berry-500 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col justify-between"
-                  >
-                    <div>
-                      <div className="flex items-center justify-between text-xs font-mono mb-4">
-                        <div className="flex flex-wrap items-center gap-1.5">
-                          <span className="text-berry-700 dark:text-berry-300 bg-white dark:bg-canvas-dark px-3 py-1 rounded-full border border-berry-200 dark:border-canvas-darkBorder font-bold uppercase text-[10px]">
-                            {essay.category}
-                          </span>
-                          {essay.subCategory && (
-                            <span className="text-cobalt-700 dark:text-cobalt-300 bg-cobalt-50 dark:bg-cobalt-950/60 px-2.5 py-0.5 rounded-full border border-cobalt-200 dark:border-cobalt-800 font-bold uppercase text-[10px]">
-                              {essay.subCategory}
-                            </span>
-                          )}
-                        </div>
-                        <div className="flex items-center gap-1 text-ink-500 dark:text-ink-300 shrink-0">
-                          <Clock className="w-3 h-3 text-cobalt-600" />
-                          <span>{essay.readTime}</span>
-                        </div>
-                      </div>
 
-                      <h3 className="font-serif text-xl font-bold text-ink-900 dark:text-white group-hover:text-berry-600 dark:group-hover:text-berry-400 transition-colors line-clamp-2 mb-2 leading-snug">
-                        {essay.title}
-                      </h3>
-
-                      <p className="text-xs text-ink-600 dark:text-ink-200 font-light leading-relaxed line-clamp-3 mb-5">
-                        {essay.subtitle}
-                      </p>
-
-                      <div className="p-3.5 rounded-2xl bg-white dark:bg-canvas-dark border-l-3 border-berry-600 text-[11px] font-serif italic text-ink-800 dark:text-ink-100 mb-4 line-clamp-3">
-                        "{essay.leadQuote}"
-                      </div>
-                    </div>
-
-                    <div className="pt-4 border-t border-canvas-border dark:border-canvas-darkBorder mt-4 flex items-center justify-between text-xs font-mono text-ink-600 dark:text-ink-300">
-                      <span>{essay.date}</span>
-                      <span className="flex items-center gap-1 text-berry-600 dark:text-berry-400 font-bold group-hover:translate-x-1 transition-transform">
-                        Read Story <ArrowUpRight className="w-3.5 h-3.5" />
-                      </span>
-                    </div>
-                  </article>
-                ))}
+              <div className="pt-5 border-t border-canvas-border dark:border-canvas-darkBorder mt-6 flex items-center justify-between text-xs font-mono">
+                <span className="text-ink-500 dark:text-ink-400">{story.date || 'October 2026'}</span>
+                <span className="inline-flex items-center gap-1 font-bold text-berry-600 dark:text-berry-400 group-hover:translate-x-1 transition-transform">
+                  Read Story <ArrowUpRight className="w-3.5 h-3.5" />
+                </span>
               </div>
-            )}
-          </>
-        )}
+            </article>
+          ))}
+        </div>
 
       </div>
     </div>

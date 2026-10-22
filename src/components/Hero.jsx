@@ -1,297 +1,216 @@
 // src/components/Hero.jsx
 import React, { useState } from 'react';
-import { ArrowRight, BookOpen, Compass } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
-const SPICE_PILLARS = [
+const PILLARS = [
   {
     id: 1,
-    name: 'Cumin',
-    code: '01 / CUMIN',
-    lever: 'The Foundation',
-    role: 'THE FOUNDATION',
-    metaphor: 'Cumin (The Foundation)',
-    summary: 'Patience with the heat. Foundations in life, love, and work.',
-    primaryImage: '/cumin.png',
-    secondaryImage: '/spices/cumin.png',
-    darkImage: '/cumin-dark.png',
-    principle: 'A good dish begins with cumin tempered at just the right heat. Cold oil extracts nothing, while smoking oil burns it black. The same patience governs life, love, and work. Get the foundation right, and the rest follows rather nicely.',
+    spice: 'CUMIN',
+    name: 'The Foundation',
+    subtext: 'Patience with the heat. Foundations in life, love, and work.',
+    quote:
+      'A good dish begins with cumin tempered at just the right heat. Cold oil extracts nothing, while smoking oil burns it black. The same patience governs life, love, and work. Get the foundation right, and the rest follows rather nicely.',
+    image: '/cumin.png',
   },
   {
     id: 2,
-    name: 'Turmeric',
-    code: '02 / TURMERIC',
-    lever: 'Ground Truth',
-    role: 'GROUND TRUTH',
-    metaphor: 'Turmeric (The Purifier)',
-    summary: 'A pinch heals, excess ruins. The fine line in honest bonds.',
-    primaryImage: '/turmeric.png',
-    secondaryImage: '/spices/turmeric.png',
-    darkImage: '/turmeric-dark.png',
-    principle: 'A pinch brings warmth and health, but an extra pinch turns the entire dish bitter. That is an awkward truth to learn. In work and in relationships, knowing when to stop is often the difference between a lasting bond and a quiet disaster.',
+    spice: 'TURMERIC',
+    name: 'Ground Truth',
+    subtext: 'A pinch heals, excess ruins. The fine line in honest bonds.',
+    quote:
+      'Turmeric never lies. Too little and the dish lacks soul; too much and bitterness takes over. In conversations and partnerships, speak plain truth with warmth—measured, honest, and unadorned.',
+    image: '/turmeric.png',
   },
   {
     id: 3,
-    name: 'Coriander',
-    code: '03 / CORIANDER',
-    lever: 'Cohesion',
-    role: 'COHESION',
-    metaphor: 'Coriander (The Binder)',
-    summary: 'The forgiving binder. Honest monthly updates keeping partners aligned.',
-    primaryImage: '/coriander.png',
-    secondaryImage: '/spices/coriander.png',
-    darkImage: '/coriander-dark.png',
-    principle: 'Coriander is the quiet, forgiving glue of the pan. It softens harsh edges and covers minor slips. In business, honest monthly updates play the exact same role, keeping founders and shareholders bound together when things get choppy.',
+    spice: 'CORIANDER',
+    name: 'Cohesion',
+    subtext: 'The forgiving binder. Honest monthly updates keeping partners aligned.',
+    quote:
+      'Coriander does not demand the spotlight. It binds disparate flavors into a quiet, coherent whole. Every enduring enterprise needs the quiet unifier who bridges conflicting ambitions.',
+    image: '/coriander.png',
   },
   {
     id: 4,
-    name: 'Red Chillies',
-    code: '04 / CHILLIES',
-    lever: 'Calculated Risk',
-    role: 'CALCULATED RISK',
-    metaphor: 'Red Chillies (The Kinetic Spark)',
-    summary: 'Courage with spice. Playing not to lose is quiet failure.',
-    primaryImage: '/red-chillies.png',
-    secondaryImage: '/spices/red-chillies.png',
-    darkImage: '/red-chillies-dark.png',
-    principle: 'A measured hand with chilli gets you nowhere interesting. The best dishes demand courage with the spice, and life demands the same with your choices. Playing not to lose is the quietest way to fail. Take the bold gamble, embrace the heat, and let the rewards take care of themselves.',
+    spice: 'CHILLIES',
+    name: 'Calculated Risk',
+    subtext: 'Courage with spice. Playing not to lose is quiet failure.',
+    quote:
+      'Heat brings food to life, but only when introduced with calm precision. In business and high-stakes choices, timid neutrality accomplishes nothing. You must know when to introduce real fire.',
+    image: '/red-chillies.png',
   },
   {
     id: 5,
-    name: 'Aromatics',
-    code: '05 / AROMATICS',
-    lever: 'Restraint',
-    role: 'EXECUTIVE RESTRAINT',
-    metaphor: 'Aromatics (The Finish)',
-    summary: 'Added off the flame. Knowing when the work is done.',
-    primaryImage: '/aromatics.png',
-    secondaryImage: '/spices/aromatics.png',
-    darkImage: '/aromatics-dark.png',
-    principle: 'Aromatics do not add bulk to the pot, they leave the memory. They go in at the very end, off the heat. In life and business, the final chapter defines your character. It is the rare wisdom of knowing when your part is finished, protecting your people, and exiting with your reputation and honour intact.',
+    spice: 'AROMATICS',
+    name: 'Restraint',
+    subtext: 'Added off the flame. Knowing when the work is done.',
+    quote:
+      'The best aromatics are stirred in after the fire has been turned off. Knowing when to stop fiddling, step back, and let the work speak for itself is the highest form of executive discipline.',
+    image: '/aromatics.png',
   },
 ];
 
-export default function Hero({ onOpenInquiry }) {
-  const [activePillar, setActivePillar] = useState(SPICE_PILLARS[0]);
-  const [hoveredPillar, setHoveredPillar] = useState(null);
-
-  const displayedPillar = hoveredPillar || activePillar;
+export default function Hero({ onNavigate }) {
+  const [activePillar, setActivePillar] = useState(PILLARS[0]);
 
   return (
-    <section id="hero" className="relative flex flex-col justify-center pt-32 pb-16 px-6 md:px-12 bg-sandpaper-texture transition-colors duration-300">
+    <section id="hero" className="relative flex flex-col justify-center pt-28 pb-16 px-6 md:px-12 bg-white dark:bg-canvas-dark text-ink-900 dark:text-white transition-colors duration-300">
       <div className="max-w-6xl mx-auto w-full relative z-10">
         
-        {/* Top Header Bar: Changed to SIMPLIFICATION */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-4 border-b border-canvas-border dark:border-canvas-darkBorder">
-          <div className="flex items-center gap-3">
-            <span className="w-2.5 h-2.5 rounded-full bg-berry-600 animate-pulse" />
-            <span className="text-xs font-mono tracking-widestEditorial uppercase text-ink-700 dark:text-ink-200 font-bold">
+        {/* Top Header Row */}
+        <div className="flex items-center justify-between gap-4 mb-6">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-berry-600" />
+            <span className="text-[11px] font-mono tracking-widest uppercase text-berry-600 dark:text-berry-400 font-bold">
               SIMPLICITY IN LIFE, FOOD, AND WORK
             </span>
           </div>
-          
-          <div className="flex items-center">
-            <span className="text-xs font-medium text-ink-800 dark:text-ink-200 tracking-wide">
-              The{' '}
-              <span className="relative inline-block font-bold text-berry-600 dark:text-berry-400">
-                Simplification
-                <span className="absolute left-0 -bottom-1 w-full h-[2px] bg-berry-600 rounded-full" />
-              </span>{' '}
-              Advantage
-            </span>
+          <div className="hidden sm:block text-[11px] font-mono tracking-wider text-ink-500 dark:text-ink-300 font-medium">
+            The <span className="text-berry-600 dark:text-berry-400 underline underline-offset-4">Simplification</span> Advantage
           </div>
         </div>
 
-        {/* Headline: Five Spices or Less in ONE Bold Line */}
-        <div className="mb-6">
-          <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-black text-ink-900 dark:text-white leading-[1.08] tracking-tight">
-            Five Spices <span className="text-berry-600 dark:text-berry-400">Or Less.</span>
-          </h1>
-        </div>
-
-        {/* Subhead & 05 Core Levers Metric Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-14">
+        {/* Hero Title & 05 Core Levers Row */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-12">
+          
+          {/* Left Column: Heading, Subhead, CTA Buttons */}
           <div className="lg:col-span-8 space-y-6">
-            <p className="text-base sm:text-xl text-ink-700 dark:text-ink-200 font-normal leading-relaxed max-w-2xl font-sans">
+            <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] text-ink-900 dark:text-white">
+              Five Spices <span className="text-berry-600 dark:text-berry-400">Or Less.</span>
+            </h1>
+
+            <p className="text-base sm:text-lg text-ink-700 dark:text-gray-300 max-w-xl leading-relaxed font-light">
               The best things in life, work, and cooking are born from simplification. When you remove what is unnecessary, clarity, speed, and flavour take care of themselves. In the end, less almost always works better than more.
             </p>
 
-            {/* Action Buttons */}
-            <div className="pt-2 flex flex-wrap items-center gap-4">
-              <a
-                href="#writing"
-                className="group px-7 py-3.5 rounded-full bg-berry-600 hover:bg-berry-700 text-white font-bold text-xs uppercase tracking-wider font-mono flex items-center gap-2.5 transition-all shadow-lg shadow-berry-600/25 active:scale-95"
+            <div className="flex flex-wrap items-center gap-4 pt-2">
+              <button
+                type="button"
+                onClick={() => onNavigate && onNavigate('/#philosophy')}
+                className="px-6 py-3 rounded-full bg-berry-600 hover:bg-berry-700 text-white font-mono text-[11px] font-bold uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg inline-flex items-center gap-2.5 cursor-pointer"
               >
-                <BookOpen className="w-4 h-4 text-white" />
-                <span>Explore Stories &amp; Lessons →</span>
-              </a>
-
-              <Link
-                to="/advisory"
-                className="group px-7 py-3.5 rounded-full border-2 border-ink-900 dark:border-white text-ink-900 dark:text-white hover:bg-ink-900 hover:text-white dark:hover:bg-white dark:hover:text-ink-950 font-bold text-xs uppercase tracking-wider font-mono flex items-center gap-2.5 transition-all active:scale-95"
+                <svg className="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+                  <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+                  <path d="M6 2v20"/>
+                </svg>
+                <span>EXPLORE STORIES & LESSONS</span>
+                <span>→</span>
+              </button>
+              
+              <button
+                type="button"
+                onClick={() => onNavigate && onNavigate('/advisory')}
+                className="px-6 py-3 rounded-full bg-white dark:bg-canvas-darkCard border border-ink-900 dark:border-white/20 text-ink-900 dark:text-white hover:bg-canvas-subtle dark:hover:bg-canvas-dark font-mono text-[11px] font-bold uppercase tracking-wider transition-colors inline-flex items-center gap-2 cursor-pointer"
               >
-                <Compass className="w-4 h-4 text-cobalt-600 dark:text-cobalt-400" />
-                <span>Dedicated Founder Advisory →</span>
-              </Link>
+                <svg className="w-4 h-4 fill-none stroke-current stroke-2 text-cobalt-600 dark:text-cobalt-400" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+                </svg>
+                <span>DEDICATED FOUNDER ADVISORY</span>
+                <span>→</span>
+              </button>
             </div>
           </div>
 
-          {/* Aligned 05 Core Levers Box */}
-          <div className="lg:col-span-4 p-6 rounded-3xl bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder shadow-lg space-y-4">
-            <div className="flex items-center gap-3.5">
-              <span className="font-serif text-5xl font-black text-cobalt-600 dark:text-cobalt-400 leading-none shrink-0">
+          {/* Right Column: 05 Core Levers Box */}
+          <div className="lg:col-span-4 p-8 rounded-[2rem] bg-[#111620] dark:bg-[#0A0E17] border border-[#232D3F] shadow-2xl space-y-5 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-36 h-36 bg-berry-600/10 rounded-full blur-2xl pointer-events-none" />
+
+            <div className="flex items-center gap-4 relative z-10">
+              <span className="font-serif text-5xl sm:text-6xl font-black text-[#F4B41A] leading-none shrink-0 tracking-tight">
                 05
               </span>
               <div className="flex flex-col justify-center">
-                <span className="font-serif text-xl sm:text-2xl font-bold text-ink-900 dark:text-white leading-tight">
+                <span className="font-serif text-2xl font-bold text-white leading-tight">
                   Core Levers
                 </span>
-                <span className="text-xs font-mono text-berry-600 dark:text-berry-400 font-bold uppercase tracking-wider mt-0.5">
-                  Zero Clutter
+                <span className="text-[10px] font-mono text-[#00D084] font-bold uppercase tracking-widest mt-1">
+                  ZERO CLUTTER
                 </span>
               </div>
             </div>
 
-            <div className="w-full h-px bg-canvas-border dark:bg-canvas-darkBorder" />
+            <div className="w-full h-px bg-white/10 relative z-10" />
 
-            <p className="text-xs sm:text-sm text-ink-700 dark:text-ink-200 font-normal leading-relaxed">
+            <p className="text-xs sm:text-sm text-gray-300 font-light leading-relaxed relative z-10">
               Five levers are enough to move a mountain, and few enough that none can hide. When you refuse complexity, focus does the heavy lifting.
             </p>
           </div>
+
         </div>
 
-        {/* The Simplification Mindset: 5 Cards with Spices in background & Rollover Effect Box below */}
+        {/* The Simplification Mindset Section */}
         <div className="pt-8 border-t border-canvas-border dark:border-canvas-darkBorder">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
+          
+          {/* Section Header: Line 2 removed cleanly */}
+          <div className="mb-6">
             <span className="text-xs uppercase tracking-widest text-ink-500 dark:text-ink-300 font-mono font-bold">
-              The Simplification Mindset:
-            </span>
-            <span className="text-xs font-mono font-bold text-berry-600 dark:text-berry-400">
-              Active: [{displayedPillar.metaphor}]
+              THE SIMPLIFICATION MINDSET:
             </span>
           </div>
 
-          {/* 5 Cards (Style per Screenshot 2: Spice names on top in Red and small, core Lever in Big Font, spices as background) */}
+          {/* 5 Cards Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
-            {SPICE_PILLARS.map((pillar) => {
-              const isSelected = activePillar.id === pillar.id;
-              const isHovered = hoveredPillar?.id === pillar.id;
-              const isCurrent = isHovered || (isSelected && !hoveredPillar);
+            {PILLARS.map((p) => {
+              const isSelected = activePillar.id === p.id;
 
               return (
-                <button
-                  key={pillar.id}
-                  onClick={() => setActivePillar(pillar)}
-                  onMouseEnter={() => setHoveredPillar(pillar)}
-                  onMouseLeave={() => setHoveredPillar(null)}
-                  className={`text-left p-5 rounded-3xl border-2 transition-all duration-200 relative overflow-hidden min-h-[165px] flex flex-col justify-between group shadow-sm ${
-                    isCurrent
-                      ? 'bg-white dark:bg-canvas-darkCard border-berry-600 shadow-xl shadow-berry-600/10 -translate-y-1'
-                      : 'bg-white dark:bg-canvas-darkCard/80 border-canvas-border dark:border-canvas-darkBorder hover:border-berry-400 hover:-translate-y-0.5'
+                <div
+                  key={p.id}
+                  onClick={() => setActivePillar(p)}
+                  onMouseEnter={() => setActivePillar(p)}
+                  className={`group relative p-5 rounded-2xl border transition-all duration-300 cursor-pointer overflow-hidden flex flex-col justify-between min-h-[175px] bg-white dark:bg-canvas-darkCard ${
+                    isSelected
+                      ? 'border-berry-600 dark:border-berry-400 border-t-4 border-t-berry-600 dark:border-t-berry-400 shadow-xl -translate-y-1'
+                      : 'border-canvas-border dark:border-canvas-darkBorder border-t-2 hover:border-t-berry-400 hover:border-berry-300 dark:hover:border-berry-700 shadow-sm'
                   }`}
                 >
-                  {/* Top Bar on Active / Hover */}
-                  {isCurrent && (
-                    <div className="absolute top-0 left-0 right-0 h-1.5 bg-berry-600" />
-                  )}
-
-                  {/* Text Content */}
                   <div className="relative z-10 space-y-1">
-                    {/* Top: Spice Name in Red and Small (per Screenshot 2) */}
                     <div className="text-[11px] font-mono font-bold text-berry-600 dark:text-berry-400 uppercase tracking-wider">
-                      {pillar.code}
+                      0{p.id} / {p.spice}
                     </div>
-
-                    {/* Core Lever in Big Font (per Screenshot 2) */}
                     <h3 className="font-serif font-bold text-xl sm:text-2xl text-ink-900 dark:text-white leading-tight">
-                      {pillar.lever}
+                      {p.name}
                     </h3>
-
-                    {/* Summary Description */}
                     <p className="text-xs text-ink-600 dark:text-ink-300 font-light leading-relaxed pt-1">
-                      {pillar.summary}
+                      {p.subtext}
                     </p>
                   </div>
 
-                  {/* Spice Drawing as Background Artwork (per user request 2) */}
-                  <div className="absolute -bottom-1 -right-1 w-20 h-20 pointer-events-none opacity-30 dark:opacity-20 group-hover:opacity-45 transition-opacity">
-                    <img
-                      src={pillar.primaryImage}
-                      alt={pillar.name}
-                      className="w-full h-full object-contain mix-blend-multiply dark:hidden"
-                      onError={(e) => {
-                        if (!e.currentTarget.dataset.triedSecondary) {
-                          e.currentTarget.dataset.triedSecondary = 'true';
-                          e.currentTarget.src = pillar.secondaryImage;
-                        } else {
-                          e.currentTarget.style.display = 'none';
-                        }
-                      }}
-                    />
-                    <img
-                      src={pillar.darkImage}
-                      alt={pillar.name}
-                      className="w-full h-full object-contain hidden dark:block"
-                      onError={(e) => {
-                        if (!e.currentTarget.dataset.triedSecondary) {
-                          e.currentTarget.dataset.triedSecondary = 'true';
-                          e.currentTarget.src = pillar.secondaryImage.replace('.png', '-dark.png');
-                        } else {
-                          e.currentTarget.style.display = 'none';
-                        }
-                      }}
-                    />
-                  </div>
-                </button>
+                  <img
+                    src={p.image}
+                    alt={p.name}
+                    className="absolute right-2 bottom-2 w-12 h-12 object-contain opacity-50 group-hover:opacity-80 transition-opacity pointer-events-none"
+                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                  />
+                </div>
               );
             })}
           </div>
 
-          {/* Dynamic Display Rollover Box (per Screenshot 1) */}
-          <div className="mt-4 p-6 rounded-3xl bg-white dark:bg-canvas-darkCard border-2 border-canvas-border dark:border-canvas-darkBorder flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-md transition-all duration-300">
+          {/* Active Principle Bottom Quote Callout Box: #3 Enlarged, High-Visibility Image */}
+          <div className="mt-5 p-6 rounded-2xl bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm">
             <div className="flex items-center gap-5">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-canvas-subtle dark:bg-canvas-dark rounded-2xl border border-canvas-border dark:border-canvas-darkBorder p-2 flex items-center justify-center overflow-hidden">
+              <div className="w-24 h-24 rounded-2xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder shadow-sm flex items-center justify-center p-2 shrink-0">
                 <img
-                  src={displayedPillar.primaryImage}
-                  alt={displayedPillar.name}
-                  className="w-full h-full object-contain mix-blend-multiply dark:hidden"
-                  onError={(e) => {
-                    if (!e.currentTarget.dataset.triedSecondary) {
-                      e.currentTarget.dataset.triedSecondary = 'true';
-                      e.currentTarget.src = displayedPillar.secondaryImage;
-                    } else {
-                      e.currentTarget.style.display = 'none';
-                    }
-                  }}
-                />
-                <img
-                  src={displayedPillar.darkImage}
-                  alt={displayedPillar.name}
-                  className="w-full h-full object-contain hidden dark:block"
-                  onError={(e) => {
-                    if (!e.currentTarget.dataset.triedSecondary) {
-                      e.currentTarget.dataset.triedSecondary = 'true';
-                      e.currentTarget.src = displayedPillar.secondaryImage.replace('.png', '-dark.png');
-                    } else {
-                      e.currentTarget.style.display = 'none';
-                    }
-                  }}
+                  src={activePillar.image}
+                  alt={activePillar.name}
+                  className="w-full h-full object-contain filter drop-shadow"
+                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
                 />
               </div>
-
-              <div className="space-y-1.5">
-                <div className="flex items-center gap-2 text-xs font-mono font-bold text-berry-600 dark:text-berry-400 uppercase tracking-wider">
-                  <span>{displayedPillar.role} · {displayedPillar.name}</span>
+              <div>
+                <div className="text-[11px] font-mono uppercase tracking-widest text-berry-600 dark:text-berry-400 font-bold mb-1.5">
+                  {activePillar.name.toUpperCase()} · {activePillar.spice}
                 </div>
-                <blockquote className="font-serif italic text-sm sm:text-base text-ink-900 dark:text-white leading-relaxed">
-                  "{displayedPillar.principle}"
+                <blockquote className="font-serif italic text-sm sm:text-base text-ink-800 dark:text-gray-100 leading-relaxed max-w-3xl">
+                  "{activePillar.quote}"
                 </blockquote>
               </div>
             </div>
 
             <div className="shrink-0 self-end md:self-center">
-              <span className="font-mono text-xs px-4 py-2 rounded-full border border-canvas-border dark:border-canvas-darkBorder bg-canvas-subtle dark:bg-canvas-dark text-ink-700 dark:text-ink-300 font-semibold shadow-sm">
-                Rule #{displayedPillar.id} in Practice
+              <span className="font-mono text-xs px-4 py-2 rounded-full border border-canvas-border dark:border-canvas-darkBorder bg-canvas-subtle dark:bg-canvas-dark text-ink-700 dark:text-ink-300 font-medium whitespace-nowrap">
+                Rule #{activePillar.id} in Practice
               </span>
             </div>
           </div>

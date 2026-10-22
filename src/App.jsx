@@ -16,6 +16,11 @@ import StoryPage from './components/StoryPage';
 import DeskPage from './components/DeskPage';
 import DispatchStudio from './components/DispatchStudio';
 
+// Independent Standalone Desk Pages
+import LifeDeskPage from './components/LifeDeskPage';
+import FoodDeskPage from './components/FoodDeskPage';
+import WorkDeskPage from './components/WorkDeskPage';
+
 // Standalone Advisory Pillar Pages
 import PillarOperatorPage from './components/PillarOperatorPage';
 import PillarEIRPage from './components/PillarEIRPage';
@@ -89,13 +94,12 @@ export default function App() {
 
   // Dynamic Route Resolver
   const renderCurrentRoute = () => {
-    // Normalise current path (strip trailing slash for paths longer than 1 character)
     const normalizedPath =
       currentPath.length > 1 && currentPath.endsWith('/')
         ? currentPath.slice(0, -1)
         : currentPath;
 
-    // 0. The Dispatch Studio Authoring Suite: /studio
+    // 0. Dispatch Studio: /studio
     if (normalizedPath === '/studio') {
       return <DispatchStudio onNavigate={handleNavigate} isDark={isDark} />;
     }
@@ -120,19 +124,23 @@ export default function App() {
     ) {
       return <PillarConfidantPage onNavigate={handleNavigate} isDark={isDark} />;
     }
-    // 3. Standalone Desk Archives: /stories, /life, /food, /work
+
+    // 3. Independent Desk Archives (Fully Isolated)
+    if (normalizedPath === '/life') {
+      return <LifeDeskPage onNavigate={handleNavigate} isDark={isDark} />;
+    }
+    if (normalizedPath === '/food') {
+      return <FoodDeskPage onNavigate={handleNavigate} isDark={isDark} />;
+    }
+    if (normalizedPath === '/work') {
+      return <WorkDeskPage onNavigate={handleNavigate} isDark={isDark} />;
+    }
+
+    // 3a. Combined Dispatches Library: /stories
     if (normalizedPath === '/stories') {
       return <DeskPage desk="stories" deskId="stories" onNavigate={handleNavigate} isDark={isDark} />;
     }
-    if (normalizedPath === '/life') {
-      return <DeskPage desk="life" deskId="life" onNavigate={handleNavigate} isDark={isDark} />;
-    }
-    if (normalizedPath === '/food') {
-      return <DeskPage desk="food" deskId="food" onNavigate={handleNavigate} isDark={isDark} />;
-    }
-    if (normalizedPath === '/work') {
-      return <DeskPage desk="work" deskId="work" onNavigate={handleNavigate} isDark={isDark} />;
-    }
+
     // 4. Standalone Story Reader: /stories/:slug
     if (normalizedPath.startsWith('/stories/')) {
       const slug = normalizedPath.replace('/stories/', '').replace(/\/$/, '');
