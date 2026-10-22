@@ -43,7 +43,7 @@ In fact, he became an extraordinary advisor to growing ventures because he posse
 
 The trouble begins when founders confuse the two disciplines.
 
-![A signed and stamped purchase order on an executive notepad](/illustrations/empty-slate-purchase-order.jpg)
+![](/illustrations/empty-slate-purchase-order.png)
 
 ## The Twenty-Page Contract Illusion
 
@@ -77,7 +77,7 @@ When you start small, your entire venture is written in chalk. You can draft an 
 
 You do not begin with policies; you begin with decisions. You do not begin with handbooks; you begin with direct conversations with the person signing the cheque. Because your processes are still evolving organically, keeping your slate free of permanent ink gives you the agility to adapt before capital runs dry.
 
-![A half-written whiteboard on an office wall with OPPORTUNITY circled and branching nodes](/illustrations/opportunity-whiteboard-sketch.jpg)
+![](/illustrations/opportunity-whiteboard-sketch.png)
 
 ## Evolving Beyond the Startup Label
 
@@ -95,4 +95,6 @@ Take the first step. Keep the slate clean, write in chalk, and leave the heavy l
 
 The only things that truly matter are the customer on the line, the working product in the crate, and the quiet clarity to strip away everything else.
 
-**Connected Note:** Simplicity is not the absence of ambition; it is the ruthless elimination of administrative theatre so execution can breathe.
+> **Connected Note**
+>
+> *Simplicity is not the absence of ambition; it is the ruthless elimination of administrative theatre so execution can breathe.*
