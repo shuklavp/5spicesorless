@@ -4,9 +4,8 @@
 
 @layer base {
   body {
-    font-family: '"Plus Jakarta Sans"', Inter, -apple-system, sans-serif;
-    background-color: #FFFFFF;
-    color: #0C1427;
+    font-family: 'Fraunces', 'Playfair Display', Georgia, serif !important;
+    font-optical-sizing: auto;
   }
 }
 

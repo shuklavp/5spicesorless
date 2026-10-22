@@ -72,24 +72,8 @@ export default function App() {
 
   // Client-Side Route Transition with URL bar sync and scroll to top
   const handleNavigate = (path) => {
-    if (path.startsWith('/#') || path.startsWith('#')) {
-      const hash = path.includes('#') ? path.split('#')[1] : '';
-      if (currentPath !== '/') {
-        window.history.pushState({}, '', '/');
-        setCurrentPath('/');
-        setTimeout(() => {
-          const el = document.getElementById(hash);
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      } else {
-        const el = document.getElementById(hash);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }
-      return;
-    }
-    window.history.pushState({}, '', path);
     setCurrentPath(path);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo(0, 0);
   };
 
   // Dynamic Route Resolver
@@ -164,7 +148,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-canvas-dark text-ink-900 dark:text-gray-100 flex flex-col font-sans transition-colors duration-300">
+    <div className="min-h-screen bg-white dark:bg-canvas-dark text-ink-900 dark:text-gray-100 flex flex-col font-serif transition-colors duration-300">
       <Navbar
         currentPath={currentPath}
         onNavigate={handleNavigate}

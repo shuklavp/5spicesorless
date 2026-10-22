@@ -21,11 +21,37 @@ export default function Navbar({ onNavigate, currentPath = '/', isDark, onToggle
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleLinkClick = (e, path) => {
+        const handleLinkClick = (e, path, scrollToContact = false) => {
     e.preventDefault();
     setMobileMenuOpen(false);
+
+    if (scrollToContact) {
+      if (currentPath === "/advisory") {
+        const formEl = document.querySelector("form");
+        const target = document.getElementById("contact") || document.getElementById("inquiry") || (formEl ? formEl.closest("section, div.rounded-3xl, div.rounded-2xl") : null) || formEl;
+        if (target) {
+          const y = target.getBoundingClientRect().top + window.pageYOffset - 110;
+          window.scrollTo({ top: y, behavior: "smooth" });
+          return;
+        }
+      }
+      if (onNavigate) {
+        onNavigate("/advisory");
+        setTimeout(() => {
+          const formEl = document.querySelector("form");
+          const target = document.getElementById("contact") || document.getElementById("inquiry") || (formEl ? formEl.closest("section, div.rounded-3xl, div.rounded-2xl") : null) || formEl;
+          if (target) {
+            const y = target.getBoundingClientRect().top + window.pageYOffset - 110;
+            window.scrollTo({ top: y, behavior: "smooth" });
+          }
+        }, 150);
+        return;
+      }
+    }
+
     if (onNavigate) {
       onNavigate(path);
+      window.scrollTo(0, 0);
     }
   };
 
@@ -91,7 +117,7 @@ export default function Navbar({ onNavigate, currentPath = '/', isDark, onToggle
         </a>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden md:flex items-center gap-5 text-sm font-medium">
+        <div className="hidden md:flex items-center gap-5 text-xs font-mono font-bold uppercase tracking-wider">
           <a
             href="/life"
             onClick={(e) => handleLinkClick(e, '/life')}
@@ -139,7 +165,7 @@ export default function Navbar({ onNavigate, currentPath = '/', isDark, onToggle
           </a>
           <a
             href="/advisory"
-            onClick={(e) => handleLinkClick(e, '/advisory')}
+            onClick={(e) => handleLinkClick(e, '/advisory', false)}
             className={`px-3 py-1 rounded-full transition-all focus:outline-none ${
               currentPath === '/advisory' ? activeLinkClass : navTextClass
             }`}
@@ -165,7 +191,7 @@ export default function Navbar({ onNavigate, currentPath = '/', isDark, onToggle
 
           {/* Primary CTA Button */}
           <button
-            onClick={(e) => handleLinkClick(e, '/advisory')}
+            onClick={(e) => handleLinkClick(e, '/advisory', true)}
             className={`hidden sm:inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-xs font-mono font-bold tracking-wider uppercase transition-all shadow-md focus:outline-none ${
               isTerracotta
                 ? 'bg-white text-[#BC5259] hover:bg-white/95 shadow-black/10'
@@ -236,7 +262,7 @@ export default function Navbar({ onNavigate, currentPath = '/', isDark, onToggle
           </a>
           <a
             href="/advisory"
-            onClick={(e) => handleLinkClick(e, '/advisory')}
+            onClick={(e) => handleLinkClick(e, '/advisory', false)}
             className="text-base font-medium text-ink-900 dark:text-white hover:text-berry-600"
           >
             Advisory ("Ben to Jules")
@@ -244,7 +270,7 @@ export default function Navbar({ onNavigate, currentPath = '/', isDark, onToggle
 
           <div className="pt-4 border-t border-canvas-border dark:border-canvas-darkBorder flex items-center justify-between">
             <button
-              onClick={(e) => handleLinkClick(e, '/advisory')}
+              onClick={(e) => handleLinkClick(e, '/advisory', false)}
               className="w-full text-center py-3 rounded-full bg-berry-600 text-white font-bold text-xs uppercase tracking-wider"
             >
               Talk To Vivek
