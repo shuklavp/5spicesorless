@@ -36,7 +36,7 @@ const ADVISORY_PILLARS = [
     path: '/advisory/founder-confidant',
     color: '#BC5259',
     bgPill: '#FCE4EC',
-    summary: 'The founder\'s chair is fundamentally lonely. When stakes are high, you need an ego-free, calm veteran in your corner: someone to help you separate acute noise from real existential hazards with Lakhnawi courtesy and unvarnished judgement.',
+    summary: 'The founder\'s chair is fundamentally lonely. When stakes are high, you need an ego-free, calm veteran in your corner: someone to help you separate acute noise from real existential hazards with quiet courtesy and unvarnished judgement.',
     icon: HeartHandshake,
   },
 ];
@@ -50,7 +50,7 @@ const BOTTLENECKS = [
   {
     num: '02',
     title: 'Co-founder & Executive Friction',
-    description: 'Differences in pace, vision, or execution simmer quietly beneath the surface. We bring calm, neutral Lakhnawi courtesy to realign leadership without personal drama.',
+    description: 'Differences in pace, vision, or execution simmer quietly beneath the surface. We bring calm, neutral quiet courtesy to realign leadership without personal drama.',
   },
   {
     num: '03',
@@ -364,7 +364,7 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
                   Leaders Looking for an Agreeable Echo Chamber
                 </h3>
                 <p className="text-xs md:text-sm text-[#475569] dark:text-[#CBD5E1] leading-relaxed font-light">
-                  I bring warm Lakhnawi courtesy (tehzeeb) and zero ego into every conversation, but I will never tell you what you want to hear just to keep you comfortable. If you are not open to hearing an unvarnished operator assessment of where things are stalling, we will waste each other’s time.
+                  I bring warm quiet courtesy (tehzeeb) and zero ego into every conversation, but I will never tell you what you want to hear just to keep you comfortable. If you are not open to hearing an unvarnished operator assessment of where things are stalling, we will waste each other’s time.
                 </p>
               </div>
             </div>
