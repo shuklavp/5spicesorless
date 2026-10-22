@@ -1,389 +1,456 @@
-// src/components/PillarEIRPage.jsx
-import React, { useState, useRef, useEffect } from 'react';
-import { ArrowLeft, ArrowRight, Check, Compass, ShieldCheck, Sparkles, Send, Building2, TrendingUp, Target, Search } from 'lucide-react';
+import React, { useState } from "react";
+import { ArrowLeft, Check, Send, ShieldCheck, X } from "lucide-react";
+
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xvkzbwak";
 
 export default function PillarEIRPage({ onNavigate, isDark }) {
-  const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState('');
-  const formLoadedAt = useRef(Date.now());
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    venture: '',
-    stage: 'Venture Studio / Incubator',
-    advisoryMode: 'Entrepreneur in Residence (EIR)',
-    timeline: 'Immediate (Next 2-4 weeks)',
-    bottleneck: '',
-    hp_company_url: '',
+    name: "",
+    email: "",
+    fund: "",
+    rhythm: "Immediate (Next 2–4 weeks)",
+    thesis: "",
+    _hp_company_url: ""
   });
+  const [submitStatus, setSubmitStatus] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
+  const handleChange = (e) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (formData._hp_company_url) return;
 
-    if (formData.hp_company_url && formData.hp_company_url.trim() !== '') {
-      setSubmitted(true);
-      return;
-    }
-
-    if (Date.now() - formLoadedAt.current < 2500) {
-      setSubmitted(true);
-      return;
-    }
-
-    setIsSubmitting(true);
-    setSubmitError('');
-
-    const payload = {
-      name: formData.name,
-      email: formData.email,
-      venture: formData.venture || '',
-      stage: formData.stage,
-      advisoryMode: 'Entrepreneur in Residence (EIR)',
-      timeline: formData.timeline,
-      bottleneck: formData.bottleneck,
-      _subject: 'Advisory Enquiry: EIR Studio - ' + formData.name,
-    };
+    setSubmitStatus("submitting");
+    setErrorMessage("");
 
     try {
-      const response = await fetch('https://formspree.io/f/xvkzbwak', {
-        method: 'POST',
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
+          "Accept": "application/json"
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          source: "Pillar 02 - Entrepreneur in Residence (EIR)",
+          name: formData.name,
+          email: formData.email,
+          fund_or_studio: formData.fund,
+          collaboration_rhythm: formData.rhythm,
+          thesis_or_opportunity: formData.thesis
+        })
       });
 
       if (response.ok) {
-        setSubmitted(true);
+        setSubmitStatus("success");
+        setFormData({
+          name: "",
+          email: "",
+          fund: "",
+          rhythm: "Immediate (Next 2–4 weeks)",
+          thesis: "",
+          _hp_company_url: ""
+        });
       } else {
-        const data = await response.json().catch(() => null);
-        const errMsg = data && data.errors
-          ? data.errors.map((err) => err.message).join(', ')
-          : 'Unable to submit enquiry. Please email directly at vivek@5spicesorless.com';
-        setSubmitError(errMsg);
+        const errorData = await response.json();
+        setErrorMessage(errorData.error || "Unable to submit enquiry right now. Please try again or reach out directly.");
+        setSubmitStatus("error");
       }
     } catch (err) {
-      setSubmitError('Connection error. Please reach out directly to vivek@5spicesorless.com');
-    } finally {
-      setIsSubmitting(false);
+      setErrorMessage("Network error. Please check your connection and try again.");
+      setSubmitStatus("error");
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#F1F2F4] dark:bg-[#080D18] text-[#0F172A] dark:text-[#F8FAFC] transition-colors duration-300">
-      <div className="pt-32 pb-24 max-w-5xl mx-auto px-6">
-        {/* Back Link */}
-        <button
-          onClick={() => onNavigate('/advisory')}
-          className="inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-muted-500 hover:text-ink-900 dark:hover:text-white transition-colors mb-8 group"
-        >
-          <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1 text-[#7C3AED]" />
-          Back to Advisory Overview
-        </button>
+    <div className="min-h-screen bg-[#FAF8F5] text-[#1A1A1A] font-serif selection:bg-[#5B3DF5]/20 selection:text-[#111111]">
+      
+      {/* 1. ATMOSPHERIC ARCHITECTURAL BANNER (OXFORD NAVY & BLUEPRINT DRAFTING) */}
+      <section className="relative w-full bg-[#090E1D] text-white pt-32 pb-24 px-6 md:px-12 lg:px-16 overflow-hidden border-b border-[#1E263D]">
+        <div className="absolute inset-0 pointer-events-none flex justify-end overflow-hidden">
+          <img
+            src="/illustrations/eir-blueprint-dark.jpg"
+            onError={(e) => { e.currentTarget.src = "/work-sketch.jpeg"; }}
+            alt="Technical Blueprint & Strategy"
+            className="h-full w-auto max-w-none object-contain object-right-bottom filter contrast-125 brightness-110 opacity-80 lg:opacity-90"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#090E1D] via-[#090E1D]/80 via-40% to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#090E1D] via-transparent to-[#090E1D]/50" />
+        </div>
 
-        {/* Hero Section */}
-        <div className="bg-white dark:bg-[#0F1829] rounded-3xl p-8 md:p-12 border border-[#E2E4E8] dark:border-[#1E293B] shadow-sm mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EDE9FE] dark:bg-[#7C3AED]/20 text-[#7C3AED] text-xs font-mono tracking-widest uppercase mb-6">
-            <Building2 className="w-3.5 h-3.5" />
-            Venture Studio & Fund Partnership · Pillar 02
+        <div className="relative max-w-5xl mx-auto z-10">
+          <button
+            onClick={() => onNavigate("/advisory")}
+            className="inline-flex items-center gap-2 font-mono text-[11px] tracking-widest uppercase text-white/60 hover:text-white transition-colors mb-8 group cursor-pointer"
+          >
+            <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-1" />
+            <span>Back to Advisory Overview</span>
+          </button>
+
+          <div className="flex items-center gap-2.5 mb-6">
+            <span className="w-2 h-2 rounded-full bg-[#5B3DF5] animate-pulse" />
+            <span className="font-mono text-xs tracking-widest uppercase text-white/70">
+              Venture Studio & Fund Partnership • Pillar 02
+            </span>
           </div>
 
-          <h1 className="font-serif text-3xl md:text-5xl font-bold tracking-tight text-ink-950 dark:text-white mb-4">
-            Entrepreneur in Residence (EIR)
+          <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.05]">
+            Entrepreneur in <span className="italic font-normal font-serif text-[#818CF8]">Residence</span>.
           </h1>
 
-          <p className="text-lg md:text-xl text-[#475569] dark:text-[#94A3B8] font-serif italic mb-8 max-w-3xl">
-            Category creation, early validation, and building capital-efficient operating blueprints.
+          <p className="font-serif text-xl sm:text-2xl text-white/80 max-w-2xl leading-relaxed mb-10">
+            Category creation, early validation, and building capital-efficient operating blueprints before scale capital is deployed.
           </p>
 
-          <div className="border-l-2 border-[#7C3AED] pl-6 py-2 bg-[#F8FAFC] dark:bg-[#162342]/40 rounded-r-xl">
-            <p className="font-serif text-base md:text-lg text-ink-900 dark:text-gray-200 leading-relaxed">
-              "The most expensive mistake in venture building is scaling an idea before validating the underlying customer pain."
+          <div className="bg-[#0E152B]/85 backdrop-blur-md border-l-2 border-[#818CF8] p-6 max-w-2xl rounded-r-xl shadow-lg">
+            <p className="font-serif italic text-lg text-white/90 leading-relaxed">
+              &ldquo;The most expensive mistake in venture building is scaling an idea before validating the underlying customer pain.&rdquo;
             </p>
           </div>
         </div>
+      </section>
 
-        {/* Section 1: The Why */}
-        <div className="bg-white dark:bg-[#0F1829] rounded-3xl p-8 md:p-12 border border-[#E2E4E8] dark:border-[#1E293B] shadow-sm mb-12">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#7C3AED] font-semibold block mb-2">
-            01 / The Real Cost of Assumptions
-          </span>
-          <h2 className="font-serif text-2xl md:text-3xl font-bold text-ink-950 dark:text-white mb-6">
-            The Pitch Deck vs Customer Ground Truth
-          </h2>
-          <div className="space-y-4 text-base text-[#334155] dark:text-[#CBD5E1] leading-relaxed">
-            <p>
-              In early venture building, slide decks can make almost any business model appear compelling. Spreadsheets calculate addressable markets in the billions, and prototypes look dazzling in pitch meetings. But once institutional capital is committed, companies often discover that polite enthusiasm does not translate into willingness to pay.
-            </p>
-            <p>
-              Founders frequently burn precious runway building complex delivery systems before validating basic ground truths: unit margins, distribution friction, and real-world compliance. By the time the flaw is discovered, the venture is too heavy to pivot cleanly.
-            </p>
+      {/* 2. OPERATOR PROOF RIBBON */}
+      <section className="w-full bg-[#0D1429] border-b border-[#1E263D] py-5 px-6 md:px-12">
+        <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-6 font-mono text-xs text-white/70 tracking-wider uppercase">
+          <div className="flex items-center gap-2">
+            <span className="text-[#818CF8] font-bold">✓</span>
+            <span>Category Pioneer (Sub-Metering)</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-[#818CF8] font-bold">✓</span>
+            <span>Macquarie Institutional Funding</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-[#818CF8] font-bold">✓</span>
+            <span>Hardware & Cloud Architecture</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-[#818CF8] font-bold">✓</span>
+            <span>Cap-Table Discipline</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-[#818CF8] font-bold">✓</span>
+            <span>Verified Customer Reality</span>
           </div>
         </div>
+      </section>
 
-        {/* Section 2: The How */}
-        <div className="bg-white dark:bg-[#0F1829] rounded-3xl p-8 md:p-12 border border-[#E2E4E8] dark:border-[#1E293B] shadow-sm mb-12">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#7C3AED] font-semibold block mb-2">
-            02 / The Operating Philosophy
-          </span>
-          <h2 className="font-serif text-2xl md:text-3xl font-bold text-ink-950 dark:text-white mb-6">
-            Battle-Tested Operator Scrutiny
-          </h2>
-          <div className="space-y-4 text-base text-[#334155] dark:text-[#CBD5E1] leading-relaxed">
-            <p>
-              Having created an entirely new utility sub-metering category in India, unlocked institutional funding from Macquarie, and navigated difficult supply chains and regulatory frameworks, I partner with venture studios and funds to pressure-test concepts before scale capital is deployed.
-            </p>
-            <p>
-              We do not rely on theoretical frameworks. We conduct field validation, test customer unit economics, inspect real operational dependencies, and build lean execution architectures. This ensures every dollar deployed is grounded in verified customer reality.
-            </p>
+      {/* 3. GROUND TRUTH & PHILOSOPHY */}
+      <section className="py-20 px-6 md:px-12 lg:px-16 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <div className="md:col-span-6">
+            <span className="font-mono text-xs uppercase tracking-widest text-[#5B3DF5] block mb-3 font-semibold">
+              01 / The Real Cost of Assumptions
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-[#111111] mb-6 leading-snug">
+              The pitch deck versus customer ground truth.
+            </h2>
+            <div className="font-serif text-lg text-[#2B2927] leading-relaxed space-y-4">
+              <p>
+                In early venture building, slide decks can make almost any business model appear compelling. Spreadsheets calculate addressable markets in the billions, and prototypes look dazzling in pitch meetings. But once institutional capital is committed, companies often discover that polite enthusiasm does not translate into willingness to pay.
+              </p>
+              <p>
+                Founders frequently burn precious runway building complex delivery systems before validating basic ground truths: unit margins, distribution friction, and real-world compliance. By the time the flaw is discovered, the venture is too heavy to pivot cleanly.
+              </p>
+            </div>
+          </div>
+
+          <div className="md:col-span-6 md:border-l md:border-[#EAE5DF] md:pl-12">
+            <span className="font-mono text-xs uppercase tracking-widest text-[#5B3DF5] block mb-3 font-semibold">
+              02 / The Operating Philosophy
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-[#111111] mb-6 leading-snug">
+              Battle-tested operator scrutiny.
+            </h2>
+            <div className="font-serif text-lg text-[#2B2927] leading-relaxed space-y-4">
+              <p>
+                Having created an entirely new utility sub-metering category in India, unlocked institutional funding from Macquarie, and navigated difficult supply chains and regulatory frameworks, I partner with venture studios and funds to pressure-test concepts before scale capital is deployed.
+              </p>
+              <p>
+                We do not rely on theoretical frameworks. We conduct field validation, test customer unit economics, inspect real operational dependencies, and build lean execution architectures. This ensures every dollar deployed is grounded in verified customer reality.
+              </p>
+            </div>
           </div>
         </div>
+      </section>
 
-        {/* Section 3: The What */}
-        <div className="bg-white dark:bg-[#0F1829] rounded-3xl p-8 md:p-12 border border-[#E2E4E8] dark:border-[#1E293B] shadow-sm mb-12">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#7C3AED] font-semibold block mb-2">
-            03 / Tangible Deliverables
-          </span>
-          <h2 className="font-serif text-2xl md:text-3xl font-bold text-ink-950 dark:text-white mb-8">
-            What We Validate and Architect Together
-          </h2>
+      {/* 4. TANGIBLE DELIVERABLES */}
+      <section className="w-full bg-white py-20 px-6 md:px-12 lg:px-16 border-y border-[#EAE5DF]">
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-14">
+            <span className="font-mono text-xs uppercase tracking-widest text-[#5B3DF5] block mb-2 font-semibold">
+              03 / Tangible Deliverables
+            </span>
+            <h2 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-[#111111]">
+              What we validate and architect together.
+            </h2>
+            <p className="font-serif text-xl text-[#55524E] mt-3 max-w-2xl">
+              Concrete de-risking frameworks installed before writing institutional cheques.
+            </p>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-6 rounded-2xl bg-[#F8FAFC] dark:bg-[#162342]/40 border border-[#E2E4E8] dark:border-[#1E293B]">
-              <div className="w-10 h-10 rounded-xl bg-[#EDE9FE] dark:bg-[#7C3AED]/30 flex items-center justify-center text-[#7C3AED] mb-4">
-                <Target className="w-5 h-5" />
-              </div>
-              <h3 className="font-serif text-lg font-bold text-ink-950 dark:text-white mb-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+            <div className="border-t-2 border-[#111111] pt-6">
+              <span className="font-mono text-xs font-bold text-[#5B3DF5] tracking-widest block mb-2">
+                DELIVERABLE 01
+              </span>
+              <h3 className="font-serif text-2xl font-bold text-[#111111] mb-3">
                 Customer Problem Validation
               </h3>
-              <p className="text-sm text-[#475569] dark:text-[#94A3B8] leading-relaxed">
+              <p className="font-serif text-base text-[#44403C] leading-relaxed">
                 Direct interviews and pilots with target buyers to determine genuine willingness to pay, separating polite feedback from urgent commercial demand before building.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#F8FAFC] dark:bg-[#162342]/40 border border-[#E2E4E8] dark:border-[#1E293B]">
-              <div className="w-10 h-10 rounded-xl bg-[#EDE9FE] dark:bg-[#7C3AED]/30 flex items-center justify-center text-[#7C3AED] mb-4">
-                <Search className="w-5 h-5" />
-              </div>
-              <h3 className="font-serif text-lg font-bold text-ink-950 dark:text-white mb-2">
+            <div className="border-t-2 border-[#111111] pt-6">
+              <span className="font-mono text-xs font-bold text-[#5B3DF5] tracking-widest block mb-2">
+                DELIVERABLE 02
+              </span>
+              <h3 className="font-serif text-2xl font-bold text-[#111111] mb-3">
                 Category Creation Stress-Testing
               </h3>
-              <p className="text-sm text-[#475569] dark:text-[#94A3B8] leading-relaxed">
+              <p className="font-serif text-base text-[#44403C] leading-relaxed">
                 Rigorous analysis of regulatory hurdles, supply chains, hardware/software interfaces, and pricing defensibility against incumbents.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#F8FAFC] dark:bg-[#162342]/40 border border-[#E2E4E8] dark:border-[#1E293B]">
-              <div className="w-10 h-10 rounded-xl bg-[#EDE9FE] dark:bg-[#7C3AED]/30 flex items-center justify-center text-[#7C3AED] mb-4">
-                <TrendingUp className="w-5 h-5" />
-              </div>
-              <h3 className="font-serif text-lg font-bold text-ink-950 dark:text-white mb-2">
+            <div className="border-t-2 border-[#111111] pt-6">
+              <span className="font-mono text-xs font-bold text-[#5B3DF5] tracking-widest block mb-2">
+                DELIVERABLE 03
+              </span>
+              <h3 className="font-serif text-2xl font-bold text-[#111111] mb-3">
                 Lean Operating Architecture
               </h3>
-              <p className="text-sm text-[#475569] dark:text-[#94A3B8] leading-relaxed">
+              <p className="font-serif text-base text-[#44403C] leading-relaxed">
                 Designing capital-efficient 0-to-1 operational roadmaps, milestone criteria, and early team profiles that prioritise speed over headcounts.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#F8FAFC] dark:bg-[#162342]/40 border border-[#E2E4E8] dark:border-[#1E293B]">
-              <div className="w-10 h-10 rounded-xl bg-[#EDE9FE] dark:bg-[#7C3AED]/30 flex items-center justify-center text-[#7C3AED] mb-4">
-                <ShieldCheck className="w-5 h-5" />
-              </div>
-              <h3 className="font-serif text-lg font-bold text-ink-950 dark:text-white mb-2">
+            <div className="border-t-2 border-[#111111] pt-6">
+              <span className="font-mono text-xs font-bold text-[#5B3DF5] tracking-widest block mb-2">
+                DELIVERABLE 04
+              </span>
+              <h3 className="font-serif text-2xl font-bold text-[#111111] mb-3">
                 Frank Committee Reports
               </h3>
-              <p className="text-sm text-[#475569] dark:text-[#94A3B8] leading-relaxed">
+              <p className="font-serif text-base text-[#44403C] leading-relaxed">
                 Unvarnished evaluation memos for investment committees, providing realistic risk assessments, unit economics projections, and clear go/no-go verdicts.
               </p>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Section 4: Studio & Fund Fit */}
-        <div className="bg-white dark:bg-[#0F1829] rounded-3xl p-8 md:p-12 border border-[#E2E4E8] dark:border-[#1E293B] shadow-sm mb-12">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#7C3AED] font-semibold block mb-2">
+      {/* 5. FIT MATRIX */}
+      <section className="py-20 px-6 md:px-12 lg:px-16 max-w-5xl mx-auto">
+        <div className="mb-12">
+          <span className="font-mono text-xs uppercase tracking-widest text-[#5B3DF5] block mb-2 font-semibold">
             04 / Studio & Fund Fit
           </span>
-          <h2 className="font-serif text-2xl md:text-3xl font-bold text-ink-950 dark:text-white mb-6">
-            Where This Collaboration Generates High Return
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-[#111111]">
+            Where this collaboration generates high return.
           </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="space-y-3">
-              <h4 className="font-serif font-bold text-ink-900 dark:text-white text-base flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#7C3AED]"></span>
-                Best suited for:
-              </h4>
-              <ul className="space-y-2 text-sm text-[#475569] dark:text-[#94A3B8]">
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-[#7C3AED] shrink-0 mt-0.5" />
-                  <span>Venture studios incubating complex physical-digital or operational models.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-[#7C3AED] shrink-0 mt-0.5" />
-                  <span>Early-stage funds needing seasoned operator due diligence on founders.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <Check className="w-4 h-4 text-[#7C3AED] shrink-0 mt-0.5" />
-                  <span>Family offices seeking pragmatic validation before writing checks.</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="space-y-3">
-              <h4 className="font-serif font-bold text-ink-900 dark:text-white text-base flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#BC5259]"></span>
-                Not intended for:
-              </h4>
-              <ul className="space-y-2 text-sm text-[#475569] dark:text-[#94A3B8]">
-                <li className="flex items-start gap-2 text-muted-400">
-                  <span className="text-[#BC5259] font-bold">✕</span>
-                  <span>Pure speculative trend investing without underlying unit economics.</span>
-                </li>
-                <li className="flex items-start gap-2 text-muted-400">
-                  <span className="text-[#BC5259] font-bold">✕</span>
-                  <span>Programs looking for high-volume academic lectures rather than field work.</span>
-                </li>
-                <li className="flex items-start gap-2 text-muted-400">
-                  <span className="text-[#BC5259] font-bold">✕</span>
-                  <span>Teams seeking validation for preconceived narratives without open enquiry.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
         </div>
 
-        {/* Section 5: Direct Intake Form */}
-        <div id="enquiry" className="bg-[#BC5259] dark:bg-[#2A1417] text-white rounded-3xl p-8 md:p-12 shadow-xl mb-12">
-          <div className="max-w-2xl mx-auto">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#FCE4EC] font-semibold block mb-2">
-              Start an Honest Conversation
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white rounded-3xl p-8 sm:p-10 border border-[#EAE5DF] shadow-sm">
+          <div className="space-y-6">
+            <div className="flex items-center gap-2 pb-4 border-b border-[#EAE5DF]">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-600" />
+              <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-emerald-800">
+                Best Suited For
+              </h3>
+            </div>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <Check className="w-5 h-5 text-emerald-600 mt-0.5 shrink-0" />
+                <span className="font-serif text-base text-[#2B2927]">
+                  Venture studios incubating complex physical-digital or operational models.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Check className="w-5 h-5 text-emerald-600 mt-0.5 shrink-0" />
+                <span className="font-serif text-base text-[#2B2927]">
+                  Early-stage funds needing seasoned operator due diligence on founders.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Check className="w-5 h-5 text-emerald-600 mt-0.5 shrink-0" />
+                <span className="font-serif text-base text-[#2B2927]">
+                  Family offices seeking pragmatic validation before writing cheques.
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="space-y-6 md:border-l md:border-[#EAE5DF] md:pl-8">
+            <div className="flex items-center gap-2 pb-4 border-b border-[#EAE5DF]">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#BC5259]" />
+              <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-[#BC5259]">
+                Not Intended For
+              </h3>
+            </div>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <X className="w-5 h-5 text-[#BC5259] mt-0.5 shrink-0" />
+                <span className="font-serif text-base text-[#55524E]">
+                  Pure speculative trend investing without underlying unit economics.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <X className="w-5 h-5 text-[#BC5259] mt-0.5 shrink-0" />
+                <span className="font-serif text-base text-[#55524E]">
+                  Programmes looking for high-volume academic lectures rather than field work.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <X className="w-5 h-5 text-[#BC5259] mt-0.5 shrink-0" />
+                <span className="font-serif text-base text-[#55524E]">
+                  Teams seeking validation for preconceived narratives without open enquiry.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. INQUIRY FORM */}
+      <section id="inquiry" className="py-20 px-6 md:px-12 lg:px-16 max-w-4xl mx-auto">
+        <div className="bg-white rounded-3xl p-8 sm:p-12 border border-[#EAE5DF] shadow-md relative overflow-hidden">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <span className="font-mono text-xs uppercase tracking-widest text-[#5B3DF5] block mb-2 font-semibold">
+              Start An Honest Conversation
             </span>
-            <h2 className="font-serif text-2xl md:text-3xl font-bold mb-4">
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-[#111111]">
               Explore an EIR or Studio Collaboration
             </h2>
-            <p className="text-[#FCE4EC] text-sm mb-8 leading-relaxed">
+            <p className="font-serif text-base text-[#55524E] mt-3">
               If your studio or fund is preparing to incubate a venture or stress-test an existing thesis, let us discuss how a structured EIR engagement can protect capital and accelerate ground truth.
             </p>
+          </div>
 
-            {submitted ? (
-              <div className="p-8 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 text-center">
-                <Sparkles className="w-10 h-10 text-[#FCE4EC] mx-auto mb-4" />
-                <h3 className="font-serif text-xl font-bold mb-2">Thank you for your note.</h3>
-                <p className="text-sm text-[#FCE4EC] leading-relaxed">
-                  Your enquiry has been received in confidence. I will review your fund details and reply personally within 48 hours.
-                </p>
+          {submitStatus === "success" ? (
+            <div className="bg-[#FAF8F5] border border-emerald-300 rounded-2xl p-8 text-center">
+              <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto mb-4">
+                <ShieldCheck className="w-6 h-6" />
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-4 text-ink-950 dark:text-ink-950">
-                <input
-                  type="text"
-                  name="_hp_company_url"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  value={formData.hp_company_url}
-                  onChange={(e) => setFormData({ ...formData, hp_company_url: e.target.value })}
-                  style={{ display: 'none', position: 'absolute', opacity: 0, height: 0, width: 0 }}
-                />
+              <h3 className="font-serif text-2xl font-bold text-[#111111] mb-2">Enquiry Received</h3>
+              <p className="font-serif text-base text-[#55524E] max-w-md mx-auto">
+                Thank you. Your enquiry remains strictly confidential. I review every submission personally and will respond within 24 to 48 hours.
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <input
+                type="text"
+                name="_hp_company_url"
+                value={formData._hp_company_url}
+                onChange={handleChange}
+                className="hidden"
+                tabIndex="-1"
+                autoComplete="off"
+              />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-white/90 mb-1.5">
-                      Your Name *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="e.g. Vikram Singhal"
-                      className="w-full px-4 py-3 rounded-xl bg-white text-ink-950 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-white"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-white/90 mb-1.5">
-                      Direct Email *
-                    </label>
-                    <input
-                      type="email"
-                      required
-                      name="email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="vikram@venturefund.com"
-                      className="w-full px-4 py-3 rounded-xl bg-white text-ink-950 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-white"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-white/90 mb-1.5">
-                      Fund / Studio Name
-                    </label>
-                    <input
-                      type="text"
-                      value={formData.venture}
-                      onChange={(e) => setFormData({ ...formData, venture: e.target.value })}
-                      placeholder="Fund or studio name"
-                      className="w-full px-4 py-3 rounded-xl bg-white text-ink-950 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-white"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-white/90 mb-1.5">
-                      Collaboration Rhythm
-                    </label>
-                    <select
-                      value={formData.timeline}
-                      onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-white text-ink-950 text-sm focus:outline-none focus:ring-2 focus:ring-white"
-                    >
-                      <option value="Immediate (Next 2-4 weeks)">Immediate (Next 2-4 weeks)</option>
-                      <option value="Next Quarter Planning">Next Quarter Planning</option>
-                      <option value="Thesis Discussion">Initial Thesis Exploration</option>
-                    </select>
-                  </div>
-                </div>
-
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-white/90 mb-1.5">
-                    Thesis or Opportunity under Review *
+                  <label className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
+                    Your Name *
                   </label>
-                  <textarea
-                    rows={4}
+                  <input
+                    type="text"
+                    name="name"
                     required
-                    value={formData.bottleneck}
-                    onChange={(e) => setFormData({ ...formData, bottleneck: e.target.value })}
-                    placeholder="Briefly describe the category, business model, or operational bottleneck under review."
-                    className="w-full px-4 py-3 rounded-xl bg-white text-ink-950 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-white"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="e.g. Vikram Singhal"
+                    className="w-full px-4 py-3 rounded-xl border border-[#D5CEC5] focus:outline-none focus:ring-2 focus:ring-[#5B3DF5] focus:border-transparent font-serif bg-[#FAF8F5]/50 text-[#111111]"
                   />
                 </div>
 
-                {submitError && (
-                  <div className="p-3 bg-red-900/60 border border-red-400/40 rounded-xl text-xs text-white">
-                    {submitError}
-                  </div>
-                )}
+                <div>
+                  <label className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
+                    Direct Email *
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="vikram@venturefund.com"
+                    className="w-full px-4 py-3 rounded-xl border border-[#D5CEC5] focus:outline-none focus:ring-2 focus:ring-[#5B3DF5] focus:border-transparent font-serif bg-[#FAF8F5]/50 text-[#111111]"
+                  />
+                </div>
+              </div>
 
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full py-4 rounded-xl bg-ink-950 hover:bg-black text-white font-mono text-xs tracking-widest uppercase transition-all shadow-lg flex items-center justify-center gap-2 group"
-                >
-                  {isSubmitting ? 'Sending Enquiry...' : 'Submit Confidential Enquiry'}
-                  <Send className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                </button>
-              </form>
-            )}
-          </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
+                    Fund / Studio Name
+                  </label>
+                  <input
+                    type="text"
+                    name="fund"
+                    value={formData.fund}
+                    onChange={handleChange}
+                    placeholder="Fund or studio name"
+                    className="w-full px-4 py-3 rounded-xl border border-[#D5CEC5] focus:outline-none focus:ring-2 focus:ring-[#5B3DF5] focus:border-transparent font-serif bg-[#FAF8F5]/50 text-[#111111]"
+                  />
+                </div>
+
+                <div>
+                  <label className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
+                    Collaboration Rhythm
+                  </label>
+                  <select
+                    name="rhythm"
+                    value={formData.rhythm}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-xl border border-[#D5CEC5] focus:outline-none focus:ring-2 focus:ring-[#5B3DF5] focus:border-transparent font-serif bg-[#FAF8F5]/50 text-[#111111]"
+                  >
+                    <option value="Immediate (Next 2–4 weeks)">Immediate (Next 2–4 weeks)</option>
+                    <option value="Upcoming Quarter">Upcoming Quarter</option>
+                    <option value="Exploratory Due Diligence">Exploratory Due Diligence</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
+                  Thesis or Opportunity Under Review *
+                </label>
+                <textarea
+                  name="thesis"
+                  required
+                  rows={4}
+                  value={formData.thesis}
+                  onChange={handleChange}
+                  placeholder="Briefly describe the category, business model, or operational bottleneck under review."
+                  className="w-full px-4 py-3 rounded-xl border border-[#D5CEC5] focus:outline-none focus:ring-2 focus:ring-[#5B3DF5] focus:border-transparent font-serif bg-[#FAF8F5]/50 text-[#111111]"
+                />
+              </div>
+
+              {errorMessage && (
+                <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 font-serif text-sm">
+                  {errorMessage}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={submitStatus === "submitting"}
+                className="w-full py-4 rounded-xl bg-[#5B3DF5] hover:bg-[#482ee0] text-white font-mono text-xs uppercase tracking-widest font-bold transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+              >
+                <span>{submitStatus === "submitting" ? "Submitting..." : "Submit Confidential Enquiry"}</span>
+                <Send className="w-4 h-4" />
+              </button>
+            </form>
+          )}
         </div>
-      </div>
+      </section>
+
     </div>
   );
 }

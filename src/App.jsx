@@ -14,6 +14,7 @@ import AboutPage from './components/AboutPage';
 import AdvisoryPage from './components/AdvisoryPage';
 import StoryPage from './components/StoryPage';
 import DeskPage from './components/DeskPage';
+import FictionPage from './components/FictionPage';
 import DispatchStudio from './components/DispatchStudio';
 
 // Independent Standalone Desk Pages
@@ -120,9 +121,14 @@ export default function App() {
       return <WorkDeskPage onNavigate={handleNavigate} isDark={isDark} />;
     }
 
-    // 3a. Combined Dispatches Library: /stories
-    if (normalizedPath === '/stories') {
+    // 3a. Non-Fiction Essays Archive: /essays
+    if (normalizedPath === '/essays') {
       return <DeskPage desk="stories" deskId="stories" onNavigate={handleNavigate} isDark={isDark} />;
+    }
+
+    // 3b. Dedicated Fiction Space: /stories
+    if (normalizedPath === '/stories') {
+      return <FictionPage onNavigate={handleNavigate} isDark={isDark} />;
     }
 
     // 4. Standalone Story Reader: /stories/:slug

@@ -17,13 +17,13 @@ export default function DeskPage({ onNavigate }) {
   }, [searchQuery]);
 
   return (
-    <div className="min-h-screen bg-canvas dark:bg-canvas-dark text-ink-900 dark:text-white transition-colors duration-300 pt-24 pb-20">
+    <div className="min-h-screen bg-canvas dark:bg-canvas-dark text-ink-900 dark:text-white transition-colors duration-300 pt-32 pb-20">
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         <div className="mb-6">
           <button
             type="button"
             onClick={() => {
-              if (onNavigate) onNavigate('/');
+              if (onNavigate) window.scrollTo(0, 0); onNavigate('/');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
             className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-ink-500 dark:text-ink-400 hover:text-berry-600 transition-colors cursor-pointer"

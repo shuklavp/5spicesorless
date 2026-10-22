@@ -121,7 +121,7 @@ export default function WritingBoard({ onNavigate }) {
           </div>
 
           <button
-            onClick={() => onNavigate && onNavigate('/stories')}
+            onClick={() => { window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); if (onNavigate) { onNavigate('/essays'); } }}
             className="px-6 py-2.5 rounded-full bg-ink-900 text-white dark:bg-berry-600 text-xs font-bold font-mono tracking-wider uppercase flex items-center gap-2 hover:bg-berry-700 transition-colors shrink-0 group"
           >
             <span>View Full Archive Across All Desks</span>

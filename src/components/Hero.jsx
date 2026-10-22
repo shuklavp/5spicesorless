@@ -85,7 +85,7 @@ export default function Hero({ onNavigate }) {
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <button
                 type="button"
-                onClick={() => onNavigate && onNavigate('/#philosophy')}
+                onClick={() => { const el = document.getElementById('essays') || document.getElementById('writing-board') || document.querySelector('[data-section="essays"]') || document.getElementById('stories'); if (el) { el.scrollIntoView({ behavior: 'smooth' }); } else if (onNavigate) { window.scrollTo(0, 0); onNavigate('/essays'); } }}
                 className="px-6 py-3 rounded-full bg-berry-600 hover:bg-berry-700 text-white font-mono text-[11px] font-bold uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg inline-flex items-center gap-2.5 cursor-pointer"
               >
                 <svg className="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
