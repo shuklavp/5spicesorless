@@ -42,7 +42,18 @@ const mdEssays = Object.entries(mdModules).map(([filepath, raw]) => {
   };
 });
 
-const jsonEssays = Object.values(jsonModules).map((mod) => mod.default || mod);
+const jsonEssays = Object.values(jsonModules).map((mod) => {
+  const item = mod.default || mod;
+  if (!item) return item;
+  const desc = item.summary || item.subtitle || item.leadQuote || item.description || "";
+  return {
+    ...item,
+    summary: desc,
+    description: desc,
+    subtitle: item.subtitle || desc,
+    leadQuote: item.leadQuote || desc
+  };
+});
 
 // Merge: If a story exists as .md, it takes precedence over .json
 const seenSlugs = new Set(mdEssays.map(e => e.slug));
