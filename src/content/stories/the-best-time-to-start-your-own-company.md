@@ -1,6 +1,6 @@
 ---
 id: "the-best-time-to-start-your-own-company"
-title: "The Best Time, the Empty Slate, and the Twenty-Page Contract You Do Not Need"
+title: "The Best Time to Start, and the 20 Page Contract You Don't Need."
 subtitle: "Why the divide between builders and daydreamers is rarely capital, and how subtracting legal friction creates unstoppable speed."
 summary: "Whenever someone asks when to leave the safety of an enterprise salary, they expect an equation. But early ventures survive on commercial momentum, chalk over concrete, and knowing when to skip the twenty-page contract."
 date: "October 2026"
