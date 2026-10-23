@@ -33,7 +33,7 @@ export default function StoryPage({ slug, onNavigate }) {
         {/* Breadcrumb Navigation */}
         <div className="flex items-center justify-between mb-10 pb-4 border-b border-canvas-border dark:border-canvas-darkBorder">
           <button
-            onClick={() => onNavigate('/stories')}
+            onClick={() => onNavigate('/essays')}
             className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider font-bold text-ink-600 dark:text-ink-300 hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />

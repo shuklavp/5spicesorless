@@ -73,6 +73,9 @@ export default function App() {
 
   // Client-Side Route Transition with URL bar sync and scroll to top
   const handleNavigate = (path) => {
+    if (typeof window !== "undefined") {
+      window.history.pushState({}, "", path);
+    }
     setCurrentPath(path);
     window.scrollTo(0, 0);
   };
