@@ -19,9 +19,11 @@ export default function StoryPage({ slug, onNavigate }) {
   };
 
   const handleShareToX = () => {
-    const quotePart = essay.leadQuote ? `\n\n"${essay.leadQuote}"` : '';
-    const textToPost = `"${essay.title}" by Vivek Shukla (@vivekshukla) on @5spicesorless${quotePart}\n\n${window.location.href}\n\n#5SpicesOrLess`;
-    window.open(`https://x.com/intent/post?text=${encodeURIComponent(textToPost)}`, '_blank', 'noopener,noreferrer');
+    const activeSlug = essay.slug || slug || "";
+    const storyUrl = `https://5spicesorless.com/stories/${activeSlug}/`;
+    const quotePart = essay.leadQuote ? `\n\n"${essay.leadQuote}"` : "";
+    const textToPost = `"${essay.title}" by Vivek Shukla (@vivekshukla) on @5spicesorless${quotePart}\n\n${storyUrl}\n\n#5SpicesOrLess`;
+    window.open(`https://x.com/intent/post?text=${encodeURIComponent(textToPost)}`, "_blank", "noopener,noreferrer");
   };
 
   return (
