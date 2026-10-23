@@ -443,6 +443,28 @@ const renderStepItem = (content) => {
         </div>
 
         {/* Next / Previous Essay Footer Navigation (Only when multiple essays exist) */}
+        {/* Discuss on X Banner */}
+        <div className="my-12 p-6 sm:p-8 rounded-2xl border border-canvas-border dark:border-canvas-darkBorder bg-canvas-subtle/50 dark:bg-canvas-darkCard/50 text-center">
+          <h3 className="text-lg font-serif font-bold text-ink-900 dark:text-white mb-2">
+            Join the Discussion on X
+          </h3>
+          <p className="text-sm text-ink-600 dark:text-ink-400 max-w-lg mx-auto mb-6">
+            Have thoughts, a contrasting view, or battle scars of your own? Join the conversation on X. Zero spam, real perspectives.
+          </p>
+          <a
+            href={
+              essay.xThreadUrl ||
+              `https://x.com/search?q=${encodeURIComponent("https://5spicesorless.com/stories/" + (essay.slug || slug) + "/")}`
+            }
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-ink-900 dark:bg-white text-white dark:text-ink-900 text-xs font-mono uppercase tracking-wider font-semibold hover:opacity-90 transition-opacity"
+          >
+            <span>Discuss on X</span>
+            <ArrowUpRight className="w-4 h-4" />
+          </a>
+        </div>
+
         {validEssays.length > 1 && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-canvas-border dark:border-canvas-darkBorder">
           <div
