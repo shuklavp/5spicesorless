@@ -1,7 +1,7 @@
 ---
 id: "the-best-time-to-start-your-own-company"
 title: "The Best Time to Start, and the 20 Page Contract You Don't Need."
-subtitle: "*Why the divide between builders and daydreamers is rarely capital, and how subtracting legal friction creates unstoppable speed.*"
+subtitle: "Why the divide between builders and daydreamers is rarely capital, and how subtracting legal friction creates unstoppable speed."
 summary: "Whenever someone asks when to leave the safety of an enterprise salary, they expect an equation. But early ventures survive on commercial momentum, chalk over concrete, and knowing when to skip the twenty-page contract."
 date: "October 2026"
 readTime: "6 min read"
@@ -19,7 +19,7 @@ Whenever someone asks me when they should finally leave the safety of an enterpr
 
 They want to discuss macroeconomic cycles, interest rates, capital availability, or whether they should wait until their savings account touches an arbitrary milestone. They treat timing like an astrological transit. If they only stare at the calendar long enough, the heavens will open, a choir will sing, and the universe will announce that risk has magically dropped to zero.
 
-My answer to all of them is always identical: ***the best time to start is now***.
+My answer to all of them is always identical: <b><i>the best time to start is now</i></b>.
 
 Almost every ambitious professional toys with the idea of building a venture at least once. It hits you during an excruciating quarterly review, or while watching an indecisive corporate committee take six months to approve a modest software budget. You sit in your cubicle, sketch out an idea on the back of a notepad, and realise that you could build this better, faster, and cleaner.
 
@@ -101,6 +101,4 @@ Take the first step. Keep the slate clean, write in chalk, and leave the heavy l
 
 The only things that truly matter are the customer on the line, the working product in the crate, and the quiet clarity to strip away everything else.
 
-> **Connected Note**
->
-> *Simplicity is not the absence of ambition; it is the ruthless elimination of administrative theatre so execution can breathe.*
+> **Connected Note:** *Simplicity is not the absence of ambition; it is the ruthless elimination of administrative theatre so execution can breathe.*
