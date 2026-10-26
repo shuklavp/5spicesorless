@@ -97,7 +97,7 @@ export default function StoryPage({ slug, onNavigate }) {
           const takeawaysPos = essay.takeawaysPosition || 'top';
           const showThesis = essay.showTakeaways !== false && essay.takeaways && essay.takeaways.length > 0;
 
-                    const renderPrimaryPlate = () => (
+          const renderPrimaryPlate = () => (
             (essay.illustration || essay.image) ? (
               <div key="story-img1" className="my-10 rounded-3xl overflow-hidden border border-canvas-border dark:border-canvas-darkBorder bg-canvas-subtle dark:bg-canvas-darkCard p-4 sm:p-8 text-center shadow-sm">
                 <div className="relative w-full max-w-2xl mx-auto flex items-center justify-center min-h-[200px]">
@@ -177,75 +177,91 @@ export default function StoryPage({ slug, onNavigate }) {
             ) : null
           );
 
-// Robust inline markdown parser for **bold**, *italic*, and cleanup of stray stars
-const renderInlineMarkdown = (text) => {
-  if (!text) return '';
+          // Robust inline markdown parser supporting ***bold-italic***, **bold**, *italic*, HTML tags, and clean punctuation
+          const renderInlineMarkdown = (text) => {
+            if (!text) return '';
 
-  // Clean any accidental "Word:**" into "**Word:**"
-  let cleanText = text.replace(/([A-Za-z0-9\s&()/-]+):\*\*/g, '**$1:**');
+            // 1. Normalize HTML formatting if present: <b>, <i>, <strong>, <em>
+            let cleanText = text
+              .replace(/<\/?(b|strong)>/gi, '**')
+              .replace(/<\/?(i|em)>/gi, '*')
+              // Clean accidental "Word:**" into "**Word:**"
+              .replace(/([A-Za-z0-9\s&()/-]+):\*\*/g, '**$1:**');
 
-  // Split by markdown links: [text](url)
-  const linkParts = cleanText.split(/(\[[^\]]+\]\([^)]+\))/g);
+            // Split by markdown links: [text](url)
+            const linkParts = cleanText.split(/(\[[^\]]+\]\([^)]+\))/g);
 
-  return linkParts.map((linkPart, lIdx) => {
-    const linkMatch = linkPart.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
-    if (linkMatch) {
-      const [, label, url] = linkMatch;
-      return (
-        <a
-          key={`link-${lIdx}`}
-          href={url}
-          className="text-berry-600 dark:text-berry-400 underline underline-offset-4 hover:opacity-80 font-medium transition-opacity"
-        >
-          {label}
-        </a>
-      );
-    }
+            return linkParts.map((linkPart, lIdx) => {
+              const linkMatch = linkPart.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+              if (linkMatch) {
+                const [, label, url] = linkMatch;
+                return (
+                  <a
+                    key={`link-${lIdx}`}
+                    href={url}
+                    className="text-berry-600 dark:text-berry-400 underline underline-offset-4 hover:opacity-80 font-medium transition-opacity"
+                  >
+                    {label}
+                  </a>
+                );
+              }
 
-    // Split on bold (**text**)
-    const boldParts = linkPart.split(/(\*{2}.*?\*{2})/g);
-    return boldParts.map((boldPart, bIdx) => {
-      if (boldPart.startsWith('**') && boldPart.endsWith('**') && boldPart.length >= 4) {
-        return (
-          <strong key={`bold-${lIdx}-${bIdx}`} className="font-bold text-ink-950 dark:text-white">
-            {boldPart.slice(2, -2)}
-          </strong>
-        );
-      }
+              // Split on bold + italic (***text***) FIRST to avoid orphaned asterisks
+              const biParts = linkPart.split(/(\*{3}[^*]+?\*{3})/g);
+              return biParts.map((biPart, biIdx) => {
+                if (biPart.startsWith('***') && biPart.endsWith('***') && biPart.length >= 6) {
+                  return (
+                    <strong key={`bi-${lIdx}-${biIdx}`} className="font-bold italic text-ink-950 dark:text-white">
+                      {biPart.slice(3, -3)}
+                    </strong>
+                  );
+                }
 
-      // Split on italic (*text*)
-      const italicParts = boldPart.split(/(\*[^*]+?\*)/g);
-      return italicParts.map((sub, sIdx) => {
-        if (sub.startsWith('*') && sub.endsWith('*') && sub.length >= 2) {
-          return (
-            <em key={`italic-${lIdx}-${bIdx}-${sIdx}`} className="italic">
-              {sub.slice(1, -1)}
-            </em>
-          );
-        }
-        return sub;
-      });
-    });
-  });
-};
+                // Split on bold (**text**)
+                const boldParts = biPart.split(/(\*{2}[^*]+?\*{2})/g);
+                return boldParts.map((boldPart, bIdx) => {
+                  if (boldPart.startsWith('**') && boldPart.endsWith('**') && boldPart.length >= 4) {
+                    return (
+                      <strong key={`bold-${lIdx}-${biIdx}-${bIdx}`} className="font-bold text-ink-950 dark:text-white">
+                        {boldPart.slice(2, -2)}
+                      </strong>
+                    );
+                  }
 
-// Render recipe / numbered step with bold label automatically
-const renderStepItem = (content) => {
-  // Matches "The Water:**", "**The Water:**", or "The Water:"
-  const match = content.match(/^(\*{0,2})([^:*]+)(:)(\*{0,2})\s*(.*)/);
-  if (match) {
-    const [, , label, colon, , rest] = match;
-    return (
-      <>
-        <strong className="font-bold text-ink-950 dark:text-white mr-1.5">
-          {label.trim()}{colon}
-        </strong>
-        {renderInlineMarkdown(rest)}
-      </>
-    );
-  }
-  return renderInlineMarkdown(content);
-};
+                  // Split on italic (*text*)
+                  const italicParts = boldPart.split(/(\*[^*]+?\*)/g);
+                  return italicParts.map((sub, sIdx) => {
+                    if (sub.startsWith('*') && sub.endsWith('*') && sub.length >= 2) {
+                      return (
+                        <em key={`italic-${lIdx}-${biIdx}-${bIdx}-${sIdx}`} className="italic">
+                          {sub.slice(1, -1)}
+                        </em>
+                      );
+                    }
+                    return sub;
+                  });
+                });
+              });
+            });
+          };
+
+          // Render recipe / numbered step with bold label automatically
+          const renderStepItem = (content) => {
+            // Matches "The Water:**", "**The Water:**", or "The Water:"
+            const match = content.match(/^(\*{0,2})([^:*]+)(:)(\*{0,2})\s*(.*)/);
+            if (match) {
+              const [, , label, colon, , rest] = match;
+              return (
+                <>
+                  <strong className="font-bold text-ink-950 dark:text-white mr-1.5">
+                    {label.trim()}{colon}
+                  </strong>
+                  {renderInlineMarkdown(rest)}
+                </>
+              );
+            }
+            return renderInlineMarkdown(content);
+          };
 
           const renderParagraphs = (paras, pfx = 'body') => (
             paras.map((para, i) => {
@@ -331,9 +347,28 @@ const renderStepItem = (content) => {
               }
 
               if (para.startsWith('> ')) {
+                const quoteContent = para.replace(/^>\s*/, '');
+                
+                // Formatted callout card for Connected Notes
+                if (quoteContent.startsWith('Connected Note:')) {
+                  const noteBody = quoteContent.replace(/^Connected Note:\s*/, '');
+                  return (
+                    <div key={`${pfx}-${i}`} className="p-5 sm:p-6 rounded-2xl bg-canvas-subtle dark:bg-canvas-darkCard border-l-4 border-berry-600 my-6 shadow-sm">
+                      <div className="text-base sm:text-lg text-ink-900 dark:text-white leading-relaxed">
+                        <strong className="font-serif font-bold text-ink-950 dark:text-white mr-2 not-italic">
+                          Connected Note:
+                        </strong>
+                        <span className="italic font-serif">
+                          {renderInlineMarkdown(noteBody)}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                }
+
                 return (
                   <blockquote key={`${pfx}-${i}`} className="p-5 rounded-2xl bg-canvas-subtle dark:bg-canvas-darkCard border-l-4 border-berry-600 my-6 italic text-ink-900 dark:text-white">
-                    {renderInlineMarkdown(para.replace(/^>\s*/, ''))}
+                    {renderInlineMarkdown(quoteContent)}
                   </blockquote>
                 );
               }
@@ -442,7 +477,6 @@ const renderStepItem = (content) => {
           </div>
         </div>
 
-        {/* Next / Previous Essay Footer Navigation (Only when multiple essays exist) */}
         {/* Discuss on X Banner */}
         <div className="my-12 p-6 sm:p-8 rounded-2xl border border-canvas-border dark:border-canvas-darkBorder bg-canvas-subtle/50 dark:bg-canvas-darkCard/50 text-center">
           <h3 className="text-lg font-serif font-bold text-ink-900 dark:text-white mb-2">
@@ -465,32 +499,33 @@ const renderStepItem = (content) => {
           </a>
         </div>
 
+        {/* Next / Previous Essay Footer Navigation (Only when multiple essays exist) */}
         {validEssays.length > 1 && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-canvas-border dark:border-canvas-darkBorder">
-          <div
-            onClick={() => onNavigate(`/stories/${prevEssay.slug}`)}
-            className="p-6 rounded-2xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder cursor-pointer hover:border-berry-600 transition-all"
-          >
-            <span className="text-[11px] font-mono text-ink-400 uppercase tracking-wider block mb-1">
-              ← Previous Essay
-            </span>
-            <div className="font-serif text-base font-bold text-ink-900 dark:text-white line-clamp-1">
-              {prevEssay.title}
+            <div
+              onClick={() => onNavigate(`/stories/${prevEssay.slug}`)}
+              className="p-6 rounded-2xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder cursor-pointer hover:border-berry-600 transition-all"
+            >
+              <span className="text-[11px] font-mono text-ink-400 uppercase tracking-wider block mb-1">
+                ← Previous Essay
+              </span>
+              <div className="font-serif text-base font-bold text-ink-900 dark:text-white line-clamp-1">
+                {prevEssay.title}
+              </div>
             </div>
-          </div>
 
-          <div
-            onClick={() => onNavigate(`/stories/${nextEssay.slug}`)}
-            className="p-6 rounded-2xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder cursor-pointer hover:border-berry-600 transition-all text-left sm:text-right"
-          >
-            <span className="text-[11px] font-mono text-ink-400 uppercase tracking-wider block mb-1">
-              Next Essay →
-            </span>
-            <div className="font-serif text-base font-bold text-ink-900 dark:text-white line-clamp-1">
-              {nextEssay.title}
+            <div
+              onClick={() => onNavigate(`/stories/${nextEssay.slug}`)}
+              className="p-6 rounded-2xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder cursor-pointer hover:border-berry-600 transition-all text-left sm:text-right"
+            >
+              <span className="text-[11px] font-mono text-ink-400 uppercase tracking-wider block mb-1">
+                Next Essay →
+              </span>
+              <div className="font-serif text-base font-bold text-ink-900 dark:text-white line-clamp-1">
+                {nextEssay.title}
+              </div>
             </div>
           </div>
-        </div>
         )}
 
       </div>
