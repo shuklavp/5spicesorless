@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FictionPage from '../components/FictionPage.jsx';
+---
+
+<BaseLayout 
+  title="Stories | Fiction & Original Narratives | 5 Spices or Less"
+  description="Imaginative landscapes, chance encounters, and quiet narratives told in unhurried prose."
+  activeCategory="STORIES"
+>
+  <FictionPage client:load />
+</BaseLayout>

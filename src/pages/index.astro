@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.jsx';
+import CoreLevers from '../components/CoreLevers.jsx';
+import ValueProps from '../components/ValueProps.jsx';
+import WritingBoard from '../components/WritingBoard.jsx';
+import Letterbox from '../components/Letterbox.jsx';
+import HomeAdvisoryTeaser from '../components/HomeAdvisoryTeaser.jsx';
+import HomeAboutTeaser from '../components/HomeAboutTeaser.jsx';
+---
+
+<BaseLayout>
+  <Hero client:load />
+  <CoreLevers client:load />
+  <ValueProps client:load />
+  <WritingBoard client:load />
+  <Letterbox client:load />
+  <HomeAdvisoryTeaser client:load />
+  <HomeAboutTeaser client:load />
+</BaseLayout>

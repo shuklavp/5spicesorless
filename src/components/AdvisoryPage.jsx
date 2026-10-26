@@ -33,7 +33,7 @@ const ADVISORY_PILLARS = [
     badge: '1:1 Founder Counsel',
     title: 'A Ben to Your Jules',
     focus: 'Confidential Sounding Board for Founders',
-    path: '/advisory/founder-confidant',
+    path: '/advisory/ben-to-jules',
     color: '#BC5259',
     bgPill: '#FCE4EC',
     summary: 'The founder\'s chair is fundamentally lonely. When stakes are high, you need an ego-free, calm veteran in your corner: someone to help you separate acute noise from real existential hazards with quiet courtesy and unvarnished judgement.',
@@ -144,7 +144,7 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
 
   return (
     <div className="min-h-screen bg-[#F1F2F4] dark:bg-[#080D18] text-[#0F172A] dark:text-[#F8FAFC] transition-colors duration-300">
-      <div className="pt-32 pb-24 max-w-6xl mx-auto px-6 space-y-20">
+      <div className="pt-36 sm:pt-44 pb-24 max-w-6xl mx-auto px-6 space-y-20">
 
         {/* SECTION 1: HERO & CONTEXT (With RHS Architectural Sketch) */}
         <section className="bg-white dark:bg-[#0F1829] rounded-3xl p-8 md:p-14 border border-[#E2E4E8] dark:border-[#1E293B] shadow-sm">
@@ -170,13 +170,10 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
               </div>
 
               <div className="pt-2 flex flex-wrap gap-4">
-                <button
-                  onClick={scrollToEnquiry}
-                  className="px-6 py-3.5 rounded-full bg-ink-950 hover:bg-black text-white text-xs font-mono tracking-widest uppercase transition-all shadow-md flex items-center gap-2"
-                >
+                <a href="/advisory/fractional-operator" className="inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full text-white text-xs font-mono uppercase tracking-widest font-bold bg-[#146B53] hover:bg-[#0E523F] transition-all shadow-md">
                   Start A Conversation
                   <ArrowRight className="w-3.5 h-3.5" />
-                </button>
+                </a>
               </div>
             </div>
 
@@ -248,14 +245,14 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
 
                   {/* Know More Action Button */}
                   <div className="pt-8">
-                    <button
-                      onClick={() => onNavigate(pillar.path)}
+                    <a
+                      href={pillar.path}
                       className="w-full py-3.5 px-6 rounded-full text-white text-xs font-mono tracking-widest uppercase transition-all shadow-md flex items-center justify-center gap-2 group-hover:opacity-95"
                       style={{ backgroundColor: pillar.color }}
                     >
                       KNOW MORE
                       <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-                    </button>
+                    </a>
                   </div>
                 </div>
               );
@@ -533,7 +530,29 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
             )}
           </div>
         </section>
-
+        {/* Authentic Advisory Page Footer Callout Banner */}
+        <div className="mt-20 p-8 sm:p-14 rounded-3xl bg-[#180F13] border border-[#3A1E29] shadow-2xl overflow-hidden relative text-white flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="relative z-10 max-w-xl space-y-4">
+            <div className="flex items-center gap-2 text-xs font-mono tracking-widest font-bold text-rose-400 uppercase">
+              <span className="w-2 h-2 rounded-full bg-rose-500" />
+              <span>ON OPERATIONAL PERSPECTIVE</span>
+            </div>
+            <blockquote className="font-serif not-italic text-2xl sm:text-3xl font-bold leading-snug text-white">
+              &quot;In boardroom storms and founder bottlenecks, the greatest asset is not a clever slide deck. It is an experienced, calm voice that refuses to panic.&quot;
+            </blockquote>
+            <p className="text-xs sm:text-sm text-rose-200/80 font-light leading-relaxed">
+              A Ben to your Jules: confidential founder counsel, zero corporate theatre, and the quiet courage to make bold moves with steady backing.
+            </p>
+          </div>
+          <div className="w-56 sm:w-72 shrink-0 flex items-center justify-center">
+            <img 
+              src="/footer/footer-chess-compass.png" 
+              alt="Chess Pieces and Pocket Compass" 
+              className="w-full h-auto object-contain"
+              onError={(e) => { e.currentTarget.src = "/footer/footer-chess-compass.jpg"; }}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

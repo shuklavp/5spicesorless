@@ -1,0 +1,185 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Clock, ArrowLeft, ArrowUpRight } from 'lucide-react';
+import { ESSAYS_DATA } from '../../data/essays.js';
+
+export async function getStaticPaths() {
+  const storyModules = import.meta.glob('../../content/stories/*.md', { eager: true });
+
+  return Object.entries(storyModules).map(([filePath, mod]: [string, any]) => {
+    const fileSlug = filePath.split('/').pop()?.replace('.md', '') || '';
+    const slug = mod.frontmatter?.slug || mod.frontmatter?.id || fileSlug;
+    return {
+      params: { slug },
+      props: { story: mod },
+    };
+  });
+}
+
+const { story } = Astro.props;
+const { Content, frontmatter } = story;
+
+const currentSlug = frontmatter?.slug || Astro.params.slug;
+const title = `${frontmatter?.title || 'Story'} | 5 Spices or Less`;
+const description = frontmatter?.subtitle || "Essays on enterprise building and operational simplification.";
+const category = (frontmatter?.category || 'WORK').toUpperCase();
+
+// Previous and next stories
+const allEssays = ESSAYS_DATA;
+const currentIndex = allEssays.findIndex(e => e.slug === currentSlug);
+const prevEssay = currentIndex > 0 ? allEssays[currentIndex - 1] : allEssays[allEssays.length - 1];
+const nextEssay = currentIndex < allEssays.length - 1 ? allEssays[currentIndex + 1] : allEssays[0];
+
+const tags = frontmatter?.tags || ['#Lucknow', '#Books', '#Ambition', '#Hazratganj', '#Gratitude'];
+const shareUrl = Astro.url.href;
+const shareText = encodeURIComponent(`Thoughts on "${frontmatter?.title}" by @vivekshukla on @5spicesorless:\n\n${shareUrl}`);
+---
+
+<BaseLayout title={title} description={description} activeCategory={category}>
+  <article class="min-h-screen pt-32 sm:pt-36 pb-24 px-6 md:px-12 bg-white dark:bg-canvas-dark text-ink-900 dark:text-white transition-colors duration-300">
+    <div class="max-w-3xl mx-auto">
+      
+      {/* Back Navigation & Share to X */}
+      <div class="flex items-center justify-between mb-12 pb-4 border-b border-canvas-border dark:border-canvas-darkBorder">
+        <a
+          href="/essays"
+          class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest font-bold text-ink-600 dark:text-ink-300 hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          <span>Back to All Stories</span>
+        </a>
+
+        <a
+          href={`https://x.com/intent/post?text=${encodeURIComponent(`"${frontmatter?.title}" by Vivek Shukla (@vivekshukla) on @5spicesorless\n\n${shareUrl}\n\n#5SpicesOrLess`)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-ink-900 dark:bg-canvas-darkCard border border-ink-800 dark:border-canvas-darkBorder text-white text-xs font-mono uppercase tracking-widest font-bold hover:bg-berry-600 transition-colors shadow-sm"
+        >
+          <span>Share to X</span>
+        </a>
+      </div>
+
+      {/* Article Header */}
+      <header class="space-y-4 mb-10">
+        <div class="flex flex-wrap items-center gap-3 text-xs font-mono tracking-wider">
+          <span class="text-berry-700 dark:text-berry-300 bg-berry-50 dark:bg-canvas-darkCard px-3 py-1 rounded-full border border-berry-200 dark:border-canvas-darkBorder font-bold uppercase text-[11px]">
+            {category}
+          </span>
+          <div class="flex items-center gap-1 text-ink-500 dark:text-ink-400 font-semibold">
+            <Clock class="w-3.5 h-3.5 text-cobalt-600" />
+            <span>{frontmatter?.readTime || "6 min read"}</span>
+          </div>
+          <span class="text-ink-400 dark:text-ink-600">•</span>
+          <span class="text-ink-500 dark:text-ink-400">{frontmatter?.date || "October 2026"}</span>
+        </div>
+
+        <h1 class="font-serif text-3xl sm:text-5xl font-black text-ink-900 dark:text-white leading-[1.12]">
+          {frontmatter?.title}
+        </h1>
+
+        {frontmatter?.subtitle && (
+          <p class="text-base sm:text-xl text-ink-600 dark:text-ink-200 font-light leading-relaxed">
+            {frontmatter.subtitle}
+          </p>
+        )}
+      </header>
+
+      {/* Lead Quote */}
+      {frontmatter?.pullQuote && (
+        <div class="p-6 rounded-3xl bg-canvas-subtle dark:bg-canvas-darkCard border-l-4 border-berry-600 my-8 shadow-sm">
+          <blockquote class="font-serif italic text-base sm:text-lg text-ink-900 dark:text-white font-medium leading-relaxed !border-l-0 !p-0 !m-0 !bg-transparent">
+            "{frontmatter.pullQuote}"
+          </blockquote>
+        </div>
+      )}
+
+      {/* Main Story Body */}
+      <div class="story-prose prose prose-lg dark:prose-invert max-w-none text-base sm:text-lg font-light leading-relaxed text-ink-800 dark:text-ink-100 my-10 space-y-6">
+        <Content />
+      </div>
+
+      {/* Tags */}
+      <div class="pt-10 pb-6 flex flex-wrap items-center gap-2 border-t border-canvas-border dark:border-canvas-darkBorder">
+        <span class="text-xs font-mono text-ink-500 uppercase tracking-wider mr-2">Filed under:</span>
+        {tags.map((tag: string) => (
+          <span class="px-3 py-1 rounded-full bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder text-xs font-mono text-ink-700 dark:text-ink-300">
+            {tag.startsWith('#') ? tag : `#${tag}`}
+          </span>
+        ))}
+      </div>
+
+      {/* Author Bio Box */}
+      <div class="p-8 sm:p-10 rounded-3xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder my-8 flex flex-col sm:flex-row items-center gap-6 shadow-sm">
+        <div class="w-20 h-20 rounded-2xl overflow-hidden bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder shrink-0 relative">
+          <img src="/profile-sketch.png" alt="Vivek Shukla" class="w-full h-full object-cover" />
+        </div>
+        <div class="space-y-2 text-center sm:text-left flex-1">
+          <div class="font-serif text-xl font-bold text-ink-900 dark:text-white">
+            Written by Vivek Shukla
+          </div>
+          <p class="text-xs sm:text-sm text-ink-600 dark:text-ink-300 font-light leading-relaxed">
+            Advisor, operator, and storyteller with Lucknow roots. Decades of building category-creating enterprises and navigating life with patience taught him the quiet power of simplification.
+          </p>
+          <div class="pt-2 flex items-center justify-center sm:justify-start gap-4">
+            <a href="/about" class="text-xs font-mono uppercase tracking-widest font-bold text-berry-600 dark:text-berry-400 hover:underline">Read Full Memoir →</a>
+            <a href="/advisory" class="text-xs font-mono uppercase tracking-widest font-bold text-ink-600 dark:text-ink-300 hover:underline">Talk to Vivek →</a>
+          </div>
+        </div>
+      </div>
+
+      {/* Join the Discussion on X Card */}
+      <div class="p-8 sm:p-12 rounded-3xl bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder shadow-sm my-8 text-center space-y-4">
+        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-ink-900 dark:text-white">
+          Join the Discussion on X
+        </h3>
+        <p class="text-xs sm:text-sm text-ink-600 dark:text-ink-300 font-light max-w-lg mx-auto leading-relaxed">
+          Have thoughts, a contrasting view, or battle scars of your own? Join the conversation on X. Zero spam, real perspectives.
+        </p>
+        <div class="pt-4 flex justify-center">
+          <a
+            href={`https://x.com/intent/post?text=${shareText}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style="background-color: #0D1322 !important; color: #ffffff !important; display: inline-flex !important;"
+            class="items-center justify-center gap-2 px-8 py-4 rounded-full text-xs font-mono uppercase tracking-widest font-bold shadow-lg transition-transform hover:scale-105"
+          >
+            <span style="color: #ffffff !important; font-family: monospace;">DISCUSS ON X</span>
+            <span style="color: #ffffff !important;">↗</span>
+          </a>
+        </div>
+      </div>
+
+      {/* Prev / Next Essay Navigation */}
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-10 pt-6 border-t border-canvas-border dark:border-canvas-darkBorder">
+        {prevEssay && (
+          <a
+            href={`/stories/${prevEssay.slug}/`}
+            class="p-6 rounded-3xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder hover:border-berry-500 transition-all text-left group"
+          >
+            <div class="text-[10px] font-mono uppercase tracking-widest text-ink-500 dark:text-ink-400 mb-1">
+              ← PREVIOUS ESSAY
+            </div>
+            <div class="font-serif text-base font-bold text-ink-900 dark:text-white group-hover:text-berry-600 transition-colors line-clamp-1">
+              {prevEssay.title}
+            </div>
+          </a>
+        )}
+
+        {nextEssay && (
+          <a
+            href={`/stories/${nextEssay.slug}/`}
+            class="p-6 rounded-3xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder hover:border-berry-500 transition-all text-right group"
+          >
+            <div class="text-[10px] font-mono uppercase tracking-widest text-ink-500 dark:text-ink-400 mb-1">
+              NEXT ESSAY →
+            </div>
+            <div class="font-serif text-base font-bold text-ink-900 dark:text-white group-hover:text-berry-600 transition-colors line-clamp-1">
+              {nextEssay.title}
+            </div>
+          </a>
+        )}
+      </div>
+
+    </div>
+  </article>
+</BaseLayout>

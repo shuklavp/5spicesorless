@@ -295,31 +295,49 @@ export default function AboutPage({ onNavigate }) {
                   The Mission Today
                 </span>
               </div>
-              <blockquote className="font-serif italic text-base sm:text-lg text-ink-900 dark:text-white font-medium leading-relaxed">
+              <blockquote className="font-serif not-italic text-base sm:text-lg text-ink-900 dark:text-white font-medium leading-relaxed">
                 "I write because survival taught me to pay attention, and I advise because I know how lonely the founder's chair can get. No buzzwords, no posturing, and no desire to be bucketed. Just warm Lakhnawi tea, hard-won operational judgement, and steady counsel when things get noisy."
               </blockquote>
             </div>
 
             {/* Action CTA Buttons */}
             <div className="pt-2 flex flex-wrap items-center gap-4">
-              <button
-                onClick={() => onNavigate('/advisory')}
-                className="px-7 py-3.5 rounded-full bg-berry-600 hover:bg-berry-700 text-white font-bold text-xs tracking-wider uppercase transition-all shadow-md shadow-berry-600/20 flex items-center gap-2"
+              <a
+                href="/stories"
+                className="px-6 py-3.5 rounded-full border-2 border-canvas-border dark:border-canvas-darkBorder hover:border-berry-600 text-ink-900 dark:text-white text-xs font-bold font-mono tracking-wider uppercase transition-all inline-flex items-center gap-2"
               >
-                <span>Talk to Vivek ("Ben to Jules")</span>
+                <span>Explore Stories &amp; Lessons</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
-              </button>
-              
-              <button
-                onClick={() => onNavigate('/stories')}
-                className="px-6 py-3.5 rounded-full border-2 border-canvas-border dark:border-canvas-darkBorder hover:border-berry-600 text-ink-900 dark:text-white text-xs font-bold font-mono tracking-wider uppercase transition-all"
-              >
-                Explore Stories &amp; Lessons
-              </button>
+              </a>
             </div>
+
+        </div>
+        </div>
+        {/* Authentic About Page Footer Callout Banner */}
+        <div className="mt-20 w-full p-8 sm:p-12 lg:p-14 rounded-3xl bg-[#0B1524] border border-[#162742] shadow-2xl overflow-hidden relative text-white flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="relative z-10 max-w-xl space-y-5">
+            <div className="flex items-center gap-2 text-xs font-mono tracking-widest font-bold text-sky-400 uppercase">
+              <span className="w-2 h-2 rounded-full bg-sky-500" />
+              <span>ON SURVIVAL &amp; SINCERITY</span>
+            </div>
+            <blockquote className="font-serif not-italic text-2xl sm:text-3xl lg:text-[32px] font-bold leading-snug text-white">
+              &quot;When you are told you may never speak or write again, all the trivial anxieties of ambition evaporate. Surviving well is not about proving anything, it is about paying attention to what remains.&quot;
+            </blockquote>
+            <p className="text-xs sm:text-sm text-sky-200/80 font-light leading-relaxed">
+              From assembling computers in a Lucknow bedroom to surviving a ten-hour craniotomy: life is measured by the clarity of your days, not the volume of your calendar.
+            </p>
+          </div>
+          <div className="w-full md:w-[380px] lg:w-[420px] shrink-0 flex items-center justify-center p-2">
+            <img 
+              src="/footer-journal-chai-uncropped.png" 
+              alt="Open Journal with Pen and Steaming Chai Linework" 
+              className="w-full h-auto max-h-[290px] object-contain drop-shadow-2xl"
+              onError={(e) => { 
+                e.currentTarget.src = "/footer/footer-journal-chai.png"; 
+              }}
+            />
           </div>
         </div>
-
       </div>
     </div>
   );

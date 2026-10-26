@@ -1,283 +1,127 @@
 // src/components/Navbar.jsx
 import React, { useState, useEffect } from 'react';
-import { ArrowUpRight, Flame, Menu, Moon, Sun, X } from 'lucide-react';
+import { Moon, Sun, ArrowUpRight } from 'lucide-react';
 
-export default function Navbar({ onNavigate, currentPath = '/', isDark, onToggleTheme }) {
+export default function Navbar({ currentPath = "/", activeCategory = "" }) {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [logoFailed, setLogoFailed] = useState(false);
-
-  const isTerracotta = currentPath === '/advisory' || currentPath === '/consulting';
+  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 30) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 10);
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll);
+    
+    if (typeof window !== 'undefined') {
+      const isDarkMode = document.documentElement.classList.contains('dark') ||
+        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      setIsDark(isDarkMode);
+      if (isDarkMode) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    }
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-        const handleLinkClick = (e, path, scrollToContact = false) => {
-    e.preventDefault();
-    setMobileMenuOpen(false);
-
-    if (scrollToContact) {
-      if (currentPath === "/advisory") {
-        const formEl = document.querySelector("form");
-        const target = document.getElementById("contact") || document.getElementById("inquiry") || (formEl ? formEl.closest("section, div.rounded-3xl, div.rounded-2xl") : null) || formEl;
-        if (target) {
-          const y = target.getBoundingClientRect().top + window.pageYOffset - 110;
-          window.scrollTo({ top: y, behavior: "smooth" });
-          return;
-        }
-      }
-      if (onNavigate) {
-        onNavigate("/advisory");
-        setTimeout(() => {
-          const formEl = document.querySelector("form");
-          const target = document.getElementById("contact") || document.getElementById("inquiry") || (formEl ? formEl.closest("section, div.rounded-3xl, div.rounded-2xl") : null) || formEl;
-          if (target) {
-            const y = target.getBoundingClientRect().top + window.pageYOffset - 110;
-            window.scrollTo({ top: y, behavior: "smooth" });
-          }
-        }, 150);
-        return;
-      }
-    }
-
-    if (onNavigate) {
-      onNavigate(path);
-      window.scrollTo(0, 0);
+  const toggleTheme = () => {
+    const newDark = !isDark;
+    setIsDark(newDark);
+    if (newDark) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
     }
   };
 
-  // Logo selection:
-  // On terracotta pages (e.g. /advisory) or dark mode, always use white logo (/logo_dark.png).
-  // On light mode pages, use /logo.png.
-  const logoSrc = isDark || isTerracotta ? '/logo_dark.png' : '/logo.png';
+  const navItems = [
+    { label: "LIFE", href: "/life" },
+    { label: "FOOD", href: "/food" },
+    { label: "WORK", href: "/work" },
+    { label: "STORIES", href: "/stories" },
+    { label: "ABOUT", href: "/about" },
+    { label: "ADVISORY", href: "/advisory" },
+  ];
 
-  // Navigation text colour scheme based on background
-  const navTextClass = isTerracotta
-    ? 'text-white/90 hover:text-white'
-    : 'text-ink-700 dark:text-ink-200 hover:text-berry-600 dark:hover:text-berry-400';
-
-  const activeLinkClass = isTerracotta
-    ? 'text-white font-bold bg-white/20 shadow-sm'
-    : 'text-berry-600 dark:text-berry-400 font-bold bg-berry-50 dark:bg-berry-950/60 shadow-sm';
+  const getIsActive = (item) => {
+    if (activeCategory) {
+      return item.label.toLowerCase() === activeCategory.toLowerCase();
+    }
+    if (item.href === "/" && currentPath === "/") return true;
+    if (item.href !== "/") {
+      if (currentPath === item.href) return true;
+      if (currentPath.startsWith(item.href + "/") && item.href !== "/stories") return true;
+    }
+    return false;
+  };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 py-3 md:px-8">
-      <nav
-        className={`mx-auto transition-all duration-300 flex items-center justify-between ${
-          isScrolled
-            ? isTerracotta
-              ? 'max-w-5xl bg-[#241014]/95 dark:bg-[#160B0D]/95 text-white backdrop-blur-xl border border-white/25 shadow-xl rounded-full py-2 px-6'
-              : 'max-w-5xl bg-white/95 dark:bg-canvas-darkCard/95 backdrop-blur-xl border border-canvas-border dark:border-canvas-darkBorder shadow-lg shadow-ink-950/5 rounded-full py-2 px-6'
-            : isTerracotta
-              ? 'max-w-7xl bg-[#1A0B0E]/95 dark:bg-[#12080A]/95 backdrop-blur-xl border-b border-white/20 py-3 px-4 md:px-6'
-              : 'max-w-7xl bg-white/90 dark:bg-canvas-dark/90 backdrop-blur-xl border-b border-canvas-border/80 dark:border-canvas-darkBorder/60 py-3 px-4 md:px-6'
-        }`}
-      >
+    <header className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-200 border-b ${
+      isScrolled
+        ? 'bg-white/95 dark:bg-canvas-dark/95 backdrop-blur-md border-canvas-border dark:border-canvas-darkBorder shadow-sm'
+        : 'bg-white dark:bg-canvas-dark border-canvas-border dark:border-canvas-darkBorder'
+    }`}>
+      <div className="max-w-7xl mx-auto px-6 md:px-12 h-24 flex items-center justify-between">
         {/* Brand Logo */}
-        <a
-          href="/"
-          onClick={(e) => handleLinkClick(e, '/')}
-          className="flex items-center group py-1 focus:outline-none"
-        >
-          {!logoFailed ? (
-            <img
-              src={logoSrc}
-              alt="5 Spices or Less"
-              className="h-10 sm:h-12 md:h-14 w-auto object-contain transition-all duration-300 group-hover:scale-105"
-              onError={() => setLogoFailed(true)}
-            />
-          ) : (
-            <div className="flex items-center gap-2.5">
-              <div className="relative w-9 h-9 rounded-lg bg-ink-900 dark:bg-berry-600 flex items-center justify-center text-white shadow-sm shrink-0">
-                <Flame className="w-5 h-5 text-berry-400 dark:text-white" />
-              </div>
-              <div className="flex flex-col">
-                <span className={`font-serif text-lg tracking-tight font-bold ${
-                  isTerracotta ? 'text-white' : 'text-ink-900 dark:text-white'
-                }`}>
-                  5 Spices or Less
-                </span>
-                <span className={`text-[10px] tracking-widest uppercase -mt-0.5 font-mono font-medium ${
-                  isTerracotta ? 'text-white/70' : 'text-ink-400 dark:text-ink-300'
-                }`}>
-                  Life, Food, Work
-                </span>
-              </div>
-            </div>
-          )}
+        <a href="/" className="flex items-center gap-2 group shrink-0">
+          <img
+            src="/branding/logo.png"
+            alt="5 Spices or Less"
+            className="h-14 sm:h-16 md:h-18 w-auto object-contain dark:hidden transition-all duration-200"
+            onError={(e) => { e.currentTarget.src = '/logo.png'; }}
+          />
+          <img
+            src="/branding/logo_dark.png"
+            alt="5 Spices or Less"
+            className="h-14 sm:h-16 md:h-18 w-auto object-contain hidden dark:block transition-all duration-200"
+            onError={(e) => { e.currentTarget.src = '/logo.png'; }}
+          />
         </a>
 
-        {/* Desktop Navigation Links */}
-        <div className="hidden md:flex items-center gap-5 text-xs font-mono font-bold uppercase tracking-wider">
-          <a
-            href="/life"
-            onClick={(e) => handleLinkClick(e, '/life')}
-            className={`px-3 py-1 rounded-full transition-all focus:outline-none ${
-              currentPath === '/life' ? activeLinkClass : navTextClass
-            }`}
-          >
-            Life
-          </a>
-          <a
-            href="/food"
-            onClick={(e) => handleLinkClick(e, '/food')}
-            className={`px-3 py-1 rounded-full transition-all focus:outline-none ${
-              currentPath === '/food' ? activeLinkClass : navTextClass
-            }`}
-          >
-            Food
-          </a>
-          <a
-            href="/work"
-            onClick={(e) => handleLinkClick(e, '/work')}
-            className={`px-3 py-1 rounded-full transition-all focus:outline-none ${
-              currentPath === '/work' ? activeLinkClass : navTextClass
-            }`}
-          >
-            Work
-          </a>
-          <a
-            href="/stories"
-            onClick={(e) => handleLinkClick(e, '/stories')}
-            className={`px-3 py-1 rounded-full transition-all focus:outline-none ${
-              currentPath === '/stories' ? activeLinkClass : navTextClass
-            }`}
-          >
-            Stories
-          </a>
-          <a
-            href="/about"
-            onClick={(e) => handleLinkClick(e, '/about')}
-            className={`px-3 py-1 rounded-full transition-all focus:outline-none ${
-              currentPath === '/about' ? activeLinkClass : navTextClass
-            }`}
-          >
-            About
-          </a>
-          <a
-            href="/advisory"
-            onClick={(e) => handleLinkClick(e, '/advisory', false)}
-            className={`px-3 py-1 rounded-full transition-all focus:outline-none ${
-              currentPath === '/advisory' ? activeLinkClass : navTextClass
-            }`}
-          >
-            Advisory
-          </a>
-        </div>
+        {/* Navigation Links */}
+        <div className="flex items-center gap-3 sm:gap-6">
+          <nav className="hidden md:flex items-center gap-1.5 sm:gap-3">
+            {navItems.map((item) => {
+              const active = getIsActive(item);
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className={`text-xs font-mono uppercase tracking-widest transition-all duration-200 px-3.5 py-1.5 rounded-full ${
+                    active
+                      ? 'bg-berry-50 text-berry-700 dark:bg-berry-950/60 dark:text-berry-300 font-bold border border-berry-200/80 dark:border-berry-800/80'
+                      : 'text-ink-600 dark:text-ink-300 hover:text-berry-600 dark:hover:text-berry-400 font-semibold'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
+          </nav>
 
-        {/* Right CTA & Theme Toggle */}
-        <div className="flex items-center gap-3">
-          {/* Light / Dark Mode Toggle */}
+          {/* Theme Toggle */}
           <button
-            onClick={onToggleTheme}
-            aria-label="Toggle Dark Mode"
-            className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors shadow-sm focus:outline-none ${
-              isTerracotta
-                ? 'bg-white/15 text-white hover:bg-white/25 border border-white/25'
-                : 'bg-white/80 dark:bg-canvas-darkCard/80 text-ink-700 dark:text-ink-200 hover:text-berry-600 dark:hover:text-berry-400 border border-canvas-border dark:border-canvas-darkBorder'
-            }`}
+            onClick={toggleTheme}
+            aria-label="Toggle Theme"
+            className="p-2.5 rounded-full border border-canvas-border dark:border-canvas-darkBorder text-ink-700 dark:text-ink-300 hover:border-berry-500 transition-colors bg-canvas-subtle dark:bg-canvas-darkCard"
           >
-            {isDark ? <Sun className="w-4 h-4 text-berry-400" /> : <Moon className="w-4 h-4" />}
+            {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-ink-700" />}
           </button>
 
-          {/* Primary CTA Button */}
-          <button
-            onClick={(e) => handleLinkClick(e, '/advisory', true)}
-            className={`hidden sm:inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-xs font-mono font-bold tracking-wider uppercase transition-all shadow-md focus:outline-none ${
-              isTerracotta
-                ? 'bg-white text-[#BC5259] hover:bg-white/95 shadow-black/10'
-                : 'bg-berry-600 hover:bg-berry-700 text-white shadow-berry-600/20'
-            }`}
+          {/* Talk to Vivek Action Button */}
+          <a
+            href="/advisory"
+            className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-berry-600 hover:bg-berry-700 text-white text-xs font-mono uppercase tracking-widest font-bold transition-all shadow-md shadow-berry-600/20 hover:scale-[1.02]"
           >
-            <span>Talk To Vivek</span>
+            <span>TALK TO VIVEK</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
-          </button>
-
-          {/* Mobile Menu Hamburger Toggle */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`md:hidden p-2 rounded-xl focus:outline-none ${
-              isTerracotta ? 'text-white' : 'text-ink-700 dark:text-ink-200 hover:text-berry-600'
-            }`}
-            aria-label="Toggle Navigation Menu"
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          </a>
         </div>
-      </nav>
-
-      {/* Mobile Drawer Navigation */}
-      {mobileMenuOpen && (
-        <div className="md:hidden mt-2 p-6 rounded-3xl bg-white/95 dark:bg-canvas-darkCard/95 backdrop-blur-2xl border border-canvas-border dark:border-canvas-darkBorder shadow-2xl flex flex-col gap-4 animate-fadeIn">
-          <a
-            href="/"
-            onClick={(e) => handleLinkClick(e, '/')}
-            className="text-base font-medium text-ink-900 dark:text-white hover:text-berry-600"
-          >
-            Front Page
-          </a>
-          <a
-            href="/life"
-            onClick={(e) => handleLinkClick(e, '/life')}
-            className="text-base font-medium text-ink-900 dark:text-white hover:text-berry-600"
-          >
-            Life Desk
-          </a>
-          <a
-            href="/food"
-            onClick={(e) => handleLinkClick(e, '/food')}
-            className="text-base font-medium text-ink-900 dark:text-white hover:text-berry-600"
-          >
-            Food Desk
-          </a>
-          <a
-            href="/work"
-            onClick={(e) => handleLinkClick(e, '/work')}
-            className="text-base font-medium text-ink-900 dark:text-white hover:text-berry-600"
-          >
-            Work Desk
-          </a>
-          <a
-            href="/stories"
-            onClick={(e) => handleLinkClick(e, '/stories')}
-            className="text-base font-medium text-ink-900 dark:text-white hover:text-berry-600"
-          >
-            Stories &amp; Archive
-          </a>
-          <a
-            href="/about"
-            onClick={(e) => handleLinkClick(e, '/about')}
-            className="text-base font-medium text-ink-900 dark:text-white hover:text-berry-600"
-          >
-            About
-          </a>
-          <a
-            href="/advisory"
-            onClick={(e) => handleLinkClick(e, '/advisory', false)}
-            className="text-base font-medium text-ink-900 dark:text-white hover:text-berry-600"
-          >
-            Advisory ("Ben to Jules")
-          </a>
-
-          <div className="pt-4 border-t border-canvas-border dark:border-canvas-darkBorder flex items-center justify-between">
-            <button
-              onClick={(e) => handleLinkClick(e, '/advisory', false)}
-              className="w-full text-center py-3 rounded-full bg-berry-600 text-white font-bold text-xs uppercase tracking-wider"
-            >
-              Talk To Vivek
-            </button>
-          </div>
-        </div>
-      )}
+      </div>
     </header>
   );
 }

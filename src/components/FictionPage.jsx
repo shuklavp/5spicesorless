@@ -12,17 +12,13 @@ export default function FictionPage({ onNavigate, isDark }) {
         
         {/* Back Navigation */}
         <div className="mb-8 animate-fadeIn">
-          <button
-            type="button"
-            onClick={() => {
-              window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-              if (onNavigate) onNavigate('/');
-            }}
+          <a
+            href="/"
             className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#736B63] hover:text-[#111111] transition-colors cursor-pointer group"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             <span>BACK TO FRONT PAGE</span>
-          </button>
+          </a>
         </div>
 
         {/* HERO BANNER: Warm off-white canvas with Royal Blue scooter bridge sketch */}
@@ -107,7 +103,29 @@ export default function FictionPage({ onNavigate, isDark }) {
           </article>
 
         </div>
-
+        {/* Authentic Typewriter Callout Banner */}
+        <div className="mt-20 p-8 sm:p-14 rounded-3xl bg-[#151022] border border-[#2B1F42] shadow-2xl overflow-hidden relative text-white flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="relative z-10 max-w-xl space-y-4">
+            <div className="flex items-center gap-2 text-xs font-mono tracking-widest font-bold text-purple-400 uppercase">
+              <span className="w-2 h-2 rounded-full bg-purple-500" />
+              <span>ON THE STORIES &amp; LETTERS ARCHIVE</span>
+            </div>
+            <blockquote className="font-serif not-italic text-2xl sm:text-3xl font-bold leading-snug text-white">
+              &quot;We write not to impress strangers, but to document hard-won lessons while we still have memory. The truest words are always those written after the applause has died down.&quot;
+            </blockquote>
+            <p className="text-xs sm:text-sm text-purple-200/80 font-light leading-relaxed">
+              Field notes from thirty years of enterprise, survival, culinary physics, and roadside observations.
+            </p>
+          </div>
+          <div className="w-56 sm:w-72 shrink-0 flex items-center justify-center">
+            <img 
+              src="/footer/footer-typewriter.png" 
+              alt="Typewriter Linework" 
+              className="w-full h-auto object-contain"
+              onError={(e) => { e.currentTarget.src = "/footer/footer-typewriter.jpg"; }}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

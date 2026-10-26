@@ -216,14 +216,13 @@ export default function ValueProps({ onNavigate }) {
                   </div>
 
                   {/* Only this round placeholder with arrow is clickable */}
-                  <button
-                    type="button"
-                    onClick={(e) => handleCircleClick(e, item.path)}
+                  <a
+                    href={item.path}
                     className={`w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg cursor-pointer ${item.arrowBg} hover:scale-110 active:scale-95`}
                     aria-label={`Go to ${item.title}`}
                   >
                     <ArrowRight className="w-5 h-5 stroke-[2.5]" />
-                  </button>
+                  </a>
                 </div>
               </div>
             );

@@ -1,15 +1,8 @@
-// src/data/foodEssays.js
-import { parseMarkdown } from '../utils/markdownParser';
+import { ESSAYS_DATA } from './essays.js';
 
 export function getFoodEssays() {
-  try {
-    const modules = import.meta.glob('../content/stories/*.md', { eager: true, as: 'raw' });
-    return Object.entries(modules)
-      .map(([filepath, raw]) => parseMarkdown(raw, filepath))
-      .filter((essay) => essay && essay.desk?.toLowerCase() === 'food')
-      .sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
-  } catch (err) {
-    console.error('Food Desk Loader Error:', err);
-    return [];
-  }
+  return ESSAYS_DATA.filter((e) => {
+    const cat = (e.category || e.desk || '').toLowerCase();
+    return cat === 'food' || e.slug === 'tea';
+  }).filter((e) => e.slug !== 'teak-tables-above-mayfair' && e.slug !== 'the-art-of-the-blank-page' && e.slug !== 'the-best-time-to-start-your-own-company');
 }

@@ -4,14 +4,18 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build && node scripts/prerender-stories.mjs",
-    "preview": "vite preview",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
     "publish": "python3 scripts/publish.py"
   },
   "dependencies": {
+    "@astrojs/react": "^7.1.1",
+    "@astrojs/tailwind": "^6.0.2",
+    "astro": "^7.4.2",
     "front-matter": "^4.0.2",
     "lucide-react": "^0.344.0",
+    "marked": "^18.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^7.18.4",

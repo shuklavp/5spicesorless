@@ -52,3 +52,126 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #DE2573;
 }
+
+/* Astro Editorial Markdown Styling */
+.story-prose h2 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+  color: #0C1427;
+  padding-top: 2rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #E2E8F0;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.dark .story-prose h2 {
+  color: #FFFFFF;
+  border-bottom-color: #1E293B;
+}
+
+.story-prose p {
+  font-size: 1.125rem;
+  line-height: 1.85;
+  font-weight: 300;
+  color: #1E293B;
+  margin-bottom: 1.5rem;
+}
+
+.dark .story-prose p {
+  color: #CBD5E1;
+}
+
+/* Styled Blockquotes & Pull Quotes */
+.story-prose blockquote {
+  padding: 1.25rem 1.5rem;
+  border-radius: 1rem;
+  background-color: #F8FAFC;
+  border-left: 4px solid #DE2573;
+  margin: 1.75rem 0;
+  font-style: italic;
+  color: #0C1427;
+}
+
+.dark .story-prose blockquote {
+  background-color: #0F1829;
+  color: #FFFFFF;
+}
+
+/* Styled Connected Note Card */
+.story-prose blockquote:has(strong:first-child) {
+  font-style: normal;
+  border-left: 4px solid #DE2573;
+  background-color: #F8FAFC;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.dark .story-prose blockquote:has(strong:first-child) {
+  background-color: #0F1829;
+}
+
+/* Numbered Steps with Pink Badges */
+.story-prose ol {
+  list-style: none;
+  counter-reset: custom-counter;
+  padding-left: 0;
+  margin: 1.5rem 0;
+}
+
+.story-prose ol > li {
+  counter-increment: custom-counter;
+  position: relative;
+  padding-left: 2.75rem;
+  margin-bottom: 1.25rem;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  font-weight: 300;
+  color: #1E293B;
+}
+
+.dark .story-prose ol > li {
+  color: #CBD5E1;
+}
+
+.story-prose ol > li::before {
+  content: counter(custom-counter);
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 9999px;
+  background-color: #FFF0F5;
+  color: #DE2573;
+  border: 1px solid #F8BBD0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark .story-prose ol > li::before {
+  background-color: rgba(74, 5, 32, 0.6);
+  color: #F06292;
+  border-color: #A3124C;
+}
+
+/* Image plates inside markdown body */
+.story-prose img {
+  border-radius: 1.5rem;
+  margin: 2.5rem auto;
+  max-height: 460px;
+  object-fit: contain;
+  border: 1px solid #E2E8F0;
+  background-color: #F8FAFC;
+  padding: 1rem;
+}
+
+.dark .story-prose img {
+  border-color: #1E293B;
+  background-color: #0F1829;
+}
