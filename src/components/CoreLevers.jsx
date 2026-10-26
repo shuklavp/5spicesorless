@@ -1,97 +1,150 @@
-// src/components/CoreLevers.jsx
 import React from 'react';
-import { Layers, Target, Users, ShieldAlert, Sparkles } from 'lucide-react';
+
+const levers = [
+  {
+    num: "01",
+    tag: "LEVER 01",
+    title: "The Foundations",
+    description: "Patience with the heat. In life and business, endurance is won in early groundwork before vanity metrics ever enter the room."
+  },
+  {
+    num: "02",
+    tag: "LEVER 02",
+    title: "Ground Truth",
+    description: "Unvarnished reality over comforting spreadsheets. In partnerships and operations, speaking plain truth creates unstoppable trust."
+  },
+  {
+    num: "03",
+    tag: "LEVER 03",
+    title: "Cohesion",
+    description: "The silent binder. Keeping teams, culture, and purpose tightly aligned so collective execution moves without friction."
+  },
+  {
+    num: "04",
+    tag: "LEVER 04",
+    title: "Calculated Risk",
+    description: "Decisive courage when conviction matures. Playing not to lose is slow failure; calculated boldness defines category leaders."
+  },
+  {
+    num: "05",
+    tag: "LEVER 05",
+    title: "Restraint",
+    description: "The discipline of stopping. Knowing when the work is finished and resisting the urge to decorate what is already effective."
+  }
+];
 
 export default function CoreLevers() {
-  const levers = [
-    {
-      num: '01',
-      title: 'The Foundations',
-      tag: 'LEVER 01',
-      desc: 'Patience with the heat. In life and business, endurance is won in early groundwork before vanity metrics ever enter the room.',
-    },
-    {
-      num: '02',
-      title: 'Ground Truth',
-      tag: 'LEVER 02',
-      desc: 'Unvarnished reality over comforting spreadsheets. In partnerships and operations, speaking plain truth creates unstoppable trust.',
-    },
-    {
-      num: '03',
-      title: 'Cohesion',
-      tag: 'LEVER 03',
-      desc: 'The silent binder. Keeping teams, culture, and purpose tightly aligned so collective execution moves without friction.',
-    },
-    {
-      num: '04',
-      title: 'Calculated Risk',
-      tag: 'LEVER 04',
-      desc: 'Decisive courage when conviction matures. Playing not to lose is slow failure; calculated boldness defines category leaders.',
-    },
-    {
-      num: '05',
-      title: 'Restraint',
-      tag: 'LEVER 05',
-      desc: 'The discipline of stopping. Knowing when the work is finished and resisting the urge to decorate what is already effective.',
-    },
-  ];
-
   return (
-    <section className="py-24 px-6 md:px-12 bg-[#09111E] text-white relative border-y border-[#1E293B] overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        
+    <section className="relative overflow-hidden bg-[#070D1B] text-white py-16 md:py-20 lg:py-24 border-y border-[#18233C]">
+      
+      {/* Top-Right Technical Engineering Fulcrum Watermark */}
+      <div 
+        aria-hidden="true" 
+        className="pointer-events-none absolute -top-10 -right-10 w-96 h-96 sm:w-[460px] sm:h-[460px] md:w-[560px] md:h-[560px] select-none opacity-25"
+      >
+        <svg 
+          viewBox="0 0 600 600" 
+          fill="none" 
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full h-full text-slate-300 font-mono text-[9px]"
+        >
+          {/* Engineering Grid / Crosshairs */}
+          <line x1="100" y1="200" x2="560" y2="200" stroke="currentColor" strokeWidth="0.75" strokeDasharray="3 6" opacity="0.4" />
+          <line x1="420" y1="40" x2="420" y2="520" stroke="currentColor" strokeWidth="0.75" strokeDasharray="3 6" opacity="0.4" />
+          
+          {/* Calibrated Vernier Arc */}
+          <path d="M 220 200 A 200 200 0 0 1 520 340" stroke="currentColor" strokeWidth="1" strokeDasharray="2 4" opacity="0.35" />
+          <path d="M 280 200 A 140 140 0 0 1 480 300" stroke="currentColor" strokeWidth="0.75" opacity="0.25" />
+
+          {/* Caliper / Ruler Tick Marks */}
+          {[...Array(13)].map((_, i) => {
+            const x = 200 + i * 25;
+            return (
+              <line key={i} x1={x} y1="194" x2={x} y2={i % 3 === 0 ? "206" : "202"} stroke="currentColor" strokeWidth="1" opacity="0.5" />
+            );
+          })}
+          <text x="320" y="188" fill="currentColor" opacity="0.6">MOMENT ARM [L/5]</text>
+          <text x="430" y="80" fill="currentColor" opacity="0.6">AXIS 01-F</text>
+
+          {/* Five Input Load Lines Converging on Fulcrum Pivot (x: 420, y: 200) */}
+          <line x1="80" y1="90" x2="420" y2="200" stroke="currentColor" strokeWidth="1.2" opacity="0.4" />
+          <circle cx="80" cy="90" r="3" fill="#DE2573" />
+          <text x="45" y="94" fill="#DE2573">F1</text>
+
+          <line x1="60" y1="240" x2="420" y2="200" stroke="currentColor" strokeWidth="1.2" opacity="0.5" />
+          <circle cx="60" cy="240" r="3" fill="currentColor" />
+          <text x="32" y="244" fill="currentColor">F2</text>
+
+          <line x1="120" y1="360" x2="420" y2="200" stroke="currentColor" strokeWidth="1.2" opacity="0.55" />
+          <circle cx="120" cy="360" r="3" fill="currentColor" />
+          <text x="92" y="364" fill="currentColor">F3</text>
+
+          <line x1="220" y1="460" x2="420" y2="200" stroke="currentColor" strokeWidth="1.2" opacity="0.5" />
+          <circle cx="220" cy="460" r="3" fill="currentColor" />
+          <text x="190" y="464" fill="currentColor">F4</text>
+
+          <line x1="360" y1="510" x2="420" y2="200" stroke="currentColor" strokeWidth="1.2" opacity="0.4" />
+          <circle cx="360" cy="510" r="3" fill="#DE2573" />
+          <text x="345" y="528" fill="#DE2573">F5</text>
+
+          {/* Hardened Fulcrum Pivot Assembly */}
+          <polygon points="420,185 435,215 405,215" stroke="#DE2573" strokeWidth="1.5" fill="#070D1B" />
+          <circle cx="420" cy="200" r="16" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.6" />
+          <circle cx="420" cy="200" r="4" fill="#DE2573" />
+
+          {/* Resultant Output Arrow (Work Simplified) */}
+          <line x1="420" y1="200" x2="550" y2="90" stroke="#DE2573" strokeWidth="2.5" strokeLinecap="round" />
+          <polyline points="530,86 554,88 552,112" stroke="#DE2573" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          <text x="500" y="70" fill="#DE2573" fontWeight="bold">RESULTANT (CLARITY)</text>
+        </svg>
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section Header */}
-        <div className="max-w-3xl mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-berry-500/40 text-berry-300 text-xs font-mono uppercase tracking-widest font-bold">
-            <span className="w-2 h-2 rounded-full bg-berry-500 animate-pulse" />
-            OPERATIONAL CLARITY
+        <div className="max-w-3xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#DE2573]/30 bg-[#DE2573]/10 text-[#DE2573] font-mono text-[11px] uppercase tracking-wider font-semibold">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#DE2573]"></span>
+            Operational Clarity
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-5xl font-black text-white leading-tight">
+          <h2 className="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
             5 Levers
           </h2>
 
-          <p className="text-base sm:text-xl text-slate-300 font-light leading-relaxed">
+          <p className="mt-4 text-base sm:text-lg text-slate-300 font-sans font-light leading-relaxed">
             Five levers are enough to move a mountain, and few enough that none can hide. When you refuse complexity, focus does the heavy lifting.
           </p>
         </div>
 
-        {/* 5 Lever Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-          {levers.map((lever) => (
-            <div
-              key={lever.num}
-              className="p-7 rounded-3xl bg-[#0F1A2E] border border-[#223552] hover:border-berry-500/70 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl flex flex-col justify-between group"
+        {/* 5 Cards Grid */}
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-5">
+          {levers.map((lever, index) => (
+            <div 
+              key={index}
+              className="flex flex-col justify-between p-5 sm:p-6 rounded-xl bg-[#0F172A]/85 border border-[#1E293B] hover:border-slate-500/50 transition-all duration-200 group"
             >
               <div>
-                <div className="flex items-center justify-between text-xs font-mono mb-6">
-                  <span className="text-[11px] font-bold text-berry-400 uppercase tracking-widest">
-                    {lever.tag}
-                  </span>
-                  <span className="font-mono text-xs font-bold text-slate-500 group-hover:text-white transition-colors">
-                    {lever.num}
-                  </span>
+                <div className="flex items-center justify-between font-mono text-[11px] text-slate-400 tracking-wider">
+                  <span>{lever.tag}</span>
+                  <span className="text-slate-500 font-semibold">{lever.num}</span>
                 </div>
 
-                <h3 className="font-serif text-2xl font-bold text-white mb-4 group-hover:text-berry-300 transition-colors">
+                <h3 className="mt-5 font-serif text-xl font-bold text-white group-hover:text-[#DE2573] transition-colors duration-200">
                   {lever.title}
                 </h3>
 
-                <p className="text-xs sm:text-sm text-slate-300/85 font-light leading-relaxed">
-                  {lever.desc}
+                <p className="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed font-sans font-light">
+                  {lever.description}
                 </p>
               </div>
 
-              <div className="pt-6 mt-6 border-t border-[#1C2C45] flex items-center justify-between">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-slate-400 group-hover:text-berry-400 transition-colors font-bold">
-                  CORE PRINCIPLE
-                </span>
-                <span className="w-1.5 h-1.5 rounded-full bg-berry-500/60 group-hover:bg-berry-400 transition-colors" />
+              <div className="mt-8 pt-4 border-t border-slate-800/80 flex items-center justify-between text-[10px] font-mono tracking-widest text-slate-400 uppercase">
+                <span>Core Principle</span>
+                <span className="w-1 h-1 rounded-full bg-[#DE2573]"></span>
               </div>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

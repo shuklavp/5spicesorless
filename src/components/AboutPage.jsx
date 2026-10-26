@@ -19,42 +19,28 @@ export default function AboutPage({ onNavigate }) {
         </div>
 
                 {/* The Genesis of Five Spices or Less Feature Block */}
-        <div className="rounded-3xl p-8 sm:p-12 lg:p-14 bg-[#FDFBF7] dark:bg-[#14100E] border-2 border-[#EADCC9] dark:border-[#38281F] shadow-xl relative overflow-hidden mb-16 transition-colors duration-300">
+        <div className="rounded-3xl p-8 sm:p-12 lg:p-16 bg-[#120D0A] border-2 border-[#38261A] shadow-2xl relative overflow-hidden mb-16 transition-colors duration-300">
           
-          {/* Ambient Warm Hearth Glow */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 dark:bg-amber-500/15 rounded-full blur-[120px] pointer-events-none" />
-
-          {/* Atmospheric Kitchen Sketch in Bottom-Right Corner (Enlarged, Unbordered, Watermark Background) */}
-          <div className="absolute -bottom-6 -right-6 sm:-bottom-10 sm:-right-10 md:-bottom-14 md:-right-14 w-[380px] sm:w-[540px] md:w-[700px] lg:w-[820px] pointer-events-none select-none z-0 opacity-45 dark:opacity-35 transition-all duration-500">
-            <img
-              src="/genesis-kitchen.png"
-              alt=""
-              className="w-full h-auto object-contain dark:hidden mix-blend-multiply"
-            />
-            <img
-              src="/genesis-kitchen-dark.png"
-              alt=""
-              className="w-full h-auto object-contain hidden dark:block"
-            />
-          </div>
+          {/* Subtle Ambient Hearth Warmth */}
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-amber-600/10 rounded-full blur-[160px] pointer-events-none" />
 
           {/* Block Header */}
-          <div className="relative z-10 max-w-3xl mb-10 space-y-3">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100/80 dark:bg-amber-950/60 border border-amber-300/70 dark:border-amber-800/80 text-amber-900 dark:text-amber-200 text-xs font-mono font-bold uppercase tracking-wider">
-              <Utensils className="w-3.5 h-3.5 text-amber-700 dark:text-amber-300" />
+          <div className="relative z-10 max-w-4xl mb-12 space-y-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-950/80 border border-amber-800/80 text-amber-200 text-xs font-mono font-bold uppercase tracking-wider">
+              <Utensils className="w-3.5 h-3.5 text-amber-400" />
               <span>THE GENESIS OF FIVE SPICES OR LESS</span>
             </div>
 
-            <h2 className="font-serif text-2xl sm:text-4xl font-black text-ink-900 dark:text-white leading-[1.18]">
-              "Startups become confusing because they refuse to stop doing everything. If a dish can be extraordinary with five spices, an enterprise can be built on five core truths."
+            <h2 className="font-serif text-2xl sm:text-4xl lg:text-[42px] font-bold text-white leading-[1.2] tracking-tight">
+              &ldquo;Startups become confusing because they refuse to stop doing everything. If a dish can be extraordinary with five spices, an enterprise can be built on five core truths.&rdquo;
             </h2>
           </div>
 
-          {/* Block Content Grid: Narrative on Left, Spice Box on Top Right */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start relative z-10">
+          {/* 2-Column Layout: Left Narrative, Right 1.5x Scaled Architectural Sketch */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
             
-            {/* Left: The Origin Narrative */}
-            <div className="lg:col-span-7 space-y-4 text-sm sm:text-base text-ink-800 dark:text-ink-200 font-light leading-relaxed">
+            {/* Left Column: Narrative */}
+            <div className="lg:col-span-6 space-y-5 text-sm sm:text-base lg:text-lg text-slate-300 font-light leading-relaxed">
               <p>
                 The idea behind Five Spices or Less was born over a stove during my days running SmarterHomes. A guest was over in the kitchen, and I was cooking black pepper chicken in a simple curry base using pure desi ghee.
               </p>
@@ -72,32 +58,15 @@ export default function AboutPage({ onNavigate }) {
               </p>
             </div>
 
-            {/* Right: The Five Spices Box in Top-Right */}
-            <div className="lg:col-span-5 flex flex-col justify-start">
-              <div className="p-5 rounded-2xl bg-white/85 dark:bg-[#1A1412]/85 border border-[#EADCC9] dark:border-[#38281F] space-y-3 shadow-sm backdrop-blur-sm">
-                <div className="text-[11px] font-mono uppercase font-bold tracking-wider text-amber-900 dark:text-amber-200">
-                  The Five Spices in That Dish:
-                </div>
-                <p className="text-[11px] text-amber-800/80 dark:text-amber-300/80 font-light italic">
-                  Belonging to this specific chicken curry dish, not to the house five-spice philosophy:
-                </p>
-                <div className="flex flex-wrap gap-2 text-xs font-mono">
-                  <span className="px-3 py-1.5 rounded-full bg-amber-50 dark:bg-canvas-dark border border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200 font-medium">
-                    01. Black Pepper
-                  </span>
-                  <span className="px-3 py-1.5 rounded-full bg-amber-50 dark:bg-canvas-dark border border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200 font-medium">
-                    02. Rock Salt
-                  </span>
-                  <span className="px-3 py-1.5 rounded-full bg-amber-50 dark:bg-canvas-dark border border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200 font-medium">
-                    03. Pinch of Turmeric
-                  </span>
-                  <span className="px-3 py-1.5 rounded-full bg-amber-50 dark:bg-canvas-dark border border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200 font-medium">
-                    04. Black Cardamom
-                  </span>
-                  <span className="px-3 py-1.5 rounded-full bg-amber-50 dark:bg-canvas-dark border border-amber-200 dark:border-amber-900/60 text-amber-900 dark:text-amber-200 font-medium">
-                    05. Star Anise
-                  </span>
-                </div>
+            {/* Right Column: 1.5x Scaled Linework Image Stage */}
+            <div className="lg:col-span-6 flex justify-center lg:justify-end select-none lg:-mr-8 xl:-mr-14">
+              <div className="w-full max-w-xl sm:max-w-2xl lg:max-w-none">
+                <img
+                  src="/genesis-kitchen.png"
+                  alt="Conversations in the kitchen over five spices"
+                  className="w-full h-auto object-contain invert brightness-95 opacity-90 contrast-110 drop-shadow-2xl scale-105 sm:scale-110 lg:scale-125 origin-center lg:origin-right"
+                  loading="lazy"
+                />
               </div>
             </div>
 

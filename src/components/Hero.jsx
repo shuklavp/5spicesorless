@@ -1,54 +1,57 @@
-// src/components/Hero.jsx
 import React from 'react';
-import { ArrowUpRight, BookOpen, Compass } from 'lucide-react';
 
 export default function Hero() {
   return (
-    <section className="relative pt-44 pb-20 md:pt-52 md:pb-28 px-6 md:px-12 bg-white dark:bg-canvas-dark overflow-hidden transition-colors duration-300">
-      
-      {/* Subtle Terrace Linework Watermark */}
-      <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-[0.06] dark:opacity-[0.08] select-none">
-        <img
-          src="/house-sketch.jpg"
-          alt="Terrace Garden Sketch"
-          className="w-full max-w-4xl object-contain"
-          onError={(e) => { e.currentTarget.style.display = 'none'; }}
-        />
-      </div>
+    <section className="relative overflow-hidden pt-28 pb-16 sm:pt-36 sm:pb-20 lg:pt-40 lg:pb-24 border-b border-sand-200 dark:border-ink-800">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+          
+          {/* Left Column: Left-aligned Content */}
+          <div className="lg:col-span-7 flex flex-col items-start text-left z-10">
+            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-ink-900 dark:text-[#FAF8F5] leading-[1.14]">
+              The quiet art of <span className="text-[#DE2573]">cutting through operational noise.</span>
+            </h1>
 
-      <div className="relative z-10 max-w-5xl mx-auto text-center space-y-8">
-        
-        {/* Main Headline with 'cutting' in Electric Berry Pink */}
-        <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl font-black text-ink-900 dark:text-white tracking-tight leading-[1.08] max-w-4xl mx-auto">
-          The quiet art of <span className="text-berry-600 dark:text-berry-400">cutting</span> through operational noise.
-        </h1>
+            <p className="mt-6 text-lg sm:text-xl text-ink-700 dark:text-slate-300 font-sans font-light leading-relaxed max-w-xl">
+              The best things in life, work, and cooking are born from simplification. 
+              When you remove what is unnecessary, clarity, speed, and flavour take care of themselves. 
+              In the end, less almost always works better than more.
+            </p>
 
-        {/* Subtitle */}
-        <p className="text-lg sm:text-xl md:text-2xl text-ink-700 dark:text-ink-200 font-light max-w-3xl mx-auto leading-relaxed">
-          The best things in life, work, and cooking are born from simplification. When you remove what is unnecessary, clarity, speed, and flavour take care of themselves. In the end, less almost always works better than more.
-        </p>
+            <div className="mt-8 sm:mt-10 flex flex-wrap gap-4 items-center">
+              <a
+                href="#desks"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#DE2573] hover:bg-[#c41e63] text-white font-mono text-xs tracking-wider uppercase font-semibold shadow-sm transition-all duration-200"
+              >
+                <span>📖</span>
+                <span>Explore Stories & Lessons</span>
+                <span className="text-sm">↗</span>
+              </a>
 
-        {/* CTA Buttons in font-mono */}
-        <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="/essays"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-berry-600 hover:bg-berry-700 text-white text-xs font-mono uppercase tracking-widest font-bold transition-all shadow-md shadow-berry-600/20 hover:scale-[1.02]"
-          >
-            <BookOpen className="w-4 h-4" />
-            <span>EXPLORE STORIES &amp; LESSONS</span>
-            <ArrowUpRight className="w-4 h-4" />
-          </a>
+              <a
+                href="/advisory"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-ink-900 dark:border-sand-300 text-ink-900 dark:text-sand-100 hover:bg-sand-100 dark:hover:bg-ink-800 font-mono text-xs tracking-wider uppercase font-semibold transition-all duration-200"
+              >
+                <span>⚙</span>
+                <span>Dedicated Founder Advisory</span>
+                <span className="text-sm">↗</span>
+              </a>
+            </div>
+          </div>
 
-          <a
-            href="/advisory"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full border-2 border-ink-900 dark:border-white/20 bg-transparent text-ink-900 dark:text-white hover:bg-ink-900 hover:text-white dark:hover:bg-white dark:hover:text-ink-900 text-xs font-mono uppercase tracking-widest font-bold transition-all"
-          >
-            <Compass className="w-4 h-4 text-cobalt-600" />
-            <span>DEDICATED FOUNDER ADVISORY</span>
-            <ArrowUpRight className="w-4 h-4" />
-          </a>
+          {/* Right Column: Rooftop House Sketch Artwork */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+            <div className="w-full max-w-[440px] aspect-square flex items-center justify-center">
+              <img
+                src="/sketches/house-sketch.png"
+                alt="Architectural sketch of rooftop terrace conversation"
+                className="w-full h-full object-contain select-none mix-blend-multiply dark:invert dark:mix-blend-screen transition-all duration-300"
+                loading="eager"
+              />
+            </div>
+          </div>
+
         </div>
-
       </div>
     </section>
   );

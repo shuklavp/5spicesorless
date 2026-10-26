@@ -7,7 +7,8 @@ export default function FoodDeskPage() {
   const essays = useMemo(() => getFoodEssays(), []);
 
   return (
-    <div className="min-h-screen bg-canvas dark:bg-canvas-dark text-ink-900 dark:text-white pt-36 sm:pt-44 pb-20 transition-colors duration-300">
+    <>
+      <div className="min-h-screen bg-canvas dark:bg-canvas-dark text-ink-900 dark:text-white pt-36 sm:pt-44 pb-20 transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         <a
           href="/"
@@ -16,33 +17,48 @@ export default function FoodDeskPage() {
           <ArrowLeft className="w-4 h-4" /> Back to the Front Page
         </a>
 
-        {/* Authentic Food Desk Card from Live Site */}
-        <div className="relative rounded-3xl bg-[#8B3E0B] border border-[#B25313] shadow-2xl overflow-hidden min-h-[380px] flex items-center mb-16">
-          <span className="absolute right-8 top-4 font-serif text-9xl font-black text-amber-900/20 select-none pointer-events-none">
+        {/* Authentic Food Desk Card: Cast-Iron Charcoal & Copper Glow */}
+        <div className="relative rounded-3xl bg-[#120F0D] border-2 border-[#2F2018] shadow-2xl overflow-hidden min-h-[380px] flex items-center mb-16 transition-colors duration-300">
+          
+          {/* Ambient Warm Hearth Glow */}
+          <div className="absolute top-0 right-0 w-[550px] h-[550px] bg-amber-600/15 rounded-full blur-[140px] pointer-events-none" />
+          <div className="absolute bottom-0 left-1/3 w-80 h-80 bg-[#DE2573]/10 rounded-full blur-[120px] pointer-events-none" />
+
+          {/* Large Subtle Desk Numerals */}
+          <span className="absolute right-8 top-4 font-serif text-9xl font-black text-[#2A1D15]/40 select-none pointer-events-none">
             02
           </span>
           
-          <div className="absolute right-0 top-0 bottom-0 w-full md:w-3/4 h-full pointer-events-none">
-            <img src="/food-sketch.jpeg" alt="The Food Desk" className="w-full h-full object-cover object-right opacity-80" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#8B3E0B] via-[#8B3E0B]/90 to-transparent w-full" />
+          {/* Kitchen Sketch Backdrop with Linework Contrast */}
+          <div className="absolute right-0 top-0 bottom-0 w-full md:w-3/4 h-full pointer-events-none overflow-hidden select-none">
+            <img 
+              src="/food-sketch.jpeg" 
+              alt="The Food Desk" 
+              className="w-full h-full object-cover object-right invert brightness-110 contrast-125 opacity-70"
+            />
+            {/* Smooth transition from dark text zone into linework */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#120F0D] via-[#120F0D]/90 md:via-[#120F0D]/70 to-transparent w-full" />
           </div>
 
+          {/* Text Content */}
           <div className="relative z-10 max-w-xl p-8 sm:p-14 space-y-4">
-            <div className="flex items-center gap-2 text-xs font-mono tracking-widest font-bold text-rose-300 uppercase">
-              <span className="w-2 h-2 rounded-full bg-rose-400" />
+            <div className="flex items-center gap-2 text-xs font-mono tracking-widest font-bold text-amber-300 uppercase">
+              <span className="w-2 h-2 rounded-full bg-amber-400" />
               <span>FIVE SPICES OR FEWER</span>
             </div>
             
-            <h1 className="font-serif text-4xl sm:text-6xl font-black text-white leading-tight">
+            <h1 className="font-serif text-4xl sm:text-6xl font-bold text-white leading-tight">
               The Food Desk
             </h1>
 
-            <p className="text-sm sm:text-base text-amber-100 font-light leading-relaxed">
+            <p className="text-sm sm:text-base text-amber-100/90 font-light leading-relaxed">
               Lucknow roots where aroma precedes taste. Five spices, deliberate heat, and simple steps cooking for pure joy and mental decompression.
             </p>
 
-            <div className="pt-2 text-xs font-mono text-amber-300 tracking-wider">
-              Publishes: One recipe every fortnight
+            <div className="pt-2">
+              <span className="inline-block px-3.5 py-1.5 rounded-lg bg-[#1E1714] border border-[#38261C] font-mono text-xs text-amber-200/80 tracking-wide">
+                Publishes: One recipe every fortnight
+              </span>
             </div>
           </div>
         </div>
@@ -80,6 +96,12 @@ export default function FoodDeskPage() {
             </a>
           ))}
         </div>
+              </div>
+    </div>
+
+    {/* Seamless Deep Midnight Footer Banner Band */}
+    <div className="bg-[#070D1B] border-t border-[#18233C] pt-12 pb-16 px-6 md:px-12">
+      <div className="max-w-6xl mx-auto">
         {/* Footer Callout Banner: Kadai Spices */}
         <div className="mt-20 p-8 sm:p-14 rounded-3xl bg-[#28160B] border border-[#482814] shadow-2xl overflow-hidden relative text-white flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="relative z-10 max-w-xl space-y-4">
@@ -103,7 +125,8 @@ export default function FoodDeskPage() {
             />
           </div>
         </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

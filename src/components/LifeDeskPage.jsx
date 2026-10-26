@@ -7,7 +7,8 @@ export default function LifeDeskPage() {
   const essays = useMemo(() => getLifeEssays(), []);
 
   return (
-    <div className="min-h-screen bg-canvas dark:bg-canvas-dark text-ink-900 dark:text-white pt-36 sm:pt-44 pb-20 transition-colors duration-300">
+    <>
+      <div className="min-h-screen bg-canvas dark:bg-canvas-dark text-ink-900 dark:text-white pt-36 sm:pt-44 pb-20 transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         <a
           href="/"
@@ -80,6 +81,12 @@ export default function LifeDeskPage() {
             </a>
           ))}
         </div>
+              </div> {/* closes inner max-w-6xl container */}
+    </div> {/* closes main content area */}
+
+    {/* Seamless Deep Midnight Footer Banner Band */}
+    <div className="bg-[#070D1B] border-t border-[#18233C] pt-12 pb-16 px-6 md:px-12">
+      <div className="max-w-6xl mx-auto">
         {/* Footer Callout Banner: Cairn Stones */}
         <div className="mt-20 p-8 sm:p-14 rounded-3xl bg-[#0B1E16] border border-[#173D2D] shadow-2xl overflow-hidden relative text-white flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="relative z-10 max-w-xl space-y-4">
@@ -103,7 +110,8 @@ export default function LifeDeskPage() {
             />
           </div>
         </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
