@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@astrojs/react": "^7.1.1",
-    "@astrojs/tailwind": "^6.0.2",
     "astro": "^7.4.2",
     "front-matter": "^4.0.2",
     "lucide-react": "^0.344.0",
