@@ -5,31 +5,41 @@ const levers = [
     num: "01",
     tag: "LEVER 01",
     title: "The Foundations",
-    description: "Patience with the heat. In life and business, endurance is won in early groundwork before vanity metrics ever enter the room."
+    grounding: "Patience with the base.",
+    enterprise: "Endurance is built in unglamorous unit economics and cash discipline, long before vanity metrics enter the room.",
+    kicker: "DISCIPLINE"
   },
   {
     num: "02",
     tag: "LEVER 02",
     title: "Ground Truth",
-    description: "Unvarnished reality over comforting spreadsheets. In partnerships and operations, speaking plain truth creates unstoppable trust."
+    grounding: "Tasting without illusions.",
+    enterprise: "Unvarnished reality over comforting spreadsheets. In boardrooms and co-founder partnerships, plain truth builds unbreakable trust.",
+    kicker: "CANDOR"
   },
   {
     num: "03",
     tag: "LEVER 03",
     title: "Cohesion",
-    description: "The silent binder. Keeping teams, culture, and purpose tightly aligned so collective execution moves without friction."
+    grounding: "The silent binder.",
+    enterprise: "Keeping mission, incentives, and execution cadence tightly aligned so teams move with speed and zero political friction.",
+    kicker: "ALIGNMENT"
   },
   {
     num: "04",
     tag: "LEVER 04",
     title: "Calculated Risk",
-    description: "Decisive courage when conviction matures. Playing not to lose is slow failure; calculated boldness defines category leaders."
+    grounding: "High flame with purpose.",
+    enterprise: "Playing not to lose guarantees slow attrition. Category leadership demands decisive, asymmetric bets when conviction matures.",
+    kicker: "CONVICTION"
   },
   {
     num: "05",
     tag: "LEVER 05",
     title: "Restraint",
-    description: "The discipline of stopping. Knowing when the work is finished and resisting the urge to decorate what is already effective."
+    grounding: "Discipline of the stop.",
+    enterprise: "Knowing when the work is resolved, resisting feature bloat, and having the courage to leave the core value uncrowded.",
+    kicker: "FOCUS"
   }
 ];
 
@@ -45,7 +55,7 @@ export default function CoreLevers() {
         <svg 
           viewBox="0 0 600 600" 
           fill="none" 
-          xmlns="http://www.w3.org/2000/svg"
+          xmlns="http://www.w3.org/2000/svg" 
           className="w-full h-full text-slate-300 font-mono text-[9px]"
         >
           {/* Engineering Grid / Crosshairs */}
@@ -66,7 +76,7 @@ export default function CoreLevers() {
           <text x="320" y="188" fill="currentColor" opacity="0.6">MOMENT ARM [L/5]</text>
           <text x="430" y="80" fill="currentColor" opacity="0.6">AXIS 01-F</text>
 
-          {/* Five Input Load Lines Converging on Fulcrum Pivot (x: 420, y: 200) */}
+          {/* Five Input Load Lines Converging on Fulcrum Pivot */}
           <line x1="80" y1="90" x2="420" y2="200" stroke="currentColor" strokeWidth="1.2" opacity="0.4" />
           <circle cx="80" cy="90" r="3" fill="#DE2573" />
           <text x="45" y="94" fill="#DE2573">F1</text>
@@ -92,7 +102,7 @@ export default function CoreLevers() {
           <circle cx="420" cy="200" r="16" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.6" />
           <circle cx="420" cy="200" r="4" fill="#DE2573" />
 
-          {/* Resultant Output Arrow (Work Simplified) */}
+          {/* Resultant Output Arrow */}
           <line x1="420" y1="200" x2="550" y2="90" stroke="#DE2573" strokeWidth="2.5" strokeLinecap="round" />
           <polyline points="530,86 554,88 552,112" stroke="#DE2573" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
           <text x="500" y="70" fill="#DE2573" fontWeight="bold">RESULTANT (CLARITY)</text>
@@ -112,7 +122,7 @@ export default function CoreLevers() {
           </h2>
 
           <p className="mt-4 text-base sm:text-lg text-slate-300 font-sans font-light leading-relaxed">
-            Five levers are enough to move a mountain, and few enough that none can hide. When you refuse complexity, focus does the heavy lifting.
+            Five levers are enough to move a mountain, and few enough that none can hide. When you strip away unnecessary friction, focus does the heavy lifting.
           </p>
         </div>
 
@@ -121,26 +131,40 @@ export default function CoreLevers() {
           {levers.map((lever, index) => (
             <div 
               key={index}
-              className="flex flex-col justify-between p-5 sm:p-6 rounded-xl bg-[#0F172A]/85 border border-[#1E293B] hover:border-slate-500/50 transition-all duration-200 group"
+              className="flex flex-col justify-between p-5 sm:p-6 rounded-2xl bg-[#0F172A]/90 border border-[#1E293B] hover:border-slate-500/50 hover:bg-[#131D35] transition-all duration-200 group"
             >
               <div>
+                {/* Header Tag & Numeral */}
                 <div className="flex items-center justify-between font-mono text-[11px] text-slate-400 tracking-wider">
                   <span>{lever.tag}</span>
                   <span className="text-slate-500 font-semibold">{lever.num}</span>
                 </div>
 
+                {/* Lever Title */}
                 <h3 className="mt-5 font-serif text-xl font-bold text-white group-hover:text-[#DE2573] transition-colors duration-200">
                   {lever.title}
                 </h3>
 
-                <p className="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed font-sans font-light">
-                  {lever.description}
+                {/* Grounding Metaphor with Minimum Height for Uniform Text Alignment */}
+                <div className="min-h-[44px] flex items-center mt-2">
+                  <p className="text-xs font-mono text-[#DE2573] font-medium tracking-tight">
+                    &ldquo;{lever.grounding}&rdquo;
+                  </p>
+                </div>
+
+                {/* Middle Horizontal Divider separating Metaphor from Operational Truth */}
+                <div className="border-t border-slate-800/80 my-3.5" />
+
+                {/* Direct Executive Translation */}
+                <p className="text-xs sm:text-[13px] text-slate-300 leading-relaxed font-sans font-light">
+                  {lever.enterprise}
                 </p>
               </div>
 
+              {/* Bottom Footer Bar with Unique Domain Kicker */}
               <div className="mt-8 pt-4 border-t border-slate-800/80 flex items-center justify-between text-[10px] font-mono tracking-widest text-slate-400 uppercase">
-                <span>Core Principle</span>
-                <span className="w-1 h-1 rounded-full bg-[#DE2573]"></span>
+                <span className="font-semibold text-slate-300">{lever.kicker}</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#DE2573]"></span>
               </div>
             </div>
           ))}
