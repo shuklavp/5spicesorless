@@ -34,7 +34,7 @@ export default function PillarEIRPage({ onNavigate, isDark }) {
           "Accept": "application/json"
         },
         body: JSON.stringify({
-          source: "Pillar 02 - Entrepreneur in Residence (EIR)",
+          source: "Pillar 02 - Testing Ground",
           name: formData.name,
           email: formData.email,
           fund_or_studio: formData.fund,
@@ -89,16 +89,16 @@ export default function PillarEIRPage({ onNavigate, isDark }) {
           <div className="flex items-center gap-2.5 mb-6">
             <span className="w-2 h-2 rounded-full bg-[#5B3DF5] animate-pulse" />
             <span className="font-mono text-xs tracking-widest uppercase text-white/70">
-              Venture Studio & Fund Partnership • Pillar 02
+              Building New Ideas • Pillar 02
             </span>
           </div>
 
           <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.05]">
-            Entrepreneur in <span className="italic font-normal font-serif text-[#818CF8]">Residence</span>.
+            Testing New <span className="italic font-normal font-serif text-[#818CF8]">Ground</span>.
           </h1>
 
           <p className="font-serif text-xl sm:text-2xl text-white/80 max-w-2xl leading-relaxed mb-10">
-            Category creation, early validation, and building capital-efficient operating blueprints before scale capital is deployed.
+            Testing early business ideas and talking directly to customers before you commit major capital or engineering resources.
           </p>
 
           <div className="bg-[#0E152B]/85 backdrop-blur-md border-l-2 border-[#818CF8] p-6 max-w-2xl rounded-r-xl shadow-lg">

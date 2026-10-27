@@ -33,7 +33,7 @@ export default function PillarOperatorPage({ onNavigate, isDark }) {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          source: 'Pillar 01 - The Fractional Operator',
+          source: 'Pillar 01 - A Working Partner',
           name: formData.name,
           email: formData.email,
           company: formData.company,
@@ -93,18 +93,18 @@ export default function PillarOperatorPage({ onNavigate, isDark }) {
           <div className="flex items-center gap-2.5 mb-6">
             <span className="w-2 h-2 rounded-full bg-[#E11D74] animate-pulse" />
             <span className="font-mono text-xs tracking-widest uppercase text-white/70">
-              Confidential Advisory • Pillar 01
+              Hands-on Leadership • Pillar 01
             </span>
           </div>
 
           {/* Headline */}
           <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white mb-6 leading-[1.05]">
-            The Fractional <span className="italic font-normal font-serif text-[#E11D74]">Operator</span>.
+            A Working <span className="italic font-normal font-serif text-[#E11D74]">Partner</span>.
           </h1>
 
           {/* Subtitle */}
           <p className="font-serif text-xl sm:text-2xl text-white/80 max-w-2xl leading-relaxed mb-10">
-            Operational simplification, eliminating presentation theatre, and restoring execution speed between 15 and 60 people.
+            Cutting away unnecessary meetings and slide decks to help your team focus on the actual work.
           </p>
 
           {/* Tactical Pull Quote Card */}
@@ -329,7 +329,7 @@ export default function PillarOperatorPage({ onNavigate, isDark }) {
               Confidential Preliminary Review
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-[#111111]">
-              Inquire Regarding The Fractional Operator
+              Inquire Regarding A Working Partner
             </h2>
             <p className="font-serif text-base text-[#55524E] mt-3">
               I take on a strictly limited number of operational partnerships each quarter to ensure deep presence. Send a short note about where your company stands and the friction you are experiencing.

@@ -5,7 +5,7 @@ import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 const PILLARS = [
   {
     pillarNum: "PILLAR 01",
-    badgeText: "HANDS-ON LEADERSHIP • PILLAR 01",
+    badgeText: "HANDS-ON PARTNERSHIP • PILLAR 01",
     badgeColor: "border-emerald-500/30 text-emerald-300 bg-emerald-950/40",
     badgeDot: "bg-emerald-400",
     titlePrefix: "A Working",
@@ -57,7 +57,7 @@ const PILLARS = [
 ];
 
 export default function HomeAdvisoryTeaser() {
-  const [activeIndex, setActiveIndex] = useState(2);
+  const [activeIndex, setActiveIndex] = useState(2); // Default to Ben to Jules
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -75,7 +75,7 @@ export default function HomeAdvisoryTeaser() {
           className={`relative rounded-3xl ${active.cardBg} border-2 ${active.cardBorder} shadow-2xl overflow-hidden p-8 sm:p-14 text-white min-h-[460px] flex flex-col justify-between transition-colors duration-700`}
         >
           
-          {/* Background Illustration */}
+          {/* Background Illustration with soft atmospheric blend */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             <img
               key={active.pillarNum}
@@ -105,7 +105,6 @@ export default function HomeAdvisoryTeaser() {
               <span>{active.badgeText}</span>
             </div>
 
-            {/* Exactly 2 lines across all three pillars */}
             <h2 className="font-serif text-3xl sm:text-5xl font-black text-white leading-[1.12]">
               {active.titlePrefix}
               <br />
@@ -114,7 +113,6 @@ export default function HomeAdvisoryTeaser() {
               </span>
             </h2>
 
-            {/* Uniform 3-line literary serif copy */}
             <p className="text-base sm:text-lg text-slate-200 font-serif leading-relaxed">
               {active.description}
             </p>
@@ -140,13 +138,13 @@ export default function HomeAdvisoryTeaser() {
               ))}
             </div>
 
-            {/* Right: CTA & Controls */}
+            {/* Right: Softened CTA & Controls */}
             <div className="flex items-center gap-3">
               <a
                 href="/advisory"
                 className={`inline-flex items-center gap-2 px-7 py-2.5 rounded-full ${active.buttonBg} text-xs font-mono uppercase tracking-widest font-bold transition-all shadow-md hover:scale-[1.02]`}
               >
-                <span>EXPLORE ADVISORY</span>
+                <span>How We Work Together</span>
                 <ArrowUpRight className="w-4 h-4" />
               </a>
 

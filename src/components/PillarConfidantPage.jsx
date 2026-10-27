@@ -298,7 +298,7 @@ export default function PillarConfidantPage({ onNavigate, isDark }) {
               Start An Honest Conversation
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-[#111111]">
-              Connect With A Confidant
+              Start a Quiet Conversation
             </h2>
             <p className="font-serif text-base text-[#55524E] mt-3">
               If you are carrying heavy founder decisions and need an unhurried, confidential sounding board, send a short note. All notes remain strictly between us.

@@ -118,11 +118,11 @@ export default function CoreLevers() {
           </div>
 
           <h2 className="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
-            5 Levers
+            The Five Essentials
           </h2>
 
           <p className="mt-4 text-base sm:text-lg text-slate-200 font-serif leading-relaxed">
-            Five simple principles are enough to run any venture, and few enough that nothing gets lost. When you remove what gets in the way, the real work becomes clear.
+            Five simple rules are enough to run any venture, and few enough that nothing gets lost. When you clear away the noise, what truly matters becomes obvious.
           </p>
         </div>
 

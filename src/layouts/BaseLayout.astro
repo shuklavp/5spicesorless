@@ -9,17 +9,61 @@ interface Props {
   image?: string;
   activeCategory?: string;
   canonicalUrl?: string;
+  type?: 'website' | 'article';
+  publishDate?: string;
 }
 
 const {
   title = "5 Spices or Less | Vivek Shukla: The Philosophy of Simplification",
   description = "Essays on enterprise building, Awadhi kitchens, and living with patience. Published by Vivek Shukla from Kuala Lumpur.",
-  image = "https://5spicesorless.com/logo.png",
+  image = "https://5spicesorless.com/branding/logo.png",
   activeCategory = "",
   canonicalUrl = Astro.url.href,
+  type = "website",
+  publishDate,
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
+const siteUrl = "https://5spicesorless.com";
+
+// Base JSON-LD schema
+const schemaOrg = type === 'article' ? {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": title,
+  "description": description,
+  "image": image,
+  "datePublished": publishDate || new Date().toISOString(),
+  "author": {
+    "@type": "Person",
+    "name": "Vivek Shukla",
+    "url": `${siteUrl}/about`
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "5 Spices or Less",
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}/branding/logo.png`
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": canonicalUrl
+  }
+} : {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "5 Spices or Less",
+  "url": siteUrl,
+  "description": description,
+  "author": {
+    "@type": "Person",
+    "name": "Vivek Shukla",
+    "jobTitle": "Venture Advisor & Author",
+    "url": `${siteUrl}/about`
+  }
+};
 ---
 
 <!doctype html>
@@ -31,16 +75,27 @@ const currentPath = Astro.url.pathname;
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
 
-    <!-- Open Graph / Twitter -->
-    <meta property="og:type" content="website" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
+    <meta property="og:site_name" content="5 Spices or Less" />
+    {publishDate && <meta property="article:published_time" content={publishDate} />}
+    {type === 'article' && <meta property="article:author" content="Vivek Shukla" />}
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
+
+    <!-- RSS Feed Autodiscovery -->
+    <link rel="alternate" type="application/rss+xml" title="5 Spices or Less - Stories & Essays" href="/rss.xml" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -62,5 +117,8 @@ const currentPath = Astro.url.pathname;
     </main>
 
     <Footer client:load />
+
+    <!-- Privacy-friendly, Cookieless Analytics (Cloudflare Beacon) -->
+    <!-- When deploying, insert your token or keep as a clean zero-cookie script -->
   </body>
 </html>

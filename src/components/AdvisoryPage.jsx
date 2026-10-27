@@ -6,37 +6,37 @@ const ADVISORY_PILLARS = [
   {
     id: 'operator',
     number: '01',
-    badge: 'Embedded Operator',
-    title: 'The Fractional Operator',
-    focus: 'Operational Simplification & GTM Discipline',
+    badge: 'Hands-On Leadership',
+    title: 'A Working Partner',
+    focus: 'Day-to-day clarity and execution',
     path: '/advisory/fractional-operator',
     color: '#147166',
     bgPill: '#D8F3EC',
-    summary: 'Between 15 and 60 people, informal alignment disintegrates into meeting sludge and status decks. I embed for 3 to 6 months to strip away coordination friction, install single-page decision memos, and align the team around true unit economics.',
+    summary: 'Between 15 and 60 people, teams often get bogged down in status meetings and endless slide decks. I step in directly for 3 to 6 months to cut away the clutter, put simple one-page decisions in place, and keep the team focused on steady progress.',
     icon: Layers,
   },
   {
     id: 'eir',
     number: '02',
-    badge: 'Venture Studio / Fund',
-    title: 'Entrepreneur in Residence (EIR)',
-    focus: 'Category Creation & Early Ground Truth',
+    badge: 'Early Validation',
+    title: 'Testing Ground',
+    focus: 'Ground truth before capital',
     path: '/advisory/eir',
-    color: '#7C3AED',
-    bgPill: '#EDE9FE',
-    summary: 'The most expensive mistake in venture building is scaling before validating customer pain. Having pioneered residential water sub-metering in India with Macquarie backing, I pressure-test ground truth, margins, and supply chains for venture studios.',
+    color: '#0284C7',
+    bgPill: '#E0F2FE',
+    summary: 'The most expensive mistake in business is building before validating whether customers truly care. Having built an IoT venture from scratch with Macquarie backing, I help founders and investment studios test customer demand, margins, and unit economics before committing serious capital.',
     icon: Building2,
   },
   {
     id: 'confidant',
     number: '03',
-    badge: '1:1 Founder Counsel',
+    badge: 'Founder Counsel',
     title: 'A Ben to Your Jules',
-    focus: 'Confidential Sounding Board for Founders',
+    focus: 'Quiet perspective when things get loud',
     path: '/advisory/ben-to-jules',
     color: '#BC5259',
     bgPill: '#FCE4EC',
-    summary: 'The founder\'s chair is fundamentally lonely. When stakes are high, you need an ego-free, calm veteran in your corner: someone to help you separate acute noise from real existential hazards with quiet courtesy and unvarnished judgement.',
+    summary: "A founder's seat is quiet and often lonely. When stakes are high, you need a calm, experienced friend in your corner: someone to help you separate daily noise from real structural hazards with quiet courtesy and unvarnished judgement.",
     icon: HeartHandshake,
   },
 ];
@@ -74,7 +74,7 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
     email: '',
     venture: '',
     stage: 'Post-Seed / Series A',
-    advisoryMode: 'The Fractional Operator',
+    advisoryMode: 'A Working Partner',
     timeline: 'Immediate (Next 2-4 weeks)',
     bottleneck: '',
     hp_company_url: '',
@@ -165,13 +165,13 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
                   Most external business advice arrives as theoretical slide theatre or generic frameworks. Having spent thirty years inside operating enterprises, pioneering category sub-metering, scaling a 160+ member organisation across four regional offices, raising Macquarie institutional funding, and navigating an orderly strategic exit, I partner directly with founders to cut away operational friction.
                 </p>
                 <p>
-                  True leverage comes from subtraction, not addition. Below are the three collaboration modes, kept intentionally lean. Explore each pillar to inspect the full scope, operating rhythm, and concrete deliverables.
+                  True progress comes from removing distractions, not piling on more initiatives. Below are three ways we can work together, kept intentionally lean. Explore each path to see how we work day to day.
                 </p>
               </div>
 
               <div className="pt-2 flex flex-wrap gap-4">
                 <a href="#collaboration-modes" className="inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full text-white text-xs font-mono uppercase tracking-widest font-bold bg-[#146B53] hover:bg-[#0E523F] transition-all shadow-md">
-                  Start A Conversation
+                  Start a Quiet Conversation
                   <ArrowRight className="w-3.5 h-3.5" />
                 </a>
               </div>

@@ -12,10 +12,8 @@ export default function Hero() {
               The quiet art of <span className="text-[#DE2573]">keeping things simple.</span>
             </h1>
 
-            <p className="mt-6 text-lg sm:text-xl text-ink-700 dark:text-slate-300 font-serif text-ink-800 dark:text-slate-200 leading-relaxed max-w-xl">
-              The best things in life, work, and cooking are born from simplification. 
-              When you remove what is unnecessary, clarity, speed, and flavour take care of themselves. 
-              In the end, less almost always works better than more.
+            <p className="mt-6 text-lg sm:text-xl text-ink-800 dark:text-slate-200 font-serif leading-relaxed max-w-xl">
+              Most things in life, work, and cooking do not fail for a lack of effort. They fail because they gather clutter. When you remove what does not matter, clarity, speed, and flavour take care of themselves.
             </p>
 
             <div className="mt-8 sm:mt-10 flex flex-wrap gap-4 items-center">
@@ -23,8 +21,7 @@ export default function Hero() {
                 href="#desks"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#DE2573] hover:bg-[#c41e63] text-white font-mono text-xs tracking-wider uppercase font-semibold shadow-sm transition-all duration-200"
               >
-                <span>📖</span>
-                <span>Explore Stories & Lessons</span>
+                <span>Read Selected Essays</span>
                 <span className="text-sm">↗</span>
               </a>
 
@@ -32,8 +29,7 @@ export default function Hero() {
                 href="/advisory"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-ink-900 dark:border-sand-300 text-ink-900 dark:text-sand-100 hover:bg-sand-100 dark:hover:bg-ink-800 font-mono text-xs tracking-wider uppercase font-semibold transition-all duration-200"
               >
-                <span>⚙</span>
-                <span>Dedicated Founder Advisory</span>
+                <span>How We Work Together</span>
                 <span className="text-sm">↗</span>
               </a>
             </div>

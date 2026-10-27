@@ -28,9 +28,13 @@ export default function Footer() {
           <p className="text-xs sm:text-sm text-slate-400 font-light max-w-sm leading-relaxed">
             Observations on enterprise building, Awadhi kitchens, and living with patience. Published by Vivek Shukla from Kuala Lumpur.
           </p>
-          <p className="text-[11px] font-mono text-slate-500 pt-2">
-            © {new Date().getFullYear()} 5 Spices or Less. All rights reserved.
-          </p>
+          <div className="text-[11px] font-mono text-slate-500 pt-2 flex items-center gap-3">
+            <span>© {new Date().getFullYear()} 5 Spices or Less. All rights reserved.</span>
+            <span>•</span>
+            <a href="/terms" className="hover:text-slate-300 transition-colors underline underline-offset-4">
+              Terms & Colophon
+            </a>
+          </div>
         </div>
 
         {/* NAVIGATION Column */}
@@ -49,8 +53,9 @@ export default function Footer() {
             <li><a href="/work" className="hover:text-[#DE2573] transition-colors">Work</a></li>
             <li><a href="/stories" className="hover:text-[#DE2573] transition-colors">Stories &amp; Notes</a></li>
             <li><a href="/#letterbox" className="hover:text-[#DE2573] transition-colors">The Letterbox</a></li>
-            <li><a href="/advisory" className="hover:text-[#DE2573] transition-colors">Advisory ("Ben to Jules")</a></li>
+            <li><a href="/advisory" className="hover:text-[#DE2573] transition-colors">Advisory</a></li>
             <li><a href="/about" className="hover:text-[#DE2573] transition-colors">About</a></li>
+            <li><a href="/terms" className="hover:text-[#DE2573] transition-colors">Colophon & Terms</a></li>
           </ul>
         </div>
 
