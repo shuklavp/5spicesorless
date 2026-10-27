@@ -7,7 +7,7 @@ export default function PillarOperatorPage({ onNavigate, isDark }) {
     name: '',
     email: '',
     company: '',
-    stage: 'Post-Seed / Series A (15–40 people)',
+    stage: 'Post-Seed / Series A (15 to 40 people)',
     bottleneck: '',
     _hp_company_url: '' // honeypot
   });
@@ -48,7 +48,7 @@ export default function PillarOperatorPage({ onNavigate, isDark }) {
           name: '',
           email: '',
           company: '',
-          stage: 'Post-Seed / Series A (15–40 people)',
+          stage: 'Post-Seed / Series A (15 to 40 people)',
           bottleneck: '',
           _hp_company_url: ''
         });
@@ -84,13 +84,10 @@ export default function PillarOperatorPage({ onNavigate, isDark }) {
 
         <div className="relative max-w-5xl mx-auto z-10">
           {/* Back Navigation */}
-          <button
-            onClick={() => onNavigate("/advisory")}
-            className="inline-flex items-center gap-2 font-mono text-[11px] tracking-widest uppercase text-white/60 hover:text-white transition-colors mb-8 group"
-          >
+          <a href="/advisory" className="inline-flex items-center gap-2 font-mono text-[11px] tracking-widest uppercase text-white/60 hover:text-white transition-colors mb-8 group">
             <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-1" />
             <span>Back to Advisory Overview</span>
-          </button>
+          </a>
 
           {/* Kicker badge */}
           <div className="flex items-center gap-2.5 mb-6">
@@ -119,33 +116,7 @@ export default function PillarOperatorPage({ onNavigate, isDark }) {
         </div>
       </section>
 
-      {/* ========================================================================= */}
-      {/* 2. OPERATOR SCAR-TISSUE PROOF RIBBON                                      */}
-      {/* ========================================================================= */}
-      <section className="w-full bg-[#111A29] border-b border-[#1E293B] py-5 px-6 md:px-12">
-        <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-6 font-mono text-xs text-white/70 tracking-wider uppercase">
-          <div className="flex items-center gap-2">
-            <span className="text-[#E11D74] font-bold">✓</span>
-            <span>160+ Team Scaled</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-[#E11D74] font-bold">✓</span>
-            <span>4 Regional Offices</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-[#E11D74] font-bold">✓</span>
-            <span>Macquarie-Backed Venture</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-[#E11D74] font-bold">✓</span>
-            <span>Orderly Strategic Exit</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-[#E11D74] font-bold">✓</span>
-            <span>Zero Slide Theatre</span>
-          </div>
-        </div>
-      </section>
+      
 
       {/* ========================================================================= */}
       {/* 3. EDITORIAL DOSSIER: THE CONTEXT & OPERATING PHILOSOPHY                   */}
@@ -445,8 +416,8 @@ export default function PillarOperatorPage({ onNavigate, isDark }) {
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-xl border border-[#D5CEC5] focus:outline-none focus:ring-2 focus:ring-[#E11D74] focus:border-transparent font-serif bg-[#FAF8F5]/50 text-[#111111]"
                   >
-                    <option value="Seed (10–20 people)">Seed (10–20 people)</option>
-                    <option value="Post-Seed / Series A (20–50 people)">Post-Seed / Series A (20–50 people)</option>
+                    <option value="Seed (10 to 20 people)">Seed (10 to 20 people)</option>
+                    <option value="Post-Seed / Series A (20 to 50 people)">Post-Seed / Series A (20 to 50 people)</option>
                     <option value="Scaling Past 50 People">Scaling Past 50 People</option>
                     <option value="Venture Studio / Fund Evaluation">Venture Studio / Fund Evaluation</option>
                   </select>

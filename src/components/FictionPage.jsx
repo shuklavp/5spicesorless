@@ -25,7 +25,7 @@ export default function FictionPage({ onNavigate, isDark }) {
         <div className="relative rounded-3xl bg-[#F7F4F0] border border-[#E3DEC3] shadow-lg overflow-hidden min-h-[380px] md:min-h-[440px] flex items-center mb-16 animate-fadeIn">
           <div className="absolute inset-0 pointer-events-none flex justify-end overflow-hidden">
             <img
-              src="/illustrations/fiction-scooter-bridge.jpg"
+              src="/illustrations/fiction-scooter-bridge.png"
               onError={(e) => {
                 e.currentTarget.src = '/life-sketch.jpeg';
               }}

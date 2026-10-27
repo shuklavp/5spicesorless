@@ -8,7 +8,7 @@ export default function PillarConfidantPage({ onNavigate, isDark }) {
     name: '',
     email: '',
     company: '',
-    stage: 'Seed / Series A (10–30 people)',
+    stage: 'Seed / Series A (10 to 30 people)',
     mind: '',
     _hp_company_url: ''
   });
@@ -49,7 +49,7 @@ export default function PillarConfidantPage({ onNavigate, isDark }) {
           name: '',
           email: '',
           company: '',
-          stage: 'Seed / Series A (10–30 people)',
+          stage: 'Seed / Series A (10 to 30 people)',
           mind: '',
           _hp_company_url: ''
         });
@@ -71,7 +71,7 @@ export default function PillarConfidantPage({ onNavigate, isDark }) {
       <section className="relative w-full bg-[#180A0C] text-white pt-32 pb-24 px-6 md:px-12 lg:px-16 overflow-hidden border-b border-[#2C1316]">
         <div className="absolute inset-0 pointer-events-none flex justify-end overflow-hidden">
           <img
-            src="/illustrations/confidant-study-dark.jpg"
+            src="/illustrations/confidant-study-dark.png"
             onError={(e) => { e.currentTarget.src = '/work-sketch.jpeg'; }}
             alt="Private Founder Counsel Study"
             className="h-full w-auto max-w-none object-contain object-right-bottom filter contrast-125 brightness-110 opacity-80 lg:opacity-90"
@@ -81,13 +81,10 @@ export default function PillarConfidantPage({ onNavigate, isDark }) {
         </div>
 
         <div className="relative max-w-5xl mx-auto z-10">
-          <button
-            onClick={() => onNavigate('/advisory')}
-            className="inline-flex items-center gap-2 font-mono text-[11px] tracking-widest uppercase text-white/60 hover:text-white transition-colors mb-8 group cursor-pointer"
-          >
+          <a href="/advisory" className="inline-flex items-center gap-2 font-mono text-[11px] tracking-widest uppercase text-white/60 hover:text-white transition-colors mb-8 group cursor-pointer">
             <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-1" />
             <span>Back to Advisory Overview</span>
-          </button>
+          </a>
 
           <div className="flex items-center gap-2.5 mb-6">
             <span className="w-2 h-2 rounded-full bg-[#BC5259] animate-pulse" />
@@ -113,30 +110,7 @@ export default function PillarConfidantPage({ onNavigate, isDark }) {
       </section>
 
       {/* 2. OPERATOR PROOF RIBBON */}
-      <section className="w-full bg-[#200D10] border-b border-[#2C1316] py-5 px-6 md:px-12">
-        <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-6 font-mono text-xs text-white/70 tracking-wider uppercase">
-          <div className="flex items-center gap-2">
-            <span className="text-[#E11D74] font-bold">✓</span>
-            <span>Surviving Clinical Death</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-[#E11D74] font-bold">✓</span>
-            <span>Zero Equity Clawback</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-[#E11D74] font-bold">✓</span>
-            <span>Strict Cap: 2 to 3 Founders</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-[#E11D74] font-bold">✓</span>
-            <span>Quiet Perspective & Poise</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-[#E11D74] font-bold">✓</span>
-            <span>Quiet, Unvarnished Perspective</span>
-          </div>
-        </div>
-      </section>
+      
 
       {/* 3. SOLITUDE & PHILOSOPHY */}
       <section className="py-20 px-6 md:px-12 lg:px-16 max-w-5xl mx-auto">
@@ -410,8 +384,8 @@ export default function PillarConfidantPage({ onNavigate, isDark }) {
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-xl border border-[#D5CEC5] focus:outline-none focus:ring-2 focus:ring-[#BC5259] focus:border-transparent font-serif bg-[#FAF8F5]/50 text-[#111111]"
                   >
-                    <option value="Seed / Series A (10–30 people)">Seed / Series A (10–30 people)</option>
-                    <option value="Series B+ (30–100 people)">Series B+ (30–100 people)</option>
+                    <option value="Seed / Series A (10 to 30 people)">Seed / Series A (10 to 30 people)</option>
+                    <option value="Series B+ (30 to 100 people)">Series B+ (30 to 100 people)</option>
                     <option value="Bootstrapped / Profitable">Bootstrapped / Profitable</option>
                   </select>
                 </div>

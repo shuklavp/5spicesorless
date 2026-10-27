@@ -147,7 +147,7 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
       <div className="pt-36 sm:pt-44 pb-24 max-w-6xl mx-auto px-6 space-y-20">
 
         {/* SECTION 1: HERO & CONTEXT (With RHS Architectural Sketch) */}
-        <section className="bg-white dark:bg-[#0F1829] rounded-3xl p-8 md:p-14 border border-[#E2E4E8] dark:border-[#1E293B] shadow-sm">
+        <section className="bg-white dark:bg-[#0F1829] rounded-3xl p-8 md:p-14 border border-[#E2E4E8] dark:border-[#1E293B] shadow-sm" id="collaboration-modes">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* LHS: Operator Narrative & Positioning */}
             <div className="lg:col-span-7 space-y-6">
@@ -162,7 +162,7 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
 
               <div className="space-y-4 text-base text-[#475569] dark:text-[#CBD5E1] leading-relaxed">
                 <p>
-                  Most external business advice arrives as theoretical slides or generic playbooks. Having spent thirty years inside operating enterprises, founding an IoT company from scratch, leading a team of 160+ people across four regional offices, and steering a clean exit, I partner directly with founders to cut away operational clutter.
+                  Most external business advice arrives as theoretical slide theatre or generic frameworks. Having spent thirty years inside operating enterprises, pioneering category sub-metering, scaling a 160+ member organisation across four regional offices, raising Macquarie institutional funding, and navigating an orderly strategic exit, I partner directly with founders to cut away operational friction.
                 </p>
                 <p>
                   True leverage comes from subtraction, not addition. Below are the three collaboration modes, kept intentionally lean. Explore each pillar to inspect the full scope, operating rhythm, and concrete deliverables.
@@ -170,7 +170,7 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
               </div>
 
               <div className="pt-2 flex flex-wrap gap-4">
-                <a href="/advisory/fractional-operator" className="inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full text-white text-xs font-mono uppercase tracking-widest font-bold bg-[#146B53] hover:bg-[#0E523F] transition-all shadow-md">
+                <a href="#collaboration-modes" className="inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full text-white text-xs font-mono uppercase tracking-widest font-bold bg-[#146B53] hover:bg-[#0E523F] transition-all shadow-md">
                   Start A Conversation
                   <ArrowRight className="w-3.5 h-3.5" />
                 </a>
@@ -182,12 +182,12 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
               <img
                 src="/illustrations/advisory-study.png"
                 alt="Executive Advisory Study Line Art"
-                className="w-full max-w-md lg:max-w-xl h-auto object-contain mix-blend-multiply dark:hidden transition-transform duration-500 hover:scale-105"
+                className="w-full max-w-lg lg:max-w-2xl h-auto object-contain mix-blend-multiply dark:hidden scale-110 lg:scale-125 transition-transform duration-500"
               />
               <img
                 src="/illustrations/advisory-study-dark.png"
                 alt="Executive Advisory Study Line Art"
-                className="w-full max-w-md lg:max-w-xl h-auto object-contain hidden dark:block transition-transform duration-500 hover:scale-105"
+                className="w-full max-w-lg lg:max-w-2xl h-auto object-contain hidden dark:block scale-110 lg:scale-125 transition-transform duration-500"
               />
             </div>
           </div>

@@ -121,8 +121,8 @@ export default function CoreLevers() {
             5 Levers
           </h2>
 
-          <p className="mt-4 text-base sm:text-lg text-slate-300 font-sans font-light leading-relaxed">
-            Five levers are enough to move a mountain, and few enough that none can hide. When you strip away unnecessary friction, focus does the heavy lifting.
+          <p className="mt-4 text-base sm:text-lg text-slate-200 font-serif leading-relaxed">
+            Five simple principles are enough to run any venture, and few enough that nothing gets lost. When you remove what gets in the way, the real work becomes clear.
           </p>
         </div>
 
@@ -156,7 +156,7 @@ export default function CoreLevers() {
                 <div className="border-t border-slate-800/80 my-3.5" />
 
                 {/* Direct Executive Translation */}
-                <p className="text-xs sm:text-[13px] text-slate-300 leading-relaxed font-sans font-light">
+                <p className="text-xs sm:text-[13.5px] text-slate-200 leading-relaxed font-serif">
                   {lever.enterprise}
                 </p>
               </div>

@@ -41,4 +41,4 @@ Yield: 2 cups (approximately 180 ml each)
 6. The Milk and The Colour: After a minute of simmering, pour in 1 cup of whole milk. Bring the pot back to a gentle, rising boil. Let the froth crest once or twice, lowering the heat just before it spills, until the surface settles into a warm, toasted golden hue that is neither milky pale nor astringently dark.
 7. The Pour: Strain into two warm cups. Enjoy it piping hot in the company of someone whose presence you cherish. And if you are alone, let the second cup keep you company.
 
-<div className="my-12 flex justify-center"><img src="/illustrations/chai-setup.png" alt="Tea Setup and Stove" className="w-full max-w-2xl h-auto object-contain rounded-2xl" onerror="this.src='/chai-setup.png'" /></div>
+![Chai Setup](/illustrations/chai-setup.png)

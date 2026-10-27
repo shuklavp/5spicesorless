@@ -41,7 +41,7 @@ It took years of trial, missteps, and relentless effort, but that quiet sentence
 
 
 
-<div className="my-12 flex justify-center"><img src="/illustrations/quiet-goal-notebook.png" alt="Quiet Goal Notebook" className="w-full max-w-2xl h-auto object-contain rounded-2xl" onerror="this.src='/quiet-goal-notebook.png'" /></div>
+![Quiet Goal Notebook](/illustrations/quiet-goal-notebook.png)
 
 ## The Wisdom of Subtraction: Asking for Help
 

@@ -8,7 +8,7 @@ export default function PillarEIRPage({ onNavigate, isDark }) {
     name: "",
     email: "",
     fund: "",
-    rhythm: "Immediate (Next 2–4 weeks)",
+    rhythm: "Immediate (Next 2 to 4 weeks)",
     thesis: "",
     _hp_company_url: ""
   });
@@ -49,7 +49,7 @@ export default function PillarEIRPage({ onNavigate, isDark }) {
           name: "",
           email: "",
           fund: "",
-          rhythm: "Immediate (Next 2–4 weeks)",
+          rhythm: "Immediate (Next 2 to 4 weeks)",
           thesis: "",
           _hp_company_url: ""
         });
@@ -71,7 +71,7 @@ export default function PillarEIRPage({ onNavigate, isDark }) {
       <section className="relative w-full bg-[#090E1D] text-white pt-32 pb-24 px-6 md:px-12 lg:px-16 overflow-hidden border-b border-[#1E263D]">
         <div className="absolute inset-0 pointer-events-none flex justify-end overflow-hidden">
           <img
-            src="/illustrations/eir-blueprint-dark.jpg"
+            src="/illustrations/eir-blueprint-dark.png"
             onError={(e) => { e.currentTarget.src = "/work-sketch.jpeg"; }}
             alt="Technical Blueprint & Strategy"
             className="h-full w-auto max-w-none object-contain object-right-bottom filter contrast-125 brightness-110 opacity-80 lg:opacity-90"
@@ -81,13 +81,10 @@ export default function PillarEIRPage({ onNavigate, isDark }) {
         </div>
 
         <div className="relative max-w-5xl mx-auto z-10">
-          <button
-            onClick={() => onNavigate("/advisory")}
-            className="inline-flex items-center gap-2 font-mono text-[11px] tracking-widest uppercase text-white/60 hover:text-white transition-colors mb-8 group cursor-pointer"
-          >
+          <a href="/advisory" className="inline-flex items-center gap-2 font-mono text-[11px] tracking-widest uppercase text-white/60 hover:text-white transition-colors mb-8 group cursor-pointer">
             <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-1" />
             <span>Back to Advisory Overview</span>
-          </button>
+          </a>
 
           <div className="flex items-center gap-2.5 mb-6">
             <span className="w-2 h-2 rounded-full bg-[#5B3DF5] animate-pulse" />
@@ -113,30 +110,7 @@ export default function PillarEIRPage({ onNavigate, isDark }) {
       </section>
 
       {/* 2. OPERATOR PROOF RIBBON */}
-      <section className="w-full bg-[#0D1429] border-b border-[#1E263D] py-5 px-6 md:px-12">
-        <div className="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-6 font-mono text-xs text-white/70 tracking-wider uppercase">
-          <div className="flex items-center gap-2">
-            <span className="text-[#818CF8] font-bold">✓</span>
-            <span>Category Pioneer (Sub-Metering)</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-[#818CF8] font-bold">✓</span>
-            <span>Macquarie Institutional Funding</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-[#818CF8] font-bold">✓</span>
-            <span>Hardware & Cloud Architecture</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-[#818CF8] font-bold">✓</span>
-            <span>Cap-Table Discipline</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-[#818CF8] font-bold">✓</span>
-            <span>Verified Customer Reality</span>
-          </div>
-        </div>
-      </section>
+      
 
       {/* 3. GROUND TRUTH & PHILOSOPHY */}
       <section className="py-20 px-6 md:px-12 lg:px-16 max-w-5xl mx-auto">
@@ -410,7 +384,7 @@ export default function PillarEIRPage({ onNavigate, isDark }) {
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-xl border border-[#D5CEC5] focus:outline-none focus:ring-2 focus:ring-[#5B3DF5] focus:border-transparent font-serif bg-[#FAF8F5]/50 text-[#111111]"
                   >
-                    <option value="Immediate (Next 2–4 weeks)">Immediate (Next 2–4 weeks)</option>
+                    <option value="Immediate (Next 2 to 4 weeks)">Immediate (Next 2 to 4 weeks)</option>
                     <option value="Upcoming Quarter">Upcoming Quarter</option>
                     <option value="Exploratory Due Diligence">Exploratory Due Diligence</option>
                   </select>

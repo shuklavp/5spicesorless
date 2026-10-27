@@ -8,11 +8,6 @@ const mdModules = import.meta.glob('../content/stories/*.md', {
   import: 'default'
 });
 
-// 2. Read legacy JSON files (for backward compatibility)
-const jsonModules = import.meta.glob('../content/stories/*.json', {
-  eager: true
-});
-
 const mdEssays = Object.entries(mdModules).map(([filepath, raw]) => {
   const parsed = fm(raw);
   const attributes = parsed.attributes || {};
@@ -42,31 +37,8 @@ const mdEssays = Object.entries(mdModules).map(([filepath, raw]) => {
   };
 });
 
-const jsonEssays = Object.values(jsonModules).map((mod) => {
-  const item = mod.default || mod;
-  if (!item) return item;
-  const desc = item.summary || item.subtitle || item.leadQuote || item.description || "";
-  return {
-    ...item,
-    summary: desc,
-    description: desc,
-    subtitle: item.subtitle || desc,
-    leadQuote: item.leadQuote || desc
-  };
-});
-
-// Merge: If a story exists as .md, it takes precedence over .json
-const seenSlugs = new Set(mdEssays.map(e => e.slug));
-const combined = [...mdEssays];
-for (const je of jsonEssays) {
-  if (je && je.slug && !seenSlugs.has(je.slug)) {
-    combined.push(je);
-    seenSlugs.add(je.slug);
-  }
-}
-
-export const essays = combined;
-export const ESSAYS_DATA = essays;
+export const essays = mdEssays;
+export const ESSAYS_DATA = mdEssays;
 
 export const getStoryBySlug = (slug) => {
   return essays.find((story) => story.slug === slug);

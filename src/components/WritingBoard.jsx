@@ -97,15 +97,15 @@ export default function WritingBoard() {
             <h3 className="font-serif text-xl sm:text-2xl font-bold text-ink-900 dark:text-white">
               Looking for earlier essays or specific tags?
             </h3>
-            <p className="text-xs sm:text-sm font-mono text-ink-500 dark:text-ink-400">
-              Browse stories and letters by Life, Food, Work, or tag archives with keyword search.
+            <p className="text-sm sm:text-base font-serif text-ink-600 dark:text-ink-300 font-light">
+              Explore the complete collection across Life, Food, and Work, or browse by topic and year.
             </p>
           </div>
           <a
             href="/essays"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#0A1324] hover:bg-[#15233D] text-white text-xs font-mono uppercase tracking-widest font-bold transition-all shadow-md shrink-0"
           >
-            <span>VIEW FULL ARCHIVE ACROSS ALL DESKS</span>
+            <span>EXPLORE ALL ESSAYS & STORIES</span>
             <span>&rarr;</span>
           </a>
         </div>

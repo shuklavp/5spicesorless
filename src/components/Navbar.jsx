@@ -87,6 +87,20 @@ export default function Navbar({ currentPath = "/", activeCategory = "" }) {
           <nav className="hidden md:flex items-center gap-1.5 sm:gap-3">
             {navItems.map((item) => {
               const active = getIsActive(item);
+              const isAdvisory = item.href === '/advisory' || item.label?.toLowerCase() === 'advisory';
+
+              if (isAdvisory) {
+                return (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    className="inline-flex items-center px-5 py-2.5 rounded-full bg-ink-900 hover:bg-ink-800 dark:bg-stone-100 dark:text-ink-950 dark:hover:bg-white text-white text-xs font-mono uppercase tracking-widest font-bold transition-all shadow-sm hover:scale-[1.02] ml-1.5"
+                  >
+                    <span>{item.label}</span>
+                  </a>
+                );
+              }
+
               return (
                 <a
                   key={item.label}
@@ -112,14 +126,7 @@ export default function Navbar({ currentPath = "/", activeCategory = "" }) {
             {isDark ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-ink-700" />}
           </button>
 
-          {/* Talk to Vivek Action Button */}
-          <a
-            href="/advisory"
-            className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-berry-600 hover:bg-berry-700 text-white text-xs font-mono uppercase tracking-widest font-bold transition-all shadow-md shadow-berry-600/20 hover:scale-[1.02]"
-          >
-            <span>TALK TO VIVEK</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </a>
+          
         </div>
       </div>
     </header>

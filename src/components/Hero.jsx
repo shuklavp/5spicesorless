@@ -9,10 +9,10 @@ export default function Hero() {
           {/* Left Column: Left-aligned Content */}
           <div className="lg:col-span-7 flex flex-col items-start text-left z-10">
             <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-ink-900 dark:text-[#FAF8F5] leading-[1.14]">
-              The quiet art of <span className="text-[#DE2573]">cutting through operational noise.</span>
+              The quiet art of <span className="text-[#DE2573]">keeping things simple.</span>
             </h1>
 
-            <p className="mt-6 text-lg sm:text-xl text-ink-700 dark:text-slate-300 font-sans font-light leading-relaxed max-w-xl">
+            <p className="mt-6 text-lg sm:text-xl text-ink-700 dark:text-slate-300 font-serif text-ink-800 dark:text-slate-200 leading-relaxed max-w-xl">
               The best things in life, work, and cooking are born from simplification. 
               When you remove what is unnecessary, clarity, speed, and flavour take care of themselves. 
               In the end, less almost always works better than more.
