@@ -1,48 +1,31 @@
-# 5 Spices or Less — Landing Page
+# 5 Spices or Less (5spicesorless.com)
 
-> A high-fidelity, cinematic landing page bridging personal life lessons, an editorial business writing board, and a boutique startup advisory practice.
+> A quiet editorial publication and private founder advisory practice by Vivek Shukla. Built on radical simplicity across Life, Food, and Work.
 
-## Tech Stack
-- **Framework**: Vite + React 18
-- **Styling**: Tailwind CSS + PostCSS + Autoprefixer
-- **Icons**: Lucide React
-- **Typography**: Playfair Display (Editorial Serif) + Inter (Clean Sans) + JetBrains Mono (Code/Metadata)
+## Platform & Tech Stack
+- Framework: Astro (Static Site Generation / SSG)
+- Interactive Islands: React 18 (.jsx components)
+- Styling: Tailwind CSS with custom editorial typography
+- Visual Assets: Hand-hatched Cobalt/Royal pencil-blue architectural drawings with seamless gradient alpha blending
+- Deployment: Cloudflare Pages (automated edge builds on push to main)
 
-## Architecture & Structure
-```text
-site/
-├── index.html                 # Entry HTML with custom font preconnects & metadata
-├── package.json               # Dependencies and build scripts
-├── postcss.config.js          # PostCSS configuration
-├── tailwind.config.js         # Custom palette (obsidian, spice-amber, parchment)
-├── vite.config.js             # Vite configuration
-└── src/
-    ├── main.jsx               # React DOM root mounting
-    ├── App.jsx                # Main landing page composition
-    ├── index.css              # Base styling, grid patterns, text glow utilities
-    └── components/
-        ├── CursorSpotlight.jsx # Ambient mouse cursor spotlight micro-interaction
-        ├── Navbar.jsx          # Sticky morphing navbar (edge-to-edge -> floating pill)
-        ├── Hero.jsx            # Full-bleed cinematic hero + interactive 5-spice selector
-        ├── ValueProps.jsx      # 3 key value proposition modules with hover glows
-        ├── WritingBoard.jsx    # Editorial essay board with category filter & reader modal
-        ├── ConsultingModule.jsx# Boutique advisory engagement tiers & intake form
-        └── Footer.jsx          # Subtractive manifesto, newsletter subscription, and links
-```
+## Editorial Standards
+- Strict British English spelling throughout (-ise, -our, theatre, judgement).
+- Zero em-dashes. Use commas, colons, or clean, direct sentences.
+- Banned lexicon: dispatches, broadside, and corporate buzzwords.
+- Plain uppercase labels with zero decorative indicator dots.
 
-## Quick Start
+## Developer Quick Start
 ```bash
-# 1. Install dependencies
+# Install dependencies
 npm install
 
-# 2. Run local development server
+# Start local development server (http://localhost:4321)
 npm run dev
 
-# 3. Build for production (outputs to dist/)
+# Compile production build
 npm run build
 ```
 
-## Production Deployment (Cloudflare Pages / Vercel / Netlify)
-- **Build Command**: `npm run build`
-- **Output Directory**: `dist`
-- **Node Version**: 18+
+## Architectural Blueprint
+For comprehensive component breakdowns, image processing pipelines, and typography rules, refer to PROJECT_ARCHITECTURE.md.
