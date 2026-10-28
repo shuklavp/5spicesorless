@@ -77,11 +77,13 @@ export default function AboutPage({ onNavigate }) {
         <div className="rounded-3xl p-8 sm:p-10 lg:p-12 bg-[#FAF8F5] dark:bg-canvas-darkCard border-2 border-canvas-border dark:border-canvas-darkBorder shadow-lg relative mb-16 transition-colors duration-300">
           <div className="max-w-3xl space-y-6">
             {/* Header */}
-            <div className="flex items-center gap-2.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-berry-600 dark:bg-berry-400" />
-              <span className="text-xs font-mono font-bold uppercase tracking-widest text-ink-900 dark:text-white">
-                FIVE OPERATIONAL GROUND TRUTHS FOR WORK &amp; LIFE
+            <div>
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-berry-600 dark:text-berry-400 block mb-2">
+                OPERATIONAL PRINCIPLES
               </span>
+              <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-[#0C1427] dark:text-white">
+                Five Operational Ground Truths for Work &amp; Life
+              </h2>
             </div>
 
             {/* Five Levers Bullet Points */}
@@ -259,7 +261,7 @@ export default function AboutPage({ onNavigate }) {
             {/* The Mission Today Callout */}
             <div className="p-7 rounded-3xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder space-y-4">
               <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-berry-600" />
+                
                 <span className="text-xs font-mono uppercase tracking-widest text-berry-600 dark:text-berry-400 font-bold">
                   The Mission Today
                 </span>
@@ -286,7 +288,7 @@ export default function AboutPage({ onNavigate }) {
         <div className="mt-20 w-full p-8 sm:p-12 lg:p-14 rounded-3xl bg-[#0B1524] border border-[#162742] shadow-2xl overflow-hidden relative text-white flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="relative z-10 max-w-xl space-y-5">
             <div className="flex items-center gap-2 text-xs font-mono tracking-widest font-bold text-sky-400 uppercase">
-              <span className="w-2 h-2 rounded-full bg-sky-500" />
+              
               <span>ON SURVIVAL &amp; SINCERITY</span>
             </div>
             <blockquote className="font-serif not-italic text-2xl sm:text-3xl lg:text-[32px] font-bold leading-snug text-white">

@@ -39,7 +39,6 @@ export default function FictionPage({ onNavigate, isDark }) {
 
           <div className="relative z-20 max-w-xl p-8 sm:p-12 md:p-16 space-y-4">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#BC5259]" />
               <span className="text-xs font-mono uppercase tracking-widest text-[#736B63] font-bold">
                 FICTION & ORIGINAL NARRATIVES
               </span>

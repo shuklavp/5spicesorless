@@ -160,7 +160,6 @@ export default function StoryPage({ slug, onNavigate }) {
             showThesis ? (
               <div key="story-takeaways" className="p-6 sm:p-8 rounded-3xl bg-[#FAF8F5] dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder my-8 space-y-4 shadow-sm">
                 <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-berry-600" />
                   <span className="text-xs font-mono uppercase tracking-widest text-ink-900 dark:text-white font-bold">
                     Core Thesis &amp; Ground Truths
                   </span>

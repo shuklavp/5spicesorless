@@ -4,8 +4,8 @@ import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const PILLARS = [
   {
-    pillarNum: "PILLAR 01",
-    badgeText: "HANDS-ON PARTNERSHIP • PILLAR 01",
+    pillarNum: "WORKING PARTNER",
+    badgeText: "HANDS-ON PARTNERSHIP",
     badgeColor: "border-emerald-500/30 text-emerald-300 bg-emerald-950/40",
     badgeDot: "bg-emerald-400",
     titlePrefix: "A Working",
@@ -21,8 +21,8 @@ const PILLARS = [
     imageAlt: "Working Partner Study Desk"
   },
   {
-    pillarNum: "PILLAR 02",
-    badgeText: "BUILDING NEW IDEAS • PILLAR 02",
+    pillarNum: "TESTING GROUND",
+    badgeText: "BUILDING NEW IDEAS",
     badgeColor: "border-sky-500/30 text-sky-300 bg-sky-950/40",
     badgeDot: "bg-sky-400",
     titlePrefix: "Testing New",
@@ -38,8 +38,8 @@ const PILLARS = [
     imageAlt: "Blueprint Linework"
   },
   {
-    pillarNum: "PILLAR 03",
-    badgeText: "CONFIDENTIAL FOUNDER COUNSEL • PILLAR 03",
+    pillarNum: "FOUNDER COUNSEL",
+    badgeText: "CONFIDENTIAL FOUNDER COUNSEL",
     badgeColor: "border-rose-500/30 text-rose-300 bg-rose-950/40",
     badgeDot: "bg-rose-400",
     titlePrefix: "A Ben to Your",
@@ -101,7 +101,7 @@ export default function HomeAdvisoryTeaser() {
           {/* Top & Middle Content */}
           <div className="relative z-10 max-w-xl space-y-5">
             <div className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-[11px] font-mono uppercase tracking-widest font-bold ${active.badgeColor} transition-colors duration-500`}>
-              <span className={`w-2 h-2 rounded-full ${active.badgeDot} animate-pulse`} />
+              
               <span>{active.badgeText}</span>
             </div>
 

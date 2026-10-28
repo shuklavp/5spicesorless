@@ -15,7 +15,7 @@ import AdvisoryPage from './components/AdvisoryPage';
 import StoryPage from './components/StoryPage';
 import DeskPage from './components/DeskPage';
 import FictionPage from './components/FictionPage';
-import DispatchStudio from './components/DispatchStudio';
+import StoryStudio from './components/StoryStudio';
 
 // Independent Standalone Desk Pages
 import LifeDeskPage from './components/LifeDeskPage';
@@ -87,9 +87,9 @@ export default function App() {
         ? currentPath.slice(0, -1)
         : currentPath;
 
-    // 0. Dispatch Studio: /studio
+    // 0. Story Studio: /studio
     if (normalizedPath === '/studio') {
-      return <DispatchStudio onNavigate={handleNavigate} isDark={isDark} />;
+      return <StoryStudio onNavigate={handleNavigate} isDark={isDark} />;
     }
     // 1. Standalone About Page: /about
     if (normalizedPath === '/about') {
@@ -115,18 +115,18 @@ export default function App() {
 
     // 3. Independent Desk Archives (Fully Isolated)
     if (normalizedPath === '/life') {
-      return <LifeDeskPage onNavigate={handleNavigate} isDark={isDark} />;
+      return <DeskPage category="life" onNavigate={handleNavigate} isDark={isDark} />;
     }
     if (normalizedPath === '/food') {
-      return <FoodDeskPage onNavigate={handleNavigate} isDark={isDark} />;
+      return <DeskPage category="food" onNavigate={handleNavigate} isDark={isDark} />;
     }
     if (normalizedPath === '/work') {
-      return <WorkDeskPage onNavigate={handleNavigate} isDark={isDark} />;
+      return <DeskPage category="work" onNavigate={handleNavigate} isDark={isDark} />;
     }
 
     // 3a. Non-Fiction Essays Archive: /essays
     if (normalizedPath === '/essays') {
-      return <DeskPage desk="stories" deskId="stories" onNavigate={handleNavigate} isDark={isDark} />;
+      return <DeskPage category="stories" onNavigate={handleNavigate} isDark={isDark} />;
     }
 
     // 3b. Dedicated Fiction Space: /stories
@@ -140,7 +140,7 @@ export default function App() {
       if (slug) {
         return <StoryPage slug={slug} onNavigate={handleNavigate} isDark={isDark} />;
       }
-      return <DeskPage desk="stories" deskId="stories" onNavigate={handleNavigate} isDark={isDark} />;
+      return <DeskPage category="stories" onNavigate={handleNavigate} isDark={isDark} />;
     }
 
     // 5. Default: Front Page

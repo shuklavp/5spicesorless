@@ -113,7 +113,6 @@ export default function CoreLevers() {
         {/* Section Header */}
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#DE2573]/30 bg-[#DE2573]/10 text-[#DE2573] font-mono text-[11px] uppercase tracking-wider font-semibold">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#DE2573]"></span>
             Operational Clarity
           </div>
 
@@ -164,8 +163,7 @@ export default function CoreLevers() {
               {/* Bottom Footer Bar with Unique Domain Kicker */}
               <div className="mt-8 pt-4 border-t border-slate-800/80 flex items-center justify-between text-[10px] font-mono tracking-widest text-slate-400 uppercase">
                 <span className="font-semibold text-slate-300">{lever.kicker}</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#DE2573]"></span>
-              </div>
+                </div>
             </div>
           ))}
         </div>

@@ -534,7 +534,6 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
         <div className="mt-20 p-8 sm:p-14 rounded-3xl bg-[#180F13] border border-[#3A1E29] shadow-2xl overflow-hidden relative text-white flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="relative z-10 max-w-xl space-y-4">
             <div className="flex items-center gap-2 text-xs font-mono tracking-widest font-bold text-rose-400 uppercase">
-              <span className="w-2 h-2 rounded-full bg-rose-500" />
               <span>ON OPERATIONAL PERSPECTIVE</span>
             </div>
             <blockquote className="font-serif not-italic text-2xl sm:text-3xl font-bold leading-snug text-white">

@@ -1,4 +1,4 @@
-// src/components/DispatchStudio.jsx
+// src/components/StoryStudio.jsx
 import React, { useState, useEffect } from 'react';
 import { 
   ArrowLeft, ArrowRight, ArrowUpRight, Check, Clock, Copy, 
@@ -72,11 +72,11 @@ const TAXONOMY = {
   },
 };
 
-export default function DispatchStudio({ onNavigate }) {
+export default function StoryStudio({ onNavigate }) {
   // Author Authentication (Default passkey: 5spices)
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     if (typeof window !== 'undefined') {
-      return localStorage.getItem('dispatch_studio_auth') === 'granted';
+      return localStorage.getItem('story_studio_auth') === 'granted';
     }
     return false;
   });
@@ -87,14 +87,14 @@ export default function DispatchStudio({ onNavigate }) {
     e.preventDefault();
     if (passcode.trim().toLowerCase() === '5spices') {
       setIsAuthenticated(true);
-      localStorage.setItem('dispatch_studio_auth', 'granted');
+      localStorage.setItem('story_studio_auth', 'granted');
       setAuthError(false);
     } else {
       setAuthError(true);
     }
   };
 
-  // Core Dispatch State
+  // Core Story State
   const [category, setCategory] = useState('Life');
   const [subCategory, setSubCategory] = useState(TAXONOMY.Life.subCategories[0]);
   const [title, setTitle] = useState('');
@@ -201,7 +201,7 @@ export default function DispatchStudio({ onNavigate }) {
 
   // Generate contextual X (Twitter) post text tailored to account voice
   const getInitialXText = (account) => {
-    const targetSlug = slug.trim() || 'dispatch';
+    const targetSlug = slug.trim() || 'story';
     const storyUrl = `https://5spicesorless.com/stories/${targetSlug}`;
     const cleanTags = tags.length > 0 ? tags.slice(0, 3).map((t) => `#${t.replace(/\s+/g, '')}`).join(' ') : '#Simplification';
 
@@ -286,7 +286,7 @@ ${list.map(formatEssayObject).join(',\n')}
   };
 
   const handleSaveCurrentStoryToArchive = () => {
-    const finalSlug = slug.trim() || 'untitled-dispatch';
+    const finalSlug = slug.trim() || 'untitled-story';
     const finalSubCat = customSubCategory.trim() || subCategory;
     const currentStoryObj = {
       id: finalSlug,
@@ -433,7 +433,7 @@ ${list.map(formatEssayObject).join(',\n')}
       chosenObject = 'A hand-carved wooden spinning top resting on porch stone';
     }
 
-    const targetSlug = slug || 'dispatch-sketch';
+    const targetSlug = slug || 'story-sketch';
     const promptText = `Minimalist architectural pencil sketch in rich cobalt blue ink (#2563EB) on a crisp white background. Fine line art, delicate cross-hatching, traditional technical drafting aesthetic. Depicting ${chosenObject}. High contrast, clean contours, no text, no borders, generous negative space.`;
 
     setGeneratedPrompt(promptText);
@@ -453,7 +453,7 @@ ${list.map(formatEssayObject).join(',\n')}
   // Generate JavaScript Object for essays.js
   const generateExportCode = () => {
     const finalSubCat = customSubCategory.trim() || subCategory;
-    const finalSlug = slug.trim() || 'untitled-dispatch';
+    const finalSlug = slug.trim() || 'untitled-story';
 
     return `  {
     id: '${finalSlug}',
@@ -483,7 +483,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
   };
 
   const handleDownloadJSON = () => {
-    const finalSlug = slug.trim() || 'untitled-dispatch';
+    const finalSlug = slug.trim() || 'untitled-story';
     const finalSubCat = customSubCategory.trim() || subCategory;
     const obj = {
       id: finalSlug,
@@ -611,7 +611,6 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
         <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-canvas-border dark:border-canvas-darkBorder gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-berry-600 animate-pulse" />
               <span className="text-xs font-mono font-bold uppercase tracking-widest text-berry-600 dark:text-berry-400">
                 AUTHORING INTERFACE
               </span>
@@ -1535,7 +1534,6 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                       (showTakeaways && takeaways && takeaways.length > 0) ? (
                         <div key="takeaways" className="p-6 rounded-2xl bg-[#FAF8F5] dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder space-y-3 shadow-sm my-6">
                           <div className="flex items-center gap-2">
-                            <span className="w-2 h-2 rounded-full bg-berry-600" />
                             <span className="text-[11px] font-mono uppercase tracking-widest text-ink-900 dark:text-white font-bold">
                               Core Thesis &amp; Ground Truths
                             </span>

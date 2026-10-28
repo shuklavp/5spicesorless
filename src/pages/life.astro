@@ -1,7 +1,23 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import LifeDeskPage from '../components/LifeDeskPage.jsx';
+import DeskPage from '../components/DeskPage.jsx';
+import Navbar from '../components/Navbar.jsx';
+import '../index.css';
 ---
-<BaseLayout title="Life Desk | 5 Spices or Less">
-  <LifeDeskPage client:load />
-</BaseLayout>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Life Desk | 5 Spices or Less</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-white dark:bg-[#080D18] text-[#0C1427] dark:text-white min-h-screen">
+    <Navbar client:load currentPath="/life" />
+    <main>
+      <DeskPage client:load category="life" />
+    </main>
+  </body>
+</html>
