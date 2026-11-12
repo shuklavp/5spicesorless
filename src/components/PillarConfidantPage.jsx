@@ -74,7 +74,7 @@ export default function PillarConfidantPage({ onNavigate, isDark }) {
           <Img eager sizes="1400px"
             src="/illustrations/confidant-study-dark.png"
             onError={(e) => { e.currentTarget.src = '/work-sketch.jpeg'; }}
-            alt="Private Founder Counsel Study"
+            alt=""
             className="h-full w-auto max-w-none object-contain object-right-bottom filter contrast-125 brightness-110 opacity-80 lg:opacity-90"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#180A0C] via-[#180A0C]/80 via-40% to-transparent" />
@@ -117,7 +117,7 @@ export default function PillarConfidantPage({ onNavigate, isDark }) {
       <section className="py-20 px-6 md:px-12 lg:px-16 max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-16 items-start">
           <div className="md:col-span-6">
-            <span className="font-mono text-xs uppercase tracking-widest text-[#BC5259] block mb-3 font-semibold">
+            <span className="font-mono text-xs uppercase tracking-widest text-[#A3434A] block mb-3 font-semibold">
               01 / The Solitude of Leadership
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-[#111111] mb-6 leading-snug">
@@ -134,7 +134,7 @@ export default function PillarConfidantPage({ onNavigate, isDark }) {
           </div>
 
           <div className="md:col-span-6 md:border-l md:border-[#EAE5DF] md:pl-12">
-            <span className="font-mono text-xs uppercase tracking-widest text-[#BC5259] block mb-3 font-semibold">
+            <span className="font-mono text-xs uppercase tracking-widest text-[#A3434A] block mb-3 font-semibold">
               02 / The Operating Philosophy
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-[#111111] mb-6 leading-snug">
@@ -156,7 +156,7 @@ export default function PillarConfidantPage({ onNavigate, isDark }) {
       <section className="w-full bg-white py-20 px-6 md:px-12 lg:px-16 border-y border-[#EAE5DF]">
         <div className="max-w-5xl mx-auto">
           <div className="mb-14">
-            <span className="font-mono text-xs uppercase tracking-widest text-[#BC5259] block mb-2 font-semibold">
+            <span className="font-mono text-xs uppercase tracking-widest text-[#A3434A] block mb-2 font-semibold">
               03 / Tangible Deliverables
             </span>
             <h2 className="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-[#111111]">
@@ -169,7 +169,7 @@ export default function PillarConfidantPage({ onNavigate, isDark }) {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             <div className="border-t-2 border-[#111111] pt-6">
-              <span className="font-mono text-xs font-bold text-[#BC5259] tracking-widest block mb-2">
+              <span className="font-mono text-xs font-bold text-[#A3434A] tracking-widest block mb-2">
                 DELIVERABLE 01
               </span>
               <h3 className="font-serif text-2xl font-bold text-[#111111] mb-3">
@@ -181,7 +181,7 @@ export default function PillarConfidantPage({ onNavigate, isDark }) {
             </div>
 
             <div className="border-t-2 border-[#111111] pt-6">
-              <span className="font-mono text-xs font-bold text-[#BC5259] tracking-widest block mb-2">
+              <span className="font-mono text-xs font-bold text-[#A3434A] tracking-widest block mb-2">
                 DELIVERABLE 02
               </span>
               <h3 className="font-serif text-2xl font-bold text-[#111111] mb-3">
@@ -193,7 +193,7 @@ export default function PillarConfidantPage({ onNavigate, isDark }) {
             </div>
 
             <div className="border-t-2 border-[#111111] pt-6">
-              <span className="font-mono text-xs font-bold text-[#BC5259] tracking-widest block mb-2">
+              <span className="font-mono text-xs font-bold text-[#A3434A] tracking-widest block mb-2">
                 DELIVERABLE 03
               </span>
               <h3 className="font-serif text-2xl font-bold text-[#111111] mb-3">
@@ -205,7 +205,7 @@ export default function PillarConfidantPage({ onNavigate, isDark }) {
             </div>
 
             <div className="border-t-2 border-[#111111] pt-6">
-              <span className="font-mono text-xs font-bold text-[#BC5259] tracking-widest block mb-2">
+              <span className="font-mono text-xs font-bold text-[#A3434A] tracking-widest block mb-2">
                 DELIVERABLE 04
               </span>
               <h3 className="font-serif text-2xl font-bold text-[#111111] mb-3">
@@ -222,7 +222,7 @@ export default function PillarConfidantPage({ onNavigate, isDark }) {
       {/* 5. FIT MATRIX */}
       <section className="py-20 px-6 md:px-12 lg:px-16 max-w-5xl mx-auto">
         <div className="mb-12">
-          <span className="font-mono text-xs uppercase tracking-widest text-[#BC5259] block mb-2 font-semibold">
+          <span className="font-mono text-xs uppercase tracking-widest text-[#A3434A] block mb-2 font-semibold">
             04 / Founder Fit
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-[#111111]">
@@ -263,25 +263,25 @@ export default function PillarConfidantPage({ onNavigate, isDark }) {
           <div className="space-y-6 md:border-l md:border-[#EAE5DF] md:pl-8">
             <div className="flex items-center gap-2 pb-4 border-b border-[#EAE5DF]">
               <span className="w-2.5 h-2.5 rounded-full bg-[#BC5259]" />
-              <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-[#BC5259]">
+              <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-[#A3434A]">
                 Not Suited For
               </h3>
             </div>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <X className="w-5 h-5 text-[#BC5259] mt-0.5 shrink-0" />
+                <X className="w-5 h-5 text-[#A3434A] mt-0.5 shrink-0" />
                 <span className="font-serif text-base text-[#55524E]">
                   Those looking for tactical marketing hacks or investor intro broking.
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <X className="w-5 h-5 text-[#BC5259] mt-0.5 shrink-0" />
+                <X className="w-5 h-5 text-[#A3434A] mt-0.5 shrink-0" />
                 <span className="font-serif text-base text-[#55524E]">
                   Leaders defensive about their mistakes or seeking validation over truth.
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <X className="w-5 h-5 text-[#BC5259] mt-0.5 shrink-0" />
+                <X className="w-5 h-5 text-[#A3434A] mt-0.5 shrink-0" />
                 <span className="font-serif text-base text-[#55524E]">
                   Founders who want hands-on operational project management (choose Pillar 01).
                 </span>
@@ -295,7 +295,7 @@ export default function PillarConfidantPage({ onNavigate, isDark }) {
       <section id="inquiry" className="py-20 px-6 md:px-12 lg:px-16 max-w-4xl mx-auto">
         <div className="bg-white rounded-3xl p-8 sm:p-12 border border-[#EAE5DF] shadow-md relative overflow-hidden">
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="font-mono text-xs uppercase tracking-widest text-[#BC5259] block mb-2 font-semibold">
+            <span className="font-mono text-xs uppercase tracking-widest text-[#A3434A] block mb-2 font-semibold">
               Start An Honest Conversation
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-[#111111]">
@@ -330,10 +330,10 @@ export default function PillarConfidantPage({ onNavigate, isDark }) {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
+                  <label htmlFor="confidant-your-name" className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
                     Your Name *
                   </label>
-                  <input
+                  <input id="confidant-your-name"
                     type="text"
                     name="name"
                     required
@@ -345,10 +345,10 @@ export default function PillarConfidantPage({ onNavigate, isDark }) {
                 </div>
 
                 <div>
-                  <label className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
+                  <label htmlFor="confidant-direct-email" className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
                     Direct Email *
                   </label>
-                  <input
+                  <input id="confidant-direct-email"
                     type="email"
                     name="email"
                     required
@@ -362,10 +362,10 @@ export default function PillarConfidantPage({ onNavigate, isDark }) {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
+                  <label htmlFor="confidant-company-venture" className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
                     Company / Venture
                   </label>
-                  <input
+                  <input id="confidant-company-venture"
                     type="text"
                     name="company"
                     value={formData.company}
@@ -376,10 +376,10 @@ export default function PillarConfidantPage({ onNavigate, isDark }) {
                 </div>
 
                 <div>
-                  <label className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
+                  <label htmlFor="confidant-stage-team-size" className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
                     Stage & Team Size
                   </label>
-                  <select
+                  <select id="confidant-stage-team-size"
                     name="stage"
                     value={formData.stage}
                     onChange={handleChange}
@@ -393,10 +393,10 @@ export default function PillarConfidantPage({ onNavigate, isDark }) {
               </div>
 
               <div>
-                <label className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
+                <label htmlFor="confidant-what-is-on-your-mind" className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
                   What is on your mind? *
                 </label>
-                <textarea
+                <textarea id="confidant-what-is-on-your-mind"
                   name="mind"
                   required
                   rows={4}

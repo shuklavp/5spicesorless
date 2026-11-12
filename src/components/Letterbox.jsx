@@ -119,13 +119,13 @@ export default function Letterbox() {
         {/* Light Mode: Cobalt Blue Ink on Transparent Background */}
         <Img sizes="1400px"
           src="/streetscape-sketch.png"
-          alt="Vintage Streetscape with Letterbox"
+          alt=""
           className="w-full h-full object-cover object-top opacity-75 mix-blend-multiply dark:hidden transition-opacity"
         />
         {/* Dark Mode: Crisp Silver-Blue Line Art on Transparent Background */}
         <Img sizes="1400px"
           src="/streetscape-sketch-dark.png"
-          alt="Vintage Streetscape with Letterbox"
+          alt=""
           className="w-full h-full object-cover object-top opacity-35 hidden dark:block transition-opacity"
         />
         {/* Soft bottom edge transition into the next section */}
@@ -136,7 +136,7 @@ export default function Letterbox() {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 dark:bg-canvas-darkCard/95 border border-berry-200 dark:border-berry-900 text-berry-600 dark:text-berry-400 text-xs font-mono font-bold uppercase tracking-wider shadow-sm backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 dark:bg-canvas-darkCard/95 border border-berry-200 dark:border-berry-900 text-berry-700 dark:text-berry-400 text-xs font-mono font-bold uppercase tracking-wider shadow-sm backdrop-blur-sm">
             <Mail className="w-3.5 h-3.5" />
             <span>The Letterbox</span>
           </div>
@@ -155,7 +155,7 @@ export default function Letterbox() {
           
           {submitted ? (
             <div className="text-center py-12 px-4 space-y-5">
-              <div className="w-20 h-20 rounded-full bg-berry-50 dark:bg-canvas-dark border border-berry-200 dark:border-berry-800 flex items-center justify-center text-berry-600 dark:text-berry-400 mx-auto shadow-sm">
+              <div className="w-20 h-20 rounded-full bg-berry-50 dark:bg-canvas-dark border border-berry-200 dark:border-berry-800 flex items-center justify-center text-berry-700 dark:text-berry-400 mx-auto shadow-sm">
                 <Check className="w-10 h-10" />
               </div>
               <h3 className="font-serif text-2xl sm:text-3xl font-bold text-ink-900 dark:text-white">
@@ -212,9 +212,9 @@ export default function Letterbox() {
                         }`}
                       >
                         <div className="flex items-center justify-between mb-2">
-                          <Icon className={`w-4 h-4 ${isSelected ? 'text-berry-600 dark:text-berry-400' : 'text-ink-400'}`} />
+                          <Icon className={`w-4 h-4 ${isSelected ? 'text-berry-700 dark:text-berry-400' : 'text-ink-400'}`} />
                           <span className={`text-[10px] font-mono font-bold tracking-wider uppercase ${
-                            isSelected ? 'text-berry-600 dark:text-berry-400' : 'text-ink-400'
+                            isSelected ? 'text-berry-700 dark:text-berry-400' : 'text-ink-400 dark:text-ink-300'
                           }`}>
                             {cat.label}
                           </span>
@@ -239,7 +239,7 @@ export default function Letterbox() {
                   value={formData.question}
                   onChange={(e) => setFormData({ ...formData, question: e.target.value })}
                   placeholder="Ask about personal perspective, a culinary rescue with five spices, or a founder dilemma..."
-                  className="w-full px-4 py-3.5 rounded-2xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600 resize-none leading-relaxed shadow-inner"
+                  className="w-full px-4 py-3.5 rounded-2xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-berry-600 focus:border-berry-600 resize-none leading-relaxed shadow-inner"
                 />
               </div>
 
@@ -254,7 +254,7 @@ export default function Letterbox() {
                       type="checkbox"
                       checked={isAnonymous}
                       onChange={(e) => setIsAnonymous(e.target.checked)}
-                      className="rounded border-canvas-border text-berry-600 focus:ring-berry-500 w-4 h-4"
+                      className="rounded border-canvas-border text-berry-700 focus:ring-berry-500 w-4 h-4"
                     />
                     <span className="text-xs font-mono text-ink-600 dark:text-ink-300">
                       Post anonymously
@@ -270,7 +270,7 @@ export default function Letterbox() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder={isAnonymous ? "Anonymous Pen Name (e.g. 'Founder in Delhi')" : "Your Name"}
-                      className="w-full px-4 py-3 rounded-2xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600"
+                      className="w-full px-4 py-3 rounded-2xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-berry-600 focus:border-berry-600"
                     />
                   </div>
 
@@ -280,7 +280,7 @@ export default function Letterbox() {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="Optional: Email (to receive alert if answered)"
-                      className="w-full px-4 py-3 rounded-2xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:border-berry-600"
+                      className="w-full px-4 py-3 rounded-2xl bg-white dark:bg-canvas-dark border border-canvas-border dark:border-canvas-darkBorder text-sm text-ink-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-berry-600 focus:border-berry-600"
                     />
                   </div>
                 </div>
@@ -288,8 +288,8 @@ export default function Letterbox() {
 
               {/* Submit CTA */}
               <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-canvas-border dark:border-canvas-darkBorder">
-                <div className="flex items-center gap-2 text-xs font-mono text-ink-500 dark:text-ink-400">
-                  <ShieldCheck className="w-4 h-4 text-berry-600 dark:text-berry-400" />
+                <div className="flex items-center gap-2 text-xs font-mono text-ink-500 dark:text-ink-300">
+                  <ShieldCheck className="w-4 h-4 text-berry-700 dark:text-berry-400" />
                   <span>No spam · Answered with quiet care</span>
                 </div>
 

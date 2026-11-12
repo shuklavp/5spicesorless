@@ -11,7 +11,7 @@ pullQuote: "Accepting help to mend your deficiencies requires shedding your ego.
 ---
 
 
-![](/illustrations/british-library-lucknow.png)
+![Sketch of young people reading and talking between shelves in a library](/illustrations/british-library-lucknow.png)
 
 Growing up in Lucknow, life moved along neatly demarcated gates: pass the tenth standard, clear the twelfth, enter university, and then secure whatever sensible livelihood presented itself. The horizon ended at the next examination.
 
@@ -43,7 +43,7 @@ It took years of trial, missteps, and relentless effort, but that quiet sentence
 
 
 
-![Quiet Goal Notebook](/illustrations/quiet-goal-notebook.png)
+![Sketch of an open notebook, a pen, glasses and a cup on a desk beside a window](/illustrations/quiet-goal-notebook.png)
 
 ## The Wisdom of Subtraction: Asking for Help
 

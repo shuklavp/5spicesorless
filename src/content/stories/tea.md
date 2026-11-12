@@ -11,7 +11,7 @@ pullQuote: "Feeling sad, have tea. Feeling happy, have tea. Feeling nothing, hav
 ---
 
 
-![](/illustrations/village-courtyard.png)
+![Sketch of people gathered around a small fire in a village courtyard, outside a tiled-roof house](/illustrations/village-courtyard.png)
 
 In our family, breakfast in town was always a measured affair. But holidays at my grandfather's house in the countryside subscribed to no such superstition.
 
@@ -43,4 +43,4 @@ Yield: 2 cups (approximately 180 ml each)
 6. The Milk and The Colour: After a minute of simmering, pour in 1 cup of whole milk. Bring the pot back to a gentle, rising boil. Let the froth crest once or twice, lowering the heat just before it spills, until the surface settles into a warm, toasted golden hue that is neither milky pale nor astringently dark.
 7. The Pour: Strain into two warm cups. Enjoy it piping hot in the company of someone whose presence you cherish. And if you are alone, let the second cup keep you company.
 
-![Chai Setup](/illustrations/chai-setup.png)
+![Sketch of a pan of chai on a stove, with a pestle and mortar and spice jars on a wooden table](/illustrations/chai-setup.png)

@@ -20,7 +20,7 @@ export default function WritingBoard() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-xs font-mono tracking-widest uppercase text-berry-600 dark:text-berry-400 font-bold">
+              <span className="text-xs font-mono tracking-widest uppercase text-berry-700 dark:text-berry-400 font-bold">
                 THE STORIES &amp; LETTERS
               </span>
             </div>
@@ -60,8 +60,8 @@ export default function WritingBoard() {
                 <div>
                   {/* Top Metadata: Date & Read Time */}
                   <div className="flex items-center justify-between text-xs font-mono tracking-wider mb-4">
-                    <span className="text-ink-500 dark:text-ink-400 font-medium">{essay.date}</span>
-                    <div className="flex items-center gap-1.5 text-berry-600 dark:text-berry-400 font-semibold">
+                    <span className="text-ink-500 dark:text-ink-300 font-medium">{essay.date}</span>
+                    <div className="flex items-center gap-1.5 text-berry-700 dark:text-berry-400 font-semibold">
                       <Clock className="w-3.5 h-3.5" />
                       <span>{essay.readTime || '6 min read'}</span>
                     </div>
@@ -79,7 +79,7 @@ export default function WritingBoard() {
                 </div>
 
                 {/* Footer Link in Unified Mono */}
-                <div className="pt-4 border-t border-canvas-border dark:border-canvas-darkBorder flex items-center justify-between text-xs font-mono tracking-wider font-bold text-berry-600 dark:text-berry-400">
+                <div className="pt-4 border-t border-canvas-border dark:border-canvas-darkBorder flex items-center justify-between text-xs font-mono tracking-wider font-bold text-berry-700 dark:text-berry-400">
                   <span className="uppercase">READ NOTE</span>
                   <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>

@@ -115,7 +115,7 @@ export default function DeskPage({ category = 'stories', onNavigate }) {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }
             }}
-            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-slate-500 hover:text-[#DE2573] transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:text-[#DE2573] transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>BACK TO THE FRONT PAGE</span>
@@ -135,14 +135,14 @@ export default function DeskPage({ category = 'stories', onNavigate }) {
           >
             <Img sizes="50vw" 
               src={config.sketchImage} 
-              alt={config.title}
+              alt=""
               className="w-full h-auto max-h-[450px] object-contain object-right opacity-90 transition-opacity duration-300"
             />
           </div>
 
           {/* Left Text Column: Strictly within 48-52% */}
           <div className="relative z-10 w-full lg:w-[50%] space-y-7">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#DE2573] font-bold block">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#C2185B] dark:text-[#F06292] font-bold block">
               {config.kicker}
             </span>
 
@@ -184,7 +184,7 @@ export default function DeskPage({ category = 'stories', onNavigate }) {
               <h2 className="font-serif text-2xl font-bold text-[#0C1427] dark:text-white">
                 Essays &amp; Stories
               </h2>
-              <p className="text-xs font-mono text-slate-500 mt-0.5">
+              <p className="text-xs font-mono text-slate-500 dark:text-slate-400 mt-0.5">
                 Showing {filteredEssays.length} {filteredEssays.length === 1 ? 'story' : 'stories'}
               </p>
             </div>
@@ -196,7 +196,7 @@ export default function DeskPage({ category = 'stories', onNavigate }) {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search essays by keyword..."
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white dark:bg-[#0F1829] border border-slate-200 dark:border-slate-800 text-xs text-[#0C1427] dark:text-white placeholder-slate-400 focus:outline-none focus:border-[#DE2573]"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white dark:bg-[#0F1829] border border-slate-200 dark:border-slate-800 text-xs text-[#0C1427] dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#C2185B] focus:border-[#C2185B]"
               />
             </div>
           </div>
@@ -220,7 +220,7 @@ export default function DeskPage({ category = 'stories', onNavigate }) {
                     <span className="px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider text-[11px] bg-pink-50 dark:bg-pink-950/40 text-pink-700 dark:text-pink-300">
                       {story.category || story.desk}
                     </span>
-                    <span className="inline-flex items-center gap-1 text-slate-400 text-[11px]">
+                    <span className="inline-flex items-center gap-1 text-slate-500 dark:text-slate-400 text-[11px]">
                       <Clock className="w-3 h-3" />
                       {story.readTime || '5 min read'}
                     </span>
@@ -236,7 +236,7 @@ export default function DeskPage({ category = 'stories', onNavigate }) {
                 </div>
 
                 <div className="pt-5 mt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-mono">
-                  <span className="text-slate-400">{story.date || 'October 2026'}</span>
+                  <span className="text-slate-500 dark:text-slate-400">{story.date || 'October 2026'}</span>
                   <span className="inline-flex items-center gap-1 font-bold text-[#0C1427] dark:text-white group-hover:text-[#DE2573] uppercase tracking-wider">
                     Read Story
                     <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -250,7 +250,7 @@ export default function DeskPage({ category = 'stories', onNavigate }) {
         {/* Section Footer Banner */}
         <section className={`relative rounded-3xl p-8 sm:p-14 border ${config.footerBg} text-white shadow-xl overflow-hidden flex flex-col md:flex-row items-center justify-between gap-10 mt-16`}>
           <div className="relative z-10 max-w-xl space-y-4">
-            <span className="text-xs font-mono uppercase tracking-widest font-bold text-[#DE2573] block">
+            <span className="text-xs font-mono uppercase tracking-widest font-bold text-[#F06292] block">
               {config.footerKicker}
             </span>
             <blockquote className="font-serif not-italic text-2xl sm:text-3xl font-bold text-white leading-snug">
@@ -263,7 +263,7 @@ export default function DeskPage({ category = 'stories', onNavigate }) {
           <div className="w-56 sm:w-72 shrink-0 flex items-center justify-center select-none pointer-events-none">
             <Img sizes="(min-width: 640px) 288px, 224px" 
               src={config.footerImage} 
-              alt={config.footerKicker} 
+              alt="" 
               className="w-full h-auto object-contain filter contrast-125 brightness-110" 
             />
           </div>
