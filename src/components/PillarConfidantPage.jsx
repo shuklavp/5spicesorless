@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Check, Send, ShieldCheck, X } from 'lucide-react';
+import { FORM_ENDPOINTS } from '../config/forms';
 import Img from './Img.jsx';
 
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xvkzbwak';
+const FORMSPREE_ENDPOINT = FORM_ENDPOINTS.advisory;
 
 export default function PillarConfidantPage({ onNavigate, isDark }) {
   const [formData, setFormData] = useState({
@@ -35,6 +36,8 @@ export default function PillarConfidantPage({ onNavigate, isDark }) {
           'Accept': 'application/json'
         },
         body: JSON.stringify({
+          form_type: 'advisory',
+          _subject: 'New Advisory Enquiry: ' + formData.name + ' (' + 'Pillar 03 - A Ben to Your Jules' + ')',
           source: 'Pillar 03 - A Ben to Your Jules',
           name: formData.name,
           email: formData.email,
