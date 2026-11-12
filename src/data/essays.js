@@ -28,6 +28,9 @@ const mdEssays = Object.entries(mdModules).map(([filepath, raw]) => {
     subCategory: attributes.subCategory || attributes.category || 'General',
     categoryBadge: attributes.categoryBadge || attributes.subCategory || 'Operating & Perspective',
     date: attributes.date || 'October 2026',
+    // Full ISO date (YYYY-MM-DD) used for structured data, RSS and the sitemap.
+    // `date` above stays the human-readable "Month YYYY" shown on the site.
+    datePublished: attributes.datePublished ? String(attributes.datePublished).slice(0, 10) : '',
     readTime: attributes.readTime || '5 min read',
     tags: attributes.tags || [],
     author: attributes.author || 'Vivek Shukla',

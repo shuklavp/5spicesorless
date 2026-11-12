@@ -6,6 +6,7 @@ subtitle: "Why the divide between builders and daydreamers is rarely capital, an
 description: "Why the best time to start a company is now, the gap between builders and daydreamers, and why a clean purchase order can beat a twenty-page contract."
 summary: "Whenever someone asks when to leave the safety of an enterprise salary, they expect an equation. But early ventures survive on commercial momentum, chalk over concrete, and knowing when to skip the twenty-page contract."
 date: "October 2026"
+datePublished: "2026-10-26"
 readTime: "6 min read"
 desk: "Work"
 category: "WORK"

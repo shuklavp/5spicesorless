@@ -19,11 +19,12 @@ const STATIC_PATHS = [
 
 export function GET({ site }) {
   const origin = (site ?? new URL('https://5spicesorless.com')).origin;
+  const lastmod = new Map(ESSAYS_DATA.filter((e) => e.datePublished).map((e) => [`/stories/${e.slug}/`, e.datePublished]));
   const essayPaths = ESSAYS_DATA.map((essay) => `/stories/${essay.slug}/`);
   const paths = [...STATIC_PATHS.map((p) => (p === '/' ? p : `${p}/`)), ...essayPaths];
 
   const urls = paths
-    .map((path) => `  <url>\n    <loc>${origin}${path}</loc>\n  </url>`)
+    .map((path) => `  <url>\n    <loc>${origin}${path}</loc>${lastmod.has(path) ? `\n    <lastmod>${lastmod.get(path)}</lastmod>` : ''}\n  </url>`)
     .join('\n');
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;

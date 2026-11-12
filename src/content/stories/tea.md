@@ -2,6 +2,7 @@
 title: "Anything can happen over a hot cup of tea!"
 slug: "tea"
 date: "October 2026"
+datePublished: "2026-10-05"
 readTime: "5 min read"
 category: "FOOD"
 subtitle: "For some, tea is addiction. For a lot of others', it's an emotion."
