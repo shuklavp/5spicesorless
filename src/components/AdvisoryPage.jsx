@@ -241,7 +241,7 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
             </p>
             <div className="lg:col-span-7 space-y-3 text-base text-ink-200 leading-relaxed">
               <p>
-                Through ThinqFuture, I work with start-up leadership teams on go-to-market, channel strategy and regional expansion across Southeast Asia, India and the Middle East.
+                Now I work with start-up leadership teams on go-to-market, channel strategy and regional expansion across Southeast Asia, India and the Middle East.
               </p>
               <p className="text-sm text-ink-300">
                 I am also Advisor &amp; Mentor at Maintayn, a lean, ad-free community-management platform for Indian residential societies.
