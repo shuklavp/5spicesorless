@@ -42,6 +42,15 @@ const ADVISORY_PILLARS = [
   },
 ];
 
+const PROOF_STATS = [
+  { value: '40,000+', label: 'Installations, from zero' },
+  { value: '1.8M', label: 'Meters in the pipeline, across 2,000 apartment complexes' },
+  { value: '30+', label: 'Channel partners, carrying 60% of revenue' },
+  { value: '85%+', label: 'Customer retention' },
+  { value: '$4.5M+', label: 'Raised from one of the world\u2019s largest infrastructure funds' },
+  { value: '150', label: 'People, across four locations' },
+];
+
 const BOTTLENECKS = [
   {
     num: '01',
@@ -190,6 +199,53 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
                 alt="Executive Advisory Study Line Art"
                 className="w-full max-w-lg lg:max-w-2xl h-auto object-contain hidden dark:block scale-110 lg:scale-125 transition-transform duration-500"
               />
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION 1B: SMARTERHOMES PROOF BLOCK (trust signal, sits above the three modes) */}
+        <section
+          aria-labelledby="proof-heading"
+          className="relative overflow-hidden rounded-3xl bg-ink-900 dark:bg-ink-850 text-white border border-ink-700 dark:border-[#1E293B] shadow-sm p-6 sm:p-8 md:p-14"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-end">
+            <div className="lg:col-span-7 space-y-5">
+              <span className="text-xs font-mono uppercase tracking-widest text-berry-300 font-semibold block">
+                Who is behind this page
+              </span>
+              <h2 id="proof-heading" className="font-serif text-3xl md:text-5xl font-bold tracking-tight leading-tight">
+                Zero to 40,000 installations. Then I handed it on.
+              </h2>
+            </div>
+            <p className="lg:col-span-5 text-base text-ink-200 leading-relaxed">
+              I founded SmarterHomes and built it into India&rsquo;s water sub-metering business for high-rise residential complexes. Over thirty years of building, scaling and advising enterprises have taught me one thing: complexity is a choice, and simplicity is a discipline.
+            </p>
+          </div>
+
+          <dl className="mt-10 md:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px rounded-2xl overflow-hidden bg-ink-700/70 border border-ink-700/70">
+            {PROOF_STATS.map((stat) => (
+              <div key={stat.label} className="flex flex-row-reverse items-center justify-end gap-4 sm:flex-col-reverse sm:items-stretch sm:gap-2 bg-ink-900 dark:bg-ink-850 p-5 md:p-7">
+                <dt className="flex-1 sm:flex-none text-[11px] md:text-xs font-mono uppercase tracking-wider text-ink-200 leading-snug">
+                  {stat.label}
+                </dt>
+                <dd className="w-32 shrink-0 sm:w-auto font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-none [font-variant-numeric:lining-nums_tabular-nums]">
+                  {stat.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+
+          <div className="mt-10 md:mt-12 pt-8 border-t border-ink-700/70 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-14">
+            <p className="lg:col-span-5 font-serif text-2xl md:text-3xl font-bold leading-snug text-berry-300">
+              What I built there is what I do now.
+            </p>
+            <div className="lg:col-span-7 space-y-3 text-base text-ink-200 leading-relaxed">
+              <p>
+                Through ThinqFuture, I work with start-up leadership teams on go-to-market, channel strategy and regional expansion across Southeast Asia, India and the Middle East.
+              </p>
+              <p className="text-sm text-ink-300">
+                I am also Advisor &amp; Mentor at Maintayn, a lean, ad-free community-management platform for Indian residential societies.
+              </p>
             </div>
           </div>
         </section>
