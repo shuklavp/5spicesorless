@@ -18,6 +18,7 @@ const mdEssays = Object.entries(mdModules).map(([filepath, raw]) => {
     slug: slug,
     title: attributes.title || 'Untitled',
     subtitle: attributes.subtitle || '',
+    description: attributes.description || '',
     summary: attributes.summary || attributes.leadQuote || '',
     leadQuote: attributes.leadQuote || '',
     pullQuote: attributes.pullQuote || attributes.leadQuote || '',

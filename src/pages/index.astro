@@ -7,9 +7,26 @@ import Letterbox from '../components/Letterbox.jsx';
 import CoreLevers from '../components/CoreLevers.jsx';
 import HomeAboutTeaser from '../components/HomeAboutTeaser.jsx';
 import HomeAdvisoryTeaser from '../components/HomeAdvisoryTeaser.jsx';
+import { SITE_NAME, organizationNode, personNode, schemaIds } from '../utils/seo.js';
 ---
 
-<BaseLayout>
+<BaseLayout
+  ogKey="home"
+  jsonLd={[
+    organizationNode(Astro.site),
+    personNode(Astro.site),
+    {
+      '@type': 'WebSite',
+      '@id': schemaIds(Astro.site).website,
+      url: new URL('/', Astro.site).href,
+      name: SITE_NAME,
+      description: 'Essays on life, food and work from Vivek Shukla, and calm advisory for founders.',
+      inLanguage: 'en-GB',
+      publisher: { '@id': schemaIds(Astro.site).organization },
+      author: { '@id': schemaIds(Astro.site).person },
+    },
+  ]}
+>
   <Hero client:load />
   
   <div id="desks" class="scroll-mt-20">

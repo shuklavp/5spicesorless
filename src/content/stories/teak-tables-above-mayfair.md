@@ -5,6 +5,7 @@ date: "October 2026"
 readTime: "6 min read"
 category: "LIFE"
 subtitle: "How a library in Hazratganj, a green BMW, and accepting help transformed a quiet boy from Lucknow."
+description: "How the British Library above Mayfair Cinema in Hazratganj opened a boy's world: reading widely, speaking freely, and a one-sentence goal written in 1997."
 pullQuote: "Accepting help to mend your deficiencies requires shedding your ego. It is often the single decision that alters the course of a life."
 ---
 

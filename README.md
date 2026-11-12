@@ -29,3 +29,10 @@ npm run build
 
 ## Architectural Blueprint
 For comprehensive component breakdowns, image processing pipelines, and typography rules, refer to PROJECT_ARCHITECTURE.md.
+
+## Page metadata and share images
+
+- Titles, descriptions, Open Graph / Twitter tags and JSON-LD are rendered by `src/components/SeoHead.astro` (used by `BaseLayout` and the Food, Life and Work desk pages). Pass `title`, `description` and `ogKey` to `BaseLayout`.
+- A story's description comes from its `description` front matter (about 140 to 160 characters, written from the story itself). Add an optional `seoTitle` if the title is too long for search results.
+- Story dates are written as "Month YYYY", so structured data uses `YYYY-MM`. Add a real `dateModified` in front matter only if the story is actually updated.
+- Share images are 1200x630 WebP files in `public/og/`, made by `npm run generate-og` (edit the list in `scripts/generate-og-images.mjs`). A new story needs an entry there named after its slug; until then it falls back to `public/og/default.webp`.

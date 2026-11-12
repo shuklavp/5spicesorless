@@ -218,7 +218,7 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
               </h2>
             </div>
             <p className="lg:col-span-5 text-base text-ink-600 dark:text-[#B9CCC4] leading-relaxed">
-              I founded SmarterHomes and bootstrapped it first. Funding came later, and it grew into India&rsquo;s water sub-metering business for high-rise residential complexes. Over thirty years of building, scaling and advising enterprises have taught me one thing: complexity is a choice, and simplicity is a discipline.
+              I founded SmarterHomes and pioneered smart water sub-metering in India. For five years, no one else was doing it. When competitors arrived, we stayed the largest. We also introduced metering as a service, the first model of its kind. Bootstrapped first, funded later. Thirty years of building, scaling and advising have taught me one thing: complexity is a choice, and simplicity is a discipline.
             </p>
           </div>
 

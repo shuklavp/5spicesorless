@@ -1,11 +1,24 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AdvisoryPage from '../../components/AdvisoryPage.jsx';
+import { personNode } from '../../utils/seo.js';
 ---
 
 <BaseLayout
   title="Advisory & Operational Partnerships | 5 Spices or Less"
   description="Founder advisory from the operator who took SmarterHomes from zero to 40,000+ installations: hands-on partnership, a testing ground, founder counsel."
+  ogKey="advisory"
+  jsonLd={[
+    {
+      '@type': 'ProfessionalService',
+      '@id': new URL('/advisory/', Astro.site).href + '#service',
+      name: 'Founder advisory by Vivek Shukla',
+      url: new URL('/advisory/', Astro.site).href,
+      description: 'Hands-on operating partnership, an entrepreneur-in-residence style testing ground, and confidential founder counsel.',
+      provider: personNode(Astro.site),
+      serviceType: ['Fractional operator', 'Entrepreneur in residence', 'Founder counsel'],
+    },
+  ]}
 >
   <AdvisoryPage client:load />
 </BaseLayout>
