@@ -58,7 +58,7 @@ const jsonLd = [
   },
   breadcrumbNode([
     { name: 'Home', path: '/' },
-    { name: 'Stories & Letters', path: '/essays/' },
+    { name: 'Stories & Letters', path: '/stories/' },
     { name: storyTitle, path: Astro.url.pathname },
   ], Astro.site),
 ];
@@ -80,7 +80,7 @@ const shareText = encodeURIComponent(`Thoughts on "${frontmatter?.title}" by @vi
       {/* Back Navigation & Share to X */}
       <div class="flex items-center justify-between mb-12 pb-4 border-b border-canvas-border dark:border-canvas-darkBorder">
         <a
-          href="/essays"
+          href="/stories/"
           class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest font-bold text-ink-600 dark:text-ink-300 hover:text-berry-600 dark:hover:text-berry-400 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
