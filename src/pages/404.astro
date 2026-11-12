@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page not found | 5 Spices or Less"
+  description="This page could not be found."
+>
+  <section class="min-h-[70vh] pt-44 pb-24 px-6 md:px-12 max-w-4xl mx-auto">
+    <span class="font-mono text-xs uppercase tracking-widest text-berry-600 dark:text-berry-400 font-semibold block mb-3">
+      Error 404
+    </span>
+    <h1 class="font-serif text-4xl sm:text-5xl font-bold tracking-tight text-ink-900 dark:text-white leading-tight">
+      This page has gone missing.
+    </h1>
+    <p class="font-serif text-lg text-ink-700 dark:text-stone-300 mt-4 leading-relaxed max-w-2xl">
+      The link may be old, or the address may have a typo. Here are a few places to pick the thread back up.
+    </p>
+    <div class="mt-10 flex flex-wrap gap-4 text-xs font-mono uppercase tracking-widest font-bold">
+      <a href="/" class="px-5 py-2.5 rounded-full bg-ink-900 text-white hover:bg-berry-600 transition-colors">Home</a>
+      <a href="/essays" class="px-5 py-2.5 rounded-full border border-ink-800 dark:border-canvas-darkBorder text-ink-900 dark:text-white hover:text-berry-600 dark:hover:text-berry-400 transition-colors">Read the essays</a>
+      <a href="/advisory" class="px-5 py-2.5 rounded-full border border-ink-800 dark:border-canvas-darkBorder text-ink-900 dark:text-white hover:text-berry-600 dark:hover:text-berry-400 transition-colors">Advisory</a>
+    </div>
+  </section>
+</BaseLayout>

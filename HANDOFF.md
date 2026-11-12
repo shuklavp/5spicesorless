@@ -77,7 +77,7 @@
 * **Build Command:** `npm run build`
 * **Output Directory:** `dist`
 * **Node Version:** Locked to `18.20.4` via `.nvmrc`
-* **Edge SPA Routing:** Guaranteed by `public/_redirects` (`/* /index.html 200`) so deep links like `/about` or `/advisory` resolve on edge servers without 404 errors.
+* **Edge Routing:** There is no SPA catch-all (`public/_redirects` was removed). Cloudflare Pages serves each built page directly and returns `404.html` with a real HTTP 404 for unknown paths.
 
 ---
 
