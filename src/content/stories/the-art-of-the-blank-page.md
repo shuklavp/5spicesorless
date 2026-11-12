@@ -2,6 +2,7 @@
 title: "The Art of the Blank Page"
 slug: "the-art-of-the-blank-page"
 date: "October 2026"
+datePublished: "2026-10-19"
 readTime: "5 min read"
 category: "WORK"
 subtitle: "Why entering unfamiliar rooms without preconceived notions changes how you build, and how listening to ground reality beats corporate dogma."

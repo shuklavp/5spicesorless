@@ -39,7 +39,7 @@ const shareUrl = new URL(Astro.url.pathname, Astro.site).href;
 
 // SEO: share image, real publish month (no invented dates) and structured data.
 const seoImage = ogImage(currentSlug, Astro.site);
-const publishDate = monthToIso(frontmatter?.date);
+const publishDate = monthToIso(frontmatter?.datePublished || frontmatter?.date);
 const jsonLd = [
   {
     '@type': 'BlogPosting',

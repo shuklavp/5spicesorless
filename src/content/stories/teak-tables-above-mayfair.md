@@ -2,6 +2,7 @@
 title: "The Teak Tables Above Mayfair"
 slug: "teak-tables-above-mayfair"
 date: "October 2026"
+datePublished: "2026-10-12"
 readTime: "6 min read"
 category: "LIFE"
 subtitle: "How a library in Hazratganj, a green BMW, and accepting help transformed a quiet boy from Lucknow."
