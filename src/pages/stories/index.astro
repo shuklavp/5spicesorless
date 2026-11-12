@@ -1,13 +1,14 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import { Clock, ArrowUpRight } from 'lucide-react';
-import { ESSAYS_DATA } from '../data/essays.js';
+import { ESSAYS_DATA } from '../../data/essays.js';
 ---
 
 <BaseLayout
   title="Stories & Letters | 5 Spices or Less"
   description="Quiet essays by Vivek Shukla on work, kitchen, character and life, written from Lucknow to Kuala Lumpur on what endures after the rush subsides."
   ogKey="home"
+  activeCategory="STORIES"
 >
   <div class="min-h-screen pt-44 pb-24 px-6 md:px-12 bg-white dark:bg-canvas-dark text-ink-900 dark:text-white transition-colors duration-300">
     <div class="max-w-6xl mx-auto">
@@ -58,6 +59,12 @@ import { ESSAYS_DATA } from '../data/essays.js';
           </a>
         ))}
       </div>
+
+      {/* Fiction lives on its own page */}
+      <p class="mt-14 text-sm text-ink-600 dark:text-ink-300">
+        Looking for fiction?{' '}
+        <a href="/stories/fiction/" class="font-semibold text-berry-700 dark:text-berry-300 underline underline-offset-4 hover:text-berry-600 dark:hover:text-berry-400">Read the story teaser</a>.
+      </p>
 
     </div>
   </div>

@@ -101,7 +101,7 @@ export default function WritingBoard() {
             </p>
           </div>
           <a
-            href="/essays"
+            href="/stories/"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#0A1324] hover:bg-[#15233D] text-white text-xs font-mono uppercase tracking-widest font-bold transition-all shadow-md shrink-0"
           >
             <span>EXPLORE ALL ESSAYS & STORIES</span>
