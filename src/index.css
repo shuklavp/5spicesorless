@@ -1,3 +1,5 @@
+@import './styles/fonts-base.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -174,4 +176,40 @@
 .dark .story-prose img {
   border-color: #1E293B;
   background-color: #0F1829;
+}
+
+/* Keyboard focus: a visible two-tone ring that works on light and dark sections. */
+:where(a, button, summary, [role='button'], [tabindex]):focus-visible {
+  outline: 2px solid #C2185B;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.9);
+  border-radius: 4px;
+}
+:where(footer, .bg-ink-950, .bg-ink-900) :where(a, button):focus-visible {
+  outline-color: #F06292;
+  box-shadow: 0 0 0 5px rgba(7, 13, 27, 0.9);
+}
+:where(input, select, textarea):focus-visible {
+  outline: 2px solid #C2185B;
+  outline-offset: 2px;
+}
+
+/* Skip link: hidden until it takes keyboard focus. */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  background: #0C1427;
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 0.5rem;
+  text-decoration: none;
+}
+.skip-link:focus {
+  top: 1rem;
 }

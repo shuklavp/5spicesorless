@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar.jsx';
 import Footer from '../components/Footer.jsx';
 import SeoHead from '../components/SeoHead.astro';
 import '../index.css';
+import '../styles/fonts-fraunces.css';
 
 interface Props {
   title?: string;
@@ -54,18 +55,15 @@ const currentPath = Astro.url.pathname;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <!-- Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Typography: self-hosted (see src/styles). Preload the two faces used above the fold. -->
+    <link rel="preload" href="/fonts/fraunces-latin-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body class="bg-canvas dark:bg-canvas-dark text-ink-900 dark:text-white antialiased transition-colors duration-300 min-h-screen flex flex-col justify-between selection:bg-berry-500 selection:text-white">
+    <a href="#main" class="skip-link">Skip to main content</a>
     <Navbar client:load currentPath={currentPath} activeCategory={activeCategory} />
     
-    <main class="flex-grow">
+    <main id="main" class="flex-grow">
       <slot />
     </main>
 

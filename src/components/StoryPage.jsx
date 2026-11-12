@@ -54,9 +54,9 @@ export default function StoryPage({ slug, onNavigate }) {
 
             <button
               onClick={handleCopyLink}
-              className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-ink-500 dark:text-ink-400 hover:text-berry-600 transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-ink-500 dark:text-ink-300 hover:text-berry-600 transition-colors"
             >
-              {copied ? <Check className="w-3.5 h-3.5 text-berry-600" /> : <Copy className="w-3.5 h-3.5" />}
+              {copied ? <Check className="w-3.5 h-3.5 text-berry-700" /> : <Copy className="w-3.5 h-3.5" />}
               <span>{copied ? 'Link Copied' : 'Copy Link'}</span>
             </button>
           </div>
@@ -73,12 +73,12 @@ export default function StoryPage({ slug, onNavigate }) {
                 {essay.subCategory}
               </span>
             )}
-            <div className="flex items-center gap-1 text-ink-500 dark:text-ink-400">
+            <div className="flex items-center gap-1 text-ink-500 dark:text-ink-300">
               <Clock className="w-3.5 h-3.5 text-cobalt-600" />
               <span>{essay.readTime}</span>
             </div>
             <span className="text-ink-400 dark:text-ink-600">•</span>
-            <span className="text-ink-500 dark:text-ink-400">{essay.date}</span>
+            <span className="text-ink-500 dark:text-ink-300">{essay.date}</span>
           </div>
 
           <h1 className="font-serif text-3xl sm:text-5xl font-black text-ink-900 dark:text-white leading-[1.12]">
@@ -148,7 +148,7 @@ export default function StoryPage({ slug, onNavigate }) {
                   )}
                 </div>
                 {essay.secondaryCaption && (
-                  <p className="mt-3 text-xs font-mono text-ink-500 dark:text-ink-400 italic">
+                  <p className="mt-3 text-xs font-mono text-ink-500 dark:text-ink-300 italic">
                     {essay.secondaryCaption}
                   </p>
                 )}
@@ -167,7 +167,7 @@ export default function StoryPage({ slug, onNavigate }) {
                 <ul className="space-y-2.5">
                   {essay.takeaways.map((point, idx) => (
                     <li key={idx} className="flex items-start gap-3 text-xs sm:text-sm text-ink-800 dark:text-ink-100 font-medium">
-                      <span className="text-berry-600 dark:text-berry-400 font-bold mt-0.5">•</span>
+                      <span className="text-berry-700 dark:text-berry-400 font-bold mt-0.5">•</span>
                       <span className="leading-relaxed">{point}</span>
                     </li>
                   ))}
@@ -198,7 +198,7 @@ export default function StoryPage({ slug, onNavigate }) {
                   <a
                     key={`link-${lIdx}`}
                     href={url}
-                    className="text-berry-600 dark:text-berry-400 underline underline-offset-4 hover:opacity-80 font-medium transition-opacity"
+                    className="text-berry-700 dark:text-berry-400 underline underline-offset-4 hover:opacity-80 font-medium transition-opacity"
                   >
                     {label}
                   </a>
@@ -274,7 +274,7 @@ export default function StoryPage({ slug, onNavigate }) {
                         <img src={url} alt={alt} className="max-h-96 w-auto rounded-2xl object-contain mx-auto" />
                       </div>
                       {alt && (
-                        <figcaption className="mt-2.5 text-xs font-mono text-ink-500 dark:text-ink-400 italic">
+                        <figcaption className="mt-2.5 text-xs font-mono text-ink-500 dark:text-ink-300 italic">
                           {alt}
                         </figcaption>
                       )}
@@ -311,7 +311,7 @@ export default function StoryPage({ slug, onNavigate }) {
                         const [, num, content] = numMatch;
                         return (
                           <div key={j} className="flex items-start gap-3.5 my-2.5">
-                            <span className="w-6 h-6 rounded-full bg-berry-50 dark:bg-berry-950/60 text-berry-600 dark:text-berry-400 border border-berry-200 dark:border-berry-800 text-xs font-mono font-bold flex items-center justify-center shrink-0 mt-0.5">
+                            <span className="w-6 h-6 rounded-full bg-berry-50 dark:bg-berry-950/60 text-berry-700 dark:text-berry-400 border border-berry-200 dark:border-berry-800 text-xs font-mono font-bold flex items-center justify-center shrink-0 mt-0.5">
                               {num}
                             </span>
                             <div className="flex-1 text-base sm:text-lg leading-relaxed text-ink-800 dark:text-ink-100 font-light">
@@ -337,7 +337,7 @@ export default function StoryPage({ slug, onNavigate }) {
                   <ul key={`${pfx}-${i}`} className="space-y-2.5 my-4 pl-2">
                     {lines.map((l, j) => (
                       <li key={j} className="flex items-start gap-3 text-base sm:text-lg leading-relaxed text-ink-800 dark:text-ink-100 font-light">
-                        <span className="text-berry-600 dark:text-berry-400 font-bold mt-1 text-xs">•</span>
+                        <span className="text-berry-700 dark:text-berry-400 font-bold mt-1 text-xs">•</span>
                         <span className="flex-1">{renderInlineMarkdown(l.replace(/^[\*\-\s]+/, ''))}</span>
                       </li>
                     ))}
@@ -462,7 +462,7 @@ export default function StoryPage({ slug, onNavigate }) {
             <div className="pt-2 flex items-center justify-center sm:justify-start gap-4">
               <button
                 onClick={() => onNavigate('/about')}
-                className="text-xs font-mono font-bold text-berry-600 dark:text-berry-400 hover:underline"
+                className="text-xs font-mono font-bold text-berry-700 dark:text-berry-400 hover:underline"
               >
                 Read Full Memoir →
               </button>
@@ -481,7 +481,7 @@ export default function StoryPage({ slug, onNavigate }) {
           <h3 className="text-lg font-serif font-bold text-ink-900 dark:text-white mb-2">
             Join the Discussion on X
           </h3>
-          <p className="text-sm text-ink-600 dark:text-ink-400 max-w-lg mx-auto mb-6">
+          <p className="text-sm text-ink-600 dark:text-ink-300 max-w-lg mx-auto mb-6">
             Have thoughts, a contrasting view, or battle scars of your own? Join the conversation on X. Zero spam, real perspectives.
           </p>
           <a

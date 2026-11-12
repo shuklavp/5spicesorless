@@ -28,7 +28,7 @@ export default function Hero() {
 
               <a
                 href="/advisory"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-ink-900 dark:border-sand-300 text-ink-900 dark:text-sand-100 hover:bg-sand-100 dark:hover:bg-ink-800 font-mono text-xs tracking-wider uppercase font-semibold transition-all duration-200"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-ink-900 dark:border-ink-200 text-ink-900 dark:text-white hover:bg-ink-50 dark:hover:bg-ink-800 font-mono text-xs tracking-wider uppercase font-semibold transition-all duration-200"
               >
                 <span>How We Work Together</span>
                 <span className="text-sm">↗</span>
@@ -41,7 +41,7 @@ export default function Hero() {
             <div className="w-full max-w-[440px] aspect-square flex items-center justify-center">
               <Img priority sizes="(min-width: 1024px) 440px, 90vw"
                 src="/sketches/house-sketch.png"
-                alt="Architectural sketch of rooftop terrace conversation"
+                alt=""
                 className="w-full h-full object-contain select-none mix-blend-multiply dark:invert dark:mix-blend-screen transition-all duration-300"
               />
             </div>

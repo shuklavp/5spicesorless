@@ -105,34 +105,34 @@ export default function ValueProps({ onNavigate }) {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <span className="text-xs font-mono tracking-widest uppercase text-berry-600 dark:text-berry-400 font-bold">
+              <span className="text-xs font-mono tracking-widest uppercase text-berry-700 dark:text-berry-400 font-bold">
                 THE THREE DESKS
               </span>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center mb-16 md:mb-20">
           <div className="lg:col-span-5">
-            <h2 className="font-serif text-5xl sm:text-6xl md:text-7xl leading-[0.98] tracking-tight text-[#111111]">
+            <h2 className="font-serif text-5xl sm:text-6xl md:text-7xl leading-[0.98] tracking-tight text-[#111111] dark:text-white">
               What You <span className="italic font-normal font-serif text-[#E11D74]">Will</span>
               <br />
               Find Here.
             </h2>
           </div>
           <div className="lg:col-span-7">
-            <p className="font-serif text-xl sm:text-2xl text-[#2B2927] leading-[1.65] max-w-2xl">
+            <p className="font-serif text-xl sm:text-2xl text-[#2B2927] dark:text-slate-200 leading-[1.65] max-w-2xl">
               Everything here comes from personal experience:{" "}
-              <span className="text-[#B85028] underline decoration-[#B85028]/60 decoration-[1.5px] underline-offset-4 font-medium">
+              <span className="text-[#B85028] dark:text-[#E8895F] underline decoration-[#B85028]/60 dark:decoration-[#E8895F]/60 decoration-[1.5px] underline-offset-4 font-medium">
                 thirty years
               </span>{" "}
               of loving, cooking, building companies, and surviving. I write to separate what truly matters from everyday noise, in the hope that these notes make your{" "}
-              <span className="text-[#B85028] underline decoration-[#B85028]/60 decoration-[1.5px] underline-offset-4 font-medium">
+              <span className="text-[#B85028] dark:text-[#E8895F] underline decoration-[#B85028]/60 dark:decoration-[#E8895F]/60 decoration-[1.5px] underline-offset-4 font-medium">
                 life
               </span>
               , your{" "}
-              <span className="text-[#B85028] underline decoration-[#B85028]/60 decoration-[1.5px] underline-offset-4 font-medium">
+              <span className="text-[#B85028] dark:text-[#E8895F] underline decoration-[#B85028]/60 dark:decoration-[#E8895F]/60 decoration-[1.5px] underline-offset-4 font-medium">
                 table
               </span>
               , and your{" "}
-              <span className="text-[#B85028] underline decoration-[#B85028]/60 decoration-[1.5px] underline-offset-4 font-medium">
+              <span className="text-[#B85028] dark:text-[#E8895F] underline decoration-[#B85028]/60 dark:decoration-[#E8895F]/60 decoration-[1.5px] underline-offset-4 font-medium">
                 work
               </span>{" "}
               a little simpler.

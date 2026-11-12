@@ -120,7 +120,7 @@ export default function FictionPage({ onNavigate, isDark }) {
           <div className="w-56 sm:w-72 shrink-0 flex items-center justify-center">
             <Img sizes="(min-width: 640px) 288px, 224px" 
               src="/footer/footer-typewriter.png" 
-              alt="Typewriter Linework" 
+              alt="" 
               className="w-full h-auto object-contain"
               onError={(e) => { e.currentTarget.src = "/footer/footer-typewriter.jpg"; }}
             />

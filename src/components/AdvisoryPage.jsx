@@ -23,7 +23,7 @@ const ADVISORY_PILLARS = [
     title: 'Testing Ground',
     focus: 'Ground truth before capital',
     path: '/advisory/eir',
-    color: '#0284C7',
+    color: '#0369A1',
     bgPill: '#E0F2FE',
     summary: 'The most expensive mistake in business is building before validating whether customers truly care. Having built an IoT venture from scratch with Macquarie backing, I help founders and investment studios test customer demand, margins, and unit economics before committing serious capital.',
     icon: Building2,
@@ -35,7 +35,7 @@ const ADVISORY_PILLARS = [
     title: 'A Ben to Your Jules',
     focus: 'Quiet perspective when things get loud',
     path: '/advisory/ben-to-jules',
-    color: '#BC5259',
+    color: '#A3434A',
     bgPill: '#FCE4EC',
     summary: "A founder's seat is quiet and often lonely. When stakes are high, you need a calm, experienced friend in your corner: someone to help you separate daily noise from real structural hazards with quiet courtesy and unvarnished judgement.",
     icon: HeartHandshake,
@@ -161,7 +161,7 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* LHS: Operator Narrative & Positioning */}
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FCE4EC] dark:bg-[#BC5259]/20 text-[#BC5259] text-xs font-mono tracking-widest uppercase">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FCE4EC] dark:bg-[#BC5259]/20 text-[#A3434A] dark:text-[#E8A0A5] text-xs font-mono tracking-widest uppercase">
                 <Compass className="w-3.5 h-3.5" />
                 Advisory & Operational Partnerships
               </div>
@@ -191,12 +191,12 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
             <div className="lg:col-span-5 flex items-center justify-center lg:justify-end relative z-10">
               <Img eager sizes="(min-width: 1024px) 840px, 640px"
                 src="/illustrations/advisory-study.png"
-                alt="Executive Advisory Study Line Art"
+                alt=""
                 className="w-full max-w-lg lg:max-w-2xl h-auto object-contain mix-blend-multiply dark:hidden scale-110 lg:scale-125 transition-transform duration-500"
               />
               <Img sizes="(min-width: 1024px) 840px, 640px"
                 src="/illustrations/advisory-study-dark.png"
-                alt="Executive Advisory Study Line Art"
+                alt=""
                 className="w-full max-w-lg lg:max-w-2xl h-auto object-contain hidden dark:block scale-110 lg:scale-125 transition-transform duration-500"
               />
             </div>
@@ -248,7 +248,7 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
         {/* SECTION 2: THE THREE PILLARS (Compact Cards Linking to Dedicated Standalone Pages) */}
         <section className="space-y-8">
           <div>
-            <span className="text-xs font-mono uppercase tracking-widest text-[#BC5259] font-semibold block mb-2">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#A3434A] dark:text-[#E8A0A5] font-semibold block mb-2">
               Three Distinct Collaboration Modes
             </span>
             <h2 className="font-serif text-2xl md:text-4xl font-bold text-ink-950 dark:text-white">
@@ -364,13 +364,13 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
         {/* SECTION 4: MUTUAL FIT & WORKING STYLE (Terracotta Red Identity #BC5259) */}
         <section className="bg-[#BC5259] dark:bg-[#2A1417] text-white rounded-3xl p-8 md:p-14 shadow-xl">
           <div className="max-w-3xl mb-12">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#FCE4EC] font-semibold block mb-2">
+            <span className="text-xs font-mono uppercase tracking-widest text-white font-semibold block mb-2">
               MUTUAL FIT &amp; WORKING STYLE
             </span>
             <h2 className="font-serif text-2xl md:text-4xl font-bold mb-4">
               We will not be a good fit if...
             </h2>
-            <p className="text-sm md:text-base text-[#FCE4EC] leading-relaxed">
+            <p className="text-sm md:text-base text-white leading-relaxed">
               Advisory only works when both sides share the same wavelength. I cap my advisory work to two or three founders at a time so I can be genuinely helpful. To protect both our calendars, here is where my approach will not work:
             </p>
           </div>
@@ -378,7 +378,7 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-[#FAF8F5] dark:bg-[#1C1618] text-ink-950 dark:text-white rounded-2xl p-7 shadow-sm border border-white/20 flex flex-col justify-between">
               <div>
-                <span className="text-[11px] font-mono text-[#BC5259] dark:text-berry-400 font-bold block mb-3 uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#BC5259]/10 dark:bg-berry-950/50 border border-[#BC5259]/20 w-fit">
+                <span className="text-[11px] font-mono text-[#A3434A] dark:text-berry-400 font-bold block mb-3 uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#BC5259]/10 dark:bg-berry-950/50 border border-[#BC5259]/20 w-fit">
                   NO SLIDE DECKS
                 </span>
                 <h3 className="font-serif text-lg font-bold mb-3 leading-snug">
@@ -392,7 +392,7 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
 
             <div className="bg-[#FAF8F5] dark:bg-[#1C1618] text-ink-950 dark:text-white rounded-2xl p-7 shadow-sm border border-white/20 flex flex-col justify-between">
               <div>
-                <span className="text-[11px] font-mono text-[#BC5259] dark:text-berry-400 font-bold block mb-3 uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#BC5259]/10 dark:bg-berry-950/50 border border-[#BC5259]/20 w-fit">
+                <span className="text-[11px] font-mono text-[#A3434A] dark:text-berry-400 font-bold block mb-3 uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#BC5259]/10 dark:bg-berry-950/50 border border-[#BC5259]/20 w-fit">
                   NO MEETING CULTURES
                 </span>
                 <h3 className="font-serif text-lg font-bold mb-3 leading-snug">
@@ -406,7 +406,7 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
 
             <div className="bg-[#FAF8F5] dark:bg-[#1C1618] text-ink-950 dark:text-white rounded-2xl p-7 shadow-sm border border-white/20 flex flex-col justify-between">
               <div>
-                <span className="text-[11px] font-mono text-[#BC5259] dark:text-berry-400 font-bold block mb-3 uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#BC5259]/10 dark:bg-berry-950/50 border border-[#BC5259]/20 w-fit">
+                <span className="text-[11px] font-mono text-[#A3434A] dark:text-berry-400 font-bold block mb-3 uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#BC5259]/10 dark:bg-berry-950/50 border border-[#BC5259]/20 w-fit">
                   NO YES-MEN
                 </span>
                 <h3 className="font-serif text-lg font-bold mb-3 leading-snug">
@@ -424,7 +424,7 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
         <section id="enquiry" className="bg-white dark:bg-[#0F1829] rounded-3xl p-8 md:p-14 border border-[#E2E4E8] dark:border-[#1E293B] shadow-sm">
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-10">
-              <span className="text-xs font-mono uppercase tracking-widest text-[#BC5259] font-semibold block mb-2">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#A3434A] dark:text-[#E8A0A5] font-semibold block mb-2">
                 Confidential Preliminary Review
               </span>
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-ink-950 dark:text-white mb-3">
@@ -460,10 +460,10 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#475569] dark:text-[#94A3B8] mb-1.5">
+                    <label htmlFor="adv-your-name" className="block text-xs font-mono uppercase tracking-wider text-[#475569] dark:text-[#94A3B8] mb-1.5">
                       Your Name *
                     </label>
-                    <input
+                    <input id="adv-your-name"
                       type="text"
                       required
                       value={formData.name}
@@ -473,10 +473,10 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#475569] dark:text-[#94A3B8] mb-1.5">
+                    <label htmlFor="adv-direct-email" className="block text-xs font-mono uppercase tracking-wider text-[#475569] dark:text-[#94A3B8] mb-1.5">
                       Direct Email *
                     </label>
-                    <input
+                    <input id="adv-direct-email"
                       type="email"
                       required
                       name="email"
@@ -490,10 +490,10 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#475569] dark:text-[#94A3B8] mb-1.5">
+                    <label htmlFor="adv-company-venture" className="block text-xs font-mono uppercase tracking-wider text-[#475569] dark:text-[#94A3B8] mb-1.5">
                       Company / Venture
                     </label>
-                    <input
+                    <input id="adv-company-venture"
                       type="text"
                       value={formData.venture}
                       onChange={(e) => setFormData({ ...formData, venture: e.target.value })}
@@ -502,10 +502,10 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#475569] dark:text-[#94A3B8] mb-1.5">
+                    <label htmlFor="adv-collaboration-mode" className="block text-xs font-mono uppercase tracking-wider text-[#475569] dark:text-[#94A3B8] mb-1.5">
                       Collaboration Mode
                     </label>
-                    <select
+                    <select id="adv-collaboration-mode"
                       value={formData.advisoryMode}
                       onChange={(e) => setFormData({ ...formData, advisoryMode: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#162342] border border-[#CBD5E1] dark:border-[#334155] text-ink-950 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#BC5259]"
@@ -519,10 +519,10 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#475569] dark:text-[#94A3B8] mb-1.5">
+                    <label htmlFor="adv-current-stage" className="block text-xs font-mono uppercase tracking-wider text-[#475569] dark:text-[#94A3B8] mb-1.5">
                       Current Stage
                     </label>
-                    <select
+                    <select id="adv-current-stage"
                       value={formData.stage}
                       onChange={(e) => setFormData({ ...formData, stage: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#162342] border border-[#CBD5E1] dark:border-[#334155] text-ink-950 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#BC5259]"
@@ -534,10 +534,10 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-mono uppercase tracking-wider text-[#475569] dark:text-[#94A3B8] mb-1.5">
+                    <label htmlFor="adv-desired-timeline" className="block text-xs font-mono uppercase tracking-wider text-[#475569] dark:text-[#94A3B8] mb-1.5">
                       Desired Timeline
                     </label>
-                    <select
+                    <select id="adv-desired-timeline"
                       value={formData.timeline}
                       onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl bg-[#F8FAFC] dark:bg-[#162342] border border-[#CBD5E1] dark:border-[#334155] text-ink-950 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#BC5259]"
@@ -550,10 +550,10 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono uppercase tracking-wider text-[#475569] dark:text-[#94A3B8] mb-1.5">
+                  <label htmlFor="adv-what-is-your-primary-bottleneck-or-priority" className="block text-xs font-mono uppercase tracking-wider text-[#475569] dark:text-[#94A3B8] mb-1.5">
                     What is your primary bottleneck or priority? *
                   </label>
-                  <textarea
+                  <textarea id="adv-what-is-your-primary-bottleneck-or-priority"
                     rows={4}
                     required
                     value={formData.bottleneck}
@@ -598,7 +598,7 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
           <div className="w-56 sm:w-72 shrink-0 flex items-center justify-center">
             <Img sizes="(min-width: 640px) 288px, 224px" 
               src="/footer/footer-chess-compass.png" 
-              alt="Chess Pieces and Pocket Compass" 
+              alt="" 
               className="w-full h-auto object-contain"
               onError={(e) => { e.currentTarget.src = "/footer/footer-chess-compass.jpg"; }}
             />

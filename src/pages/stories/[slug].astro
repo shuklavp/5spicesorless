@@ -103,12 +103,12 @@ const shareText = encodeURIComponent(`Thoughts on "${frontmatter?.title}" by @vi
           <span class="text-berry-700 dark:text-berry-300 bg-berry-50 dark:bg-canvas-darkCard px-3 py-1 rounded-full border border-berry-200 dark:border-canvas-darkBorder font-bold uppercase text-[11px]">
             {category}
           </span>
-          <div class="flex items-center gap-1 text-ink-500 dark:text-ink-400 font-semibold">
+          <div class="flex items-center gap-1 text-ink-500 dark:text-ink-300 font-semibold">
             <Clock class="w-3.5 h-3.5 text-cobalt-600" />
             <span>{frontmatter?.readTime || "6 min read"}</span>
           </div>
           <span class="text-ink-400 dark:text-ink-600">•</span>
-          <span class="text-ink-500 dark:text-ink-400">{frontmatter?.date || "October 2026"}</span>
+          <span class="text-ink-500 dark:text-ink-300">{frontmatter?.date || "October 2026"}</span>
         </div>
 
         <h1 class="font-serif text-3xl sm:text-5xl font-black text-ink-900 dark:text-white leading-[1.12]">
@@ -138,7 +138,7 @@ const shareText = encodeURIComponent(`Thoughts on "${frontmatter?.title}" by @vi
 
       {/* Tags */}
       <div class="pt-10 pb-6 flex flex-wrap items-center gap-2 border-t border-canvas-border dark:border-canvas-darkBorder">
-        <span class="text-xs font-mono text-ink-500 uppercase tracking-wider mr-2">Filed under:</span>
+        <span class="text-xs font-mono text-ink-500 dark:text-ink-300 uppercase tracking-wider mr-2">Filed under:</span>
         {tags.map((tag: string) => (
           <span class="px-3 py-1 rounded-full bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder text-xs font-mono text-ink-700 dark:text-ink-300">
             {tag.startsWith('#') ? tag : `#${tag}`}
@@ -159,7 +159,7 @@ const shareText = encodeURIComponent(`Thoughts on "${frontmatter?.title}" by @vi
             Advisor, operator, and storyteller with Lucknow roots. Decades of building category-creating enterprises and navigating life with patience taught him the quiet power of simplification.
           </p>
           <div class="pt-2 flex items-center justify-center sm:justify-start gap-4">
-            <a href="/about" class="text-xs font-mono uppercase tracking-widest font-bold text-berry-600 dark:text-berry-400 hover:underline">Read Full Memoir →</a>
+            <a href="/about" class="text-xs font-mono uppercase tracking-widest font-bold text-berry-700 dark:text-berry-400 hover:underline">Read Full Memoir →</a>
             <a href="/advisory" class="text-xs font-mono uppercase tracking-widest font-bold text-ink-600 dark:text-ink-300 hover:underline">Talk to Vivek →</a>
           </div>
         </div>
@@ -194,7 +194,7 @@ const shareText = encodeURIComponent(`Thoughts on "${frontmatter?.title}" by @vi
             href={`/stories/${prevEssay.slug}/`}
             class="p-6 rounded-3xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder hover:border-berry-500 transition-all text-left group"
           >
-            <div class="text-[10px] font-mono uppercase tracking-widest text-ink-500 dark:text-ink-400 mb-1">
+            <div class="text-[10px] font-mono uppercase tracking-widest text-ink-500 dark:text-ink-300 mb-1">
               ← PREVIOUS ESSAY
             </div>
             <div class="font-serif text-base font-bold text-ink-900 dark:text-white group-hover:text-berry-600 transition-colors line-clamp-1">
@@ -208,7 +208,7 @@ const shareText = encodeURIComponent(`Thoughts on "${frontmatter?.title}" by @vi
             href={`/stories/${nextEssay.slug}/`}
             class="p-6 rounded-3xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder hover:border-berry-500 transition-all text-right group"
           >
-            <div class="text-[10px] font-mono uppercase tracking-widest text-ink-500 dark:text-ink-400 mb-1">
+            <div class="text-[10px] font-mono uppercase tracking-widest text-ink-500 dark:text-ink-300 mb-1">
               NEXT ESSAY →
             </div>
             <div class="font-serif text-base font-bold text-ink-900 dark:text-white group-hover:text-berry-600 transition-colors line-clamp-1">
