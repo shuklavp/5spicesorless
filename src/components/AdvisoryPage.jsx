@@ -239,14 +239,9 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
             <p className="lg:col-span-5 font-serif text-2xl md:text-3xl font-bold leading-snug text-berry-300">
               What I built there is what I do now.
             </p>
-            <div className="lg:col-span-7 space-y-3 text-base text-ink-200 leading-relaxed">
-              <p>
-                Now I work with start-up leadership teams on go-to-market, channel strategy and regional expansion across Southeast Asia, India and the Middle East.
-              </p>
-              <p className="text-sm text-ink-300">
-                I am also Advisor &amp; Mentor at Maintayn, a lean, ad-free community-management platform for Indian residential societies.
-              </p>
-            </div>
+            <p className="lg:col-span-7 text-base text-ink-200 leading-relaxed">
+              Now I work with start-up leadership teams on go-to-market, channel strategy and regional expansion across Southeast Asia, India and the Middle East.
+            </p>
           </div>
         </section>
 
