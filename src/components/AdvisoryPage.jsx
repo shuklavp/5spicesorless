@@ -206,40 +206,40 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
         {/* SECTION 1B: SMARTERHOMES PROOF BLOCK (trust signal, sits above the three modes) */}
         <section
           aria-labelledby="proof-heading"
-          className="relative overflow-hidden rounded-3xl bg-ink-900 dark:bg-ink-850 text-white border border-ink-700 dark:border-[#1E293B] shadow-sm p-6 sm:p-8 md:p-14"
+          className="relative overflow-hidden rounded-3xl bg-[#F6F1E7] dark:bg-[#0F211B] text-ink-950 dark:text-[#ECF4F0] border border-[#DDD3BE] dark:border-[#1F3A31] shadow-sm p-6 sm:p-8 md:p-14"
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-end">
             <div className="lg:col-span-7 space-y-5">
-              <span className="text-xs font-mono uppercase tracking-widest text-berry-300 font-semibold block">
+              <span className="text-xs font-mono uppercase tracking-widest text-[#146B53] dark:text-[#6FD3B3] font-semibold block">
                 Who is behind this page
               </span>
               <h2 id="proof-heading" className="font-serif text-3xl md:text-5xl font-bold tracking-tight leading-tight">
                 Zero to 40,000 installations. Then I handed it on.
               </h2>
             </div>
-            <p className="lg:col-span-5 text-base text-ink-200 leading-relaxed">
+            <p className="lg:col-span-5 text-base text-ink-600 dark:text-[#B9CCC4] leading-relaxed">
               I founded SmarterHomes and bootstrapped it first. Funding came later, and it grew into India&rsquo;s water sub-metering business for high-rise residential complexes. Over thirty years of building, scaling and advising enterprises have taught me one thing: complexity is a choice, and simplicity is a discipline.
             </p>
           </div>
 
-          <dl className="mt-10 md:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px rounded-2xl overflow-hidden bg-ink-700/70 border border-ink-700/70">
+          <dl className="mt-10 md:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px rounded-2xl overflow-hidden bg-[#DDD3BE] dark:bg-[#1F3A31] border border-[#DDD3BE] dark:border-[#1F3A31]">
             {PROOF_STATS.map((stat) => (
-              <div key={stat.label} className="flex flex-row-reverse items-center justify-end gap-4 sm:flex-col-reverse sm:items-stretch sm:gap-2 bg-ink-900 dark:bg-ink-850 p-5 md:p-7">
-                <dt className="flex-1 sm:flex-none text-[11px] md:text-xs font-mono uppercase tracking-wider text-ink-200 leading-snug">
+              <div key={stat.label} className="flex flex-row-reverse items-center justify-end gap-4 sm:flex-col-reverse sm:items-stretch sm:gap-2 bg-[#F6F1E7] dark:bg-[#0F211B] p-5 md:p-7">
+                <dt className="flex-1 sm:flex-none text-[11px] md:text-xs font-mono uppercase tracking-wider text-ink-600 dark:text-[#B9CCC4] leading-snug">
                   {stat.label}
                 </dt>
-                <dd className="w-32 shrink-0 sm:w-auto font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-none [font-variant-numeric:lining-nums_tabular-nums]">
+                <dd className="w-32 shrink-0 sm:w-auto font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#146B53] dark:text-[#6FD3B3] leading-none [font-variant-numeric:lining-nums_tabular-nums]">
                   {stat.value}
                 </dd>
               </div>
             ))}
           </dl>
 
-          <div className="mt-10 md:mt-12 pt-8 border-t border-ink-700/70 grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-14">
-            <p className="lg:col-span-5 font-serif text-2xl md:text-3xl font-bold leading-snug text-berry-300">
+          <div className="mt-10 md:mt-12 pt-8 border-t border-[#DDD3BE] dark:border-[#1F3A31] grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-14">
+            <p className="lg:col-span-5 font-serif text-2xl md:text-3xl font-bold leading-snug text-berry-800 dark:text-berry-300">
               What I built there is what I do now.
             </p>
-            <p className="lg:col-span-7 text-base text-ink-200 leading-relaxed">
+            <p className="lg:col-span-7 text-base text-ink-600 dark:text-[#B9CCC4] leading-relaxed">
               Now I work with start-up leadership teams on go-to-market, channel strategy and regional expansion across Southeast Asia, India and the Middle East.
             </p>
           </div>
