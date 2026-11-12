@@ -172,10 +172,10 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
 
               <div className="space-y-4 text-base text-[#475569] dark:text-[#CBD5E1] leading-relaxed">
                 <p>
-                  Most external business advice arrives as theoretical slide theatre or generic frameworks. Having spent thirty years inside operating enterprises, pioneering category sub-metering, scaling a 160+ member organisation across four regional offices, raising funding from Macquarie and a few private investors after bootstrapping the early years, and navigating an orderly strategic exit, I partner directly with founders to cut away operational friction.
+                  Most advice arrives as polished decks and borrowed frameworks. Mine comes from thirty years inside operating businesses, from a bootstrapped start to an orderly exit. I work with a small number of founders to cut away what slows them down.
                 </p>
                 <p>
-                  True progress comes from removing distractions, not piling on more initiatives. Below are three ways we can work together, kept intentionally lean. Explore each path to see how we work day to day.
+                  Progress comes from removing things, not adding them. There are three ways to work together, each kept deliberately lean.
                 </p>
               </div>
 
