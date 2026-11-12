@@ -1,0 +1,63 @@
+---
+// Page metadata: title, description, canonical, Open Graph, Twitter card and
+// JSON-LD. Used by BaseLayout and by the desk pages that have their own <head>.
+// Every URL is absolute and built from Astro.site.
+import { SITE_NAME, AUTHOR_NAME, absoluteUrl, ogImage } from '../utils/seo.js';
+
+interface Props {
+  title: string;
+  description: string;
+  ogKey?: string;
+  type?: 'website' | 'article';
+  publishDate?: string;
+  canonicalUrl?: string;
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  ogKey = 'default',
+  type = 'website',
+  publishDate,
+  canonicalUrl = new URL(Astro.url.pathname, Astro.site).href,
+  noindex = false,
+  jsonLd = [],
+} = Astro.props;
+
+const image = ogImage(ogKey, Astro.site);
+const canonical = absoluteUrl(canonicalUrl, Astro.site);
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex, follow" />}
+
+<!-- Open Graph -->
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={SITE_NAME} />
+<meta property="og:locale" content="en_GB" />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image.url} />
+<meta property="og:image:type" content={image.type} />
+<meta property="og:image:width" content={String(image.width)} />
+<meta property="og:image:height" content={String(image.height)} />
+<meta property="og:image:alt" content={image.alt} />
+{type === 'article' && publishDate && <meta property="article:published_time" content={publishDate} />}
+{type === 'article' && <meta property="article:author" content={AUTHOR_NAME} />}
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image.url} />
+<meta name="twitter:image:alt" content={image.alt} />
+
+<!-- Structured data (JSON-LD) -->
+{jsonLd.map((node) => (
+  <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', ...node })} />
+))}

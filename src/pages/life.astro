@@ -1,6 +1,7 @@
 ---
 import DeskPage from '../components/DeskPage.jsx';
 import Navbar from '../components/Navbar.jsx';
+import SeoHead from '../components/SeoHead.astro';
 import '../index.css';
 ---
 
@@ -9,7 +10,11 @@ import '../index.css';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Life Desk | 5 Spices or Less</title>
+    <SeoHead
+      title="The Life Desk | 5 Spices or Less"
+      description="Notes on perspective gathered in quiet corners: patience, family and roots, the courage to accept help, and leaving enough room for life to happen."
+      ogKey="life"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />

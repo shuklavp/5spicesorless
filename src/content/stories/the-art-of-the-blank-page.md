@@ -5,6 +5,7 @@ date: "October 2026"
 readTime: "5 min read"
 category: "WORK"
 subtitle: "Why entering unfamiliar rooms without preconceived notions changes how you build, and how listening to ground reality beats corporate dogma."
+description: "A father's advice to enter every meeting without preconceived notions, and how listening first shaped TimesJobs on Mobile and a simpler JobStreet India."
 pullQuote: "The moment you enter a discussion convinced of what the other person is going to say, you stop listening to them. You are only listening to your own echo."
 ---
 

@@ -8,6 +8,7 @@
     "build": "NODE_OPTIONS='-r ./spoof-node.cjs' astro build",
     "preview": "astro preview",
     "optimize-images": "node scripts/optimize-images.mjs",
+    "generate-og": "node scripts/generate-og-images.mjs",
     "publish": "python3 scripts/publish.py"
   },
   "dependencies": {

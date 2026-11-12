@@ -1,8 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import AboutPage from '../components/AboutPage.jsx';
+import { personNode } from '../utils/seo.js';
 ---
 
-<BaseLayout title="About Vivek Shukla | The Philosophy & The Memoir">
+<BaseLayout
+  title="About Vivek Shukla | The Philosophy & The Memoir"
+  description="From a computer business run out of a Lucknow bedroom to building an IoT venture in India: the story and philosophy behind 5 Spices or Less, by Vivek Shukla."
+  ogKey="about"
+  jsonLd={[
+    {
+      '@type': 'ProfilePage',
+      '@id': new URL('/about/', Astro.site).href + '#profile',
+      url: new URL('/about/', Astro.site).href,
+      name: 'About Vivek Shukla',
+      inLanguage: 'en-GB',
+      mainEntity: personNode(Astro.site),
+    },
+  ]}
+>
   <AboutPage client:load />
 </BaseLayout>

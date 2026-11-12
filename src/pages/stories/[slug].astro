@@ -4,6 +4,7 @@ import { Clock, ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { ESSAYS_DATA } from '../../data/essays.js';
 import Img from '../../components/Img.jsx';
 import OptimizedContent from '../../components/OptimizedContent.astro';
+import { ogImage, monthToIso, personNode, organizationNode, breadcrumbNode } from '../../utils/seo.js';
 
 export async function getStaticPaths() {
   const storyModules = import.meta.glob('../../content/stories/*.md', { eager: true });
@@ -22,8 +23,9 @@ const { story } = Astro.props;
 const { Content, frontmatter } = story;
 
 const currentSlug = frontmatter?.slug || Astro.params.slug;
-const title = `${frontmatter?.title || 'Story'} | 5 Spices or Less`;
-const description = frontmatter?.subtitle || "Essays on enterprise building and operational simplification.";
+const storyTitle = frontmatter?.title || 'Story';
+const title = `${frontmatter?.seoTitle || storyTitle} | 5 Spices or Less`;
+const description = frontmatter?.description || frontmatter?.summary || frontmatter?.subtitle || "Essays on enterprise building and operational simplification.";
 const category = (frontmatter?.category || 'WORK').toUpperCase();
 
 // Previous and next stories
@@ -34,10 +36,44 @@ const nextEssay = currentIndex < allEssays.length - 1 ? allEssays[currentIndex +
 
 const tags = frontmatter?.tags || ['#Lucknow', '#Books', '#Ambition', '#Hazratganj', '#Gratitude'];
 const shareUrl = new URL(Astro.url.pathname, Astro.site).href;
+
+// SEO: share image, real publish month (no invented dates) and structured data.
+const seoImage = ogImage(currentSlug, Astro.site);
+const publishDate = monthToIso(frontmatter?.date);
+const jsonLd = [
+  {
+    '@type': 'BlogPosting',
+    '@id': `${shareUrl}#article`,
+    headline: storyTitle,
+    description,
+    image: { '@type': 'ImageObject', url: seoImage.url, width: seoImage.width, height: seoImage.height },
+    ...(publishDate ? { datePublished: publishDate } : {}),
+    ...(frontmatter?.dateModified ? { dateModified: monthToIso(frontmatter.dateModified) } : {}),
+    inLanguage: 'en-GB',
+    articleSection: frontmatter?.category ? String(frontmatter.category).charAt(0) + String(frontmatter.category).slice(1).toLowerCase() : undefined,
+    ...(Array.isArray(frontmatter?.tags) && frontmatter.tags.length ? { keywords: frontmatter.tags.join(', ') } : {}),
+    author: personNode(Astro.site),
+    publisher: organizationNode(Astro.site),
+    mainEntityOfPage: { '@type': 'WebPage', '@id': shareUrl },
+  },
+  breadcrumbNode([
+    { name: 'Home', path: '/' },
+    { name: 'Stories & Letters', path: '/essays/' },
+    { name: storyTitle, path: Astro.url.pathname },
+  ], Astro.site),
+];
 const shareText = encodeURIComponent(`Thoughts on "${frontmatter?.title}" by @vivekshukla on @5spicesorless:\n\n${shareUrl}`);
 ---
 
-<BaseLayout title={title} description={description} activeCategory={category}>
+<BaseLayout
+  title={title}
+  description={description}
+  activeCategory={category}
+  ogKey={currentSlug}
+  type="article"
+  publishDate={publishDate}
+  jsonLd={jsonLd}
+>
   <article class="min-h-screen pt-32 sm:pt-36 pb-24 px-6 md:px-12 bg-white dark:bg-canvas-dark text-ink-900 dark:text-white transition-colors duration-300">
     <div class="max-w-3xl mx-auto">
       
