@@ -1,0 +1,602 @@
+{
+  "/branding/logo.png": {
+    "width": 1400,
+    "height": 672,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/logo.00412c8d.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/logo.00412c8d.800w.webp"
+      },
+      {
+        "w": 1400,
+        "src": "/optimized/logo.00412c8d.1400w.webp"
+      }
+    ]
+  },
+  "/branding/logo_dark.png": {
+    "width": 1400,
+    "height": 672,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/logo_dark.6b68c7ed.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/logo_dark.6b68c7ed.800w.webp"
+      },
+      {
+        "w": 1400,
+        "src": "/optimized/logo_dark.6b68c7ed.1400w.webp"
+      }
+    ]
+  },
+  "/food-sketch-blue.png": {
+    "width": 1200,
+    "height": 896,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/food-sketch-blue.f3f936e8.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/food-sketch-blue.f3f936e8.800w.webp"
+      },
+      {
+        "w": 1200,
+        "src": "/optimized/food-sketch-blue.f3f936e8.1200w.webp"
+      }
+    ]
+  },
+  "/food-sketch.jpeg": {
+    "width": 1200,
+    "height": 896,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/food-sketch.57919384.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/food-sketch.57919384.800w.webp"
+      },
+      {
+        "w": 1200,
+        "src": "/optimized/food-sketch.57919384.1200w.webp"
+      }
+    ]
+  },
+  "/footer-journal-chai-uncropped.png": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/footer-journal-chai-uncropped.5b069e7c.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/footer-journal-chai-uncropped.5b069e7c.800w.webp"
+      },
+      {
+        "w": 1024,
+        "src": "/optimized/footer-journal-chai-uncropped.5b069e7c.1024w.webp"
+      }
+    ]
+  },
+  "/footer/footer-cairn-stones.png": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/footer-cairn-stones.0b71259c.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/footer-cairn-stones.0b71259c.800w.webp"
+      },
+      {
+        "w": 1024,
+        "src": "/optimized/footer-cairn-stones.0b71259c.1024w.webp"
+      }
+    ]
+  },
+  "/footer/footer-chess-compass.png": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/footer-chess-compass.2b6a6568.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/footer-chess-compass.2b6a6568.800w.webp"
+      },
+      {
+        "w": 1024,
+        "src": "/optimized/footer-chess-compass.2b6a6568.1024w.webp"
+      }
+    ]
+  },
+  "/footer/footer-drafting-tools.png": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/footer-drafting-tools.e86ba62a.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/footer-drafting-tools.e86ba62a.800w.webp"
+      },
+      {
+        "w": 1024,
+        "src": "/optimized/footer-drafting-tools.e86ba62a.1024w.webp"
+      }
+    ]
+  },
+  "/footer/footer-journal-chai.png": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/footer-journal-chai-uncropped.5b069e7c.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/footer-journal-chai-uncropped.5b069e7c.800w.webp"
+      },
+      {
+        "w": 1024,
+        "src": "/optimized/footer-journal-chai-uncropped.5b069e7c.1024w.webp"
+      }
+    ]
+  },
+  "/footer/footer-kadai-spices.png": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/footer-kadai-spices.4aa12e52.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/footer-kadai-spices.4aa12e52.800w.webp"
+      },
+      {
+        "w": 1024,
+        "src": "/optimized/footer-kadai-spices.4aa12e52.1024w.webp"
+      }
+    ]
+  },
+  "/footer/footer-typewriter.png": {
+    "width": 1024,
+    "height": 1024,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/footer-typewriter.701db245.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/footer-typewriter.701db245.800w.webp"
+      },
+      {
+        "w": 1024,
+        "src": "/optimized/footer-typewriter.701db245.1024w.webp"
+      }
+    ]
+  },
+  "/genesis-kitchen.png": {
+    "width": 1376,
+    "height": 768,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/genesis-kitchen.5f0fc7e2.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/genesis-kitchen.5f0fc7e2.800w.webp"
+      },
+      {
+        "w": 1376,
+        "src": "/optimized/genesis-kitchen.5f0fc7e2.1376w.webp"
+      }
+    ]
+  },
+  "/illustrations/advisory-study-dark.png": {
+    "width": 1200,
+    "height": 896,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/advisory-study-dark.656b8e9f.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/advisory-study-dark.656b8e9f.800w.webp"
+      },
+      {
+        "w": 1200,
+        "src": "/optimized/advisory-study-dark.656b8e9f.1200w.webp"
+      }
+    ]
+  },
+  "/illustrations/advisory-study.png": {
+    "width": 1200,
+    "height": 896,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/advisory-study.42e65547.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/advisory-study.42e65547.800w.webp"
+      },
+      {
+        "w": 1200,
+        "src": "/optimized/advisory-study.42e65547.1200w.webp"
+      }
+    ]
+  },
+  "/illustrations/art-of-the-blank-page.png": {
+    "width": 1290,
+    "height": 688,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/art-of-the-blank-page.4ffc4a31.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/art-of-the-blank-page.4ffc4a31.800w.webp"
+      },
+      {
+        "w": 1290,
+        "src": "/optimized/art-of-the-blank-page.4ffc4a31.1290w.webp"
+      }
+    ]
+  },
+  "/illustrations/british-library-lucknow.png": {
+    "width": 1376,
+    "height": 768,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/british-library-lucknow.4406ae80.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/british-library-lucknow.4406ae80.800w.webp"
+      },
+      {
+        "w": 1376,
+        "src": "/optimized/british-library-lucknow.4406ae80.1376w.webp"
+      }
+    ]
+  },
+  "/illustrations/chai-setup.png": {
+    "width": 1376,
+    "height": 768,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/chai-setup.c44dc3b0.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/chai-setup.c44dc3b0.800w.webp"
+      },
+      {
+        "w": 1376,
+        "src": "/optimized/chai-setup.c44dc3b0.1376w.webp"
+      }
+    ]
+  },
+  "/illustrations/confidant-study-dark.png": {
+    "width": 1400,
+    "height": 781,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/confidant-study-dark.49907313.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/confidant-study-dark.49907313.800w.webp"
+      },
+      {
+        "w": 1400,
+        "src": "/optimized/confidant-study-dark.49907313.1400w.webp"
+      }
+    ]
+  },
+  "/illustrations/eir-blueprint-dark.png": {
+    "width": 1400,
+    "height": 781,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/eir-blueprint-dark.a8bd5858.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/eir-blueprint-dark.a8bd5858.800w.webp"
+      },
+      {
+        "w": 1400,
+        "src": "/optimized/eir-blueprint-dark.a8bd5858.1400w.webp"
+      }
+    ]
+  },
+  "/illustrations/empty-slate-purchase-order.png": {
+    "width": 1024,
+    "height": 572,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/empty-slate-purchase-order.bdabac8a.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/empty-slate-purchase-order.bdabac8a.800w.webp"
+      },
+      {
+        "w": 1024,
+        "src": "/optimized/empty-slate-purchase-order.bdabac8a.1024w.webp"
+      }
+    ]
+  },
+  "/illustrations/fiction-scooter-bridge.png": {
+    "width": 1400,
+    "height": 781,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/fiction-scooter-bridge.089e2a77.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/fiction-scooter-bridge.089e2a77.800w.webp"
+      },
+      {
+        "w": 1400,
+        "src": "/optimized/fiction-scooter-bridge.089e2a77.1400w.webp"
+      }
+    ]
+  },
+  "/illustrations/opportunity-whiteboard-sketch.png": {
+    "width": 1024,
+    "height": 572,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/opportunity-whiteboard-sketch.e6c70eaa.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/opportunity-whiteboard-sketch.e6c70eaa.800w.webp"
+      },
+      {
+        "w": 1024,
+        "src": "/optimized/opportunity-whiteboard-sketch.e6c70eaa.1024w.webp"
+      }
+    ]
+  },
+  "/illustrations/quiet-goal-notebook.png": {
+    "width": 1376,
+    "height": 768,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/quiet-goal-notebook.b4c19b9c.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/quiet-goal-notebook.b4c19b9c.800w.webp"
+      },
+      {
+        "w": 1376,
+        "src": "/optimized/quiet-goal-notebook.b4c19b9c.1376w.webp"
+      }
+    ]
+  },
+  "/illustrations/village-courtyard.png": {
+    "width": 1376,
+    "height": 768,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/village-courtyard.40247c68.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/village-courtyard.40247c68.800w.webp"
+      },
+      {
+        "w": 1376,
+        "src": "/optimized/village-courtyard.40247c68.1376w.webp"
+      }
+    ]
+  },
+  "/life-sketch-blue.png": {
+    "width": 1200,
+    "height": 896,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/life-sketch-blue.245b048f.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/life-sketch-blue.245b048f.800w.webp"
+      },
+      {
+        "w": 1200,
+        "src": "/optimized/life-sketch-blue.245b048f.1200w.webp"
+      }
+    ]
+  },
+  "/life-sketch.jpeg": {
+    "width": 1200,
+    "height": 896,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/life-sketch.eda60793.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/life-sketch.eda60793.800w.webp"
+      },
+      {
+        "w": 1200,
+        "src": "/optimized/life-sketch.eda60793.1200w.webp"
+      }
+    ]
+  },
+  "/logo.png": {
+    "width": 1400,
+    "height": 672,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/logo.00412c8d.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/logo.00412c8d.800w.webp"
+      },
+      {
+        "w": 1400,
+        "src": "/optimized/logo.00412c8d.1400w.webp"
+      }
+    ]
+  },
+  "/logo_dark.png": {
+    "width": 1400,
+    "height": 672,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/logo_dark.6b68c7ed.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/logo_dark.6b68c7ed.800w.webp"
+      },
+      {
+        "w": 1400,
+        "src": "/optimized/logo_dark.6b68c7ed.1400w.webp"
+      }
+    ]
+  },
+  "/profile-sketch.png": {
+    "width": 928,
+    "height": 1152,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/profile-sketch.301f8406.480w.webp"
+      },
+      {
+        "w": 928,
+        "src": "/optimized/profile-sketch.301f8406.928w.webp"
+      }
+    ]
+  },
+  "/sketches/house-sketch.png": {
+    "width": 512,
+    "height": 512,
+    "variants": [
+      {
+        "w": 512,
+        "src": "/optimized/house-sketch.ed8b5be6.512w.webp"
+      }
+    ]
+  },
+  "/streetscape-sketch-dark.png": {
+    "width": 1376,
+    "height": 768,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/streetscape-sketch-dark.50f7a9d2.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/streetscape-sketch-dark.50f7a9d2.800w.webp"
+      },
+      {
+        "w": 1376,
+        "src": "/optimized/streetscape-sketch-dark.50f7a9d2.1376w.webp"
+      }
+    ]
+  },
+  "/streetscape-sketch.png": {
+    "width": 1376,
+    "height": 768,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/streetscape-sketch.34476a04.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/streetscape-sketch.34476a04.800w.webp"
+      },
+      {
+        "w": 1376,
+        "src": "/optimized/streetscape-sketch.34476a04.1376w.webp"
+      }
+    ]
+  },
+  "/work-sketch-blue.png": {
+    "width": 1024,
+    "height": 572,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/work-sketch-blue.e7e2a3c9.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/work-sketch-blue.e7e2a3c9.800w.webp"
+      },
+      {
+        "w": 1024,
+        "src": "/optimized/work-sketch-blue.e7e2a3c9.1024w.webp"
+      }
+    ]
+  },
+  "/work-sketch.jpeg": {
+    "width": 1024,
+    "height": 572,
+    "variants": [
+      {
+        "w": 480,
+        "src": "/optimized/work-sketch.a835a242.480w.webp"
+      },
+      {
+        "w": 800,
+        "src": "/optimized/work-sketch.a835a242.800w.webp"
+      },
+      {
+        "w": 1024,
+        "src": "/optimized/work-sketch.a835a242.1024w.webp"
+      }
+    ]
+  }
+}
