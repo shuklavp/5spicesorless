@@ -18,13 +18,13 @@ const {
   description = "Essays on enterprise building, Awadhi kitchens, and living with patience. Published by Vivek Shukla from Kuala Lumpur.",
   image = "https://5spicesorless.com/branding/logo.png",
   activeCategory = "",
-  canonicalUrl = Astro.url.href,
+  canonicalUrl = new URL(Astro.url.pathname, Astro.site).href,
   type = "website",
   publishDate,
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
-const siteUrl = "https://5spicesorless.com";
+const siteUrl = Astro.site ? Astro.site.origin : "https://5spicesorless.com";
 
 // Base JSON-LD schema
 const schemaOrg = type === 'article' ? {
