@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { ArrowLeft, Check, Send, ShieldCheck, X } from "lucide-react";
+import { FORM_ENDPOINTS } from '../config/forms';
 import Img from './Img.jsx';
 
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/xvkzbwak";
+const FORMSPREE_ENDPOINT = FORM_ENDPOINTS.advisory;
 
 export default function PillarEIRPage({ onNavigate, isDark }) {
   const [formData, setFormData] = useState({
@@ -35,6 +36,8 @@ export default function PillarEIRPage({ onNavigate, isDark }) {
           "Accept": "application/json"
         },
         body: JSON.stringify({
+          form_type: 'advisory',
+          _subject: 'New Advisory Enquiry: ' + formData.name + ' (' + "Pillar 02 - Testing Ground" + ')',
           source: "Pillar 02 - Testing Ground",
           name: formData.name,
           email: formData.email,

@@ -1,7 +1,7 @@
 // src/components/Letterbox.jsx
 import React, { useState, useEffect } from 'react';
 import { ArrowUpRight, Check, Heart, Mail, Send, ShieldCheck, Utensils, Briefcase, Loader2 } from 'lucide-react';
-import { FORMS_CONFIG } from '../config/forms';
+import { FORMS_CONFIG, FORM_ENDPOINTS } from '../config/forms';
 import Img from './Img.jsx';
 
 const CATEGORIES = [
@@ -79,10 +79,12 @@ export default function Letterbox() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://formspree.io/f/xvkzbwak', {
+      const response = await fetch(FORM_ENDPOINTS.letterbox, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
+          form_type: 'letterbox',
+          _subject: `[5 Spices Letterbox] [${selectedCategory.toUpperCase()}] from ${isAnonymous ? 'Anonymous' : (formData.name || 'Reader')}`,
           subject: `[5 Spices Letterbox] [${selectedCategory.toUpperCase()}] from ${isAnonymous ? 'Anonymous' : (formData.name || 'Reader')}`,
           from_name: '5 Spices or Less: Letterbox',
           category: selectedCategory,
