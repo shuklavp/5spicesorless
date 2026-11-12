@@ -1,6 +1,7 @@
 // src/components/Navbar.jsx
 import React, { useState, useEffect } from 'react';
 import { Moon, Sun, Menu, X, ArrowUpRight } from 'lucide-react';
+import Img from './Img.jsx';
 
 export default function Navbar({ currentPath = "/", activeCategory = "" }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -70,13 +71,13 @@ export default function Navbar({ currentPath = "/", activeCategory = "" }) {
         
         {/* Brand Logo */}
         <a href="/" className="flex items-center gap-2 group shrink-0">
-          <img
+          <Img eager sizes="160px"
             src="/branding/logo.png"
             alt="5 Spices or Less"
             className="h-14 sm:h-16 md:h-18 w-auto object-contain dark:hidden transition-all duration-200"
             onError={(e) => { e.currentTarget.src = '/logo.png'; }}
           />
-          <img
+          <Img sizes="160px"
             src="/branding/logo_dark.png"
             alt="5 Spices or Less"
             className="h-14 sm:h-16 md:h-18 w-auto object-contain hidden dark:block transition-all duration-200"

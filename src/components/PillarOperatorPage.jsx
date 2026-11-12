@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowLeft, ArrowUpRight, Check, Send, ShieldCheck, Sparkles, X } from 'lucide-react';
+import Img from './Img.jsx';
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xvkzbwak';
 
 export default function PillarOperatorPage({ onNavigate, isDark }) {
@@ -72,7 +73,7 @@ export default function PillarOperatorPage({ onNavigate, isDark }) {
       <section className="relative w-full bg-[#09111D] text-white pt-32 pb-24 px-6 md:px-12 lg:px-16 overflow-hidden border-b border-[#1E293B]">
         {/* Full-width container with uncropped artwork pinned right and seamless gradient */}
         <div className="absolute inset-0 pointer-events-none flex justify-end overflow-hidden">
-          <img
+          <Img eager sizes="1400px"
             src="/work-sketch.jpeg"
             alt="Work Study Desk"
             className="h-full w-auto max-w-none object-contain object-right-bottom filter contrast-110 brightness-90 opacity-40 lg:opacity-55"

@@ -1,6 +1,7 @@
 // src/components/HomeAdvisoryTeaser.jsx
 import React, { useState, useEffect } from 'react';
 import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import Img from './Img.jsx';
 
 const PILLARS = [
   {
@@ -77,7 +78,7 @@ export default function HomeAdvisoryTeaser() {
           
           {/* Background Illustration with soft atmospheric blend */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <img
+            <Img sizes="1400px"
               key={active.pillarNum}
               src={active.image}
               alt={active.imageAlt}

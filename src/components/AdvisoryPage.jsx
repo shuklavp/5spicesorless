@@ -1,6 +1,7 @@
 // src/components/AdvisoryPage.jsx
 import React, { useState, useRef, useEffect } from 'react';
 import { ArrowRight, Check, Compass, ShieldCheck, Sparkles, Send, Layers, Building2, HeartHandshake, AlertCircle } from 'lucide-react';
+import Img from './Img.jsx';
 
 const ADVISORY_PILLARS = [
   {
@@ -179,12 +180,12 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
 
             {/* RHS: Large Borderless Architectural Line Art (No Enclosing Box, No Captions) */}
             <div className="lg:col-span-5 flex items-center justify-center lg:justify-end relative z-10">
-              <img
+              <Img eager sizes="(min-width: 1024px) 840px, 640px"
                 src="/illustrations/advisory-study.png"
                 alt="Executive Advisory Study Line Art"
                 className="w-full max-w-lg lg:max-w-2xl h-auto object-contain mix-blend-multiply dark:hidden scale-110 lg:scale-125 transition-transform duration-500"
               />
-              <img
+              <Img sizes="(min-width: 1024px) 840px, 640px"
                 src="/illustrations/advisory-study-dark.png"
                 alt="Executive Advisory Study Line Art"
                 className="w-full max-w-lg lg:max-w-2xl h-auto object-contain hidden dark:block scale-110 lg:scale-125 transition-transform duration-500"
@@ -544,7 +545,7 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
             </p>
           </div>
           <div className="w-56 sm:w-72 shrink-0 flex items-center justify-center">
-            <img 
+            <Img sizes="(min-width: 640px) 288px, 224px" 
               src="/footer/footer-chess-compass.png" 
               alt="Chess Pieces and Pocket Compass" 
               className="w-full h-auto object-contain"

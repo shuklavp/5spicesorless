@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import Img from './Img.jsx';
 
 export default function Footer() {
   const scrollToTop = (e) => {
@@ -14,7 +15,7 @@ export default function Footer() {
         {/* Brand Column */}
         <div className="md:col-span-2 space-y-4">
           <a href="/" className="inline-block">
-            <img 
+            <Img sizes="160px" 
               src="/logo_dark.png" 
               alt="5 Spices or Less" 
               className="h-12 w-auto object-contain brightness-105" 

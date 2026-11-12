@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { ArrowLeft, Search, Clock, ArrowUpRight } from 'lucide-react';
 import { essays } from '../data/essays';
 import Footer from './Footer.jsx';
+import Img from './Img.jsx';
 
 const DESK_CONFIG = {
   food: {
@@ -132,7 +133,7 @@ export default function DeskPage({ category = 'stories', onNavigate }) {
               maskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 15%, black 40%, black 100%)'
             }}
           >
-            <img 
+            <Img sizes="50vw" 
               src={config.sketchImage} 
               alt={config.title}
               className="w-full h-auto max-h-[450px] object-contain object-right opacity-90 transition-opacity duration-300"
@@ -260,7 +261,7 @@ export default function DeskPage({ category = 'stories', onNavigate }) {
             </p>
           </div>
           <div className="w-56 sm:w-72 shrink-0 flex items-center justify-center select-none pointer-events-none">
-            <img 
+            <Img sizes="(min-width: 640px) 288px, 224px" 
               src={config.footerImage} 
               alt={config.footerKicker} 
               className="w-full h-auto object-contain filter contrast-125 brightness-110" 
