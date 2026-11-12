@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Check, Send, ShieldCheck, X } from 'lucide-react';
+import Img from './Img.jsx';
 
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xvkzbwak';
 
@@ -70,7 +71,7 @@ export default function PillarConfidantPage({ onNavigate, isDark }) {
       {/* 1. ATMOSPHERIC ARCHITECTURAL BANNER (HERITAGE MAHOGANY & ARMCHAIR STUDY) */}
       <section className="relative w-full bg-[#180A0C] text-white pt-32 pb-24 px-6 md:px-12 lg:px-16 overflow-hidden border-b border-[#2C1316]">
         <div className="absolute inset-0 pointer-events-none flex justify-end overflow-hidden">
-          <img
+          <Img eager sizes="1400px"
             src="/illustrations/confidant-study-dark.png"
             onError={(e) => { e.currentTarget.src = '/work-sketch.jpeg'; }}
             alt="Private Founder Counsel Study"

@@ -1,4 +1,5 @@
 import React from 'react';
+import Img from './Img.jsx';
 
 export default function Hero() {
   return (
@@ -38,11 +39,10 @@ export default function Hero() {
           {/* Right Column: Rooftop House Sketch Artwork */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
             <div className="w-full max-w-[440px] aspect-square flex items-center justify-center">
-              <img
+              <Img priority sizes="(min-width: 1024px) 440px, 90vw"
                 src="/sketches/house-sketch.png"
                 alt="Architectural sketch of rooftop terrace conversation"
                 className="w-full h-full object-contain select-none mix-blend-multiply dark:invert dark:mix-blend-screen transition-all duration-300"
-                loading="eager"
               />
             </div>
           </div>

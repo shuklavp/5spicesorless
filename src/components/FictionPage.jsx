@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { ArrowLeft, Clock } from 'lucide-react';
+import Img from './Img.jsx';
 
 export default function FictionPage({ onNavigate, isDark }) {
   useEffect(() => {
@@ -24,7 +25,7 @@ export default function FictionPage({ onNavigate, isDark }) {
         {/* HERO BANNER: Warm off-white canvas with Royal Blue scooter bridge sketch */}
         <div className="relative rounded-3xl bg-[#F7F4F0] border border-[#E3DEC3] shadow-lg overflow-hidden min-h-[380px] md:min-h-[440px] flex items-center mb-16 animate-fadeIn">
           <div className="absolute inset-0 pointer-events-none flex justify-end overflow-hidden">
-            <img
+            <Img eager sizes="1400px"
               src="/illustrations/fiction-scooter-bridge.png"
               onError={(e) => {
                 e.currentTarget.src = '/life-sketch.jpeg';
@@ -117,7 +118,7 @@ export default function FictionPage({ onNavigate, isDark }) {
             </p>
           </div>
           <div className="w-56 sm:w-72 shrink-0 flex items-center justify-center">
-            <img 
+            <Img sizes="(min-width: 640px) 288px, 224px" 
               src="/footer/footer-typewriter.png" 
               alt="Typewriter Linework" 
               className="w-full h-auto object-contain"

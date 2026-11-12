@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowUpRight, Check, Heart, Mail, Send, ShieldCheck, Utensils, Briefcase, Loader2 } from 'lucide-react';
 import { FORMS_CONFIG } from '../config/forms';
+import Img from './Img.jsx';
 
 const CATEGORIES = [
   {
@@ -116,13 +117,13 @@ export default function Letterbox() {
       {/* Panoramic Streetscape Architectural Background */}
       <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
         {/* Light Mode: Cobalt Blue Ink on Transparent Background */}
-        <img
+        <Img sizes="1400px"
           src="/streetscape-sketch.png"
           alt="Vintage Streetscape with Letterbox"
           className="w-full h-full object-cover object-top opacity-75 mix-blend-multiply dark:hidden transition-opacity"
         />
         {/* Dark Mode: Crisp Silver-Blue Line Art on Transparent Background */}
-        <img
+        <Img sizes="1400px"
           src="/streetscape-sketch-dark.png"
           alt="Vintage Streetscape with Letterbox"
           className="w-full h-full object-cover object-top opacity-35 hidden dark:block transition-opacity"

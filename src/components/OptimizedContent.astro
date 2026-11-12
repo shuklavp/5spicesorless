@@ -1,0 +1,5 @@
+---
+import { optimizeMarkdownImages } from '../utils/optimizeMarkdownImages.js';
+const html = optimizeMarkdownImages(await Astro.slots.render('default'));
+---
+<Fragment set:html={html} />

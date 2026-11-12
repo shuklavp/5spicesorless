@@ -1,6 +1,7 @@
 // src/components/AboutPage.jsx
 import React from 'react';
 import { ArrowLeft, ArrowUpRight, Compass, Feather, Flame, Linkedin, Sparkles, Utensils } from 'lucide-react';
+import Img from './Img.jsx';
 
 export default function AboutPage({ onNavigate }) {
   return (
@@ -61,11 +62,10 @@ export default function AboutPage({ onNavigate }) {
             {/* Right Column: 1.5x Scaled Linework Image Stage */}
             <div className="lg:col-span-6 flex justify-center lg:justify-end select-none lg:-mr-8 xl:-mr-14">
               <div className="w-full max-w-xl sm:max-w-2xl lg:max-w-none">
-                <img
+                <Img eager sizes="(min-width: 1024px) 50vw, 100vw"
                   src="/genesis-kitchen.png"
                   alt="Conversations in the kitchen over five spices"
                   className="w-full h-auto object-contain invert brightness-95 opacity-90 contrast-110 drop-shadow-2xl scale-105 sm:scale-110 lg:scale-125 origin-center lg:origin-right"
-                  loading="lazy"
                 />
               </div>
             </div>
@@ -159,7 +159,7 @@ export default function AboutPage({ onNavigate }) {
                   </div>
                 </div>
 
-                <img
+                <Img sizes="(min-width: 1024px) 480px, 90vw"
                   src="/profile-sketch.png"
                   alt="Vivek Shukla"
                   onError={(e) => {
@@ -299,7 +299,7 @@ export default function AboutPage({ onNavigate }) {
             </p>
           </div>
           <div className="w-full md:w-[380px] lg:w-[420px] shrink-0 flex items-center justify-center p-2">
-            <img 
+            <Img sizes="420px" 
               src="/footer-journal-chai-uncropped.png" 
               alt="Open Journal with Pen and Steaming Chai Linework" 
               className="w-full h-auto max-h-[290px] object-contain drop-shadow-2xl"
