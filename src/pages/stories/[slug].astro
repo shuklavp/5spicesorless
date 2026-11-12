@@ -31,7 +31,7 @@ const prevEssay = currentIndex > 0 ? allEssays[currentIndex - 1] : allEssays[all
 const nextEssay = currentIndex < allEssays.length - 1 ? allEssays[currentIndex + 1] : allEssays[0];
 
 const tags = frontmatter?.tags || ['#Lucknow', '#Books', '#Ambition', '#Hazratganj', '#Gratitude'];
-const shareUrl = Astro.url.href;
+const shareUrl = new URL(Astro.url.pathname, Astro.site).href;
 const shareText = encodeURIComponent(`Thoughts on "${frontmatter?.title}" by @vivekshukla on @5spicesorless:\n\n${shareUrl}`);
 ---
 
