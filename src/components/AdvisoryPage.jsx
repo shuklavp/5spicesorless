@@ -43,12 +43,12 @@ const ADVISORY_PILLARS = [
 ];
 
 const PROOF_STATS = [
-  { value: '40,000+', label: 'Installations, from zero' },
+  { value: '40,000+', label: 'Installations, from a bootstrapped start' },
   { value: '1.8M', label: 'Meters in the pipeline, across 2,000 apartment complexes' },
   { value: '30+', label: 'Channel partners, carrying 60% of revenue' },
   { value: '85%+', label: 'Customer retention' },
-  { value: '$4.5M+', label: 'Raised from one of the world\u2019s largest infrastructure funds' },
-  { value: '150', label: 'People, across four locations' },
+  { value: '$4.5M+', label: 'Raised, from Macquarie and private investors writing small cheques' },
+  { value: '160+', label: 'People, across four locations' },
 ];
 
 const BOTTLENECKS = [
@@ -172,7 +172,7 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
 
               <div className="space-y-4 text-base text-[#475569] dark:text-[#CBD5E1] leading-relaxed">
                 <p>
-                  Most external business advice arrives as theoretical slide theatre or generic frameworks. Having spent thirty years inside operating enterprises, pioneering category sub-metering, scaling a 160+ member organisation across four regional offices, raising Macquarie institutional funding, and navigating an orderly strategic exit, I partner directly with founders to cut away operational friction.
+                  Most external business advice arrives as theoretical slide theatre or generic frameworks. Having spent thirty years inside operating enterprises, pioneering category sub-metering, scaling a 160+ member organisation across four regional offices, raising funding from Macquarie and a few private investors after bootstrapping the early years, and navigating an orderly strategic exit, I partner directly with founders to cut away operational friction.
                 </p>
                 <p>
                   True progress comes from removing distractions, not piling on more initiatives. Below are three ways we can work together, kept intentionally lean. Explore each path to see how we work day to day.
@@ -218,7 +218,7 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
               </h2>
             </div>
             <p className="lg:col-span-5 text-base text-ink-200 leading-relaxed">
-              I founded SmarterHomes and built it into India&rsquo;s water sub-metering business for high-rise residential complexes. Over thirty years of building, scaling and advising enterprises have taught me one thing: complexity is a choice, and simplicity is a discipline.
+              I founded SmarterHomes and bootstrapped it first. Funding came later, and it grew into India&rsquo;s water sub-metering business for high-rise residential complexes. Over thirty years of building, scaling and advising enterprises have taught me one thing: complexity is a choice, and simplicity is a discipline.
             </p>
           </div>
 
