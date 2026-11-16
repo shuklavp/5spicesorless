@@ -174,20 +174,11 @@
 }
 
 .dark .story-prose img {
-  border-color: #1E293B;
-  background-color: #0F1829;
-}
-
-/* Illustrations with a "-dark" twin: show the light drawing by default and the
-   ice-blue twin when the site's dark class is on <html>. No CSS invert. */
-.story-prose img.img-dark {
-  display: none;
-}
-.dark .story-prose img.img-light {
-  display: none;
-}
-.dark .story-prose img.img-dark {
-  display: block;
+  /* Dark mode: the original royal-blue sketch sits on a cream "paper" card,
+     like a printed illustration set into the page. No inverted artwork. */
+  border-color: #DDD3BE;
+  background-color: #F6F1E7;
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.6);
 }
 
 /* Keyboard focus: a visible two-tone ring that works on light and dark sections. */

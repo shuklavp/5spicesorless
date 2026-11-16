@@ -251,24 +251,6 @@
       }
     ]
   },
-  "/illustrations/art-of-the-blank-page-dark.png": {
-    "width": 1290,
-    "height": 688,
-    "variants": [
-      {
-        "w": 480,
-        "src": "/optimized/art-of-the-blank-page-dark.d4ce92a3.480w.webp"
-      },
-      {
-        "w": 800,
-        "src": "/optimized/art-of-the-blank-page-dark.d4ce92a3.800w.webp"
-      },
-      {
-        "w": 1290,
-        "src": "/optimized/art-of-the-blank-page-dark.d4ce92a3.1290w.webp"
-      }
-    ]
-  },
   "/illustrations/art-of-the-blank-page.png": {
     "width": 1290,
     "height": 688,
@@ -287,24 +269,6 @@
       }
     ]
   },
-  "/illustrations/british-library-lucknow-dark.png": {
-    "width": 1376,
-    "height": 768,
-    "variants": [
-      {
-        "w": 480,
-        "src": "/optimized/british-library-lucknow-dark.dca5bb05.480w.webp"
-      },
-      {
-        "w": 800,
-        "src": "/optimized/british-library-lucknow-dark.dca5bb05.800w.webp"
-      },
-      {
-        "w": 1376,
-        "src": "/optimized/british-library-lucknow-dark.dca5bb05.1376w.webp"
-      }
-    ]
-  },
   "/illustrations/british-library-lucknow.png": {
     "width": 1376,
     "height": 768,
@@ -320,24 +284,6 @@
       {
         "w": 1376,
         "src": "/optimized/british-library-lucknow.4406ae80.1376w.webp"
-      }
-    ]
-  },
-  "/illustrations/chai-setup-dark.png": {
-    "width": 1376,
-    "height": 768,
-    "variants": [
-      {
-        "w": 480,
-        "src": "/optimized/chai-setup-dark.9f5e147e.480w.webp"
-      },
-      {
-        "w": 800,
-        "src": "/optimized/chai-setup-dark.9f5e147e.800w.webp"
-      },
-      {
-        "w": 1376,
-        "src": "/optimized/chai-setup-dark.9f5e147e.1376w.webp"
       }
     ]
   },
@@ -395,24 +341,6 @@
       }
     ]
   },
-  "/illustrations/empty-slate-purchase-order-dark.png": {
-    "width": 1024,
-    "height": 572,
-    "variants": [
-      {
-        "w": 480,
-        "src": "/optimized/empty-slate-purchase-order-dark.63193beb.480w.webp"
-      },
-      {
-        "w": 800,
-        "src": "/optimized/empty-slate-purchase-order-dark.63193beb.800w.webp"
-      },
-      {
-        "w": 1024,
-        "src": "/optimized/empty-slate-purchase-order-dark.63193beb.1024w.webp"
-      }
-    ]
-  },
   "/illustrations/empty-slate-purchase-order.png": {
     "width": 1024,
     "height": 572,
@@ -449,24 +377,6 @@
       }
     ]
   },
-  "/illustrations/opportunity-whiteboard-sketch-dark.png": {
-    "width": 1024,
-    "height": 572,
-    "variants": [
-      {
-        "w": 480,
-        "src": "/optimized/opportunity-whiteboard-sketch-dark.e7354ba2.480w.webp"
-      },
-      {
-        "w": 800,
-        "src": "/optimized/opportunity-whiteboard-sketch-dark.e7354ba2.800w.webp"
-      },
-      {
-        "w": 1024,
-        "src": "/optimized/opportunity-whiteboard-sketch-dark.e7354ba2.1024w.webp"
-      }
-    ]
-  },
   "/illustrations/opportunity-whiteboard-sketch.png": {
     "width": 1024,
     "height": 572,
@@ -485,24 +395,6 @@
       }
     ]
   },
-  "/illustrations/quiet-goal-notebook-dark.png": {
-    "width": 1376,
-    "height": 768,
-    "variants": [
-      {
-        "w": 480,
-        "src": "/optimized/quiet-goal-notebook-dark.4c45908c.480w.webp"
-      },
-      {
-        "w": 800,
-        "src": "/optimized/quiet-goal-notebook-dark.4c45908c.800w.webp"
-      },
-      {
-        "w": 1376,
-        "src": "/optimized/quiet-goal-notebook-dark.4c45908c.1376w.webp"
-      }
-    ]
-  },
   "/illustrations/quiet-goal-notebook.png": {
     "width": 1376,
     "height": 768,
@@ -518,24 +410,6 @@
       {
         "w": 1376,
         "src": "/optimized/quiet-goal-notebook.b4c19b9c.1376w.webp"
-      }
-    ]
-  },
-  "/illustrations/village-courtyard-dark.png": {
-    "width": 1376,
-    "height": 768,
-    "variants": [
-      {
-        "w": 480,
-        "src": "/optimized/village-courtyard-dark.285c6bf1.480w.webp"
-      },
-      {
-        "w": 800,
-        "src": "/optimized/village-courtyard-dark.285c6bf1.800w.webp"
-      },
-      {
-        "w": 1376,
-        "src": "/optimized/village-courtyard-dark.285c6bf1.1376w.webp"
       }
     ]
   },
