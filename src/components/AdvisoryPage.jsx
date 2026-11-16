@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ArrowRight, Check, Compass, ShieldCheck, Sparkles, Send, Layers, Building2, HeartHandshake, AlertCircle } from 'lucide-react';
 import Img from './Img.jsx';
+import { FORM_ENDPOINTS } from '../config/forms';
 
 const ADVISORY_PILLARS = [
   {
@@ -116,6 +117,7 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
     setSubmitError('');
 
     const payload = {
+      form_type: 'advisory',
       name: formData.name,
       email: formData.email,
       venture: formData.venture || '',
@@ -127,7 +129,7 @@ export default function AdvisoryPage({ onNavigate, isDark }) {
     };
 
     try {
-      const response = await fetch('https://formspree.io/f/xvkzbwak', {
+      const response = await fetch(FORM_ENDPOINTS.advisory, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',

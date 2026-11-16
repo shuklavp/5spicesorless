@@ -4,6 +4,7 @@ import { Clock, ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { ESSAYS_DATA } from '../../data/essays.js';
 import Img from '../../components/Img.jsx';
 import OptimizedContent from '../../components/OptimizedContent.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.jsx';
 import { ogImage, monthToIso, personNode, organizationNode, breadcrumbNode } from '../../utils/seo.js';
 
 export async function getStaticPaths() {
@@ -164,6 +165,9 @@ const shareText = encodeURIComponent(`Thoughts on "${frontmatter?.title}" by @vi
           </div>
         </div>
       </div>
+
+      {/* Newsletter sign-up */}
+      <NewsletterSignup client:load id="newsletter" className="my-8" />
 
       {/* Join the Discussion on X Card */}
       <div class="p-8 sm:p-12 rounded-3xl bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder shadow-sm my-8 text-center space-y-4">
