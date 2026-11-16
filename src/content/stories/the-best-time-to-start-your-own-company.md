@@ -44,7 +44,7 @@ In fact, he became an extraordinary advisor to growing ventures because he posse
 
 The trouble begins when founders confuse the two disciplines.
 
-![](/illustrations/empty-slate-purchase-order.png)
+![Sketch of hands holding a tablet that shows a purchase order](/illustrations/empty-slate-purchase-order.png)
 
 ## The Twenty-Page Contract Illusion
 
@@ -86,7 +86,7 @@ You do not begin with policies; you begin with decisions. You do not begin with 
 
 4. **The Discipline of Starting:** Execution does not wait for absolute certainty. The real work begins not when the plan is polished, but the moment you pick up the phone and commit yourself to the rough edges of reality.
 
-![](/illustrations/opportunity-whiteboard-sketch.png)
+![Sketch of a whiteboard with the word Opportunity at the centre, surrounded by TAM, hiring, funds, delivery and manufacturing](/illustrations/opportunity-whiteboard-sketch.png)
 
 ## Evolving Beyond the Startup Label
 

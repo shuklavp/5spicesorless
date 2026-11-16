@@ -547,12 +547,12 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
     return (
       <div className="min-h-screen pt-36 pb-24 px-6 flex items-center justify-center bg-white dark:bg-canvas-dark text-ink-900 dark:text-white">
         <div className="max-w-md w-full p-8 sm:p-10 rounded-3xl bg-canvas-subtle dark:bg-canvas-darkCard border-2 border-canvas-border dark:border-canvas-darkBorder shadow-xl text-center space-y-6">
-          <div className="w-12 h-12 rounded-2xl bg-berry-50 dark:bg-canvas-dark border border-berry-200 dark:border-canvas-darkBorder flex items-center justify-center text-berry-600 dark:text-berry-400 mx-auto">
+          <div className="w-12 h-12 rounded-2xl bg-berry-50 dark:bg-canvas-dark border border-berry-200 dark:border-canvas-darkBorder flex items-center justify-center text-berry-700 dark:text-berry-400 mx-auto">
             <Feather className="w-6 h-6" />
           </div>
 
           <div className="space-y-2">
-            <span className="text-[11px] font-mono uppercase tracking-widest text-berry-600 dark:text-berry-400 font-bold">
+            <span className="text-[11px] font-mono uppercase tracking-widest text-berry-700 dark:text-berry-400 font-bold">
               Private Author Workspace
             </span>
             <h1 className="font-serif text-2xl font-bold text-ink-900 dark:text-white">
@@ -611,7 +611,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
         <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-canvas-border dark:border-canvas-darkBorder gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold uppercase tracking-widest text-berry-600 dark:text-berry-400">
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-berry-700 dark:text-berry-400">
                 AUTHORING INTERFACE
               </span>
             </div>
@@ -741,7 +741,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
               {/* Category, Sub-Category & Tags Box */}
               <div className="p-6 rounded-3xl bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder space-y-5 shadow-sm">
                 <div className="flex items-center gap-2 border-b border-canvas-border dark:border-canvas-darkBorder pb-3">
-                  <Sliders className="w-4 h-4 text-berry-600" />
+                  <Sliders className="w-4 h-4 text-berry-700" />
                   <span className="text-xs font-mono font-bold uppercase tracking-wider text-ink-900 dark:text-white">
                     1. Primary Desk &amp; Sub-Category
                   </span>
@@ -964,7 +964,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                       onClick={() => setShowTakeaways(!showTakeaways)}
                       className={`px-3 py-1 rounded-full text-xs font-mono font-bold transition-all flex items-center gap-1.5 ${
                         showTakeaways
-                          ? 'bg-berry-50 dark:bg-berry-950/50 text-berry-600 dark:text-berry-400 border border-berry-200 dark:border-berry-800'
+                          ? 'bg-berry-50 dark:bg-berry-950/50 text-berry-700 dark:text-berry-400 border border-berry-200 dark:border-berry-800'
                           : 'bg-canvas-subtle dark:bg-canvas-dark text-ink-400 border border-canvas-border dark:border-canvas-darkBorder hover:text-ink-600'
                       }`}
                     >
@@ -975,7 +975,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                       <button
                         type="button"
                         onClick={handleAddTakeaway}
-                        className="inline-flex items-center gap-1 text-xs font-mono text-berry-600 hover:text-berry-700 font-bold"
+                        className="inline-flex items-center gap-1 text-xs font-mono text-berry-700 hover:text-berry-700 font-bold"
                       >
                         <Plus className="w-3.5 h-3.5" />
                         <span>Add Point</span>
@@ -1027,7 +1027,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                     <div className="space-y-2.5">
                       {takeaways.map((point, idx) => (
                         <div key={idx} className="flex items-start gap-2">
-                          <span className="text-berry-600 font-bold mt-2 text-xs font-mono">0{idx + 1}.</span>
+                          <span className="text-berry-700 font-bold mt-2 text-xs font-mono">0{idx + 1}.</span>
                           <input
                             type="text"
                             value={point}
@@ -1056,7 +1056,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                     <button
                       type="button"
                       onClick={() => setShowTakeaways(true)}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder text-xs font-mono text-berry-600 dark:text-berry-400 font-bold hover:bg-berry-50 transition-colors"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder text-xs font-mono text-berry-700 dark:text-berry-400 font-bold hover:bg-berry-50 transition-colors"
                     >
                       <Plus className="w-3.5 h-3.5" />
                       <span>Enable Core Thesis &amp; Ground Truths</span>
@@ -1165,7 +1165,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                     <span className="text-xs font-mono font-bold text-ink-900 dark:text-white">
                       Primary Artwork / Pencil Sketch
                     </span>
-                    <span className="text-[10px] font-mono text-berry-600 font-medium">Image 1</span>
+                    <span className="text-[10px] font-mono text-berry-700 font-medium">Image 1</span>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -1297,7 +1297,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
               <div className="p-6 rounded-3xl bg-white dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder space-y-4 shadow-sm">
                 <div className="flex items-center justify-between border-b border-canvas-border dark:border-canvas-darkBorder pb-3">
                   <div className="flex items-center gap-2">
-                    <FileText className="w-4 h-4 text-berry-600" />
+                    <FileText className="w-4 h-4 text-berry-700" />
                     <span className="text-xs font-mono font-bold uppercase tracking-wider text-ink-900 dark:text-white">
                       5. Essay Body (Markdown)
                     </span>
@@ -1312,7 +1312,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                   <button
                     type="button"
                     onClick={handleWrapBold}
-                    className="px-3 py-1 rounded bg-white dark:bg-canvas-darkCard border border-berry-300 dark:border-berry-700 text-berry-600 dark:text-berry-400 font-bold hover:bg-berry-50 flex items-center gap-1"
+                    className="px-3 py-1 rounded bg-white dark:bg-canvas-darkCard border border-berry-300 dark:border-berry-700 text-berry-700 dark:text-berry-400 font-bold hover:bg-berry-50 flex items-center gap-1"
                     title="Bold selected text or insert bold template (**text**)"
                   >
                     <span className="text-sm font-black">B</span>
@@ -1396,7 +1396,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                   <button
                     type="button"
                     onClick={handleSaveCurrentStoryToArchive}
-                    className="px-4 py-2 rounded-xl bg-white dark:bg-canvas-dark border border-berry-300 dark:border-berry-800 text-berry-600 dark:text-berry-400 text-xs font-mono font-bold hover:bg-berry-50 transition-colors"
+                    className="px-4 py-2 rounded-xl bg-white dark:bg-canvas-dark border border-berry-300 dark:border-berry-800 text-berry-700 dark:text-berry-400 text-xs font-mono font-bold hover:bg-berry-50 transition-colors"
                     title="Save current editor story to archive list"
                   >
                     Save to Archive
@@ -1441,7 +1441,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                 {/* Preview Header Label */}
                 <div className="flex items-center justify-between px-3 py-1.5 rounded-xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder text-xs font-mono">
                   <div className="flex items-center gap-2">
-                    <Eye className="w-3.5 h-3.5 text-berry-600" />
+                    <Eye className="w-3.5 h-3.5 text-berry-700" />
                     <span className="font-bold uppercase tracking-wider text-ink-900 dark:text-white">
                       Live Reader Preview
                     </span>
@@ -1541,7 +1541,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                           <ul className="space-y-2">
                             {takeaways.map((point, idx) => (
                               <li key={idx} className="flex items-start gap-2.5 text-xs text-ink-800 dark:text-ink-100 font-medium">
-                                <span className="text-berry-600 dark:text-berry-400 font-bold">•</span>
+                                <span className="text-berry-700 dark:text-berry-400 font-bold">•</span>
                                 <span className="leading-relaxed">{point}</span>
                               </li>
                             ))}
@@ -1602,7 +1602,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                                   const [, num, content] = numMatch;
                                   return (
                                     <div key={j} className="flex items-start gap-3 my-2">
-                                      <span className="w-5 h-5 rounded-full bg-berry-50 dark:bg-berry-950/60 text-berry-600 dark:text-berry-400 border border-berry-200 dark:border-berry-800 text-[10px] font-mono font-bold flex items-center justify-center shrink-0 mt-0.5">
+                                      <span className="w-5 h-5 rounded-full bg-berry-50 dark:bg-berry-950/60 text-berry-700 dark:text-berry-400 border border-berry-200 dark:border-berry-800 text-[10px] font-mono font-bold flex items-center justify-center shrink-0 mt-0.5">
                                         {num}
                                       </span>
                                       <div className="flex-1 text-xs sm:text-sm leading-relaxed text-ink-800 dark:text-ink-100">
@@ -1626,7 +1626,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                             <ul key={`${keyPrefix}-${i}`} className="space-y-1.5 pl-2 my-2">
                               {lines.map((l, j) => (
                                 <li key={j} className="flex items-start gap-2.5 text-xs sm:text-sm leading-relaxed text-ink-800 dark:text-ink-100">
-                                  <span className="text-berry-600 dark:text-berry-400 font-bold">•</span>
+                                  <span className="text-berry-700 dark:text-berry-400 font-bold">•</span>
                                   <span className="flex-1">{renderInline(l.replace(/^[\*\-\s]+/, ''))}</span>
                                 </li>
                               ))}
@@ -1810,7 +1810,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                 <button
                   type="button"
                   onClick={handleCopyGitCommand}
-                  className="text-berry-600 hover:underline shrink-0 flex items-center gap-1 text-[11px]"
+                  className="text-berry-700 hover:underline shrink-0 flex items-center gap-1 text-[11px]"
                 >
                   {copiedGitCmd ? <Check className="w-3 h-3 text-green-600" /> : <Copy className="w-3 h-3" />}
                   <span>{copiedGitCmd ? 'Copied' : 'Copy'}</span>
@@ -1832,7 +1832,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                 >
                   <div className="space-y-1 flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-berry-50 dark:bg-berry-950/60 text-berry-600 dark:text-berry-400 border border-berry-200 dark:border-berry-800 font-bold uppercase">
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-berry-50 dark:bg-berry-950/60 text-berry-700 dark:text-berry-400 border border-berry-200 dark:border-berry-800 font-bold uppercase">
                         {essayItem.category}
                       </span>
                       {essayItem.subCategory && (
@@ -1966,10 +1966,10 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                         5 Spices or Less Desk
                       </span>
                       {selectedXAccount === '5spicesorless' && (
-                        <Check className="w-3.5 h-3.5 text-berry-600 shrink-0" />
+                        <Check className="w-3.5 h-3.5 text-berry-700 shrink-0" />
                       )}
                     </div>
-                    <span className="text-[11px] font-mono text-berry-600 dark:text-berry-400 block">
+                    <span className="text-[11px] font-mono text-berry-700 dark:text-berry-400 block">
                       @5spicesorless
                     </span>
                     <span className="text-[10px] text-ink-500 truncate block">
@@ -2033,7 +2033,7 @@ ${illustration ? `    image1Position: '${image1Position}',\n` : ''}${secondaryIm
                   <button
                     type="button"
                     onClick={() => setXPostText(getInitialXText(selectedXAccount))}
-                    className="text-berry-600 hover:underline flex items-center gap-1 text-[11px]"
+                    className="text-berry-700 hover:underline flex items-center gap-1 text-[11px]"
                   >
                     <RefreshCw className="w-3 h-3" />
                     <span>Reset</span>

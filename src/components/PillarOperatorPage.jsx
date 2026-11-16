@@ -75,7 +75,7 @@ export default function PillarOperatorPage({ onNavigate, isDark }) {
         <div className="absolute inset-0 pointer-events-none flex justify-end overflow-hidden">
           <Img eager sizes="1400px"
             src="/work-sketch.jpeg"
-            alt="Work Study Desk"
+            alt=""
             className="h-full w-auto max-w-none object-contain object-right-bottom filter contrast-110 brightness-90 opacity-40 lg:opacity-55"
           />
           {/* Multi-layered soft vignette to dissolve harsh edges completely */}
@@ -290,25 +290,25 @@ export default function PillarOperatorPage({ onNavigate, isDark }) {
           <div className="space-y-6 md:border-l md:border-[#EAE5DF] md:pl-8">
             <div className="flex items-center gap-2 pb-4 border-b border-[#EAE5DF]">
               <span className="w-2.5 h-2.5 rounded-full bg-[#BC5259]" />
-              <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-[#BC5259]">
+              <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-[#A3434A]">
                 Not Intended For
               </h3>
             </div>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <X className="w-5 h-5 text-[#BC5259] mt-0.5 shrink-0" />
+                <X className="w-5 h-5 text-[#A3434A] mt-0.5 shrink-0" />
                 <span className="font-serif text-base text-[#55524E]">
                   Teams seeking slide decks to present to external advisors or committees.
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <X className="w-5 h-5 text-[#BC5259] mt-0.5 shrink-0" />
+                <X className="w-5 h-5 text-[#A3434A] mt-0.5 shrink-0" />
                 <span className="font-serif text-base text-[#55524E]">
                   Cultures that prioritise consensus-building meetings over decisive, clear action.
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <X className="w-5 h-5 text-[#BC5259] mt-0.5 shrink-0" />
+                <X className="w-5 h-5 text-[#A3434A] mt-0.5 shrink-0" />
                 <span className="font-serif text-base text-[#55524E]">
                   Founders seeking passive advisors who sign off on existing habits.
                 </span>
@@ -362,10 +362,10 @@ export default function PillarOperatorPage({ onNavigate, isDark }) {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
+                  <label htmlFor="operator-your-name" className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
                     Your Name *
                   </label>
-                  <input
+                  <input id="operator-your-name"
                     type="text"
                     name="name"
                     required
@@ -377,10 +377,10 @@ export default function PillarOperatorPage({ onNavigate, isDark }) {
                 </div>
 
                 <div>
-                  <label className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
+                  <label htmlFor="operator-direct-email" className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
                     Direct Email *
                   </label>
-                  <input
+                  <input id="operator-direct-email"
                     type="email"
                     name="email"
                     required
@@ -394,10 +394,10 @@ export default function PillarOperatorPage({ onNavigate, isDark }) {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
+                  <label htmlFor="operator-company-venture" className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
                     Company / Venture
                   </label>
-                  <input
+                  <input id="operator-company-venture"
                     type="text"
                     name="company"
                     value={formData.company}
@@ -408,10 +408,10 @@ export default function PillarOperatorPage({ onNavigate, isDark }) {
                 </div>
 
                 <div>
-                  <label className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
+                  <label htmlFor="operator-current-stage-headcount" className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
                     Current Stage / Headcount
                   </label>
-                  <select
+                  <select id="operator-current-stage-headcount"
                     name="stage"
                     value={formData.stage}
                     onChange={handleChange}
@@ -426,10 +426,10 @@ export default function PillarOperatorPage({ onNavigate, isDark }) {
               </div>
 
               <div>
-                <label className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
+                <label htmlFor="operator-primary-operational-bottleneck" className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
                   Primary Operational Bottleneck *
                 </label>
-                <textarea
+                <textarea id="operator-primary-operational-bottleneck"
                   name="bottleneck"
                   required
                   rows={4}

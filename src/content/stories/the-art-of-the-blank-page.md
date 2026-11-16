@@ -11,7 +11,7 @@ pullQuote: "The moment you enter a discussion convinced of what the other person
 ---
 
 
-![](/illustrations/art-of-the-blank-page.png)
+![Sketch of a team meeting around a long table, with a flowchart on the wall behind them](/illustrations/art-of-the-blank-page.png)
 
 Before I stepped into my first corporate role, my father offered a single observation that has stayed with me through every negotiation, strategy meeting, and category build since.
 
