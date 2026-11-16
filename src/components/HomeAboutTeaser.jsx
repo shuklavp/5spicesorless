@@ -18,7 +18,7 @@ export default function HomeAboutTeaser() {
 
           {/* Section Kicker Header */}
           <div className="relative z-10 flex items-center gap-2 mb-6">
-            <span className="text-xs font-mono uppercase tracking-widest text-[#DE2573] font-bold">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#C2185B] dark:text-[#F06292] font-bold">
               THE MAN BEHIND THE DESKS · VIVEK SHUKLA
             </span>
           </div>

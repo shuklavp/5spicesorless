@@ -12,7 +12,7 @@ export default function AboutPage({ onNavigate }) {
 
         {/* Section Kicker */}
         <div className="flex items-center gap-3 mb-8">
-          <Feather className="w-4 h-4 text-berry-600" />
+          <Feather className="w-4 h-4 text-berry-700" />
           <span className="text-xs font-mono tracking-widestEditorial uppercase text-ink-700 dark:text-ink-200 font-bold">
             ABOUT · THE PHILOSOPHY & THE MEMOIR
           </span>
@@ -78,7 +78,7 @@ export default function AboutPage({ onNavigate }) {
           <div className="max-w-3xl space-y-6">
             {/* Header */}
             <div>
-              <span className="text-xs font-mono font-bold uppercase tracking-widest text-berry-600 dark:text-berry-400 block mb-2">
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-berry-700 dark:text-berry-400 block mb-2">
                 OPERATIONAL PRINCIPLES
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-[#0C1427] dark:text-white">
@@ -89,35 +89,35 @@ export default function AboutPage({ onNavigate }) {
             {/* Five Levers Bullet Points */}
             <ul className="space-y-4 text-sm sm:text-base text-ink-800 dark:text-ink-200 font-light leading-relaxed">
               <li className="flex items-start gap-3">
-                <span className="text-berry-600 dark:text-berry-400 font-bold text-lg leading-none mt-0.5">•</span>
+                <span className="text-berry-700 dark:text-berry-400 font-bold text-lg leading-none mt-0.5">•</span>
                 <span>
                   <strong className="font-semibold text-ink-900 dark:text-white">The Foundation:</strong>{' '}
                   Unhurried patience with first principles. Whether building an enterprise or nurturing a relationship, when you get the basics right without cutting corners, the rest holds naturally.
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-berry-600 dark:text-berry-400 font-bold text-lg leading-none mt-0.5">•</span>
+                <span className="text-berry-700 dark:text-berry-400 font-bold text-lg leading-none mt-0.5">•</span>
                 <span>
                   <strong className="font-semibold text-ink-900 dark:text-white">Ground Truth:</strong>{' '}
                   Knowing when to stop. Facing unvarnished reality early, and resisting the urge to over-tinker, over-process, or micromanage people into quiet frustration.
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-berry-600 dark:text-berry-400 font-bold text-lg leading-none mt-0.5">•</span>
+                <span className="text-berry-700 dark:text-berry-400 font-bold text-lg leading-none mt-0.5">•</span>
                 <span>
                   <strong className="font-semibold text-ink-900 dark:text-white">Cohesion:</strong>{' '}
                   The quiet discipline of alignment. Consistent, transparent communication that softens friction, forgives human slips, and keeps partners bound together during rough weather.
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-berry-600 dark:text-berry-400 font-bold text-lg leading-none mt-0.5">•</span>
+                <span className="text-berry-700 dark:text-berry-400 font-bold text-lg leading-none mt-0.5">•</span>
                 <span>
                   <strong className="font-semibold text-ink-900 dark:text-white">Calculated Risk:</strong>{' '}
                   Decisive courage when the stakes are real. Playing not to lose is the quietest route to failure, both in enterprise strategy and in personal life.
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-berry-600 dark:text-berry-400 font-bold text-lg leading-none mt-0.5">•</span>
+                <span className="text-berry-700 dark:text-berry-400 font-bold text-lg leading-none mt-0.5">•</span>
                 <span>
                   <strong className="font-semibold text-ink-900 dark:text-white">Restraint:</strong>{' '}
                   Knowing when your part is finished. Stepping back with dignity, protecting your team, and choosing reputation, character, and honour over ego at every finish line.
@@ -143,17 +143,17 @@ export default function AboutPage({ onNavigate }) {
               {/* Image / Sketch Container */}
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-white dark:bg-canvas-dark flex items-center justify-center border border-canvas-border dark:border-canvas-darkBorder">
                 <div className="text-center p-8 space-y-4">
-                  <div className="w-20 h-20 mx-auto rounded-2xl bg-berry-50 dark:bg-canvas-darkCard border border-berry-200 dark:border-berry-800 flex items-center justify-center text-berry-600 dark:text-berry-400 shadow-sm">
+                  <div className="w-20 h-20 mx-auto rounded-2xl bg-berry-50 dark:bg-canvas-darkCard border border-berry-200 dark:border-berry-800 flex items-center justify-center text-berry-700 dark:text-berry-400 shadow-sm">
                     <Flame className="w-10 h-10 animate-pulse" />
                   </div>
                   <div className="space-y-1">
                     <div className="font-serif text-2xl text-ink-900 dark:text-white font-bold">
                       Vivek Shukla
                     </div>
-                    <div className="text-xs font-mono text-berry-600 dark:text-berry-400 font-semibold">
+                    <div className="text-xs font-mono text-berry-700 dark:text-berry-400 font-semibold">
                       Advisor, Operator, Storyteller
                     </div>
-                    <p className="text-xs text-ink-500 dark:text-ink-400 font-light max-w-xs mx-auto pt-2">
+                    <p className="text-xs text-ink-500 dark:text-ink-300 font-light max-w-xs mx-auto pt-2">
                       Lucknow roots. Independent thinker, advisor, and storyteller.
                     </p>
                   </div>
@@ -174,7 +174,7 @@ export default function AboutPage({ onNavigate }) {
                 <span className="font-bold text-ink-900 dark:text-white">
                   Lucknow Roots
                 </span>
-                <span className="text-berry-600 dark:text-berry-400 font-medium">
+                <span className="text-berry-700 dark:text-berry-400 font-medium">
                   Advisor &amp; Storyteller
                 </span>
               </div>
@@ -262,7 +262,7 @@ export default function AboutPage({ onNavigate }) {
             <div className="p-7 rounded-3xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder space-y-4">
               <div className="flex items-center gap-2">
                 
-                <span className="text-xs font-mono uppercase tracking-widest text-berry-600 dark:text-berry-400 font-bold">
+                <span className="text-xs font-mono uppercase tracking-widest text-berry-700 dark:text-berry-400 font-bold">
                   The Mission Today
                 </span>
               </div>
@@ -301,7 +301,7 @@ export default function AboutPage({ onNavigate }) {
           <div className="w-full md:w-[380px] lg:w-[420px] shrink-0 flex items-center justify-center p-2">
             <Img sizes="420px" 
               src="/footer-journal-chai-uncropped.png" 
-              alt="Open Journal with Pen and Steaming Chai Linework" 
+              alt="" 
               className="w-full h-auto max-h-[290px] object-contain drop-shadow-2xl"
               onError={(e) => { 
                 e.currentTarget.src = "/footer/footer-journal-chai.png"; 

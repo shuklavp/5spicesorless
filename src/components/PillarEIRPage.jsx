@@ -74,7 +74,7 @@ export default function PillarEIRPage({ onNavigate, isDark }) {
           <Img eager sizes="1400px"
             src="/illustrations/eir-blueprint-dark.png"
             onError={(e) => { e.currentTarget.src = "/work-sketch.jpeg"; }}
-            alt="Technical Blueprint & Strategy"
+            alt=""
             className="h-full w-auto max-w-none object-contain object-right-bottom filter contrast-125 brightness-110 opacity-80 lg:opacity-90"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#090E1D] via-[#090E1D]/80 via-40% to-transparent" />
@@ -263,25 +263,25 @@ export default function PillarEIRPage({ onNavigate, isDark }) {
           <div className="space-y-6 md:border-l md:border-[#EAE5DF] md:pl-8">
             <div className="flex items-center gap-2 pb-4 border-b border-[#EAE5DF]">
               <span className="w-2.5 h-2.5 rounded-full bg-[#BC5259]" />
-              <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-[#BC5259]">
+              <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-[#A3434A]">
                 Not Intended For
               </h3>
             </div>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <X className="w-5 h-5 text-[#BC5259] mt-0.5 shrink-0" />
+                <X className="w-5 h-5 text-[#A3434A] mt-0.5 shrink-0" />
                 <span className="font-serif text-base text-[#55524E]">
                   Pure speculative trend investing without underlying unit economics.
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <X className="w-5 h-5 text-[#BC5259] mt-0.5 shrink-0" />
+                <X className="w-5 h-5 text-[#A3434A] mt-0.5 shrink-0" />
                 <span className="font-serif text-base text-[#55524E]">
                   Programmes looking for high-volume academic lectures rather than field work.
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <X className="w-5 h-5 text-[#BC5259] mt-0.5 shrink-0" />
+                <X className="w-5 h-5 text-[#A3434A] mt-0.5 shrink-0" />
                 <span className="font-serif text-base text-[#55524E]">
                   Teams seeking validation for preconceived narratives without open enquiry.
                 </span>
@@ -330,10 +330,10 @@ export default function PillarEIRPage({ onNavigate, isDark }) {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
+                  <label htmlFor="eir-your-name" className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
                     Your Name *
                   </label>
-                  <input
+                  <input id="eir-your-name"
                     type="text"
                     name="name"
                     required
@@ -345,10 +345,10 @@ export default function PillarEIRPage({ onNavigate, isDark }) {
                 </div>
 
                 <div>
-                  <label className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
+                  <label htmlFor="eir-direct-email" className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
                     Direct Email *
                   </label>
-                  <input
+                  <input id="eir-direct-email"
                     type="email"
                     name="email"
                     required
@@ -362,10 +362,10 @@ export default function PillarEIRPage({ onNavigate, isDark }) {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
+                  <label htmlFor="eir-fund-studio-name" className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
                     Fund / Studio Name
                   </label>
-                  <input
+                  <input id="eir-fund-studio-name"
                     type="text"
                     name="fund"
                     value={formData.fund}
@@ -376,10 +376,10 @@ export default function PillarEIRPage({ onNavigate, isDark }) {
                 </div>
 
                 <div>
-                  <label className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
+                  <label htmlFor="eir-collaboration-rhythm" className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
                     Collaboration Rhythm
                   </label>
-                  <select
+                  <select id="eir-collaboration-rhythm"
                     name="rhythm"
                     value={formData.rhythm}
                     onChange={handleChange}
@@ -393,10 +393,10 @@ export default function PillarEIRPage({ onNavigate, isDark }) {
               </div>
 
               <div>
-                <label className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
+                <label htmlFor="eir-thesis-or-opportunity-under-review" className="block font-mono text-xs uppercase tracking-wider text-[#55524E] mb-2">
                   Thesis or Opportunity Under Review *
                 </label>
-                <textarea
+                <textarea id="eir-thesis-or-opportunity-under-review"
                   name="thesis"
                   required
                   rows={4}

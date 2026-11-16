@@ -137,7 +137,7 @@ export default function Navbar({ currentPath = "/", activeCategory = "" }) {
             aria-label="Toggle Navigation Menu"
             className="md:hidden p-2.5 rounded-full border border-canvas-border dark:border-canvas-darkBorder text-ink-800 dark:text-stone-200 hover:border-berry-500 bg-canvas-subtle dark:bg-canvas-darkCard transition-colors"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5 text-berry-600" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? <X className="w-5 h-5 text-berry-700" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>

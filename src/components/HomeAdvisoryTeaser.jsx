@@ -81,7 +81,7 @@ export default function HomeAdvisoryTeaser() {
             <Img sizes="1400px"
               key={active.pillarNum}
               src={active.image}
-              alt={active.imageAlt}
+              alt=""
               className="absolute right-0 top-0 h-full w-auto max-w-none object-cover object-right-top opacity-30 filter grayscale contrast-125 brightness-110 transition-opacity duration-700"
               onError={(e) => { e.currentTarget.src = '/illustrations/confidant-study-dark.png'; }}
             />

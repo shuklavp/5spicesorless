@@ -112,7 +112,7 @@ export default function CoreLevers() {
       <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         {/* Section Header */}
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#DE2573]/30 bg-[#DE2573]/10 text-[#DE2573] font-mono text-[11px] uppercase tracking-wider font-semibold">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#DE2573]/30 bg-[#DE2573]/10 text-[#F06292] font-mono text-[11px] uppercase tracking-wider font-semibold">
             Operational Clarity
           </div>
 
@@ -136,7 +136,7 @@ export default function CoreLevers() {
                 {/* Header Tag & Numeral */}
                 <div className="flex items-center justify-between font-mono text-[11px] text-slate-400 tracking-wider">
                   <span>{lever.tag}</span>
-                  <span className="text-slate-500 font-semibold">{lever.num}</span>
+                  <span className="text-slate-400 font-semibold">{lever.num}</span>
                 </div>
 
                 {/* Lever Title */}
@@ -146,7 +146,7 @@ export default function CoreLevers() {
 
                 {/* Grounding Metaphor with Minimum Height for Uniform Text Alignment */}
                 <div className="min-h-[44px] flex items-center mt-2">
-                  <p className="text-xs font-mono text-[#DE2573] font-medium tracking-tight">
+                  <p className="text-xs font-mono text-[#F06292] font-medium tracking-tight">
                     &ldquo;{lever.grounding}&rdquo;
                   </p>
                 </div>

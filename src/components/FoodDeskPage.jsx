@@ -12,7 +12,7 @@ export default function FoodDeskPage() {
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         <a
           href="/"
-          className="mb-8 inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-ink-500 hover:text-berry-600 transition-colors"
+          className="mb-8 inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-ink-500 dark:text-ink-300 hover:text-berry-600 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" /> Back to the Front Page
         </a>
@@ -33,7 +33,7 @@ export default function FoodDeskPage() {
           <div className="absolute right-0 top-0 bottom-0 w-full md:w-3/4 h-full pointer-events-none overflow-hidden select-none">
             <img 
               src="/food-sketch.jpeg" 
-              alt="The Food Desk" 
+              alt="" 
               className="w-full h-full object-cover object-right invert brightness-110 contrast-125 opacity-70"
             />
             {/* Smooth transition from dark text zone into linework */}
@@ -73,8 +73,8 @@ export default function FoodDeskPage() {
             >
               <div>
                 <div className="flex items-center justify-between text-xs font-mono tracking-wider mb-4">
-                  <span className="text-ink-500 dark:text-ink-400 font-medium">{story.date}</span>
-                  <div className="flex items-center gap-1.5 text-berry-600 dark:text-berry-400 font-semibold">
+                  <span className="text-ink-500 dark:text-ink-300 font-medium">{story.date}</span>
+                  <div className="flex items-center gap-1.5 text-berry-700 dark:text-berry-400 font-semibold">
                     <Clock className="w-3.5 h-3.5" />
                     <span>{story.readTime || '6 min read'}</span>
                   </div>
@@ -89,7 +89,7 @@ export default function FoodDeskPage() {
                 </p>
               </div>
 
-              <div className="pt-4 border-t border-canvas-border dark:border-canvas-darkBorder flex items-center justify-between text-xs font-mono tracking-wider font-bold text-berry-600 dark:text-berry-400">
+              <div className="pt-4 border-t border-canvas-border dark:border-canvas-darkBorder flex items-center justify-between text-xs font-mono tracking-wider font-bold text-berry-700 dark:text-berry-400">
                 <span className="uppercase">READ NOTE</span>
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </div>
@@ -119,7 +119,7 @@ export default function FoodDeskPage() {
           <div className="w-56 sm:w-72 shrink-0 flex items-center justify-center">
             <img 
               src="/footer/footer-kadai-spices.png" 
-              alt="Kadai and Spices" 
+              alt="" 
               className="w-full h-auto object-contain"
               onError={(e) => { e.currentTarget.src = "/footer/footer-kadai-spices.jpg"; }}
             />
