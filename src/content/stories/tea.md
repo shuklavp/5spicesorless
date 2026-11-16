@@ -8,6 +8,7 @@ category: "FOOD"
 subtitle: "For some, tea is addiction. For a lot of others', it's an emotion."
 description: "A family breakfast in a sunlit courtyard, years of chai through university and Bangalore, and the tea that led to a first overseas investor. Recipe included."
 pullQuote: "Feeling sad, have tea. Feeling happy, have tea. Feeling nothing, have tea. There's nothing which can't be fixed by a hot cup of tea."
+tags: ["Tea", "Chai", "Family", "Bangalore", "Recipe"]
 ---
 
 

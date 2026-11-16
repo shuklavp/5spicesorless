@@ -41,8 +41,22 @@ const mdEssays = Object.entries(mdModules).map(([filepath, raw]) => {
   };
 });
 
-export const essays = mdEssays;
-export const ESSAYS_DATA = mdEssays;
+// Oldest first, by the ISO `datePublished` (so the first story ever published
+// leads every listing and previous/next follows reading order). Array.sort is
+// stable, so stories with equal or missing dates keep their file order; those
+// without a date go last. RSS has its own newest-first sort.
+const byDatePublished = (a, b) => {
+  if (a.datePublished && b.datePublished) {
+    return a.datePublished < b.datePublished ? -1 : a.datePublished > b.datePublished ? 1 : 0;
+  }
+  if (a.datePublished) return -1;
+  if (b.datePublished) return 1;
+  return 0;
+};
+const sortedEssays = [...mdEssays].sort(byDatePublished);
+
+export const essays = sortedEssays;
+export const ESSAYS_DATA = sortedEssays;
 
 export const getStoryBySlug = (slug) => {
   return essays.find((story) => story.slug === slug);
