@@ -14,11 +14,11 @@ export default function FictionPage({ onNavigate, isDark }) {
         {/* Back Navigation */}
         <div className="mb-8 animate-fadeIn">
           <a
-            href="/"
+            href="/stories/"
             className="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-wider text-[#736B63] hover:text-[#111111] transition-colors cursor-pointer group"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-            <span>BACK TO FRONT PAGE</span>
+            <span>BACK TO ALL STORIES</span>
           </a>
         </div>
 
@@ -46,7 +46,7 @@ export default function FictionPage({ onNavigate, isDark }) {
             </div>
             
             <h1 className="font-serif text-5xl md:text-6xl font-bold text-[#1A1A1A] tracking-tight leading-[1.05]">
-              Stories.
+              Fiction.
             </h1>
             
             <p className="font-serif text-base sm:text-lg text-[#33302B] leading-relaxed pt-2">

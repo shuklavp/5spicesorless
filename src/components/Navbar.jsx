@@ -56,7 +56,7 @@ export default function Navbar({ currentPath = "/", activeCategory = "" }) {
     if (item.href === "/" && currentPath === "/") return true;
     if (item.href !== "/") {
       if (currentPath === item.href) return true;
-      if (currentPath.startsWith(item.href + "/") && item.href !== "/stories") return true;
+      if (currentPath.startsWith(item.href + "/")) return true;
     }
     return false;
   };

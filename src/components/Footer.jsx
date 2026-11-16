@@ -52,7 +52,7 @@ export default function Footer() {
             <li><a href="/life" className="hover:text-[#DE2573] transition-colors">Life</a></li>
             <li><a href="/food" className="hover:text-[#DE2573] transition-colors">Food</a></li>
             <li><a href="/work" className="hover:text-[#DE2573] transition-colors">Work</a></li>
-            <li><a href="/stories" className="hover:text-[#DE2573] transition-colors">Stories &amp; Notes</a></li>
+            <li><a href="/stories" className="hover:text-[#DE2573] transition-colors">Stories &amp; Letters</a></li>
             <li><a href="/#letterbox" className="hover:text-[#DE2573] transition-colors">The Letterbox</a></li>
             <li><a href="/advisory" className="hover:text-[#DE2573] transition-colors">Advisory</a></li>
             <li><a href="/about" className="hover:text-[#DE2573] transition-colors">About</a></li>

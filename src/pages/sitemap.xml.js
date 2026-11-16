@@ -10,7 +10,7 @@ const STATIC_PATHS = [
   '/advisory/fractional-operator',
   '/advisory/eir',
   '/advisory/ben-to-jules',
-  '/essays',
+  '/stories',
   '/life',
   '/food',
   '/work',
