@@ -6,3 +6,7 @@
 # Optimized images (scripts/optimize-images.mjs) carry a content hash in the filename.
 /optimized/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Self-hosted fonts: the filenames are versioned by hand, so cache them for a year.
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
