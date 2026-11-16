@@ -35,7 +35,8 @@ const currentIndex = allEssays.findIndex(e => e.slug === currentSlug);
 const prevEssay = currentIndex > 0 ? allEssays[currentIndex - 1] : allEssays[allEssays.length - 1];
 const nextEssay = currentIndex < allEssays.length - 1 ? allEssays[currentIndex + 1] : allEssays[0];
 
-const tags = frontmatter?.tags || ['#Lucknow', '#Books', '#Ambition', '#Hazratganj', '#Gratitude'];
+// No tags in the frontmatter means no "Filed under" row (no borrowed defaults).
+const tags: string[] = Array.isArray(frontmatter?.tags) ? frontmatter.tags : [];
 const shareUrl = new URL(Astro.url.pathname, Astro.site).href;
 
 // SEO: share image, real publish month (no invented dates) and structured data.
@@ -138,6 +139,7 @@ const shareText = encodeURIComponent(`Thoughts on "${frontmatter?.title}" by @vi
       </div>
 
       {/* Tags */}
+      {tags.length > 0 && (
       <div class="pt-10 pb-6 flex flex-wrap items-center gap-2 border-t border-canvas-border dark:border-canvas-darkBorder">
         <span class="text-xs font-mono text-ink-500 dark:text-ink-300 uppercase tracking-wider mr-2">Filed under:</span>
         {tags.map((tag: string) => (
@@ -146,6 +148,7 @@ const shareText = encodeURIComponent(`Thoughts on "${frontmatter?.title}" by @vi
           </span>
         ))}
       </div>
+      )}
 
       {/* Author Bio Box */}
       <div class="p-8 sm:p-10 rounded-3xl bg-canvas-subtle dark:bg-canvas-darkCard border border-canvas-border dark:border-canvas-darkBorder my-8 flex flex-col sm:flex-row items-center gap-6 shadow-sm">

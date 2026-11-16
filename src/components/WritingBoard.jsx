@@ -49,7 +49,7 @@ export default function WritingBoard() {
 
         {/* Minimalist Editorial Story Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {filteredEssays.slice(0, 6).map((essay) => {
+          {filteredEssays.slice(-6).map((essay) => {
             const storyUrl = `/stories/${essay.slug}/`;
             return (
               <a

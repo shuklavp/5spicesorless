@@ -37,6 +37,14 @@ function referencedPaths() {
     }
   };
   scan(path.join(root, 'src'));
+  // Story illustrations swap to a "-dark" twin in dark mode (see
+  // src/utils/optimizeMarkdownImages.js). The twin is never named in src/, so
+  // include it here whenever the file exists next to a referenced .png.
+  for (const p of [...found]) {
+    if (!p.startsWith('/illustrations/') || !/\.png$/i.test(p) || /-dark\.png$/i.test(p)) continue;
+    const twin = p.replace(/\.png$/i, '-dark.png');
+    if (fs.existsSync(path.join(publicDir, twin))) found.add(twin);
+  }
   return found;
 }
 const referenced = referencedPaths();
